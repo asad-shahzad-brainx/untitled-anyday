@@ -1,0 +1,26 @@
+{%- comment -%}
+{% include 'tooltip' content: power_level_info, class: 'power_level_info', video: video_wattage, type: "power" %}
+  https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Anyday_Product_Short_Videos_Secure_lid_v2_approved_compressed_2mb.mp4?v=1615352886
+{%- endcomment -%}
+{%- comment -%}{%- endcomment -%}
+<div class="question-tooltip__wrapper {{ class }}">
+  <div class="question-tooltip" role="tooltip" aria-label="tooltip popup">
+    {% render 'icon-question-tooltip' %}
+    {% render 'icon-question-tooltip-white' %}
+  </div>
+  {% if content != blank %}
+    <div class="question-description__wrapper">
+      <span class="question-tooltip--close">&#10005;</span>
+      <div class="question-description">
+        {{ content }}
+
+        {% if video != blank %}
+          <video class="question-description__video-{{ type }} question-description__video"
+                 id="videos" loop muted playsinline autoplay>
+            <source src="{{ video }}" type="video/mp4">
+          </video>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>

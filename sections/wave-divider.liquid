@@ -1,0 +1,59 @@
+{% schema %}
+{
+  "name": "Wave Divider",
+  "settings": [
+    {
+      "type": "color",
+      "id": "wave_color",
+      "label": "Wave Color",
+      "default": "#BED8FC"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_vertical",
+      "label": "Flip Vertically",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_horizontal",
+      "label": "Flip Horizontally",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wave Divider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="wave-section" style="background-color: {{ section.settings.background_color }};">
+  <svg
+    class="wave-svg Svg Svg--wave-bottom"
+    width="100%"
+    preserveAspectRatio="none"
+    viewBox="0 0 1440 96"
+    style="
+      fill: {{ section.settings.wave_color | default: '#BED8FC' }};
+      height: 5vw;
+      transform: 
+        {% if section.settings.flip_vertical %} scaleY(-1) {% endif %}
+        {% if section.settings.flip_horizontal %} scaleX(-1) {% endif %};
+    "
+  >
+    <path 
+      d="M1440 37.41V0H0V79.3225C402.522 -63.1003 678.324 46.349 972.416 79.3225C1212.5 106.24 1333.49 72.0585 1440 37.41Z" 
+      fill="{{ section.settings.wave_color | default: '#BED8FC' }}"
+    ></path>
+  </svg>
+</div>
+

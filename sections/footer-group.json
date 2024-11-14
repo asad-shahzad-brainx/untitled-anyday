@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:sections.footer-group.name",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "logo_social": {
+          "type": "logo_social",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify://shop_images/Anyday_Logo_-_White.svg",
+            "logo_height": 45,
+            "show_social": true,
+            "enable_follow_on_shop": false
+          }
+        },
+        "link_list_yKxmNQ": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Set the Table",
+            "menu": "set-the-table",
+            "container_width": 33
+          }
+        },
+        "link_list-1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Company",
+            "menu": "company",
+            "container_width": 33
+          }
+        },
+        "link_list-2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "support",
+            "container_width": 33
+          }
+        }
+      },
+      "block_order": [
+        "logo_social",
+        "link_list_yKxmNQ",
+        "link_list-1",
+        "link_list-2"
+      ],
+      "custom_css": [
+        "p.h3.text-xl.leading-none.tracking-none.font-medium.lg\\:font-heading {max-width: 475px; font-weight: bold;}",
+        ".text-sm {font-size: 18px; text-wrap: balance;}"
+      ],
+      "settings": {
+        "enable_newsletter": true,
+        "newsletter_heading": "Ready to level up your cooking game?",
+        "newsletter_text": "<p>Be the first to know about new recipes, microwave tips, promos, and more!</p>",
+        "show_social": true,
+        "enable_follow_on_shop": false,
+        "color_text": "#ffffff",
+        "color_background": "#205b62",
+        "gradient_background": "",
+        "color_button_text": "#205b62",
+        "color_button_background": "#f7fee7",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": true
+      }
+    },
+    "footer-copyright": {
+      "type": "footer-copyright",
+      "settings": {
+        "enable_language_selector": false,
+        "enable_country_selector": false,
+        "show_policy": true,
+        "show_payment_icons": true,
+        "monochrome_payment_icons": false,
+        "show_copyright": true,
+        "copyright_text": "Meyer Corporation, U.S. 2023",
+        "color_text": "#000000",
+        "color_background": "#dcfae0",
+        "gradient_background": "",
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": false
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "footer-copyright"
+  ]
+}

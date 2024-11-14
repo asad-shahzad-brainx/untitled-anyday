@@ -1,0 +1,438 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_size": "product-title-md",
+            "title_size_mobile": "product-title-md",
+            "show_price": false,
+            "show_rating": false
+          }
+        },
+        "junip_product_reviews_ugc_junip_product_summary_4dXHn6": {
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-summary/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "enable_color_swatches": true,
+            "color_swatch_type": "color",
+            "size_chart": ""
+          }
+        },
+        "liquid_MrFW3b": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "{% if product.selected_or_first_available_variant.metafields.custom.recipe_cook_time.value != blank %}\n  <p id=\"CookTime-{{ section.id }}\">Cook time is {{ product.selected_or_first_available_variant.metafields.custom.recipe_cook_time.value }}</p>\n{% else %}\n  <p id=\"CookTime-{{ section.id }}\" style=\"display: none;\"></p>\n{% endif %}\n\n<script>\n  var variantsCookTime = {{ product.variants | map: 'id' | json }};\n  var variantsCookTimeData = {\n    {% for variant in product.variants %}\n      '{{ variant.id }}': '{{ variant.metafields.custom.recipe_cook_time.value }}'{% unless forloop.last %},{% endunless %}\n    {% endfor %}\n  };\n</script>"
+          }
+        },
+        "liquid_nTPtnh": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h3>Ingredients</h3>\n{% assign ingredient_list = product.selected_or_first_available_variant.metafields.custom.recipe_ingredient_list %}\n\n{% if ingredient_list != blank %}\n  <div class=\"recipe-ingredients\">\n    {{ ingredient_list | metafield_tag  }}\n  </div>\n{% endif %}"
+          }
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share",
+            "show_help_desk": true,
+            "help_label": "Need help?",
+            "help_type": "drawer",
+            "help_page": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "text_size": "text-base lg:text-lg"
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "heading": "Pairs well with",
+            "product_limit": 4,
+            "show_vendor": false,
+            "show_price": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "junip_product_reviews_ugc_junip_product_summary_4dXHn6",
+        "variant_picker",
+        "liquid_MrFW3b",
+        "liquid_nTPtnh",
+        "share",
+        "description",
+        "complementary"
+      ],
+      "custom_css": [
+        ".product__title.with-price {align-items: center;}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": 50,
+        "gallery_layout": "columns",
+        "thumbnail_position": "beside",
+        "image_ratio": "adapt_first",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "mobile_layout": "full_width",
+        "image_ratio_mobile": "adapt_first",
+        "mobile_thumbnail": true,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "recipe_page_97TG46": {
+      "type": "recipe-page",
+      "custom_css": [
+        "h3 {margin-bottom: 20px; margin-top: 32px;}"
+      ],
+      "settings": {
+        "padding_bottom_desk": 80,
+        "padding_bottom_mob": 25,
+        "section_bg": "#f1ede7",
+        "recipe_hero_bg": "#205b62",
+        "recipe_hero_bg_mobile": "#dcfae0",
+        "recipe_bottom_bg": "#dcfae0",
+        "recipe_video_wrapper_bg": "#000000",
+        "recipe_video_wrapper_opacity": 0.3,
+        "recipe_video_wrapper_bg_mobile": "#205b62",
+        "recipe_video_wrapper_opacity_mobile": 1,
+        "heading_bg_color": "#205b62",
+        "heading_text_color": "#ffffff",
+        "btn_label": "Try Anyday",
+        "btn_url": "shopify://products/the-everyday-set",
+        "handle_1": "The medium shallow dish",
+        "handle_2": "",
+        "handle_3": "",
+        "handle_4": "",
+        "handle_5": "",
+        "handle_6": "",
+        "handle_7": "",
+        "error_message": "Please select a product",
+        "recipe_info_options_heading": "Select your serving size and microwave wattage in the dropdown. The recipe will change accordingly.",
+        "serves_title": "<p>Choose</p>\n<p>‏‏‎ ‎Serving Size</p>",
+        "wattage_title": "<p>Choose</p>\n<p>‏‏‎ ‎Wattage</p>",
+        "recommended_title": "<p>Recommended </p><p>Dish</p><p> </p>",
+        "wattage_info": "<p>Select your microwave wattage in the dropdown. The cook times in this recipe will automatically change accordingly.</p><p></p><p>[[video-wattage]]</p><p></p><p>To find your microwave’s wattage, look at the front panel, the side of the door, in the back, in the user manual, or Google the model number. If both an input and output wattage are listed, use the output.</p><p>Wattage translates to how powerful the microwave is. The higher the wattage, the faster your food will cook. The lower the wattage, the longer the cook time. </p><p>When in doubt, start with less time — you can always add more.</p>",
+        "video_wattage": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Wattage_Reel_Updated.mp4?v=1647552807",
+        "power_level_info": "<p>Certain foods cook best in the microwave at lower power levels. </p><p></p><p>[[video-power]]</p><p></p><p>Different microwaves have different settings. See your microwave manual (or look it up online) to learn how to change your microwave’s power level.</p><p>For many microwaves: enter the cook time, press the “Power” (or “Power Level”) button, and select a number between 1-10. Other microwaves may require selecting the Power Level first, and then entering the cook time. </p><p>Microwaves list power levels in different ways. Here’s a guide to help you adjust:</p><p>PL 10 = 100% = High (default)</p><p>PL 9 = 90% = High</p><p>PL 8 = 80% = Med-High</p><p>PL 7 = 70% = Med-High</p><p>PL 6 = 60% = Medium</p><p>PL 5 = 50% = Medium</p><p>PL 4 = 40% = Med-Low</p><p>PL 3 = 30% = Med-Low</p><p>PL 2 = 20% = Low</p><p>PL 1 = 10% = Low</p><p>You will know if the power level has been successfully changed if you hear periodic changes in the microwave’s tone after it begins cooking.<br/></p>",
+        "video_power_level": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Power_Level_Updated.mp4?v=1647552976",
+        "hide_google_form": true,
+        "google_form_button_label": "Did you cook this recipe?",
+        "google_block_bg_desktop": "#ffffff",
+        "google_block_bg_mobile": "#bed8fc"
+      }
+    },
+    "help-drawer": {
+      "type": "help-drawer",
+      "blocks": {
+        "content-1": {
+          "type": "content",
+          "settings": {
+            "icon": "rocket",
+            "heading": "Shipping Information",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#b45309",
+            "color_background": "#fffbeb",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
+          }
+        },
+        "content-2": {
+          "type": "content",
+          "settings": {
+            "icon": "headphone",
+            "heading": "Customer Support",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#0369a1",
+            "color_background": "#f0f9ff",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
+          }
+        },
+        "content-3": {
+          "type": "content",
+          "settings": {
+            "icon": "chat_bubble",
+            "heading": "FAQ’s",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#be123c",
+            "color_background": "#fff1f2",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
+          }
+        },
+        "content-4": {
+          "type": "content",
+          "settings": {
+            "icon": "phone",
+            "heading": "Contact Us",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#4d7c0f",
+            "color_background": "#f7fee7",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
+          }
+        }
+      },
+      "block_order": [
+        "content-1",
+        "content-2",
+        "content-3",
+        "content-4"
+      ],
+      "settings": {
+        "heading": "Need help?",
+        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.</p>"
+      }
+    },
+    "17264183809666574a": {
+      "type": "apps",
+      "blocks": {
+        "junip_product_reviews_ugc_junip_product_review_tLTRQ6": {
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "junip_product_reviews_ugc_junip_product_review_tLTRQ6"
+      ],
+      "settings": {
+        "enable_reviews_integration": true,
+        "heading": "What Customers Are Saying",
+        "heading_alignment": "center",
+        "heading_margin_bottom": 60,
+        "button_link": "/",
+        "button_text": "",
+        "button_margin_top": 60,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-5": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "contact": {
+          "type": "contact",
+          "settings": {
+            "heading": "Didn’t find your answer?",
+            "text": "<p>Don't hestitate to contact us</p>",
+            "show_phone": false,
+            "avatar_height": 60,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-5",
+        "contact"
+      ],
+      "disabled": true,
+      "settings": {
+        "style": "with-background",
+        "heading": "FAQs",
+        "heading_size": "title-lg tracking-heading",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "<p>Please read our <a href=\"#\" title=\"FAQ's\">FAQs</a> page to find out more.</p>",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#000000",
+        "color_background": "#f1ede7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "#000000",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "padding_top": 84,
+        "padding_bottom": 84,
+        "divider": false,
+        "narrow": false,
+        "rounded": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "You may also like",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": true
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Recently Viewed",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "main-product",
+    "recipe_page_97TG46",
+    "help-drawer",
+    "17264183809666574a",
+    "faq",
+    "product-recommendations",
+    "recently-viewed"
+  ]
+}

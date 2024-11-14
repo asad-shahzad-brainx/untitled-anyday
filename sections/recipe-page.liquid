@@ -1,0 +1,1236 @@
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desk -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
+{%- assign section_bg = section.settings.section_bg -%}
+{%- assign recipe_hero_bg = section.settings.recipe_hero_bg -%}
+{%- assign recipe_hero_bg_mobile = section.settings.recipe_hero_bg_mobile -%}
+{%- assign recipe_bottom_bg = section.settings.recipe_bottom_bg -%}
+{%- assign recipe_video_wrapper_opacity = section.settings.recipe_video_wrapper_opacity -%}
+{%- assign recipe_video_wrapper_bg = section.settings.recipe_video_wrapper_bg | color_modify: 'alpha', recipe_video_wrapper_opacity -%}
+{%- assign recipe_video_wrapper_opacity_mobile = section.settings.recipe_video_wrapper_opacity_mobile -%}
+{%- assign recipe_video_wrapper_bg_mobile = section.settings.recipe_video_wrapper_bg_mobile | color_modify: 'alpha', recipe_video_wrapper_opacity_mobile -%}
+{%- assign heading_bg_color = section.settings.heading_bg_color -%}
+{%- assign heading_text_color = section.settings.heading_text_color -%}
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- assign recomended_products = selected_variant.metafields.recommended_product.recommended_products | split: "|" -%}
+
+{% comment %} Recommended products {% endcomment %}
+{% if recomended_products == blank %}
+	{% for custom_current_variant in product.variants %}
+		{%- assign variant_size = product.selected_or_first_available_variant.option1 -%}
+
+		{% if custom_current_variant.option1 == variant_size %}
+			{%- assign recomended_products = custom_current_variant.metafields.recommended_product.recommended_products | split: "|" -%}
+
+			{% break %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+{%- assign recipe_info_options_heading = section.settings.recipe_info_options_heading -%}
+{%- assign hide_google_form = product.metafields.google_form.hide_section | default: section.settings.hide_google_form -%}
+{%- assign google_block_bg_desktop = section.settings.google_block_bg_desktop -%}
+{%- assign google_block_bg_mobile = section.settings.google_block_bg_mobile -%}
+{%- assign google_form_button_label = section.settings.google_form_button_label -%}
+
+
+{%- assign wattage_info = section.settings.wattage_info -%}
+{%- assign video_wattage = section.settings.video_wattage -%}
+{%- assign video_power_level = section.settings.video_power_level -%}
+{%- assign power_level_info = section.settings.power_level_info -%}
+{%- assign recipe_heading = product.title -%}
+{%- assign recipe_description = product.description -%}
+{%- assign recipe_image = product.featured_image -%}
+{%- assign recipe_icon = product.metafields.accentuate.recipe_icon -%}
+{%- assign suggestions = product.metafields.accentuate.suggestions -%}
+{%- assign recipe_notes = product.metafields.accentuate.recipe_notes -%}
+{%- assign ingredients = product.selected_or_first_available_variant.metafields.accentuate.ingredients -%}
+{%- assign free_time = product.metafields.accentuate.free_time -%}
+{%- assign total_time = product.selected_or_first_available_variant.metafields.accentuate.total_time -%}
+{%- assign active_time = product.selected_or_first_available_variant.metafields.accentuate.active_time -%}
+{%- assign preparation = product.selected_or_first_available_variant.metafields.accentuate.preparation -%}
+{% comment %} {%- assign ingredients_heading = "products.recipe.recipe_info.ingredients_heading" | t -%}
+{%- assign preparation_heading = "products.recipe.recipe_info.preparation_heading" | t -%}
+{%- assign suggestions_heading = "products.recipe.recipe_info.suggestions_heading" | t -%}
+{%- assign recipe_notes_heading = "products.recipe.recipe_info.recipe_notes_heading" | t -%}
+{%- assign prep_time_heading = "products.recipe.times.prep_time_heading" | t -%}
+{%- assign cook_time_heading = "products.recipe.times.cook_time_heading" | t -%} {% endcomment %}
+{%- assign ingredients_heading = "Ingredients" %}
+{%- assign preparation_heading = "Preparation" -%}
+{%- assign suggestions_heading = "Suggestions" -%}
+{%- assign recipe_notes_heading = "Recipe Notes" -%}
+{%- assign prep_time_heading = "Prep Time" -%}
+{%- assign cook_time_heading = "Cook Time" -%}
+
+{% comment %}support of old recommended products {% endcomment %}
+
+{%- assign medium_shallow = product.selected_or_first_available_variant.metafields.accentuate.medium_shallow -%}
+{%- assign large_shallow = product.selected_or_first_available_variant.metafields.accentuate.large_shallow -%}
+{%- assign medium_deep = product.selected_or_first_available_variant.metafields.accentuate.medium_deep -%}
+{%- assign large_deep = product.selected_or_first_available_variant.metafields.accentuate.large_deep -%}
+{%- assign small_dish = product.selected_or_first_available_variant.metafields.accentuate.small_dish -%}
+{%- assign tbsp_anytime_tray = product.selected_or_first_available_variant.metafields.accentuate.tbsp_anytime_tray -%}
+{%- assign cup_anytime_tray = product.selected_or_first_available_variant.metafields.accentuate.cup_anytime_tray -%}
+
+{% comment %}support of old recommended products {% endcomment %}
+
+{%- assign video_url = product.metafields.accentuate.recipes_video -%}
+{%- assign video_type = 'youtube' -%}
+{%- assign serves_title = section.settings.serves_title -%}
+{%- assign wattage_title = section.settings.wattage_title -%}
+{%- assign recommended_title = section.settings.recommended_title -%}
+{%- assign error_message = section.settings.error_message -%}
+{%- assign video_title = product.metafields.accentuate.video_title -%}
+
+{%- capture slider_settings -%}
+	{
+	"slidesToShow": 2.3,
+	"slidesToScroll": 1,
+	"dots": false,
+	"infinite": false,
+	"useCSS": true,
+	"responsive": [
+	{
+	"breakpoint": 1200,
+	"settings": {
+	"arrows": false
+	}
+	},
+	{
+	"breakpoint": 750,
+	"settings": {
+	"arrows": false,
+	"slidesToShow": 2.1,
+	"slidesToScroll": 1
+	}
+	}
+	]
+	}
+{%- endcapture -%}
+
+{% comment %}support of old recommended products {% endcomment %}
+{% if recomended_products == blank %}
+	{%- assign recomended_products = '' -%}
+
+	{% for i in (1..7) %}
+		{%- assign handle_index = "" -%}
+		{%- assign handle =  "" -%}
+
+		{%- assign handle_index = "handle_" | append: i -%}
+		{%- assign handle =  section.settings[handle_index] | handleize -%}
+
+		{% if handle != blank %}
+			{%- assign variant_id =  all_products[handle].selected_or_first_available_variant.id -%}
+		{% endif %}
+
+		{% if medium_shallow and forloop.index == 1 %}
+			{%- assign recomended_products = recomended_products | append: handle | append: ":" | append: variant_id | append: "|" -%}
+		{% elsif large_shallow and forloop.index == 2 %}
+			{%- assign recomended_products = recomended_products | append: handle | append: ":" | append: variant_id | append: "|" -%}
+		{% elsif medium_deep and forloop.index == 3 %}
+			{%- assign recomended_products = recomended_products | append: handle | append: ":" | append: variant_id | append: "|" -%}
+		{% elsif large_deep and forloop.index == 4 %}
+			{%- assign recomended_products = recomended_products | append: handle | append: ":" | append: variant_id | append: "|" -%}
+		{% elsif small_dish and forloop.index == 5 %}
+			{%- assign recomended_products = recomended_products | append: handle | append: ":" | append: variant_id | append: "|" -%}
+		{% elsif tbsp_anytime_tray and forloop.index == 6 %}
+			{%- assign recomended_products = recomended_products | append: handle | append: ":" | append: variant_id | append: "|" -%}
+		{% elsif cup_anytime_tray and forloop.index == 7 %}
+			{%- assign recomended_products = recomended_products | append: handle | append: ":" | append: variant_id -%}
+		{% endif %}
+	{% endfor %}
+
+	{%- assign recomended_products = recomended_products | split: "|" -%}
+{% endif %}
+{% comment %}support of old recommended products {% endcomment %}
+
+{%- assign slides_counter = recomended_products | split: ":" -%}
+{%- assign slides_counter = slides_counter.size -%}
+
+{% comment %} Automatization cook times {% endcomment %}
+{%- assign free_time = product.metafields.accentuate.free_time -%}
+{%- assign total_time = product.selected_or_first_available_variant.metafields.accentuate.total_time -%}
+{%- assign variant_size = product.selected_or_first_available_variant.option1 -%}
+{%- assign global_custom_current_variant = '' -%}
+
+{% comment %} Automatization cook times v3 {% endcomment %}
+{% if ingredients == blank or preparation == blank or active_time == blank or total_time == blank %}
+	{% for custom_current_variant in product.variants %}
+		{% if custom_current_variant.option1 == variant_size %}
+			{%- assign global_custom_current_variant = custom_current_variant -%}
+
+			{% if ingredients == blank %}
+				{%- assign ingredients = custom_current_variant.metafields.accentuate.ingredients -%}
+			{% endif %}
+
+			{% if preparation == blank %}
+				{%- assign preparation = custom_current_variant.metafields.accentuate.preparation -%}
+			{% endif %}
+
+			{% if active_time == blank %}
+				{%- assign active_time = custom_current_variant.metafields.accentuate.active_time -%}
+			{% endif %}
+
+			{% break %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+{% if total_time != blank %}
+	{%- assign default_total_time = true -%}
+{% endif %}
+
+{% comment %} Check serves count {% endcomment %}
+{%- assign variant_options = product.selected_or_first_available_variant.options -%}
+{%- assign variant_wattage = variant_options[1] -%}
+{%- assign search_string = 'coefficient_' | append: variant_wattage -%}
+{%- assign wattage_coefficients  = shop.metafields.globals[search_string] | default: 1 -%}
+
+{% if custom_tags_count == base_times_size_no_blank %}
+	{% if default_total_time != true  %}
+		{%- assign total_time = 0 -%}
+	{% endif %}
+
+	{% for i in (1..5) %}
+		{%- assign basic_cook_time_str = 'basic_cook_time_' | append: i -%}
+		{%- assign custom_tag_str = '[[cook-time-' | append: i | append: ']]' -%}
+		{%- assign basic_cook_time = global_custom_current_variant.metafields.accentuate[basic_cook_time_str] -%}
+
+		{% if basic_cook_time %}
+			{%- assign result_time = basic_cook_time | times: wattage_coefficients -%}
+			{%- assign local_time_floor = result_time | floor -%}
+			{%- assign local_time_up = result_time | ceil -%}
+
+			{% if local_time_floor != local_time_up %}
+				{%- assign local_time = local_time_floor | append: '-' | append: local_time_up -%}
+			{% else %}
+				{%- assign local_time = local_time_floor -%}
+			{% endif %}
+
+			{% if default_total_time != true  %}
+				{%- assign custom_tag_split_arr = preparation | split: custom_tag_str -%}
+				{%- assign custom_tag_sizes = custom_tag_split_arr.size | minus: 1 -%}
+				{%- assign result_time_local_tag = result_time | times: custom_tag_sizes -%}
+
+				{%- assign total_time = total_time | plus: result_time_local_tag -%}
+			{% endif %}
+
+			{% if i == 1 %}
+				{%- assign basic_cook_time_1 = local_time -%}
+			{% elsif i == 2 %}
+				{%- assign basic_cook_time_2 = local_time -%}
+			{% elsif i == 3 %}
+				{%- assign basic_cook_time_3 = local_time -%}
+			{% elsif i == 4 %}
+				{%- assign basic_cook_time_4 = local_time -%}
+			{% elsif i == 5 %}
+				{%- assign basic_cook_time_5 = local_time -%}
+			{% endif %}
+
+			{% if default_total_time != true %}
+				{%- assign total_time_floor = total_time | floor -%}
+				{%- assign total_time_up = total_time | ceil -%}
+
+				{% if total_time_floor != total_time_up %}
+					{%- assign total_time = total_time_floor | append: '-' | append: total_time_up | append: ' mins' -%}
+				{% else %}
+					{%- assign total_time = total_time_floor | append: ' mins' -%}
+				{% endif %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+{%- if video_url contains 'youtube' or video_url contains 'youtu' -%}
+	{%- assign type = 'youtube' -%}
+{%- elsif video_url contains 'vimeo' -%}
+	{%- assign type = 'vimeo' -%}
+{%- endif -%}
+
+{%- assign video_id = video_url | split: '/' | last -%}
+
+
+{{ 'recipe-page.css' | asset_url | stylesheet_tag }}
+<style>
+  .recipe__info-description {
+	{% if video_url != blank %}
+    --local-margin-bottom: 0
+	{% else %}
+    --local-margin-bottom: 32px
+	{% endif %}
+  }
+
+  .video-footer-block {
+    --recipe-video-wrapper-bg: {{ recipe_video_wrapper_bg }};
+    --recipe-video-wrapper-bg-mobile: {{ recipe_video_wrapper_bg_mobile }};
+  }
+
+  /*  */
+  .visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+
+  
+
+  #shopify-section-{{ section.id }} .recipe {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    * {
+      font-family: 'F37Jan' !important;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .recipe__info-settings {
+    display: block;
+    padding: 22px;
+    padding-top: 10px;
+    background-color: #bed8fc;
+
+    .select {
+      width: auto;
+      min-width: 130px;
+      padding: 0;
+      position: relative;
+    }
+
+    .select__head {
+      width: 100%;
+      height: 43px;
+      cursor: pointer;
+      color: #000;
+      font-size: 18px;
+      font-weight: 400;
+      border: 1px solid #121d29;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 35px 0 10px;
+      position: relative;
+      transition: all ease 0.3s;
+    }
+
+    .select.open .select__head {
+      border-bottom: unset;  
+    }
+
+    .select__head::after {
+      width: 21px;
+      height: 13px;
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAAA1CAYAAADfw8w+AAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAoz2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZxUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYTELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXnFxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDgv5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAGb2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA3LTMxVDExOjU3OjUzKzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wNy0zMVQxMjoxNzowOCswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wNy0zMVQxMjoxNzowOCswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTIzZjczNWYtM2Y5Zi01ODQxLTk2ZGItMzE3ZTgxYjIzYmU1IiB4bXBNTTpEb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6N2VkN2RlN2ItNmNiNS03YTQzLWI4NTQtZWQ5OThhMzk0MDQ2IiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6YzAwNDQ0YzYtZmJiMi1lYzQ2LWI3YTgtZTIxZjNiY2YwOTc1Ij4gPHBob3Rvc2hvcDpEb2N1bWVudEFuY2VzdG9ycz4gPHJkZjpCYWc+IDxyZGY6bGk+YWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjY5ZGJmZDRlLWE2MWQtMWI0OS1iZGI3LTJmZjAwMmI4ZDQwNTwvcmRmOmxpPiA8L3JkZjpCYWc+IDwvcGhvdG9zaG9wOkRvY3VtZW50QW5jZXN0b3JzPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmMwMDQ0NGM2LWZiYjItZWM0Ni1iN2E4LWUyMWYzYmNmMDk3NSIgc3RFdnQ6d2hlbj0iMjAyMC0wNy0zMVQxMTo1Nzo1MyswMzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxMjNmNzM1Zi0zZjlmLTU4NDEtOTZkYi0zMTdlODFiMjNiZTUiIHN0RXZ0OndoZW49IjIwMjAtMDctMzFUMTI6MTc6MDgrMDM6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5hQMtWAAACsElEQVR42u3bQU4bMRQG4CiFNELcIvsIhOACFRKLOQYqLCtBWyjQU+QUgGhpe4KIBVK3wAbassgBUMuikYDBlmxpNALHfu/Zfh68+FeRPPGn5/GLrbTKsmzl0CUjZNAMmkGLoqimJzIUGYkMRNq1z1mEEqU29qrIH5ELkZVJz5w02LLInUhZyY3IbFNBK2O+UojVuT+IvDU91zTgG5H72oA6tyLdJqKqseQqPHtm7jJrrqDLBkydfyIznFFdoGuVeTZh7jLrtqC9J5Z5aajUGY7vVNfqrVTmT4ti0su/ZwM6tMRMCtWiMiXmiSWmztAGdOQImmyl1pb5qSOmzMgGdAAA1ahTKaA+kXMApszABrStWiMI6oHIdGKY74BzlftM23aXn1UVB3nQfkKo74FzlNW85NqHdlVr1NRK/YDAXIA09i210dw2EBWDOQ/9pdRU1A0qTCgoBWqHCeYmJaYVqAG1o05dIF/oK4OWagv43cfVd6bzaZMBFIt6GHH5k2NSgbZUpUFRjyKgbgO/6//nljk1qG6pUkDd8oVJDZoC6kefmD5AsahfPO7+3jF9gWJRjz1U6g5iA5ovkEeCFKAa9TeipZpmgLlIccZKBapbqquIlbqLWOZzVIfWlKAa9RqB2onQGs0VhLcA1KB6+UNRvwEqNQpmSFAK1Nee35lozNCgWNTvFqh7oXZzLqAa9Rdw4j8MqJ9D9JkcQfVvfwxqlxCz7/tqOgSoRr1GoHYI3pn9IsBdfyhQLKo8pP7ECZMDKBYVugH1fc2HA2hI1DHlBsQZFLtRBd/NUwD1iUrStKcIir2jiorJFZQSNSgmZ1AK1HFoTO6gGFTjVe9LBoWgRsNMBdQFNUhr1ARQm4u/6JipgZpQWWCmCKpRL9VfWGT+csF0As3J/0bOoBk0J4PGyCNTYskSpg8TdQAAAABJRU5ErkJggg==) no-repeat transparent;
+      position: absolute;
+      right: 12px;
+      content: "";
+      display: block;
+      background-size: contain;
+      transition: .2s;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .select.open .select__head::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .select__list {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      overflow-y: auto;
+      z-index: 100;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      overscroll-behavior: contain;
+      border: 1px solid #121d29;
+      border-top: unset;
+      transition: all ease 0.3s allow-discrete;
+
+      .select__item {
+        padding: 10px 15px;
+        cursor: pointer;
+        list-style-type: none;
+        color: #000;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .select__item:hover {
+        background: #ff3c1f;
+        color: #fff;
+      }
+    }
+  }
+
+  #shopify-section-{{ section.id }} .recipe__info-settings .select.open .select__list {
+    display: block;
+    opacity: 1;
+  }
+
+  @starting-style {
+    #shopify-section-{{ section.id }} .recipe__info-settings .select.open .select__list {
+      opacity: 0;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .recipe__info-settings form {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+
+    .recipe__info-options {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .select {
+        height: max-content;
+      }
+
+      label {
+        text-align: right;
+
+        p {
+          white-space: nowrap;
+        }
+      }
+    }
+
+  }
+
+  #shopify-section-{{ section.id }} .recipe__info-options-heading {
+    max-width: 800px;
+    margin-inline: auto;
+    padding-bottom: 17px;
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .recipe__info-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .recipe__bottom-row {
+    display: flex;
+    gap: 32px;
+
+    > * {
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: .84px;
+      text-transform: uppercase;
+    }
+
+    h4 {
+      margin-bottom: 18px;
+    }
+
+    ul {
+      padding-left: 35px;
+    }
+
+    li {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 23px;
+      position: relative;
+
+    }
+    .recipe__bottom-block--ingredients li strong {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0d5d52;
+      position: absolute;
+      right: calc(100% + 10px);
+      width: max-content;
+      max-width: 70px;
+      text-align: right;
+    }
+
+    .suggestions-wrapper li::before {
+      content: "";
+      position: absolute;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEl0lEQVRoQ+2Ya2gcVRiG3292zjYtahJkm1aSomh/FBVEiwWpGvGHSKrZ2XSr1J2lQa1SWylF4q/SUkVbUhE0gsbaxp3UIMtekiglvwMqXouCCK1ILxbXbbFQzG0un0xIS5Ps5czsbk0g5+ee93u/95lvDrtnCYt80SLPjyWA/3uCNZ2A0Ds2gGw2E9lvawVaW4BY2ACBTSMbX3wAndGQsKyzABTTstdgYChXC4iaTUCNR/YS8wE3NIP2Wkb6zcUD0Nqqqi2NfxDQPA1AuGDVhW5Hb69ZbYiaTCAQ69iikPP59WEdYIttZJKLAkDo2iiAjbPD8qhpZB9Z8ABiW/g+2PRTwaAKrzc/zf5QTYiqv0JCDx8B6PmCIQlHzETmxYULsLWtUQ0EzxOwokjIcZPQgkTmUrUgqjoBVY90EfhQqXBMSpeVSHUvPID9+xXx+8nTAN1RJtwZc0K9E8mkXQ2Iqk0gENfaFUZWJpTD1G73p4dktOU0sgAEXQsFFSXk2BRislcpRCFyEGJymhjUpAD3M9BSrqG7T8A5B/iRwDliJccK8g5znjjwlxLg/JTj5GFk8tNf4mXWPAChay8D/DAITWBayUCIgBCAQDmzKu/bDOQJyIP4bzByAI2aRubD6/vMn8DWtkYREGmAWqscqEI7/sq07HYMDF8sDeDuRqNBscz8BESxCrtWqzxpBurj6OubmGtY6gxQMB7Zx8z7qpXCjw8D71lGZnex81D2EAs9sg3gXgDCT4AKaiwQ7TQT6Y9KeZQFcIvV5zY/DsVOEVBfQSDpUgauBIifmUxkT5QrkgJwTYK6dg+DvwRoTTnTSvYZ+JMCvMnsy56U8ZEGmDaLRVar4GEiPCBj7kPzs+lQG46nz8vWegMAEIpGb/qnzhogYJNsExkdg0cahBO9eHToioz+qsYzwHRha6sqmht7QHjJS7NiWoe4xx4Xu/38PvIH4B5sXdtIgHvzqnw59KB5PP2dHyP/ADHtdSIc9NO0QM0e08i868fLP4AeHiLQU36azq1hcMoyspv9ePkFIFXXcjM/8vz0nVXDQM4yMqv8GPkCCOraOgZ+9dOwWI3C6trJ/uRpr56+AEQs8gKIP/barLSeOk0j3efV0x9AXDsKRqdEs19mNPeW1fr8x8IfgB4+BdBdxUIx+F+FlMNT44G3kM87ovnWV5jsAwS6pQTIb6aRWVcWdI7AO4CurRRwb0eFFwNfWKqzA8cGz81SxCKrBTmHgOk7RqG+bKpqE44l3auk9PIMENC1iAKk5nUgnFJY2TVppEZKdVd17VECPgBw91ydQwjbicygdPoiT6JkvRoLv0NEe66KGBhTiLqn6sffxvsnJqWab98uxNilHUzOGwTcfM2LnW6rf7BLymNG5HkCqh7+hkAb3Hr3dVFt2jnxWfqMl6bXtM8+fZsQykGA9JnPvjaNzENevLwBRKPLRZ11GeCzCuFVmQuHTBg1HnmM2OkBaG1oudVwoXd4TKbO1XgCEHrHegaesBrGDku/LrJJdj25TL284jUCRkwj9b1smScAWdMbqVsCuJFPu1CvpQksTaDCJ/Af7tB0QKFOIaAAAAAASUVORK5CYII=);
+      left: -51px;
+      top: 0;
+      display: block;
+      height: 24px;
+      width: 24px;
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      top: 10px;
+      transform: translateY(-50%);
+      left: -35px;
+      width: 29px;
+      height: 29px;
+    }
+
+    .recipe_notes-wrapper li::before {
+      position: absolute;
+      content: "";
+      color: #fff;
+      width: 8px;
+      height: 8px;
+      background-color: #205b62;
+      border-radius: 50%;
+      display: flex;
+      font-family: F37Jan;
+      font-size: 16px;
+      font-weight: 400;
+      justify-content: center;
+      align-items: center;
+      left: -30px;
+      top: 5px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .recipe__info-bottom .recipe__bottom-block.recipe__bottom-block--preparation ol {
+    counter-reset: myCounter;
+    padding-left: 45px;
+
+    li {
+      position: relative;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 22px;
+      list-style: none;
+    }
+
+    li::after {
+      position: absolute;
+      counter-increment: myCounter;
+      content: counter(myCounter);
+      color: #fff;
+      width: 29px;
+      height: 29px;
+      background-color: #205b62;
+      border-radius: 50%;
+      display: flex;
+      font-family: F37Jan;
+      font-size: 16px;
+      font-weight: 400;
+      justify-content: center;
+      align-items: center;
+      left: -47px;
+      top: 0;
+    }
+  }
+
+  @media (max-width: 990px) {
+    #shopify-section-{{ section.id }} .recipe__info-settings form {
+      flex-direction: column;
+      align-items: center;
+
+      .recipe__info-options {
+        max-width: 400px;
+        width: 100%;
+        justify-content: space-between;
+
+        label {
+          width: calc(45% - 25px);
+          display: flex;
+          font-size: 16px;
+          margin-right: 12px;
+          justify-content: flex-end;
+        }
+
+        .select {
+          width: 55%;
+        }
+      }
+    }
+
+    #shopify-section-{{ section.id }} .recipe__bottom-row {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .recipe__info-settings form .recipe__info-options {
+      label, .select {
+        width: auto;
+      }
+    }
+  }
+</style>
+
+
+<div class="recipe">
+  {% unless product.has_only_default_variant %}
+    <div class="recipe__info-settings">
+      {% if recipe_info_options_heading != blank %}
+        <p class="recipe__info-options-heading">
+          {{ recipe_info_options_heading }}
+        </p>
+      {% endif %}
+
+      {% form 'product', product, class:form_classes, novalidate: 'novalidate', data-product-form: '' %}
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div class="recipe__info-options">
+              <label style="display: none" id="SingleOptionLabel-{{ forloop.index0 }}"
+                    {% if option.name == 'default' %}class="label--hidden"
+                    {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
+                {{ option.name }}
+              </label>
+              <select
+                      class="single-option-selector single-option-selector-{{ section.id }} product-form__input recipe__select-arrow"
+                      id="SingleOptionSelector-{{ forloop.index0 }}"
+                      data-index="option{{ forloop.index }}"
+              >
+                {% for value in option.values %}
+                  <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                {% endfor %}
+              </select>
+
+              {% comment %}
+                Custom Recipe Select
+              {% endcomment %}
+
+              <label id="SingleOptionLabel-{{ forloop.index0 }}"
+                    class="{% if option.name == 'default' %}label--hidden{% endif %} {% if option.name == 'Wattage' %}label--wattage{% endif %}"
+                    for="SingleOptionSelector-{{ forloop.index0 }}">
+                {%- case option.name -%}
+                  {%- when 'Serves' -%}
+                    {%- assign option_name = serves_title -%}
+                  {%- when 'Wattage' -%}
+                    {%- assign option_name = wattage_title -%}
+                {%- endcase -%}
+                {{ option_name | default: option.name }}
+              </label>
+              {%- if option.name == 'Wattage' -%}
+                {% if wattage_info != blank %}
+                  <div class="wattage-level">
+                    {% comment %} {% render 'tooltip' content: wattage_info, video: video_wattage, type: 'wattage' %} {% endcomment %}
+                  </div>
+                {% endif %}
+              {%- endif -%}
+
+              <div class="select select{{ forloop.index }}">
+                <input class="select__input" type="hidden" name=""
+                      id="SingleOptionSelector-{{ forloop.index0 }}"
+                      data-index="option{{ forloop.index }}">
+                {% if option.name == 'Wattage' %}
+                  <span itemprop="tool" class="visually-hidden">Microwave oven by power - {{ option.selected_value }}</span>
+                {%- endif -%}
+                <div{% if option.name != 'Wattage' %} itemprop="recipeYield" {% endif %} class="select__head select__head{{ forloop.index }}">{{ option.selected_value }}</div>
+                <ul 
+                  class="select__list select__list{{ forloop.index }}" 
+                  {% comment %}
+                    style="display: none;"
+                  {% endcomment %}
+                >
+
+                  {% for value in option.values %}
+                    <li class="select__item"
+                        value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% endfor %}
+        {% endunless %}
+
+        {%- if first_recomended_product != blank and recommended_title != blank -%}
+          <div class="recipe__info-options">
+            <div class="recipe__info-options-title">{{ recommended_title }}</div>
+
+            <p class="recipe__info-options-product">
+              {{ first_recomended_product }}
+            </p>
+          </div>
+        {%- endif -%}
+
+        <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}"{%- if variant == current_variant %} selected="selected" {%- endif -%}>
+              {{ variant.title }}  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+            </option>
+          {% endfor %}
+        </select>
+      {% endform %}
+
+      <p class="visually-hidden" data-product-status
+        aria-live="polite"
+        role="status"
+      ></p>
+    </div>
+  {% endunless %}
+  <div class="page-width " id="recipe-info-block" style="--padding-bottom-desktop: {{ padding_bottom_desk }}px; --padding-bottom-mobile: {{ padding_bottom_mob }}px">
+    {%- comment -%}
+    {% if video_power_level != blank %}
+      {%- assign video_power = '<video class="question-description__video-power question-description__video"
+          id="videos" loop muted playsinline autoplay>
+      <source src="' | append:  video_power_level | append: '" type="video/mp4">
+                    </video>' -%}
+    {% endif %}
+
+    {%- assign power_level_tooltip =
+      '<div class="question-tooltip__wrapper">
+        <div class="question-tooltip" role="tooltip" aria-label="'
+      | append: "tooltip popup" | append:
+      '">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_3" class="icon-question-tooltip" data-name="Layer 3" viewBox="0 0 24 24"><defs><style>.cls-1{fill:#215957;}.cls-2{fill:#fff;}</style></defs><circle class="cls-1" cx="12" cy="12" r="10.5"/><path class="cls-2" d="M12.9,14.06v.66H10.8V14a3.06,3.06,0,0,1,.4-1.69,3.57,3.57,0,0,1,1-1,7.33,7.33,0,0,0,.88-.64A2.06,2.06,0,0,0,13.77,9a1.3,1.3,0,0,0-.45-1,1.78,1.78,0,0,0-1.25-.41,2.08,2.08,0,0,0-1.32.41,1.73,1.73,0,0,0-.61,1.24l-2-.37a3.91,3.91,0,0,1,1.3-2.45,4,4,0,0,1,2.75-.92,3.66,3.66,0,0,1,2.69,1,3.61,3.61,0,0,1,1,2.66,3.23,3.23,0,0,1-.42,1.71,4.81,4.81,0,0,1-1.18,1.27c-.29.24-.53.44-.71.62A1.89,1.89,0,0,0,12.9,14.06Zm-1.05,4.5a1.31,1.31,0,0,1-1-.39,1.13,1.13,0,0,1-.4-.84,1.6,1.6,0,0,1,.17-.77,1.13,1.13,0,0,1,1-.64,1.46,1.46,0,0,1,1.08.37,1.27,1.27,0,0,1,.37.94,1.31,1.31,0,0,1-.36.94A1.22,1.22,0,0,1,11.85,18.56Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_3" class="icon-question-tooltip-white" data-name="Layer 3" viewBox="0 0 24 24"><defs><style>.cls-1{fill:#215957;}.cls-2{fill:#fff;}</style></defs><circle class="cls-1" cx="12" cy="12" r="11"/><circle class="cls-2" cx="12" cy="12" r="10"/><path class="cls-1" d="M13,14.06v.66h-2.1V14a3.06,3.06,0,0,1,.4-1.69,3.57,3.57,0,0,1,1-1,6.58,6.58,0,0,0,.88-.64A2,2,0,0,0,13.9,9a1.3,1.3,0,0,0-.45-1,1.75,1.75,0,0,0-1.24-.41,2,2,0,0,0-1.32.41,1.73,1.73,0,0,0-.62,1.24l-2-.37A3.85,3.85,0,0,1,9.56,6.36a4,4,0,0,1,2.75-.92,3.65,3.65,0,0,1,2.69,1A3.57,3.57,0,0,1,16,9.1a3.23,3.23,0,0,1-.42,1.71,4.94,4.94,0,0,1-1.17,1.27,9.07,9.07,0,0,0-.72.62A1.89,1.89,0,0,0,13,14.06Zm-1,4.5a1.33,1.33,0,0,1-1-.39,1.16,1.16,0,0,1-.39-.84,1.6,1.6,0,0,1,.16-.77,1.13,1.13,0,0,1,1-.64,1.46,1.46,0,0,1,1.08.37,1.27,1.27,0,0,1,.37.94,1.31,1.31,0,0,1-.36.94A1.22,1.22,0,0,1,12,18.56Z"/></svg>
+        </div>
+        <div class="question-description__wrapper">
+          <span class="question-tooltip--close">&#10005;</span>
+          <div class="question-description">'
+      | append: power_level_info | append: video_power  | append:
+      '
+          </div>
+        </div>
+      </div>'
+    -%}
+    {%- endcomment -%}
+
+    {%- if ingredients != blank or preparation != blank or suggestions != blank -%}
+      <div class="recipe__info-bottom container">
+        {% if ingredients != blank or preparation != blank %}
+          {%- comment -%}    Automatization     {%- endcomment -%}
+          {%- if ingredients_heading != blank -%}
+            {%- assign ingredients = ingredients | remove_first: '<h2>Ingredients</h2>' -%}
+          {%- endif -%}
+
+          {%- if preparation_heading != blank -%}
+            {%- assign preparation = preparation | remove_first: '<h2>Preparation</h2>' -%}
+          {%- endif -%}
+
+          <div class="recipe__bottom-row">
+            {%- if ingredients != blank -%}
+              {%- comment -%}
+                Google Recipe Schema Markup (https://schema.org/Recipe)
+              {%- endcomment -%}
+
+              {%- assign ingredients_arr = ingredients | split: '<li>' -%}
+              {%- assign ingredients = ingredients_arr | join: '<li itemprop="recipeIngredient">' -%}
+
+              <div class="recipe__bottom-block recipe__bottom-block--ingredients">
+                {% if ingredients_heading != blank %}
+                  <h2>{{ ingredients_heading }}</h2>
+                {% endif %}
+
+                {{ ingredients }}
+              </div>
+            {%- endif -%}
+
+            {% if preparation != blank %}
+              {%- comment -%}
+                Google Recipe Schema Markup (https://schema.org/Recipe)
+              {%- endcomment -%}
+
+              {%- assign preparation_arr = preparation | split: '<li>' -%}
+              {%- assign preparation = preparation_arr | join: '<li itemprop="step">' -%}
+
+              <div class="recipe__bottom-block recipe__bottom-block--preparation">
+                {% if preparation_heading != blank %}
+                  <h2>{{ preparation_heading }}</h2>
+                {% endif %}
+
+                {% if preparation contains 'tooltip' %}
+                  {%- assign preparation_with_auto_cook_time = preparation
+                    | replace: '[[cook-time-1]]', basic_cook_time_1
+                    | replace: '[[cook-time-2]]', basic_cook_time_2
+                    | replace: '[[cook-time-3]]', basic_cook_time_3
+                    | replace: '[[cook-time-4]]', basic_cook_time_4
+                    | replace: '[[cook-time-5]]', basic_cook_time_5
+                  -%}
+
+                  {%- assign preparation_with_tooltip = preparation_with_auto_cook_time -%}
+                  {{ preparation_with_tooltip }}
+                {% else %}
+                  {%- assign preparation_with_auto_cook_time = preparation
+                    | replace: '[[cook-time-1]]', basic_cook_time_1
+                    | replace: '[[cook-time-2]]', basic_cook_time_2
+                    | replace: '[[cook-time-3]]', basic_cook_time_3
+                    | replace: '[[cook-time-4]]', basic_cook_time_4
+                    | replace: '[[cook-time-5]]', basic_cook_time_5
+                  -%}
+
+                  {{ preparation_with_auto_cook_time }}
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if hide_google_form != true and hide_google_form != "true" and google_form_button_label != blank %}
+          <div class="recipe__google-form large-up-hide" style="--bg-color-d: {{ google_block_bg_desktop }}; --bg-color-m: {{ google_block_bg_mobile }}">
+            <button type="button" class="anyday-btn" data-drawer-id="{{ 'sections.google_form.form_id' | t }}" data-action="open-drawer">
+              {{ google_form_button_label }}
+            </button>
+          </div>
+        {% endif %}
+
+        <div class="recipe__bottom-row">
+          {%- if  suggestions != blank -%}
+            <div class="recipe__bottom-block">
+              {% if suggestions_heading != blank %}
+                <h2>{{ suggestions_heading }}</h2>
+              {% endif %}
+
+              <div class="suggestions-wrapper">
+                {{ suggestions }}
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if recipe_notes != blank -%}
+            <div class="recipe__bottom-block">
+              {% if recipe_notes_heading %}
+                <h2>{{ recipe_notes_heading }}</h2>
+              {% endif %}
+
+              <div class="recipe_notes-wrapper">
+                {{ recipe_notes }}
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+
+<script>
+  const product = {{ product | json }};
+  const singleOptionSelector = '.single-option-selector-{{ section.id }}';
+  const container = document.querySelector(".recipe");
+  const masterSelect = document.getElementById("ProductSelect-{{ section.id }}");
+
+  function initSelect() {
+    const selectContainerArr = document.querySelectorAll(".recipe__info-options:has(> select)");
+    selectContainerArr.forEach(selectContainer => {
+      selectContainer.querySelector("select.single-option-selector").style.display = 'none';
+    })
+  }
+
+  initSelect();
+
+  function getCurrentOptions() {
+    const optionElements = Array.from(container.querySelectorAll(singleOptionSelector));
+    const currentOptions = optionElements.map(element => {
+      const type = element.getAttribute('type');
+      const currentOption = {};
+      
+      if (type === 'radio' || type === 'checkbox') {
+        if (element.checked) {
+          currentOption.value = element.value;
+          currentOption.index = element.dataset.index;
+          return currentOption;
+        } else {
+          return false;
+        }
+      } else {
+        currentOption.value = element.value;
+        currentOption.index = element.dataset.index;
+        return currentOption;
+      }
+    });
+
+    // Filter out any `false` values from unchecked radio/checkbox inputs
+    return currentOptions.filter(Boolean);
+  }
+
+  function getVariantFromOptions() {
+    const selectedValues = getCurrentOptions();
+    const variants = product.variants;
+    
+    const found = variants.find(variant => 
+      selectedValues.every(values => 
+        variant[values.index] === values.value
+      )
+    );
+
+    return found;
+  }
+
+  function udpateUrl() {
+    const variantId = masterSelect.value;
+    const url = new URL(window.location.href);
+    url.searchParams.set('variant', variantId);
+    const newurl = url.toString();
+
+		window.history.replaceState({ path: newurl }, '', newurl);
+  }
+
+  function updateMasterSelect() {
+    const variant = getVariantFromOptions();
+    masterSelect.value = variant.id;
+    udpateUrl();
+  }
+
+  function updateVariant() {
+    updateMasterSelect();
+    const url = new URL(window.location.href);
+    const currentUrl = url.toString();
+    
+    fetch(currentUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.text();
+    })
+    .then(data => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, "text/html");
+
+      selectorsValues.forEach(item => {
+        const dataBlock = doc.querySelector(item);
+        const currentElement = document.querySelector(item);
+        
+        if (dataBlock) {
+          currentElement.replaceWith(dataBlock);
+          dataBlock.style.display = "block";
+        } else {
+          if (!currentElement) {
+            return;
+          }
+          currentElement.style.display = "none";
+        }
+      });
+
+      // this._replacePowerLevel();
+      // this._replaceVideoTooltip();
+      // this._addPaddingInRecipesPage();
+      // this._initRecommendedProductsSlider();
+
+      // const bodyElem = document.body;
+      // if (!bodyElem.classList.contains("version-b") || 
+      //    (bodyElem.classList.contains("version-b") && window.innerWidth < 989)) {
+      //   this._initProductSliders();
+      // }
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+    });
+  }
+
+  function toggleSelect(e) {
+    e.target.closest(".select").classList.toggle("open");
+  }
+
+  function handleValueChange(e) {
+    const target = e.target;
+    const value = target.innerHTML;
+    const head = target.closest(".select").querySelector(".select__head").innerHTML = value;
+    target.closest(".recipe__info-options").querySelector(".single-option-selector").value = value;
+    masterSelect.dispatchEvent(new Event("change", {bubbles: true}));
+  }
+
+  let selectors = {
+    sliderProduct: '.product-template__slider',
+    sliderProductVariantsThumb: '.product-template__thumbnails',
+    details: '.product__details-wrapper--variant',
+    selectValue: '.option-label__selected-value',
+    text: '.variant-products__text',
+    description: '.product__description-variant',
+    bundle_products: '.product__bundle-wrapper',
+    variantTitleTablet: '.desktop-sticky-pdp__variant--hidden-tablet',
+    recipeTimeBlock: '#recipe-time-block',
+    recipeInfoBlock: '#recipe-info-block',
+    ingredientCookTimes: '.ingredient-pdp__cook-times-wrapper',
+    ingredientGrainPowerLevel: '.ingredient-pdp-grain__power-level-wrapper',
+    ingredientGrainCookTimes: '.ingredient-pdp-grain__cook-times-wrapper',
+    freeShippingBtn: '.desktop-sticky-pdp__inner .product-add-btn',
+    freeShippingIcon: '.desktop-sticky-pdp__inner .product-shipping-small-massage-set',
+    freeShippingVariant: '.desktop-sticky-pdp__inner .desktop-sticky-pdp__variant',
+    freeShippingVariantCounter: '.desktop-sticky-pdp__inner .product-form__input--quantity',
+    freeShippingLabelMobile: '.free-shipping-label-m',
+    freeShippingLabelDesktop: '.free-shipping-label-d',
+    promoBubble: '.product-template-bundle--version-b .product__promo-bubble-wrapper',
+    promoBubbleOldTemplate: '.product-template-bundle:not(.product-template-bundle--version-b) .product-single__meta.product-single__meta-bundle .product__promo-bubble-wrapper',
+    promoBubbleOldTemplateMobile: '.product-template-bundle:not(.product-template-bundle--version-b) .product-single__meta.product-single__meta-bundle .product__promo-bubble-wrapper--mobile',
+    recipeTable: '.text-with-table--js .text-with-table__table-wrapper--js',
+    recipeTime: '.recipe__time-hero',
+    recommendedProductTitle: '.recipe__info-options-product',
+    deliver: '.product-form__deliverr-wrapper'
+  }
+
+  const selectorsValues = Object.values(selectors);
+
+  // adding event listeners
+  document.addEventListener('click', function(event) {
+    if (!(event.target.closest('.select'))) {
+      document.querySelectorAll(".select.open")?.forEach(el => el.classList.remove("open"));
+    }
+  });
+  document.querySelectorAll(".recipe__info-settings .select").forEach(select => select.addEventListener("click", toggleSelect));
+  document.querySelectorAll(".recipe__info-settings .select li").forEach(option => option.addEventListener("click", handleValueChange));
+  document.querySelectorAll(".recipe__info-settings select").forEach(select => select.addEventListener("change", updateVariant));
+</script>
+
+{% schema %}
+  {
+    "name": "Recipe Page",
+    "settings": [
+    {
+      "type": "header",
+      "content": "Recipe info paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#f1ede7"
+    },
+    {
+      "type": "color",
+      "id": "recipe_hero_bg",
+      "label": "Recipe time hero",
+      "default": "#0d5d52"
+    },
+    {
+      "type": "color",
+      "id": "recipe_hero_bg_mobile",
+      "label": "Recipe time hero mobile",
+      "default": "#C7E8B1"
+    },
+    {
+      "type": "color",
+      "id": "recipe_bottom_bg",
+      "label": "Recipe time bottom",
+      "default": "#c7e8b1"
+    },
+    {
+      "type": "color",
+      "id": "recipe_video_wrapper_bg",
+      "label": "Recipe video wrapper desktop",
+      "default": "#0d5d52"
+    },
+    {
+      "type": "range",
+      "id": "recipe_video_wrapper_opacity",
+      "label": "Recipe video wrapper background opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "unit": "un",
+      "default": 0.3
+    },
+    {
+      "type": "color",
+      "id": "recipe_video_wrapper_bg_mobile",
+      "label": "Recipe video wrapper mobile",
+      "default": "#0d5d52"
+    },
+    {
+      "type": "range",
+      "id": "recipe_video_wrapper_opacity_mobile",
+      "label": "Recipe video wrapper background opacity mobile",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "unit": "un",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "heading_bg_color",
+      "label": "Heading background color",
+      "default": "#0d5d52"
+    },
+    {
+      "type": "color",
+      "id": "heading_text_color",
+      "label": "Heading text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Button settings"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Dish type"
+    },
+    {
+      "type": "text",
+      "id": "handle_1",
+      "label": "Product handle"
+    },
+    {
+      "type": "text",
+      "id": "handle_2",
+      "label": "Product handle"
+    },
+    {
+      "type": "text",
+      "id": "handle_3",
+      "label": "Product handle"
+    },
+    {
+      "type": "text",
+      "id": "handle_4",
+      "label": "Product handle"
+    },
+    {
+      "type": "text",
+      "id": "handle_5",
+      "label": "Product handle"
+    },
+    {
+      "type": "text",
+      "id": "handle_6",
+      "label": "Product handle"
+    },
+    {
+      "type": "text",
+      "id": "handle_7",
+      "label": "Product handle"
+    },
+    {
+      "type": "text",
+      "id": "error_message",
+      "label": "Error message for add to card",
+      "default": "Please select a product"
+    },
+    {
+      "type": "header",
+      "content": "Serves & Wattage option"
+    },
+    {
+      "type": "text",
+      "id": "recipe_info_options_heading",
+      "label": "Options heading",
+      "default": "Select your serving size and microwave wattage in the dropdown. The recipe will change accordingly."
+    },
+    {
+      "type": "html",
+      "id": "serves_title",
+      "label": "Serves title"
+    },
+    {
+      "type": "html",
+      "id": "wattage_title",
+      "label": "Wattage title"
+    },
+    {
+      "type": "html",
+      "id": "recommended_title",
+      "label": "Recommended product title",
+      "default": "<p>Recommended Dish</p>"
+    },
+    {
+      "type": "header",
+      "content": "Wattage & Power info"
+    },
+    {
+      "type": "richtext",
+      "id": "wattage_info",
+      "label": "Wattage info"
+    },
+    {
+      "type": "text",
+      "id": "video_wattage",
+      "info": "Only .mp4 is required for it to work. You can upload videos [here](https://cookanyday.com/admin/settings/files) to get the url",
+      "label": "Video file for wattage info url .mp4"
+    },
+    {
+      "type": "richtext",
+      "id": "power_level_info",
+      "label": "Power level info"
+    },
+    {
+      "type": "text",
+      "id": "video_power_level",
+      "info": "Only .mp4 is required for it to work. You can upload videos [here](https://cookanyday.com/admin/settings/files) to get the url",
+      "label": "Video file for power level url .mp4"
+    },
+    {
+      "type": "header",
+      "content": "Google form"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_google_form",
+      "label": "Hide google form"
+    },
+    {
+      "type": "text",
+      "id": "google_form_button_label",
+      "label": "Button label",
+      "default": "Did you cook this recipe?"
+    },
+    {
+      "type": "color",
+      "id": "google_block_bg_desktop",
+      "label": "Google block background desktop",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "google_block_bg_mobile",
+      "label": "Google block background mobile",
+      "default": "#D0DEF2"
+    }
+  ],
+    "presets": [
+      {
+        "name": "Recipe Page"
+      }
+    ]
+  }
+{% endschema %}
