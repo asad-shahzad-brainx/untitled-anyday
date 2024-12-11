@@ -1,0 +1,10 @@
+<!-- inline-svg.liquid -->
+{% capture svg_content %}
+  {% assign svg_path = svg_file | replace: 'cdn.shopify.com', '' %}
+  {% include svg_path %}
+{% endcapture %}
+
+<!-- Inline the SVG content and replace the fill color dynamically -->
+<div>
+  {{ svg_content | replace: 'fill="black"', 'fill="' | append: svg_color | append: '"' }}
+</div>

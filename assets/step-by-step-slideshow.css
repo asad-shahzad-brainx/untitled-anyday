@@ -1,0 +1,403 @@
+.shopify-section:has(.slideshow.slideshow--step-by-step) {
+  position: relative;
+}
+
+.slideshow.slideshow--step-by-step {
+  padding: var(--padding-top-desktop, 47px) 30px
+    var(--padding-bottom-desktop, 60px);
+  background-color: var(--bg-color);
+}
+
+@media (max-width: 749px) {
+  .slideshow.slideshow--step-by-step {
+    padding: var(--padding-top-mobile, 21px) 0
+      var(--padding-bottom-mobile, 35px) 15px;
+  }
+}
+
+.slideshow.slideshow--step-by-step .slideshow__heading {
+  max-width: 1230px;
+  margin: 0 auto 52px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: 1.5px;
+  color: var(--heading-color);
+}
+
+@media (max-width: 749px) {
+  .slideshow.slideshow--step-by-step .slideshow__heading {
+    margin-bottom: 23px;
+    font-size: 24px;
+    letter-spacing: normal;
+  }
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slider-wrapper {
+  counter-reset: myCounter;
+  max-width: 1230px;
+  margin: 0 auto;
+  position: relative;
+  font-family: F37Jan;
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slider {
+  overflow: hidden;
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide {
+  height: auto;
+  display: flex;
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0 20px;
+  width: 100%;
+  z-index: 2;
+}
+
+@media (max-width: 749px) {
+  .slideshow.slideshow--step-by-step .slideshow__slide-content {
+    padding: 0 5px;
+  }
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slider-green-line {
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background-color: #0d5d52;
+  z-index: 0;
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide-image-wrapper {
+  position: relative;
+  padding: 100% 0 0;
+  width: 100%;
+  flex: 0;
+  z-index: 1;
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide-image-wrapper:before {
+  position: absolute;
+  counter-increment: myCounter;
+  content: counter(myCounter);
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  background-color: #205b62;
+  border-radius: 50%;
+  display: flex;
+  font-family: F37Jan;
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translate3d(-50%, 50%, 0);
+  right: auto;
+  z-index: 2;
+  bottom: 0;
+  top: auto;
+}
+
+@media (max-width: 749px) {
+  .slideshow.slideshow--step-by-step .slideshow__slide-image-wrapper:before {
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+  }
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide-description-wrapper {
+  padding: 47px 38px 23px 16px;
+  min-height: 160px;
+  flex: 1;
+  background-color: white;
+}
+
+@media (max-width: 749px) {
+  .slideshow.slideshow--step-by-step .slideshow__slide-description-wrapper {
+    padding: 13px 2px 12px 7px;
+    min-height: unset;
+  }
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide-description {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide-description p,
+.slideshow.slideshow--step-by-step .slideshow__slide-description a {
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.slideshow.slideshow--step-by-step .slideshow__slide-description a {
+  text-decoration: underline;
+  /* color: $color-text-link_hover; */
+}
+
+@media (max-width: 749px) {
+  .slideshow.slideshow--step-by-step .slideshow__slide-description {
+    font-size: 16px;
+    line-height: 1.37;
+  }
+}
+
+.slideshow.slideshow--step-by-step .slick-track {
+  display: flex;
+}
+
+.slideshow.slideshow--step-by-step .slick-next,
+.slideshow.slideshow--step-by-step .slick-prev {
+  position: absolute;
+  width: 60px;
+  top: 50%;
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+  z-index: 1;
+}
+
+.slideshow.slideshow--step-by-step .slick-next.slick-disabled,
+.slideshow.slideshow--step-by-step .slick-prev.slick-disabled {
+  display: none !important;
+}
+
+.slideshow.slideshow--step-by-step .slick-next {
+  right: -30px;
+}
+
+.slideshow.slideshow--step-by-step .slick-next:before {
+  content: url("https://cdn.shopify.com/s/files/1/0258/9324/0922/files/right-arrow.svg?v=1720504233");
+  opacity: 1;
+}
+
+.slideshow.slideshow--step-by-step .slick-prev {
+  left: -30px;
+}
+
+.slideshow.slideshow--step-by-step .slick-prev:before {
+  content: url("https://cdn.shopify.com/s/files/1/0258/9324/0922/files/left-arrow.svg?v=1720504233");
+  opacity: 1;
+}
+
+.step-by-step-meta .slideshow.slideshow--step-by-step {
+  position: relative;
+  overflow: inherit;
+  padding-top: var(--padding-top, 50px);
+  padding-bottom: var(--padding-bottom, 50px);
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta .slideshow.slideshow--step-by-step {
+    padding-top: var(--padding-top-mob, 50px);
+    padding-bottom: var(--padding-bottom-mob, 50px);
+    padding-left: 19px;
+  }
+}
+
+.step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__heading {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__heading {
+    /* font-size: $font-size-main-header-mobile; */
+    margin-bottom: 12px;
+  }
+}
+
+.step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__description {
+  max-width: 700px;
+  text-align: center;
+  margin: 0 auto 29px;
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta
+    .slideshow.slideshow--step-by-step
+    .slideshow__description {
+    margin-bottom: 24px;
+  }
+}
+
+.step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__subheading {
+  max-width: 1230px;
+  margin: 0 auto 27px;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__subheading {
+    margin-bottom: 18px;
+    /* font-size: $font-size-subheader-2-mobile; */
+  }
+}
+
+.step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__accent-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 750px;
+  width: 100%;
+  margin: 67px auto 0;
+  padding: 32px;
+  text-align: center;
+  background-color: #fff;
+  border: 3px solid #215957;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.84px;
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta
+    .slideshow.slideshow--step-by-step
+    .slideshow__accent-text {
+    margin-top: 27px;
+    border: 1px solid #215957;
+  }
+}
+
+.step-by-step-meta
+  .slideshow.slideshow--step-by-step
+  .slideshow__accent-text
+  .Icon.Icon--warning {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  padding-right: 5px;
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta
+    .slideshow.slideshow--step-by-step
+    .slideshow__accent-text
+    .Icon.Icon--warning {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
+}
+
+.step-by-step-meta
+  .slideshow.slideshow--step-by-step
+  .slideshow__bottom-heading,
+.step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__bottom-text {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.step-by-step-meta
+  .slideshow.slideshow--step-by-step
+  .slideshow__bottom-heading {
+  margin-top: 40px;
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta
+    .slideshow.slideshow--step-by-step
+    .slideshow__bottom-heading {
+    margin-top: 46px;
+  }
+}
+
+.step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__bottom-text {
+  margin-top: 15px;
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta
+    .slideshow.slideshow--step-by-step
+    .slideshow__bottom-text {
+    font-size: 16px;
+    margin-top: 12px;
+  }
+}
+
+.step-by-step-meta
+  .slideshow.slideshow--step-by-step
+  .slideshow__slider-green-line {
+  left: 80px;
+  right: 80px;
+}
+
+.step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__slide {
+  padding-right: 80px;
+}
+
+@media (max-width: 989px) {
+  .step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__slide {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__slide {
+    padding-right: 10px;
+  }
+}
+
+.step-by-step-meta
+  .slideshow.slideshow--step-by-step
+  .slideshow__slide
+  .slideshow__slide-content {
+  padding: 0;
+}
+
+.step-by-step-meta
+  .slideshow.slideshow--step-by-step
+  .slideshow__slide-image-wrapper:before {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta
+    .slideshow.slideshow--step-by-step
+    .slideshow__slide-image-wrapper:before {
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 749px) {
+  .step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__heading,
+  .step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__description,
+  .step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__subheading,
+  .step-by-step-meta .slideshow.slideshow--step-by-step .slideshow__bottom {
+    margin-right: 19px;
+  }
+}

@@ -1,0 +1,19 @@
+{%- comment -%}
+  {% include 'video-icon' %}
+{%- endcomment -%}
+
+{% if settings.svg_play_icon != blank or settings.image_play_icon != blank %}
+
+  {% unless settings.image_play_icon != blank and settings.svg_play_icon == blank %}
+    {{ settings.svg_play_icon }}
+  {% endunless %}
+
+  {% if settings.image_play_icon != blank %}
+    <div class="image-play-icon">
+      {% render 'image', image: settings.image_play_icon, class_name: , image_attr: , %}
+    </div>
+  {% endif %}
+
+{% else %}
+  {% render 'icon' with 'play' %}
+{% endif %}

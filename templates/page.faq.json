@@ -1,0 +1,816 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "title-xl",
+        "heading_tag": "h1",
+        "text_size": "text-base",
+        "padding_top": 72,
+        "padding_bottom": 120,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "rich_text_fNEM4Y": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_htekMq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Frequently Asked Questions",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_MBRxKx": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For Press and Partnership inquiries, please email:<br/><a href=\"https://cookanyday.com/pages/mailtopress@cookanyday.com\" title=\"mailto:press@cookanyday.com\">press@cookanyday.com</a></p><p>Something else? Get in touch on the <a href=\"/pages/contact-us\" title=\"Contact Us\">Contact Us</a> page.</p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_htekMq",
+        "text_MBRxKx"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "text_alignment_mobile": "left",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#ffffff",
+        "color_background": "#205b62",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "custom_liquid_rjjhHn": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "settings": {
+        "liquid": "<div class=\"jump-to-topic page-width page-width--narrow relative\">\n  <h3 class=\"jump-heading\">Jump to a Section</h3>\n  <div class=\"divider\"><span></span></div>\n<div class=\"jump-buttons\">\n  <a href=\"#shopify-section-template--16529089888346__faq_7irTKR\" class=\"topic-item\">\n    <img src=\"https://cookanyday.com/cdn/shop/files/image_69_360x.png?v=1614297649\" alt=\"Microwave\">\n    <span>Microwave</span>\n  </a>\n  <a href=\"#shopify-section-template--16529089888346__faq\" class=\"topic-item\">\n    <img src=\"https://cookanyday.com/cdn/shop/files/image_70_360x.png?v=1614297650\" alt=\"Products\">\n    <span>Products</span>\n  </a>\n  <a href=\"#shopify-section-template--16529089888346__faq_Kgbh34\" class=\"topic-item\">\n    <img src=\"https://cookanyday.com/cdn/shop/files/image_71_360x.png?v=1614297650\" alt=\"Ordering & Returns\">\n    <span>Ordering & Returns</span>\n  </a>\n  <a href=\"#shopify-section-template--16529089888346__faq_TTY93E\" class=\"topic-item\">\n    <img src=\"https://cookanyday.com/cdn/shop/files/image_72_360x.png?v=1614297650\" alt=\"Company\">\n    <span>Company</span>\n  </a>\n  </div>\n</div>\n\n<style>\n\n.jump-to-topic {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 20px;\n}\n\n.jump-buttons {\n  display: flex;\n  flex-direction: row;\n  gap: 20px;\n  flex-wrap: wrap;\n}\n\n.jump-heading {\n  margin: 0;\n}\n\n.divider {\n  width: 1px;\n  height: 48px;\n  background-color: #205B621A;\n}\n\n.topic-item {\n  display: flex;\n  flex-direction: row;\n  color: #000;\n  text-align: center;\n  gap: 8px;\n  align-items: center;\n  padding: 12px 18px 12px 14px;\n  border-radius: 7px;\n  border: 1px solid #00000020;\n  transition: 0.3s;\n}\n\n.topic-item:hover {\n  border: 1px solid #000;\nbackground-color: #fff;\n}\n\n.topic-item img {\n  width: 24px;\n  height: auto;\n}\n\n.topic-item span {\n  font-size: 20px;\n  font-weight: 500;\n}\n\n@media (max-width:767px) {\n.jump-to-topic {\n    flex-direction: column;\nalign-items: flex-start;\n    padding: 12px 0px;\ngap: 20px;\n}\n.jump-buttons {\n    display: flex;\n    align-content: center;\n    justify-content: flex-start;\ngap: 12px;\n}\n.divider {\ndisplay: none;\n}\n.topic-item img {\n    width: 16px;\n    height: auto;\n}\n.topic-item span {\n    font-size: 16px!important;\n}\n</style>\n\n<script>\ndocument.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {\n  anchor.addEventListener('click', function (e) {\n    const targetId = this.getAttribute('href').substring(1);\n    const targetElement = document.getElementById(targetId);\n\n    if (targetElement) {\n      e.preventDefault();\n      const offset = 100; // Manual offset of 100px\n      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;\n\n      window.scrollTo({\n        top: targetPosition,\n        behavior: 'smooth'\n      });\n\n      // Update the URL hash manually\n      window.history.pushState(null, null, `#${targetId}`);\n    }\n  });\n});\n\n</script>",
+        "color_text": "#205b62",
+        "color_background": "#fbfbf9",
+        "gradient_background": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "divider": true,
+        "narrow": false,
+        "rounded": false
+      }
+    },
+    "faq_7irTKR": {
+      "type": "faq",
+      "blocks": {
+        "rich_text_MHgYaM": {
+          "type": "rich-text",
+          "settings": {
+            "heading": "Microwave",
+            "text": "",
+            "highlighted_text": "full_text",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_mpw8ph": {
+          "type": "question",
+          "settings": {
+            "title": "How do microwaves work?",
+            "text": "<p>Microwaves are a type of electromagnetic wave (just like radio or light waves) that heat the water molecules in food by making them vibrate very quickly. Since all food is made up of water, and water absorbs microwave energy extremely efficiently, this means that food can cook very quickly.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_6bHC9d": {
+          "type": "question",
+          "settings": {
+            "title": "Why do microwaves heat food so quickly?",
+            "text": "<p>Microwaves are super fast at cooking and heating food because the length of a microwave (the actual wave, not the machine!) happens to be particularly excellent at making water molecules vibrate quickly. We experience this as heat! This means the microwave is directly heating up the food itself, which is why it's so fast.<br/><br/>Contrast this with an oven, stove, or pressure cooker, which works by heating up the air or space around the food, and then waiting for that heat to penetrate the food. They are indirectly heating the food.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_piTaBN": {
+          "type": "question",
+          "settings": {
+            "title": "Why should I cook in a microwave? What's so special about it?",
+            "text": "<p>When it comes to convenience, the microwave is king. With the right equipment and settings, microwaving food doesn’t mean sacrificing taste, either. Microwave cooking can be a more efficient, just-as-tasty alternative to water-based cooking such as steaming, poaching, quick braising, boiling, or stewing. It’s also a great complement to other methods, allowing you to cut down on cooking time before finishing a dish in the oven or on the stove. Since Anyday’s recipes typically only require one dish, cleanup is easier.</p><p>A little-known fact: microwave cooking is better for you! Food loses nutrients the longer and hotter it’s cooked, so by quickly heating food, microwaving preserves more nutrients than methods like boiling or baking. It’s more <a href=\"https://www.scientificamerican.com/article/stove-versus-microwave-energy-use/\" target=\"_blank\">energy-efficient</a> too, transferring more heat to food in a given period of time than a stove or full-size oven does.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_FMQMQm": {
+          "type": "question",
+          "settings": {
+            "title": "Is microwave cooking safe?",
+            "text": "<p>Yes! Did you know that your cell phone emits more microwaves than your microwave does?! People worry about standing in front of the microwave, but many studies have shown that in reality, they're 100% safe. Microwaves are simply a type of electromagnetic wave, which is the same kind of wave as light waves or radio waves. They’re non-ionizing, which means they’re not powerful enough to cause the harmful kind of radiation. Enjoy your microwave-cooked meal with peace of mind!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_tbcQyH": {
+          "type": "question",
+          "settings": {
+            "title": "Is microwave cooking good for you?",
+            "text": "<p>Yes! According to Harvard Health, “the cooking method that best retains nutrients is one that cooks quickly, heats food for the shortest amount of time, and uses as little liquid as possible.” Microwave cooking checks all of those boxes. Microwaves quickly heat the water molecules in food (rather than around it), preserving nutrient loss to heat, time, and cooking liquid compared to conventional methods.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_zPCTUX": {
+          "type": "question",
+          "settings": {
+            "title": "Is microwave cooking better for the environment?",
+            "text": "<p>Yes! The microwave is very <a href=\"https://www.scientificamerican.com/article/stove-versus-microwave-energy-use/\" target=\"_blank\">energy-efficient</a> since it can transfer more heat to food in a given period of time than a stove or full-size oven. For cooking smaller portions of food, it uses as much as 80% less energy versus cooking in the oven.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_Ja4Vyc": {
+          "type": "question",
+          "settings": {
+            "title": "What is wattage? How do I find the wattage of my microwave?",
+            "text": "<p>All microwaves have their sweet spots when it comes to cooking time. That's because they come in all different wattages, which translates to how powerful your microwave is. Microwave wattages typically range from 700 to 1200 watts (w). The higher the wattage, the faster your food will cook. The lower the wattage, the longer the cook time.</p><p>To find your microwave's wattage, take a look at the front panel, the side of the door, in the back, or in the user manual. You can also look up the microwave model number online to find wattage. If you see both an input and output wattage listed, use the output.</p><p>Once you know your microwave wattage, our recipe and ingredient guide cook times can be customized to suit it. If your wattage isn't listed, choose the closest higher wattage.</p><p>Read our <a href=\"https://cookanyday.com/blogs/news/how-to-cook-good-food-in-the-microwave\" target=\"_blank\">blog post</a> for more information.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_bwVPP9": {
+          "type": "question",
+          "settings": {
+            "title": "What are power levels? How do I change my microwave’s power level?",
+            "text": "<p>Power (heat) levels are the secret to perfecting microwave cooking. The default power level for every microwave is full power (also called Power Level 10, or 100%, or High), but cooking everything at this level is like always using high heat or broil on your stove or oven. There are times when you just need more finesse, whether you're steaming rice at a gentle simmer, poaching fish, or making cheesecake. We list suggested cooking levels in each Anyday recipe.</p><p>Different microwaves have different settings. See your microwave manual (or look it up online) to learn how to change your microwave’s power level. For many microwaves: enter the cook time, press the “Power” (or “Power Level”) button, and select a number between 1-10. Other microwaves may require selecting the Power Level first, and then entering the cook time.</p><p>Read our <a href=\"https://cookanyday.com/blogs/news/how-to-cook-good-food-in-the-microwave\" target=\"_blank\">blog post</a> for more information.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_xift9c": {
+          "type": "question",
+          "settings": {
+            "title": "What foods and cooking methods work really well in the microwave?",
+            "text": "<p>Since the microwave is essentially a super fast steamer, any food that is good for steaming will work well in the microwave. Any vegetable can be cooked beautifully with the Anyday. Proteins like chicken and fish cook quickly when microwaved, and remain juicy thanks to the Anyday’s ability to trap and retain moisture. It’s also easy to make perfectly steamed grains like rice, polenta, or quinoa using a lower power level. Find out how long to cook various ingredients with our <a href=\"https://cookanyday.com/collections/ingredients\" title=\"Ingredients\">one-ingredient recipes</a><strong>. </strong>Other foods that can be made perfectly in the microwave include bacon, scrambled eggs, pasta, toasted nuts, and infused oils.</p><p>The Anyday is also great for making one-dish meals. Check out our recipes <a href=\"https://cookanyday.com/collections/anyday-kitchen\" title=\"Recipes\">here</a><strong>.</strong></p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_A3egem": {
+          "type": "question",
+          "settings": {
+            "title": "What foods and cooking methods don't work well in the microwave?",
+            "text": "<p>Avoid using the microwave for deep frying, grilling, or browning food, as you likely won’t get the result you're looking for.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_Ttnk9g": {
+          "type": "question",
+          "settings": {
+            "title": "Is this safe to cook food for my baby?",
+            "text": "<p>Absolutely! By cooking food for a short period of time and at low heat, microwaving actually preserves more nutrients in your food than the oven, stove, or grill. It's actually the healthiest and easiest way to cook for your baby! Just microwave some vegetables, proteins, and/or grains and then puree it to your desired texture. Check out some of our baby food recipes <a href=\"https://cookanyday.com/collections/recipes/category-baby-food\" title=\"https://cookanyday.com/collections/recipes/category-baby-food\">here</a>.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_MHgYaM",
+        "question_mpw8ph",
+        "question_6bHC9d",
+        "question_piTaBN",
+        "question_FMQMQm",
+        "question_tbcQyH",
+        "question_zPCTUX",
+        "question_Ja4Vyc",
+        "question_bwVPP9",
+        "question_xift9c",
+        "question_A3egem",
+        "question_Ttnk9g"
+      ],
+      "custom_css": [
+        ".accordion--text {background-color: #205b62 !important;}"
+      ],
+      "settings": {
+        "style": "with-border",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#fbfbf9",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 40,
+        "padding_bottom": 80,
+        "divider": true,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "rich-text-2": {
+          "type": "rich-text",
+          "settings": {
+            "heading": "Products",
+            "text": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-6": {
+          "type": "question",
+          "settings": {
+            "title": "What are your product sizes?",
+            "text": "<p>The Anyday dish comes in five sizes: <a href=\"https://cookanyday.com/products/the-medium-deep-dish\" title=\"The Medium Deep Dish\">Medium Deep</a>, <a href=\"https://cookanyday.com/products/the-medium-shallow-dish\" title=\"The Medium Shallow Dish\">Medium Shallow</a>, <a href=\"https://cookanyday.com/products/the-large-deep-dish\" title=\"The Large Deep Dish\">Large Deep</a>, <a href=\"https://cookanyday.com/products/the-large-shallow-dish\" title=\"The Large Shallow Dish\">Large Shallow,</a> and <a href=\"https://cookanyday.com/products/the-small-dish-2-pack\" title=\"The Small Dish\">The Small Dish</a>.<br/><br/>On the Anyday website, navigate to any page where you can purchase a set or dish. Scroll down the page to the \"Meet the Family\" section, where you can see a comparison chart of every size we offer and the volume each dish can hold, how many people it can feed, what you can cook in it, and the price.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-7": {
+          "type": "question",
+          "settings": {
+            "title": "Which Anyday dish size is best for me?",
+            "text": "<p>We honestly think you need all of them for your kitchen. :) But if you really had to choose:<br/>If you typically cook for 3-4 people, we recommend the Large Dishes.<br/><br/>For 1-2 people, the Medium Dishes are a better fit.<br/>If you like to cook grains like rice, quinoa, and polenta, go with the Deep Dishes, which provide enough space for the starchy water to bubble. For proteins like chicken, fish, or seafood, the Shallow Dishes are ideal. Vegetables cook well in every dish size!<br/><br/>To ensure your Anyday dish fits comfortably in your microwave, we recommend measuring the interior dimensions of your microwave before choosing a dish size. Make sure there’s at least 1 inch of clearance around the dish to allow for proper rotation.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-8": {
+          "type": "question",
+          "settings": {
+            "title": "Where are your products made?",
+            "text": "<p>Anyday products are made in southern China. We partner with all of our manufacturers to ensure each dish is made with superior quality and ethical and environmental care.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-9": {
+          "type": "question",
+          "settings": {
+            "title": "What materials do you use?",
+            "text": "<p>We’ve obsessively designed the Anyday dish from natural materials to be microwave-, dishwasher-, freezer-, and oven-safe (up to 500°F/260°C for the bowl, 400°F/200°C for the lid). The bowl is made of heat-resistant borosilicate glass with an elegant frosted finish that looks great on the dinner table. The lid contains the same heat-resistant borosilicate glass, platinum-grade silicone for an airtight and leakproof seal, and microwave-safe stainless steel.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_YMaYkt": {
+          "type": "question",
+          "settings": {
+            "title": "What's so special about the Anyday bowls?",
+            "text": "<p>The bowl is made out of frosted borosilicate glass, so it's extra durable and thermal-shock resistant to handle large temperature fluctuations without cracking. The glass is designed in an angled shape that allows for easy handling, and the frosted finish makes the dish go seamlessly from microwave to dinner party to dishwasher.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_k63Vxf": {
+          "type": "question",
+          "settings": {
+            "title": "What's so special about the Anyday lids?",
+            "text": "<p>The splatter-proof and silicone-rimmed glass lid keeps the steam in the dish when you're cooking, which makes your food moist and delicious! The circulating steam also helps your food cook more evenly. Trapping moisture is critical for microwave cooking — otherwise, the moisture in your food will evaporate, leading to dry, rubbery food. No one wants that!</p><p></p><p>The lid also has a knob that vents the excess steam when it's lifted (that's why our recipes tell you to lift the knob to cook)! Don't worry if you forget — we've designed the silicone rim on the lid to be flexible enough so that it safely and gently pushes up if the pressure in the dish gets too high. You're covered either way.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_ECjmrK": {
+          "type": "question",
+          "settings": {
+            "title": "What's the deal with the knob on the lid?",
+            "text": "<p>Keeping the knob lifted during cooking locks in moisture while letting excess steam escape. Translation: juicier proteins and more tender veggies. Even better? Keep leftovers fresh for longer in the dish by sealing them with the lid on, knob down.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_NV9Lir": {
+          "type": "question",
+          "settings": {
+            "title": "Is the metal on the lid safe to use in the microwave?",
+            "text": "<p>Yes, you can put our metal in the microwave! We’ve designed the stainless steel in our lids to be 100% microwave-safe due to its smooth, curved shape.</p><p>It sounds nuts, but some metal is totally safe in microwaves. If the metal is rounded, it won't arc. A metal bowl, for example, is fine! But don't put in metal that is super thin (e.g. aluminum foil) or has multiple sharp corners (e.g. a fork). Science doesn’t lie!<br/><br/>FYI: Make sure your Anyday dish is placed at least one inch away from your microwave's wall. If the stainless steel rim of your lid gets too close, it can cause sparking.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_9XkGUq": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use my Anyday dish in the oven, on the stovetop, or on the grill, or under the broiler?",
+            "text": "<p>The Anyday dish is oven-safe up to 500°F/260°C (bowl) and 400°F/200°C (lid). As with all glass, do not use the dish on the stovetop, grill, or under the broiler.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_UhNdPC": {
+          "type": "question",
+          "settings": {
+            "title": "Is my Anyday dish fridge, freezer, and dishwasher-safe?",
+            "text": "<p>Yes, yes, and yes!<br/><br/>Liquid expands when frozen, so we don’t recommend freezing plain liquids (water, broth, milk, stock) directly in the Anyday dishes. For freezing plain liquids, we recommend using the Anytime Freezer Trays.</p><p>Foods like like soups, sauces, or casseroles can be frozen in the Anyday Dishes, just be sure to leave a 1-inch gap at the top to allow for expansion.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_pwdzby": {
+          "type": "question",
+          "settings": {
+            "title": "My Anyday lid lifts up when I’m cooking and it’s no longer sealed. Is this bad?",
+            "text": "<p>Yes, it’s perfectly fine if the lid lifts while cooking — it can happen when steam pressure increases a bit too much in the dish, especially triggered by certain foods like potatoes, sweet potatoes, beets, and rice, which may cause more pressure to be generated than usual in dish.</p><p>The Anyday Dish is equipped with a safety feature since the silicone on the lid is designed to lift up gently without ever blowing off dangerously.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_Q4RwFt": {
+          "type": "question",
+          "settings": {
+            "title": "What can I make in my Anyday dish?",
+            "text": "<p>Pretty much anything! See our <a href=\"https://cookanyday.com/collections/ingredients\" title=\"Ingredients\">Ingredient Guides</a> for how to cook staple ingredients, and browse <a href=\"https://cookanyday.com/collections/anyday-kitchen\" title=\"Recipes\">recipes</a> for more flavor inspiration.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_iXVKJm": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for my Anyday dish?",
+            "text": "<p>With a little love and care, your Anyday will be right at home in your kitchen and dining room for years to come.</p><p>When cooking, avoid stovetop or broiler use. As with all glass, sudden temperature changes may cause cracks. Don’t place a hot dish on wet or cold surfaces, or cold liquid in a hot dish.</p><p>To clean, place both the bowl and lid in the dishwasher or wash by hand with soap and water. Avoid using abrasive cleaning pads and steel wool, as they may leave scratches.</p><p>See our Use & Care <a href=\"https://cookanyday.com/pages/use-care\" title=\"Use & Care\">here</a>.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_ERBBxn": {
+          "type": "question",
+          "settings": {
+            "title": "My frosted glass doesn't look frosted anymore! What happened?",
+            "text": "<p>Don't worry, it's still frosted! The bowls can look transparent when the exterior is wet and/or greasy, but it will revert back to its normal beautiful frosted finish when it's dry and clean. You can also try running it through the dishwasher for an extra-thorough clean.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_AxrfeC": {
+          "type": "question",
+          "settings": {
+            "title": "What's the difference between Anyday and a Pyrex with a plastic lid?",
+            "text": "<p>Good question! First, our glass lid is thick and sturdy, which both helps the steam stay in better, which is essential when you're cooking in the microwave, and traps heat as well so it cooks more evenly. By contrast, a plastic lid will warp quickly — it's ok for reheating, but it's not sturdy or long-lasting enough for cooking.</p><p>Second, our lid also has vents in the knob that allow just the right amount of steam to escape so that pressure doesn't build up. There's a safety feature in our lid that makes sure it never blows off dangerously. Plastic lids will seal too tightly and can explode off, so you'll have a lot of microwave splatters to clean up!</p><p>Third, plastic in the microwave is a no-go for us — according to <a href=\"https://www.health.harvard.edu/staying-healthy/is-plastic-a-threat-to-your-health\" target=\"_blank\">Harvard</a>, it's the <em>one</em> thing about microwaves that actually isn't safe!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_qCbPJG": {
+          "type": "question",
+          "settings": {
+            "title": "Why does the Small Dish lid look different from the others?",
+            "text": "<p>We designed the Small Dish to be perfect for storing and reheating leftovers, along with cooking smaller portions of food. Because of the smaller dish size, the lid knob can also be smaller and more stackable, which is great for cabinet storage. The knob works exactly the same way as our original dishes: pull up to cook/reheat and push down to store! It also doesn’t need the metal since folks won’t be doing much heavy-duty cooking in them.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "rich-text-2",
+        "question-6",
+        "question-7",
+        "question-8",
+        "question-9",
+        "question_YMaYkt",
+        "question_k63Vxf",
+        "question_ECjmrK",
+        "question_NV9Lir",
+        "question_9XkGUq",
+        "question_UhNdPC",
+        "question_pwdzby",
+        "question_Q4RwFt",
+        "question_iXVKJm",
+        "question_ERBBxn",
+        "question_AxrfeC",
+        "question_qCbPJG"
+      ],
+      "custom_css": [
+        ".accordion--text {background-color: #ee0c93 !important;}"
+      ],
+      "settings": {
+        "style": "with-border",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h1",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#fbfbf9",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "faq_Kgbh34": {
+      "type": "faq",
+      "blocks": {
+        "rich_text_hG7A7J": {
+          "type": "rich-text",
+          "settings": {
+            "heading": "Ordering & Returns",
+            "text": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_a6ra3T": {
+          "type": "question",
+          "settings": {
+            "title": "Where can I purchase Anyday dishes?",
+            "text": "<p>Right here on cookanyday.com!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_jcEq36": {
+          "type": "question",
+          "settings": {
+            "title": "The product I want is sold out! When can I get it?",
+            "text": "<p>On the product page, sign up to be notified when the product is back in stock.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_YWXxRD": {
+          "type": "question",
+          "settings": {
+            "title": "Where do you ship?",
+            "text": "<p>We currently ship to the United States, Canada, and Australia. If you're in Australia, head over to <a href=\"http://cookanyday.com.au/\" title=\"Anyday Australia\">cookanyday.com.au</a> to order!</p><p>If you don’t live in these 3 countries and want Anyday in your kitchen, sign up for our email list at the footer of this website to be notified when we launch in your country!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_CYTLa3": {
+          "type": "question",
+          "settings": {
+            "title": "How much does shipping cost?",
+            "text": "<p>Orders over $75 receive free UPS Ground shipping within the contiguous 48 United States. Otherwise, we offer a $9 flat rate fee.</p><p>For orders shipping to Hawaii, Alaska, and Canada, we offer free shipping for orders over $170 and $30 flat rate shipping for orders over $100.<br/><br/>Canadian orders under $100 will also incur import charges such as taxes and duties, which are likely to add between 10-20% additional charge. For any Canadian order over $100, Anyday will be responsible for all import charges.*</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_Yg6PkD": {
+          "type": "question",
+          "settings": {
+            "title": "What payment methods do you accept?",
+            "text": "<p>We accept most major credit cards, Apple Pay, Shop Pay, Google Pay, and PayPal.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_EEH3pb": {
+          "type": "question",
+          "settings": {
+            "title": "How do I send a gift card?",
+            "text": "<p>Purchase an Anyday Gift Card <a href=\"https://cookanyday.com/products/gift-card\" title=\"The Anyday Gift Card\">here</a>! You will receive an email with instructions to redeem.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_zmCi3N": {
+          "type": "question",
+          "settings": {
+            "title": "How do I change or cancel my order?",
+            "text": "<p>Get in touch on the <a href=\"https://cookanyday.com/pages/contact-us\">Contact Us</a> page. You can change or cancel your order as long as our warehouse hasn't begun processing it. Please note that order processing may begin very soon after your order has been placed.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_JqmzYK": {
+          "type": "question",
+          "settings": {
+            "title": "When can I expect my order?",
+            "text": "<p>Once an order is placed, it takes about 1-3 business days to process and ship your order. Orders placed over weekends and on holidays will begin processing the next business day.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_EUqqC9": {
+          "type": "question",
+          "settings": {
+            "title": "Can I expedite my order?",
+            "text": "<p>We offer UPS Ground shipping and UPS 2-day shipping.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_eEbCft": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_pBUBbR": {
+          "type": "question",
+          "settings": {
+            "title": "How do I track my order?",
+            "text": "<p><a href=\"https://cookanyday.com/account/login\" title=\"https://cookanyday.com/account/login\">Login</a> to your account and click on your order to see the fulfillment status. You will also receive an email when your order has been shipped with the tracking number!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_kY6azq": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "text": "<p>We want you to love and use your Anyday every day, but if you don’t, we accept returns within 30 days of the delivery date. See here for our return <a href=\"https://cookanyday.com/pages/returns\" title=\"Returns\">policy</a>.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_jBz9xp": {
+          "type": "question",
+          "settings": {
+            "title": "What if there is an issue with my order?",
+            "text": "<p>Please fill out the form <a href=\"https://cookanyday.com/pages/contact-us\" title=\"https://cookanyday.com/pages/contact-us\">here </a>and we will help you out!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_xDR4wq": {
+          "type": "question",
+          "settings": {
+            "title": "When can I expect my refund?",
+            "text": "<p>You will receive the refund via your initial form of payment within 3-5 business days after we receive and process your return.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_cQjUCH": {
+          "type": "question",
+          "settings": {
+            "title": "What is your warranty policy?",
+            "text": "<p>We want you to love and use your Anyday every day, and we’ll make it right if that’s not the case. We offer a 2-year limited warranty — see <a href=\"https://cookanyday.com/pages/warranty\" title=\"Warranty\">here</a> for the details.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_JLfkhV": {
+          "type": "question",
+          "settings": {
+            "title": "My Anyday lid broke. Can I get a new one?",
+            "text": "<p>Please fill out the form <a href=\"https://cookanyday.com/pages/contact-us\" title=\"https://cookanyday.com/pages/contact-us\">here</a> and we will do our best to help!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_jzh6xK": {
+          "type": "question",
+          "settings": {
+            "title": "My Anyday bowl broke. Can I get a new one?",
+            "text": "<p>Please fill out the form <a href=\"https://cookanyday.com/pages/contact-us\" title=\"https://cookanyday.com/pages/contact-us\">here</a> and we will do our best to help!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_xQHdqg": {
+          "type": "question",
+          "settings": {
+            "title": "Do you price match?",
+            "text": "<p>Bought an item from us and noticed it's on promotion the next day? No worries — we’ve got you covered! We understand it can be frustrating, so here’s how we make it easy for you:</p><p>To qualify for a price match, please ensure the following:</p><p>Your purchase was made on our website and no more than 3 days before the promotion started.</p><p>The item you bought matches exactly with the promoted item our website, including color.</p><p><strong>Please Note:</strong> Anyday does not offer price matching against retailer pricing, even if they are authorized sellers.</p><p>If your purchase meets these criteria, contact us <a href=\"https://cookanyday.com/pages/contact-us\" title=\"https://cookanyday.com/pages/contact-us\">here</a>, and our support team will assist you within 1 business day to process a refund for the difference.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_mq9gRm": {
+          "type": "question",
+          "settings": {
+            "title": "Where can I purchase Anday?",
+            "text": "<p>You can find Anyday here at cookanyday.com, or at retailers both online and in-store!</p><p>Find us online at Williams Sonoma, Amazon, Food52, and QVC.</p><p>Find us in-store at Williams Sonoma (io Collection sets only).</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_hG7A7J",
+        "question_a6ra3T",
+        "question_jcEq36",
+        "question_YWXxRD",
+        "question_CYTLa3",
+        "question_Yg6PkD",
+        "question_EEH3pb",
+        "question_zmCi3N",
+        "question_JqmzYK",
+        "question_EUqqC9",
+        "question_eEbCft",
+        "question_pBUBbR",
+        "question_kY6azq",
+        "question_jBz9xp",
+        "question_xDR4wq",
+        "question_cQjUCH",
+        "question_JLfkhV",
+        "question_jzh6xK",
+        "question_xQHdqg",
+        "question_mq9gRm"
+      ],
+      "custom_css": [
+        ".accordion--text {background-color: #a989dd !important;}"
+      ],
+      "settings": {
+        "style": "with-border",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h1",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#fbfbf9",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "faq_TTY93E": {
+      "type": "faq",
+      "blocks": {
+        "rich_text_WcDkat": {
+          "type": "rich-text",
+          "settings": {
+            "heading": "Company",
+            "text": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_WCYDAL": {
+          "type": "question",
+          "settings": {
+            "title": "Who are you?",
+            "text": "<p>Anyday exists for one reason: to free people's time. We create products that tap into the unexpected magic of your microwave: turning raw ingredients into delicious and nutritious home-cooked meals — in record time. Read more about our story <a href=\"https://cookanyday.com/pages/our-story\" title=\"Our Story\">here</a>.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_gaQYNk": {
+          "type": "question",
+          "settings": {
+            "title": "Where does the name Anyday come from?",
+            "text": "<p>Anyday is a nod to making every meal easy to cook, any day of the week!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_N9Drkm": {
+          "type": "question",
+          "settings": {
+            "title": "What's your relationship with David Chang?",
+            "text": "<p>We are lucky and grateful to have Dave as a Partner in Anyday! Dave works closely with us on product development and design, recipe content, and more. Ultimately, we share a strong conviction that the microwave is an amazing tool that deserves to be much more widely used since it can save people so much time and energy in cooking!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_VDhDzc": {
+          "type": "question",
+          "settings": {
+            "title": "Do you support any charities?",
+            "text": "<p>We are proud to donate a portion of proceeds from online sales to The <a href=\"https://www.leeinitiative.org/\" title=\"https://www.leeinitiative.org/\">Lee Initiative</a> and <a href=\"https://baby2baby.org/\" title=\"https://baby2baby.org/\">Baby2Baby</a>.<br/><br/>Baby2Baby is a non-profit organization that provides children living in poverty with diapers, clothing, COVID-19 preventative items, and all the basic necessities that every child deserves.</p><p>The Lee Initiative promotes equality in the hospitality industry. In response to industry layoffs during the COVID-19 pandemic, the Lee Initiative launched The Restaurant Workers Relief Program and created several relief kitchens to distribute over 1 million meals throughout the pandemic. The organization has also committed to invest $1 million into sustainable farms to help fix the restaurant supply chain.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_yRjJE6": {
+          "type": "question",
+          "settings": {
+            "title": "Do you do wholesale?",
+            "text": "<p>We don't currently do wholesale, but feel free to reach out to us at hi@cookanyday.com if you're interested in partnering in the future!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_nJwLwd": {
+          "type": "question",
+          "settings": {
+            "title": "I want to write about you! Where do I direct my press inquiry?",
+            "text": "<p>Send us a note at <a href=\"mailto:press@cookanyday.com\" target=\"_blank\" title=\"mailto:press@cookanyday.com\">press@cookanyday.com</a>!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_WcDkat",
+        "question_WCYDAL",
+        "question_gaQYNk",
+        "question_N9Drkm",
+        "question_VDhDzc",
+        "question_yRjJE6",
+        "question_nJwLwd"
+      ],
+      "custom_css": [
+        ".accordion--text {background-color: #36448d !important;}"
+      ],
+      "settings": {
+        "style": "with-border",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h1",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#fbfbf9",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_fNEM4Y",
+    "custom_liquid_rjjhHn",
+    "faq_7irTKR",
+    "faq",
+    "faq_Kgbh34",
+    "faq_TTY93E"
+  ]
+}

@@ -1,0 +1,248 @@
+<div class="split-section" style="background-color: {{ section.settings.section_background_color }};">
+  <!-- Left Container: Text and Buttons -->
+  <div class="split-section__text">
+    <h1 class="heading leading-none title-lg tracking-heading" style="margin-top: {{ section.settings.heading_margin_top }}px; color: {{ section.settings.heading_text_color }};">
+      {{ section.settings.heading }}
+    </h1>
+    
+    <div class="rte leading-normal heading subtext-xl" style="margin-top: {{ section.settings.rich_text_margin_top }}px; color: {{ section.settings.rich_text_color }};">
+      {{ section.settings.rich_text }}
+    </div>
+    
+    <div class="button-wrapper">
+      <a class="button button--primary button--md icon-with-text button--custom-margin" href="{{ section.settings.button_link }}" is="hover-link">
+        <span class="btn-fill" data-fill="" style="transform: translateY(var(--motion-translateY)); --motion-translateY: -76%;"></span>
+        <span class="btn-text">
+          {{ section.settings.button_label }}
+          <svg class="icon icon-arrow-right icon-sm transform" viewBox="0 0 21 20" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10H18M18 10L12.1667 4.16675M18 10L12.1667 15.8334"></path>
+          </svg>
+        </span>
+      </a>
+    </div>
+    
+    <div class="below-button-text" style="margin-top: {{ section.settings.sub_text_margin_top }}px; color: {{ section.settings.sub_text_color }};">
+      {{ section.settings.sub_text }}
+    </div>
+  </div>
+
+  <!-- Right Container with Background Image and Divider Overlay -->
+  <div class="split-section__image" style="background-image: url({{ section.settings.background_image | image_url }});">
+    <!-- Divider Overlay placed within the right container -->
+    <div class="vertical-divider">
+      <svg class="Svg Svg--wave-right" width="96" height="100%" viewBox="0 0 96 710" preserveAspectRatio="none">
+        <path d="M37.7791 721L1.00003 721L0.999999 1L84.2639 0.999996C-73.696 202.261 47.6932 340.162 84.2639 487.208C114.118 607.249 76.2075 667.745 37.7791 721Z" 
+              fill="{{ section.settings.section_background_color }}" 
+              stroke="{{ section.settings.section_background_color }}"></path>
+      </svg>
+    </div>
+    <img class="tablet-mobile-image" src="{{ section.settings.tablet_mobile_image | image_url }}" alt="Tablet/Mobile Image">
+  </div>
+</div>
+
+<style>
+.split-section {
+  display: flex;
+  flex-direction: {% if section.settings.reverse_columns_desktop %}row-reverse{% else %}row{% endif %};
+  height: {{ section.settings.desktop_section_height }}px;
+  position: relative;
+}
+
+.split-section__text {
+  width: 50%;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.split-section__image {
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.vertical-divider {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  z-index: 2;
+  left: -1px;
+}
+
+.vertical-divider svg {
+  height: 100%;
+  width: 100%;
+}
+
+.tablet-mobile-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive: Tablet & below */
+@media (max-width: 1024px) {
+  .split-section {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .split-section__image {
+    background-size: 0px!important;
+  }
+  
+  .split-section__text,
+  .split-section__image,
+  .vertical-divider {
+    width: 100%!important;
+  }
+  
+  .vertical-divider {
+    display: none;
+  }
+
+  .below-button-text {
+    font-size: 90%;
+  }
+}
+  
+/* Desktop only */
+@media (min-width: 1025px) {
+  .tablet-mobile-image {
+    display: none;
+  }
+}
+</style>
+
+
+
+
+{% schema %}
+{
+  "name": "Split Image & Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Placeholder Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_top",
+      "label": "Heading Margin Top (px)",
+      "default": 20,
+      "min": -20,
+      "max": 60,
+      "step": 5
+    },
+    {
+      "type": "color",
+      "id": "heading_text_color",
+      "label": "Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "richtext",
+      "id": "rich_text",
+      "label": "Rich Text",
+      "default": "<p>This is some placeholder rich text content for the section. You can put any description or content here.</p>"
+    },
+    {
+      "type": "range",
+      "id": "rich_text_margin_top",
+      "label": "Rich Text Margin Top (px)",
+      "default": 20,
+      "min": -20,
+      "max": 60,
+      "step": 5
+    },
+    {
+      "type": "color",
+      "id": "rich_text_color",
+      "label": "Rich Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "label": "Button Margin Top (px)",
+      "default": 20,
+      "min": -20,
+      "max": 60,
+      "step": 5
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "richtext",
+      "id": "sub_text",
+      "label": "Sub-Text",
+      "default": "<p>This is some additional text below the button, like a sub-description.</p>"
+    },
+    {
+      "type": "range",
+      "id": "sub_text_margin_top",
+      "label": "Sub Text Margin Top (px)",
+      "default": 20,
+      "min": -20,
+      "max": 60,
+      "step": 5
+    },
+    {
+      "type": "color",
+      "id": "sub_text_color",
+      "label": "Sub-Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "desktop_section_height",
+      "label": "Desktop Section Height (px)",
+      "default": 500,
+      "min": 300,
+      "max": 1000,
+      "step": 50
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "tablet_mobile_image",
+      "label": "Tablet/Mobile Image"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_columns_desktop",
+      "label": "Reverse Columns on Desktop"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Split Image & Text",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,272 @@
+{{ 'text-with-table.css' | asset_url | stylesheet_tag }}
+
+{%- assign hide_section = product.metafields.microwave_match_up.hide_section -%}
+{%- assign heading_default = section.settings.heading | append: product.title -%}
+{%- assign heading = product.metafields.microwave_match_up.heading | default: heading_default -%}
+{%- assign subheading = product.metafields.microwave_match_up.subheading | default: section.settings.subheading -%}
+{%- assign bg_color = product.metafields.microwave_match_up.background_section | default: section.settings.bg_color -%}
+{%- assign background_color_of_table_head_arr = product.metafields.microwave_match_up.background_color_of_table_head -%}
+{%- assign text_color_of_table_head_arr = product.metafields.ingredient_cook_time.text_color_of_table_headers -%}
+{%- assign text_under_table = product.metafields.microwave_match_up.text_under_table | default: section.settings.text_under_table  -%}
+{%- assign button_label = product.metafields.microwave_match_up.button_label | default: section.settings.button_label -%}
+{%- assign button_link = section.settings.button_url | default: product.metafields.microwave_match_up.button_url -%}
+
+{%- assign padding_top_desk = section.settings.padding_top_desk -%}
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desk -%}
+{%- assign padding_top_mob = section.settings.padding_top_mob -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
+{%- assign show_bottom_wave = section.settings.show_bottom_wave -%}
+
+{%- assign first_column = product.metafields.microwave_match_up.table__first_column -%}
+{%- assign second_column = product.metafields.microwave_match_up.table__second_column -%}
+
+{% if first_column.size > 0 %}
+  {%- assign max_width_table = max_width_table | plus: 1 -%}
+{% endif %}
+
+{% if second_column.size > 0 %}
+  {%- assign max_width_table = max_width_table | plus: 1 -%}
+{% endif %}
+
+{% comment %}------- Set default settings ----------{% endcomment %}
+
+{% for block in section.blocks %}
+  {% if forloop.first %}
+    {%- assign select_column = first_column -%}
+  {% else %}
+    {%- assign select_column = second_column -%}
+  {% endif %}
+
+  {% if select_column[0] contains 'default' %}
+    {%- assign column_str = '' -%}
+
+    {% for i in (1..5) %}
+      {%- assign column_row_index = "row_" | append: i -%}
+      {%- assign column_row = block.settings[column_row_index] -%}
+
+      {% if forloop.last %}
+        {%- assign column_str = column_str | append: column_row -%}
+      {% else %}
+        {%- assign column_str = column_str | append: column_row | append: "|" -%}
+      {% endif %}
+    {% endfor %}
+
+
+    {% if forloop.first %}
+      {%- assign first_column = column_str | split: "|" -%}
+    {% else %}
+      {%- assign second_column = column_str | split: "|" -%}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% comment %}------- Set default settings ----------{% endcomment %}
+
+{% if max_width_table > 0 %}
+  {%- assign has_content = true -%}
+{% endif %}
+
+
+{% if hide_section != 'true' and has_content %}
+  <section data-section-id="{{ section.id }}"
+           style="
+                   --padding-top-desktop: {{ padding_top_desk }}px;
+                   --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+                   --padding-top-mobile: {{ padding_top_mob }}px;
+                   --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+                   --bg-color: {{ bg_color }};"
+           class="text-with-table text-with-table--match-up">
+
+    {%- if show_bottom_wave -%}
+      {%- render 'waves' with 'wave-bottom-reverse' -%}
+    {%- endif -%}
+
+    <div class="text-with-table__container">
+      {% if heading != blank %}
+        <h2 class="text-with-table__heading">
+          {{ heading }}
+        </h2>
+      {% endif %}
+
+      {% if heading != blank %}
+        <h3 class="text-with-table__subheading">
+          {{ subheading }}
+        </h3>
+      {% endif %}
+
+      <div style="--column-counter: {{ max_width_table }}" class="text-with-table__table-wrapper text-with-table__table-wrapper--js">
+        {% if first_column.size > 0 or second_column.size > 0 %}
+          {% render 'table-creator',
+            text_color_of_table_head_arr: text_color_of_table_head_arr,
+            background_color_of_table_head_arr: background_color_of_table_head_arr,
+            first_column: first_column,
+            second_column: second_column,
+            column_count: max_width_table,
+            class_name: 'text-with-table__table' %}
+
+          <span class="text-with-table__table-current-wattage">
+            {{ text_under_table }}
+          </span>
+        {% endif %}
+      </div>
+
+
+      {%- if button_label != blank and button_link != blank -%}
+        <div class="text-with-table__btn-wrapper button-wrapper">
+          <a class="button button--primary button--md icon-with-text button--custom-margin" href="{{ button_link }}" is="hover-link">
+            <span class="btn-fill" data-fill="" style="transform: translateY(var(--motion-translateY)); --motion-translateY: -76%;"></span>
+            <span class="btn-text">
+              {{ button_label }}
+              <svg class="icon icon-arrow-right icon-sm transform" viewBox="0 0 21 20" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10H18M18 10L12.1667 4.16675M18 10L12.1667 15.8334"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Microwave Match Up meta",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Default settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Microwave Match Up: "
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "See for yourself— microwaving potato is simply faster, start to finish."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color"
+    },
+    {
+      "type": "header",
+      "content": "First column"
+    },
+    {
+      "type": "text",
+      "id": "text_under_table",
+      "label": "Text under table",
+      "default": "*includes preheat time"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Anyday"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Column",
+      "name": "Column",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "row_1",
+          "label": "First row",
+          "default": "Appliance"
+        },
+        {
+          "type": "text",
+          "id": "row_2",
+          "label": "Second row",
+          "default": "Microwave in an Anyday dish"
+        },
+        {
+          "type": "text",
+          "id": "row_3",
+          "label": "Third row",
+          "default": "Oven*"
+        },
+        {
+          "type": "text",
+          "id": "row_4",
+          "label": "Fourth row",
+          "default": "Pressure Cooker*"
+        },
+        {
+          "type": "text",
+          "id": "row_5",
+          "label": "Fifth row",
+          "default": "Stovetop*"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Microwave Match Up meta",
+      "category": "Table"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

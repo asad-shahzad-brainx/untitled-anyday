@@ -1,0 +1,16 @@
+{% comment %} .collection-recipes__slider {% endcomment %}
+
+{%- capture slider_settings -%}
+  {
+  "slides_mobile": 2.3,
+  "slides_desktop": 4
+  }
+{%- endcapture -%}
+
+<div class="recipe-ingredient-recommended__wrapper collection-recipes__grid collection-ingredient-recipes__grid slider-arrow--white" data-slider-settings='{{ slider_settings }}'>
+{% for product in collection.products %}
+<div style="background-color: {{ bg_color }}" class="collection-recipe__product-block">
+  {% render 'recipe-item', product: product, collection: collection.products %}
+</div>
+{%- endfor -%}
+</div>

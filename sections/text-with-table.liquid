@@ -1,0 +1,273 @@
+{{ 'text-with-table.css' | asset_url | stylesheet_tag }}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign variant_size = product.selected_or_first_available_variant.option2 -%}
+{%- assign global_custom_current_variant = '' -%}
+
+{% for custom_current_variant in product.variants %}
+  {% if custom_current_variant.option2 == variant_size %}
+    {%- assign current_variant = custom_current_variant -%}
+
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+
+{%- assign hide_section = product.variants[0].metafields.ingredient_cook_time.hide_section -%}
+{%- assign heading = product.variants[0].metafields.ingredient_cook_time.heading -%}
+{%- assign subheading = product.variants[0].metafields.ingredient_cook_time.subheading -%}
+{%- assign content = product.variants[0].metafields.ingredient_cook_time.content -%}
+{%- assign bg_color = product.variants[0].metafields.ingredient_cook_time.background_section -%}
+{%- assign background_color_of_table_head_arr = product.variants[0].metafields.ingredient_cook_time.background_color_of_table_head -%}
+{%- assign text_color_of_table_head_arr = product.variants[0].metafields.ingredient_cook_time.text_color_of_table_headers -%}
+
+{% capture updated_background_color_of_table_head_arr %}
+  {% for i in (1..4) %}
+    {% assign bg_head_index = 'bg_color_tableHeader_' | append: i %}
+    {% assign bg_table_head_section = section.settings[bg_head_index] %}
+    {% if bg_table_head_section != blank and bg_table_head_section != 'rgba(0,0,0,0)' %}
+      {{ bg_table_head_section }}
+    {% else %}
+      {{ background_color_of_table_head_arr[forloop.index0] }}
+    {% endif %}
+    {% unless forloop.last %}
+      ,
+    {% endunless %}
+  {% endfor %}
+{% endcapture %}
+{% assign updated_background_color_of_table_head_arr = updated_background_color_of_table_head_arr | split: ',' %}
+
+{% capture updated_text_color_of_table_head_arr %}
+  {% for i in (1..4) %}
+    {% assign text_head_index = 'text_color_tableHeader_' | append: i %}
+    {% assign text_table_head_section = section.settings[text_head_index] %}
+    {% if text_table_head_section != blank and text_table_head_section != 'rgba(0,0,0,0)' %}
+      {{ text_table_head_section }}
+    {% else %}
+      {{ text_color_of_table_head_arr[forloop.index0] }}
+    {% endif %}
+    {% unless forloop.last %}
+      ,
+    {% endunless %}
+  {% endfor %}
+{% endcapture %}
+{% assign updated_text_color_of_table_head_arr = updated_text_color_of_table_head_arr | split: ',' %}
+
+{%- assign first_column = current_variant.metafields.ingredient_cook_time.table__first_column -%}
+{%- assign second_column = current_variant.metafields.ingredient_cook_time.table__second_column -%}
+{%- assign third_column = current_variant.metafields.ingredient_cook_time.table__third_column -%}
+{%- assign fourth_column = current_variant.metafields.ingredient_cook_time.table__fourth_column -%}
+{%- assign max_width_table = 0 -%}
+
+{%- assign padding_top_desk = section.settings.padding_top_desk -%}
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desk -%}
+{%- assign padding_top_mob = section.settings.padding_top_mob -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
+{%- assign show_bottom_wave = section.settings.show_bottom_wave -%}
+
+
+{% if first_column.size > 0 %}
+  {%- assign max_width_table = max_width_table | plus: 1 -%}
+{% endif %}
+
+{% if second_column.size > 0 %}
+  {%- assign max_width_table = max_width_table | plus: 1 -%}
+{% endif %}
+
+{% if third_column.size > 0 %}
+  {%- assign max_width_table = max_width_table | plus: 1 -%}
+{% endif %}
+
+{% if fourth_column.size > 0 %}
+  {%- assign max_width_table = max_width_table | plus: 1 -%}
+{% endif %}
+
+{% comment %} Current wattage option {% endcomment %}
+{% for option in product.options_with_values %}
+  {%- assign option_name_handle = option.name | handleize -%}
+
+  {% if option_name_handle contains 'wattage' %}
+    {%- assign selected_wattage = option.selected_value -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if heading != blank or subheading != blank or content != blank or max_width_table > 0 %}
+  {%- assign has_content = true -%}
+{% endif %}
+
+
+{% if hide_section != 'true' and has_content %}
+  <section data-section-id="{{ section.id }}"
+           style="
+               --padding-top-desktop: {{ padding_top_desk }}px;
+               --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+               --padding-top-mobile: {{ padding_top_mob }}px;
+               --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+               --bg-color: {{ bg_color }};"
+           class="text-with-table text-with-table--js" >
+
+    {%- if show_bottom_wave -%}
+      {%- render 'waves' with 'wave-bottom-reverse' -%}
+    {%- endif -%}
+
+    {% for variant in product.variants %}
+      {% if variant.option1 == product.selected_or_first_available_variant.option1 %}
+        {% if column_one == blank and variant.metafields.ingredient_cook_time.table__first_column != blank %}
+          {% assign column_one = variant.metafields.ingredient_cook_time.table__first_column %}
+        {% endif %}
+        {% if column_two == blank and variant.metafields.ingredient_cook_time.table__second_column != blank %}
+          {% assign column_two = variant.metafields.ingredient_cook_time.table__second_column %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    <div class="text-with-table__container">
+      {% if heading != blank %}
+        <h2 class="text-with-table__heading">
+          {{ heading }}
+        </h2>
+      {% endif %}
+
+      {% if subheading != blank %}
+        <h3 class="text-with-table__subheading">
+          {{ subheading }}
+        </h3>
+      {% endif %}
+
+      <div style="--column-counter: {{ max_width_table }}" class="text-with-table__table-wrapper text-with-table__table-wrapper--js">
+        {% if first_column.size > 0 or second_column.size > 0 or third_column.size > 0 or fourth_column.size > 0 %}
+            {% render 'table-creator', text_color_of_table_head_arr: updated_text_color_of_table_head_arr, background_color_of_table_head_arr: updated_background_color_of_table_head_arr, first_column: first_column, second_column: second_column, third_column: third_column, fourth_column: fourth_column, column_count: max_width_table, class_name: 'text-with-table__table' %}
+
+            <span class="text-with-table__table-current-wattage">
+            {{ "sections.text_width_table.table_current_wattage" | t }}
+
+            <span>{{ selected_wattage }} {{ "sections.text_width_table.text_after_wattage" | t  }}</span>
+          </span>
+        {% endif %}
+      </div>
+
+      {% if content != blank %}
+        <div class="text-with-table__text-content">
+          {{ content }}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Text with table meta",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Only from metafields"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_tableHeader_1",
+      "label": "Background color table header 1"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_tableHeader_2",
+      "label": "Background color table header 2"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_tableHeader_3",
+      "label": "Background color table header 3"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_tableHeader_4",
+      "label": "Background color table header 4"
+    },
+    {
+      "type": "color",
+      "id": "text_color_tableHeader_1",
+      "label": "Text color table header 1"
+    },
+    {
+      "type": "color",
+      "id": "text_color_tableHeader_2",
+      "label": "Text color table header 2"
+    },
+    {
+      "type": "color",
+      "id": "text_color_tableHeader_3",
+      "label": "Text color table header 3"
+    },
+    {
+      "type": "color",
+      "id": "text_color_tableHeader_4",
+      "label": "Text color table header 4"
+    },
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f1ede7"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with table meta",
+      "category": "Table"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

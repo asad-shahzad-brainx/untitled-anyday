@@ -1,0 +1,770 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "split_image_text_nyNhTg": {
+      "type": "split-image-text",
+      "custom_css": [
+        "h1 {text-wrap: balance;}",
+        ".rte.leading-normal.heading.subtext-xl {font-size: 120%; line-height: 1.3em; text-wrap: balance;}",
+        "em {padding: 0px 6px; opacity: 20%; font-style: normal;}",
+        "b,strong {color: #fcb602; letter-spacing: 1px;}"
+      ],
+      "settings": {
+        "heading": "The Everything Dish",
+        "heading_margin_top": 0,
+        "heading_text_color": "#ffffff",
+        "rich_text": "<p>All-in-one microwave cookware designed to save you time in the kitchen</p>",
+        "rich_text_margin_top": 20,
+        "rich_text_color": "#dbe6e8",
+        "button_margin_top": 0,
+        "button_link": "https://cookanyday.com/collections/frontpage",
+        "button_label": "Shop Now",
+        "sub_text": "<p><strong>★★★★★</strong>  <em>|</em> 2000+ Trusted Customer Reviews</p>",
+        "sub_text_margin_top": 40,
+        "sub_text_color": "#aabfc2",
+        "desktop_section_height": 500,
+        "background_image": "shopify://shop_images/ANYDAY_Q2_Picnic_Front_1_1_2f73dafc-c8fb-4161-af9d-de172dd21cbd.jpg",
+        "tablet_mobile_image": "shopify://shop_images/ANYDAY_Q2_Picnic_Front_1_1_2f73dafc-c8fb-4161-af9d-de172dd21cbd.jpg",
+        "section_background_color": "#205b62",
+        "reverse_columns_desktop": false
+      }
+    },
+    "wave_divider_WhUh9N": {
+      "type": "wave-divider",
+      "custom_css": [
+        "@media (min-width: 1025px) {div {display: none; }}"
+      ],
+      "settings": {
+        "wave_color": "#205b62",
+        "background_color": "#bed8fc",
+        "flip_vertical": false,
+        "flip_horizontal": false
+      }
+    },
+    "multicolumn_jxdG4B": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_89cGt4": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/gma_logo.png",
+            "image_ratio": "adapt",
+            "heading": "",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>“100% plastic free, microwave safe dishes you can do absolutely everything in.\"</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_anM3qL": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/food_and_wine.png",
+            "image_ratio": "adapt",
+            "heading": "",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>“My not-so-secret hack is Anyday’s cookware that gives new life to using the microwave.\"</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_QaQe7U": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/ATK_logo.png",
+            "image_ratio": "adapt",
+            "heading": "",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>\"Every recipe we made in the cookware came out perfectly cooked.\"</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_89cGt4",
+        "column_anM3qL",
+        "column_QaQe7U"
+      ],
+      "custom_css": [
+        ".slider .card {background-color: #205b62; padding: 36px 24px; border-radius: 12px; color: white; font-weight: 600; display: flex; flex-direction: column; justify-content: space-around; text-wrap: balance;}",
+        ".media > img {max-width: 220px; aspect-ratio: 5 / 2; object-fit: contain;}",
+        "p {font-size: 120%;}",
+        ".grid.gap-4.lg\\:gap-6.w-full {z-index: 1;}",
+        "@media (min-width: 1200px) {.card-grid {padding: 0px 140px; }}"
+      ],
+      "settings": {
+        "columns": 3,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "As Seen In",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "bottom_button_label": "",
+        "bottom_button_link": "/",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#000000",
+        "color_background": "#bed8fc",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "wave_divider_gBVCUp": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#bed8fc",
+        "background_color": "#dcfae0",
+        "flip_vertical": false,
+        "flip_horizontal": false
+      }
+    },
+    "multicolumn_mkFJrt": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_hbRmDq": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "square",
+            "video": "shopify://files/videos/Boil.mp4",
+            "heading": "Boil",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Veggies, pasta, and more</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_BmTiTE": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "square",
+            "video": "shopify://files/videos/steam (1).mp4",
+            "heading": "Steam",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Fluffy rice in an instant</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_HqJyUW": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "square",
+            "video": "shopify://files/videos/Crisp.mp4",
+            "heading": "Crisp",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Splatter-free bacon</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_CPFKp6": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "square",
+            "video": "shopify://files/videos/bake (1)_cc4d8f14-e4db-4917-97ce-6353935ee117.mp4",
+            "heading": "Bake",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Delicious desserts</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_WcPL3t": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "square",
+            "video": "shopify://files/videos/Poach (1)_42d5dcca-2312-4fe4-aa81-43a64fdc3c31.mp4",
+            "heading": "Poach",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>No need for stovetop</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_hbRmDq",
+        "column_BmTiTE",
+        "column_HqJyUW",
+        "column_CPFKp6",
+        "column_WcPL3t"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {h2 {margin-bottom: 0px; }}",
+        ".multicolumn-card__info.grid.gap-4.lg\\:gap-6 {gap: 6px;}",
+        "p.heading.text-lg-2xl.leading-tight.tracking-tight {font-size: 26px;}",
+        ".multicolumn {margin: 20px 0px 20px;}"
+      ],
+      "settings": {
+        "columns": 5,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "heading": "What Anyday Can Do",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "https://cookanyday.com/collections/frontpage",
+        "bottom_button_label": "Shop All",
+        "bottom_button_link": "https://cookanyday.com/collections/frontpage",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#dcfae0",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "#ffffff",
+        "color_button_background": "#ff3b1f",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "wave_divider_q3pVFA": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#dcfae0",
+        "background_color": "#fbfbf9",
+        "flip_vertical": false,
+        "flip_horizontal": true
+      }
+    },
+    "featured_collection_BPW4Vp": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2.heading.title-md {color: #000;}"
+      ],
+      "settings": {
+        "collection": "home-page-carousel",
+        "products": [],
+        "product_limit": 8,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "<em>Shop</em> the Collection",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "scribble",
+        "highlighted_scribble": "basic-underline",
+        "color_text": "#205b62",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "#ee0c93",
+        "gradient_highlight": "",
+        "color_button_text": "#ffffff",
+        "color_button_background": "#ff3b1f",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "wave_divider_PRTbaY": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#bed8fc",
+        "background_color": "#fbfbf9",
+        "flip_vertical": true,
+        "flip_horizontal": false
+      }
+    },
+    "multicolumn_JKL4gW": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_XMyFWa": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Ellipse_115.png",
+            "image_ratio": "adapt",
+            "heading": "Vibrant asparagus",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>in <strong>2 mins</strong></p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_J7nYyA": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Ellipse_116-2.png",
+            "image_ratio": "adapt",
+            "heading": "Hands-off rice",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>in <strong>22 mins</strong></p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_ejCx4P": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Ellipse_116.png",
+            "image_ratio": "adapt",
+            "heading": "Crispy bacon",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>in <strong>5 mins</strong></p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_8hUgJn": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Ellipse_115-1.png",
+            "image_ratio": "adapt",
+            "heading": "Foolproof eggs",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>in <strong>2 mins</strong></p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_3ETBxM": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Ellipse_115-2.png",
+            "image_ratio": "adapt",
+            "heading": "Juicy shrimp",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>in <strong>3 mins</strong></p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_JAmnjB": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Ellipse_116-1.png",
+            "image_ratio": "adapt",
+            "heading": "Easy dessert",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>in <strong>1 min</strong></p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_XMyFWa",
+        "column_J7nYyA",
+        "column_ejCx4P",
+        "column_8hUgJn",
+        "column_3ETBxM",
+        "column_JAmnjB"
+      ],
+      "custom_css": [
+        "h2 {margin-bottom: 40px;}",
+        ".multicolumn-card__info.grid.gap-4.lg\\:gap-6 {gap: 6px;}"
+      ],
+      "settings": {
+        "columns": 6,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "heading": "Cook <em>anything</em> in the microwave with Anyday",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "bottom_button_label": "",
+        "bottom_button_link": "/",
+        "highlighted_text": "scribble",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#bed8fc",
+        "gradient_background": "",
+        "color_highlight": "#ff3b1f",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "wave_divider_nQwDKU": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#bed8fc",
+        "background_color": "#fbfbf9",
+        "flip_vertical": false,
+        "flip_horizontal": true
+      }
+    },
+    "rich_text_dUkjii": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_dgWdMc": {
+          "type": "heading",
+          "settings": {
+            "heading": "What makes Anyday <em>special</em>?",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "scribble",
+            "highlighted_scribble": "basic-underline"
+          }
+        },
+        "image_TMBrWc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/get_a_closer_look_v2.png",
+            "image_width": "full_width",
+            "image_max_width": 50,
+            "image_max_width_mobile": 50
+          }
+        },
+        "liquid_N3CxPB": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<img class=\"mobile-image\" src=\"https://cookanyday.com/cdn/shop/files/dish_get_a_closer_look_1ad22453-eac7-4b80-8d6a-ffff46333f62_1080x.png?v=1690491485\" alt=\"Get a closer look dish\">\n\n<style>\n.mobile-image {\ndisplay: none;\n}\n\n@media (max-width:767px) {\n.mobile-image {\ndisplay: block;\nmargin-bottom: 10px;\nborder-radius: 12px;\n}\n\np.media.media--transparent.relative.inline-block {\ndisplay: none;\n}\n</style>"
+          }
+        },
+        "button_PJe6mj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop the dishes",
+            "button_link": "shopify://collections/bestsellers",
+            "button_size": "md",
+            "button_secondary_style": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_dgWdMc",
+        "image_TMBrWc",
+        "liquid_N3CxPB",
+        "button_PJe6mj"
+      ],
+      "custom_css": [
+        "h2 {margin-bottom: 40px;}",
+        ".media > img {border-radius: 40px; margin-bottom: -66px;}",
+        "@media (max-width: 767px) {h2 {margin: 0px 40px -20px 40px; }}"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 100,
+        "divider": false,
+        "narrow": false,
+        "rounded": false
+      }
+    },
+    "wave_divider_gAJndJ": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#f1ede7",
+        "background_color": "#fbfbf9",
+        "flip_vertical": true,
+        "flip_horizontal": false
+      }
+    },
+    "172634394767308fad": {
+      "type": "apps",
+      "blocks": {
+        "tolstoy_shoppable_video_ugc_carousel_block_CNWJTG": {
+          "type": "shopify://apps/tolstoy-shoppable-video-ugc/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "wir3vcjltmtvw"
+          }
+        }
+      },
+      "block_order": [
+        "tolstoy_shoppable_video_ugc_carousel_block_CNWJTG"
+      ],
+      "settings": {
+        "enable_reviews_integration": true,
+        "heading": "See Anyday in Action",
+        "heading_alignment": "center",
+        "heading_margin_bottom": 36,
+        "button_link": "https://cookanyday.com/collections/frontpage",
+        "button_text": "Shop Now",
+        "button_margin_top": 40,
+        "color_text": "#000000",
+        "color_background": "#f1ede7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 20,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "faq_aLCBVp": {
+      "type": "faq",
+      "blocks": {
+        "question_46iLyU": {
+          "type": "question",
+          "settings": {
+            "title": "What's so special about the Anyday?",
+            "text": "<p>Anyday dishes are the best way to cook or reheat food in the microwave, period. The secret is in the special steam-trapping lid and the durable glass bowl.</p><p>The Anyday glass lid is where the true magic is. It traps steam in the dish, making food tasty and evenly cooked — never dry and rubbery. Plus, it has a special venting knob that lets out extra steam, and a flexible silicone rim that gently lifts up if pressure in the dish gets too high. Safe and easy!</p><p>The high-quality bowl is just as awesome. Made from tough, frosted glass, it can go from the freezer to the microwave without breaking! It looks great on your table and its special shape makes it easy to hold.</p><p>It’s a versatile plastic-free dish that you can prep, cook, serve, and store in and is safe for your microwave, dishwasher, oven, and freezer! Can any other dish do that? We don't think so!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_CAiRfg": {
+          "type": "question",
+          "settings": {
+            "title": "Is the metal on the lid safe to use in the microwave?",
+            "text": "<p>Yes, you can put our lids in the microwave — even with the metal rim. We made them microwave-safe by using smooth, curved stainless steel. Rounded, thicker metal like our lids’ rims or a spoon are safe. But be careful with super thin metal like aluminum foil or metal with sharp corners, like a fork.<br/><br/>When you use Anyday dishes in the microwave, remember to keep them at least one inch away from the microwave's walls. If the stainless steel rim of the lid gets too close to the microwave's wall, which is also made of metal, it can cause sparks.<br/><br/></p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_44RPCt": {
+          "type": "question",
+          "settings": {
+            "title": "Is microwave cooking good for you?",
+            "text": "<p>Yes, microwave cooking is good for you — and can be even better for you than conventional cooking methods.<br/><br/>According to Harvard Health, it's the cooking method that keeps the most nutrients in your food. Microwaves work by heating the water molecules in the food directly, which helps preserve the nutrients better than other cooking methods that use more time, heat, and liquid. So, you can enjoy healthier meals with the microwave!</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_hnxMYg": {
+          "type": "question",
+          "settings": {
+            "title": "What if I need to return my Anyday?",
+            "text": "<p>Not into it? We'll give you a full refund and shipping’s on us. Contact us <a href=\"https://cookanyday.com/pages/contact-us\" title=\"Contact Us\">here</a>.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "question_46iLyU",
+        "question_CAiRfg",
+        "question_44RPCt",
+        "question_hnxMYg"
+      ],
+      "custom_css": [
+        "p {font-size: 115%;}"
+      ],
+      "settings": {
+        "style": "with-border",
+        "heading": "Frequently Asked Questions",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#f1ede7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "wave_divider_KDVTmh": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#f1ede7",
+        "background_color": "#c1a2f2",
+        "flip_vertical": false,
+        "flip_horizontal": true
+      }
+    },
+    "featured_collection_tgdmzK": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".quick-view__button,.product-card__top,.price,.quick-add.flex.justify-center.absolute.w-full.z-1.pointer-events-none {display: none;}",
+        ".product-card__content {padding: 24px;}",
+        "h2 {color: #000;}"
+      ],
+      "settings": {
+        "collection": "new-recipes",
+        "products": [],
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "show_view_all": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Enjoy Anyday recipes, every day",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#205b62",
+        "color_background": "#c1a2f2",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "#ffffff",
+        "color_button_background": "#ff3b1f",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "split_image_text_nyNhTg",
+    "wave_divider_WhUh9N",
+    "multicolumn_jxdG4B",
+    "wave_divider_gBVCUp",
+    "multicolumn_mkFJrt",
+    "wave_divider_q3pVFA",
+    "featured_collection_BPW4Vp",
+    "wave_divider_PRTbaY",
+    "multicolumn_JKL4gW",
+    "wave_divider_nQwDKU",
+    "rich_text_dUkjii",
+    "wave_divider_gAJndJ",
+    "172634394767308fad",
+    "faq_aLCBVp",
+    "wave_divider_KDVTmh",
+    "featured_collection_tgdmzK"
+  ]
+}
