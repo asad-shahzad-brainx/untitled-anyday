@@ -190,7 +190,7 @@
                   {%- render 'icon', icon: 'countdown-compact', size: 'sm', class: 'flex-auto hidden md:block' -%}
                   <countdown-timer
                     class="flex gap-3"
-                    data-year="{{ product.metafields.theme.countdown.value | date: "%Y" }}"
+       s             data-year="{{ product.metafields.theme.countdown.value | date: "%Y" }}"
                     data-month="{{ product.metafields.theme.countdown.value | date: "%m" }}"
                     data-day="{{ product.metafields.theme.countdown.value | date: "%d" }}"
                     data-hour="{{ product.metafields.theme.countdown.value | date: "%H" }}"
@@ -313,7 +313,6 @@
       <deliverr  data-component="Badge" data-productId="{{product.id}}"></deliverr>
     </div>
     
-
     {%- if show_quick_add and mobile_quick_add -%}
       <div class="lg:hidden">
         {%- if product.available -%}

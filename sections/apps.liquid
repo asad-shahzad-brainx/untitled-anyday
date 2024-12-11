@@ -6,6 +6,7 @@
     --button-margin-top: {{ section.settings.button_margin_top }}px;
     text-align: {{ section.settings.heading_alignment }};
     {%- render 'section-variables', section: section -%}
+    font-family: F37Jan;
   }
   .heading-wrapper {
     margin-bottom: var(--heading-margin-bottom);
@@ -24,7 +25,7 @@
 {%- endif -%}
 
 {%- if section.blocks.size > 0 -%}
-  <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
+  <div {% if request.page_type == 'product' %}id="reviews-{{ product.id }}" {% endif %} class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
     <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
       
       <!-- Heading -->

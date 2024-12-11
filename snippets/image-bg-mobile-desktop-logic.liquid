@@ -1,0 +1,18 @@
+{% comment %}
+{% render 'image-bg-mobile-desktop-logic', image_d: , image_m: , image_meta_d: , image_meta_m: , class_name: , image_attr: , %}
+{% endcomment %}
+
+{%- capture image_class_d -%}{{ class_name }} {%- endcapture -%}
+{%- capture image_class_m -%}{{ class_name }} medium-up-hide{%- endcapture -%}
+
+{% if image_meta_d != blank %}
+ {% render 'image-metafields', image: image_meta_d, class_name: image_class_d,  image_attr: image_attr %}
+ {% elsif image_d != blank %}
+ {% render 'image', image: image_d, class_name: image_class_d, image_attr: image_attr %}
+{% endif %}
+
+{% if image_meta_m != blank %}
+  {% render 'image-metafields', image: image_meta_m, class_name: image_class_m, image_attr: image_attr %}
+  {% elsif image_m != blank %}
+  {% render 'image', image: image_m, class_name: image_class_m, image_attr: image_attr %}
+{% endif %}

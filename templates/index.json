@@ -40,7 +40,7 @@
     "wave_divider_WhUh9N": {
       "type": "wave-divider",
       "custom_css": [
-        "@media (min-width:1025px) {div{display: none; }}"
+        "@media (min-width: 1025px) {div {display: none; }}"
       ],
       "settings": {
         "wave_color": "#205b62",
@@ -293,7 +293,7 @@
       "type": "wave-divider",
       "settings": {
         "wave_color": "#dcfae0",
-        "background_color": "#ffffff",
+        "background_color": "#fbfbf9",
         "flip_vertical": false,
         "flip_horizontal": true
       }
@@ -339,7 +339,7 @@
       "type": "wave-divider",
       "settings": {
         "wave_color": "#bed8fc",
-        "background_color": "#ffffff",
+        "background_color": "#fbfbf9",
         "flip_vertical": true,
         "flip_horizontal": false
       }
@@ -497,7 +497,7 @@
       "type": "wave-divider",
       "settings": {
         "wave_color": "#bed8fc",
-        "background_color": "#ffffff",
+        "background_color": "#fbfbf9",
         "flip_vertical": false,
         "flip_horizontal": true
       }
@@ -583,7 +583,7 @@
       "type": "wave-divider",
       "settings": {
         "wave_color": "#f1ede7",
-        "background_color": "#ffffff",
+        "background_color": "#fbfbf9",
         "flip_vertical": true,
         "flip_horizontal": false
       }

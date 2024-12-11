@@ -1,0 +1,275 @@
+{{ 'section-images-grid.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign enable_section = [request.page_type].metafields.images-grid.enable_section | default: false
+  assign padding_top_desk = section.settings.padding_top_desk
+  assign padding_bottom_desk = section.settings.padding_bottom_desk
+  assign padding_top_mob = section.settings.padding_top_mob
+  assign padding_bottom_mob = section.settings.padding_bottom_mob
+  assign bg_color = [request.page_type].metafields.images-grid.background_color | default: section.settings.bg_color | default: '#FFFFFF'
+  assign color = [request.page_type].metafields.images-grid.text_color | default: section.settings.color | default: '#000000'
+  assign heading = [request.page_type].metafields.images-grid.heading | default: section.settings.heading
+  assign subheading = [request.page_type].metafields.images-grid.subheading | default: section.settings.subheading
+  assign button_label = [request.page_type].metafields.images-grid.button_label | default: section.settings.button_label
+  assign button_url = [request.page_type].metafields.images-grid.button_url | default: section.settings.button_url
+  assign show_top_wave = [request.page_type].metafields.images-grid.show_top_wave | default: section.settings.show_top_wave
+  assign show_bottom_wave = [request.page_type].metafields.images-grid.show_bottom_wave | default: section.settings.show_bottom_wave
+  assign images_meta = [request.page_type].metafields.images-grid.images
+-%}
+
+{%- if template.name != 'product' -%}
+  {%- assign enable_section = true -%}
+{%- endif -%}
+
+{%- if template.name == 'product' -%}
+  {%- assign section_order = [request.page_type].metafields.images-grid.section_order | default: 19 -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      order: {{ section_order }};
+    }
+  </style>
+{%- endif -%}
+
+{%- if enable_section == true or enable_section == 'true' -%}
+  {% if section.blocks.size > 0 or heading != blank %}
+    <section class="images-grid" style="
+            --padding-top-desktop: {{ padding_top_desk }}px;
+            --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+            --padding-top-mobile: {{ padding_top_mob }}px;
+            --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+            --bg-color: {{ bg_color }};
+            --text-color: {{ color }};">
+      {%- if show_top_wave -%}
+        {%- render 'waves' with 'wave-top' -%}
+      {%- endif -%}
+
+      {%- if show_bottom_wave -%}
+        {%- render 'waves' with 'wave-bottom-reverse' -%}
+      {%- endif -%}
+
+      <div class="images-grid__wrapper">
+        {%- if heading != blank -%}
+          <div role="heading" aria-level="2" class="images-grid__heading">{{ heading }}</div>
+        {%- endif -%}
+
+        {%- if subheading != blank -%}
+          <p class="images-grid__subheading">{{ subheading }}</p>
+        {%- endif -%}
+
+        {%- if images_meta.size > 0 -%}
+          <div class="images-grid__content-wrapper">
+            {%- for image_meta in images_meta -%}
+              {%- liquid
+                assign description = [request.page_type].metafields.images-grid.description_for_blocks[forloop.index0]
+                assign color = [request.page_type].metafields.images-grid.text_color_for_blocks[forloop.index0]| default: '#000000'
+                assign link_url = [request.page_type].metafields.images-grid.link_url_for_blocks
+              -%}
+
+              {%- if image_meta != blank or description != blank -%}
+                <div class="images-grid__item" style="--text-color: {{ color }}">
+                  {%- if link_url != blank -%}
+                    <a class="images-grid__item-link" href="{{ link_url }}" aria-label="{{ description | strip_html }}"></a>
+                  {%- endif -%}
+
+                  {%- if image_meta != blank -%}
+                    <div class="images-grid__item-image-wrapper">
+                      {% render 'image-metafields', image: image_meta, class_name: "images-grid__item-image" , image_attr: , decorate_img: false %}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if description != blank -%}
+                    <div class="images-grid__item-description">
+                      {{ description }}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- elsif section.blocks.size > 0 -%}
+          <div class="images-grid__content-wrapper">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign image = block.settings.image
+                assign description = block.settings.description
+                assign color = block.settings.color | default: '#000000'
+                assign link_url = block.settings.link_url
+              -%}
+
+              {%- if image != blank or description != blank -%}
+                <div class="images-grid__item" style="--text-color: {{ color }}">
+                  {%- if link_url != blank -%}
+                    <a class="images-grid__item-link" href="{{ link_url }}" aria-label="{{ description }}"></a>
+                  {%- endif -%}
+
+                  {%- if image != blank -%}
+                    <div class="images-grid__item-image-wrapper">
+                      {% render 'image', image: image, class_name: "images-grid__item-image" %}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if description != blank -%}
+                    <div class="images-grid__item-description">
+                      {{ description }}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {% if button_url != blank and button_label != blank %}
+          <div class="text-with-table__btn-wrapper button-wrapper">
+            <a class="button button--primary button--md icon-with-text button--custom-margin" href="{{ button_url }}" is="hover-link">
+              <span class="btn-fill" data-fill="" style="transform: translateY(var(--motion-translateY)); --motion-translateY: -76%;"></span>
+              <span class="btn-text">
+                {{ button_label }}
+                <svg class="icon icon-arrow-right icon-sm transform" viewBox="0 0 21 20" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 10H18M18 10L12.1667 4.16675M18 10L12.1667 15.8334"></path>
+                </svg>
+              </span>
+            </a>
+            {% comment %} <a class="images-grid__link anyday-btn" href="{{ button_url }}">{{ button_label }}</a> {% endcomment %}
+          </div>
+        {%- endif -%}
+      </div>
+    </section>
+  {% endif %}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Images grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Section content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Some heading</p>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#D0DEF2"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button url"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_wave",
+      "label": "Show top wave",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link url"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Text color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name": "Images grid"
+    }
+  ]
+}
+{% endschema %}

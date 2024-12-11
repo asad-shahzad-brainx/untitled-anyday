@@ -1,0 +1,28 @@
+{%- capture icon_class -%}Svg Svg--{{ waves }}{%- endcapture -%}
+
+  {%- case waves -%}
+  {%- when 'wave-right' -%}
+    <svg class="{{ icon_class }} {{ class }}" width="96" height="100%" viewBox="0 0 96 710" fill="none" preserveAspectRatio="none">
+      <path d="M37.7791 721L1.00003 721L0.999999 1L84.2639 0.999996C-73.696 202.261 47.6932 340.162 84.2639 487.208C114.118 607.249 76.2075 667.745 37.7791 721Z" fill="currentColor" stroke="currentColor"/>
+    </svg>
+  {%- when 'wave-left' -%}
+    <svg class="{{ icon_class }} {{ class }}" width="96" height="100%" viewBox="0 0 96 710" fill="none" preserveAspectRatio="none">
+      <path d="M58.2207 721L94.9998 721L94.9998 1L11.736 0.999996C169.696 202.261 48.3066 340.162 11.7359 487.208C-18.1184 607.249 19.7923 667.745 58.2207 721Z" fill="currentColor" stroke="currentColor"/>
+    </svg>
+  {%- when 'wave-bottom' -%}
+    <svg class="{{ icon_class }} {{ class }}" height="70"  width="100%" preserveAspectRatio="none" viewBox="0 0 1440 96">
+      <path d="M1440 37.41V0H0V79.3225C402.522 -63.1003 678.324 46.349 972.416 79.3225C1212.5 106.24 1333.49 72.0585 1440 37.41Z" fill="currentColor"/>
+    </svg>
+  
+  {%- when 'wave-bottom-reverse' -%}
+    <svg class="{{ icon_class }} {{ class }}" height="70"  width="100%" preserveAspectRatio="none" viewBox="0 0 1440 96">
+      <path d="M0 32.4082V0.5H1440V74.3208C1037.48 -68.1021 761.676 41.3472 467.584 74.3208C227.502 101.239 106.509 67.0568 0 32.4082Z" fill="currentColor"/>
+    </svg>
+  
+  {%- when 'wave-top' -%}
+    <svg class="{{ icon_class }} {{ class }}" height="70"  width="100%" preserveAspectRatio="none" viewBox="0 0 1440 96">
+      <path d="M0.000260105 31.7063L-9.26682e-06 82.501L1440 82.5009L1440 5.94902C1037.48 93.4743 761.676 26.2128 467.584 5.9491C227.502 -10.5931 106.51 10.4132 0.000260105 31.7063Z" fill="currentColor"/>
+    </svg>
+  
+  
+  {%- endcase -%}

@@ -1,0 +1,47 @@
+{% comment %}
+{% render 'product-bundle-card', product_item: product, variant_item: variant, variant_img: variant_img, main-template: true %}
+{% endcomment %}
+
+{%- assign variant_img = variant_item.image -%}
+{%- assign variant_img_meta = variant_item.metafields.product_card.variant_images[0] -%}
+
+{%- unless variant_img or variant_img_meta -%}
+  {%- assign variant_img_meta = product_item.selected_or_first_available_variant.metafields.starter_set_template.images[0] -%}
+  {%- assign variant_img = product_item.featured_image -%}
+{%- endunless -%}
+
+<div class="product__bundle-block">
+    <div class="bundle__image {% if variant_item.available != true %} sold-out {% endif %}">
+      {%- if variant_img_meta != blank -%}
+        {%- render 'image-metafields', image: variant_img_meta, class_name: 'feature-bundle__image' -%}
+      {%- else -%}
+        {% render 'image', image: variant_img,class_name: 'feature-bundle__image' %}
+      {%- endif -%}
+
+			{% if main-template %}
+				<label for="{{ variant_item.id }}" class="product__bundle-label">
+					<input type="checkbox"
+						{% if variant_item.available != true %} disabled {% endif %}
+								 id="{{ variant_item.id }}"
+								 class="product__bundle-checkbox"
+								 data-bundle-id="{{ variant_item.id }}"
+								 data-bundle-price="{{ variant_item.price }}">
+					<span role="button" class="product__bundle-illusion-checkbox"></span>
+				</label>
+			{% endif %}
+    </div>
+
+    <div class="bundle__heading-wrapper">
+      <h4 itemprop="tool" class="bundle__heading">
+        {{ product_item.title }}
+      </h4>
+
+			{% if main-template %}
+				<span class="price-item">{{ variant_item.price | money }}</span>
+			{% endif %}
+    </div>
+
+    <div class="bundle__about">
+      {{ product_item.description }}
+    </div>
+  </div>
