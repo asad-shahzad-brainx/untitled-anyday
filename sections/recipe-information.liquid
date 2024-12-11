@@ -682,7 +682,7 @@
               </div>
             {%- when 'title' -%}
               <div 
-                class="product__title{% if block.settings.enable_bg %} product__title--has-background{% endif %}{% if block.settings.hide_on_mobile %} hide-on-mobile{% endif %}{% if block.settings.show_price %} with-price{% endif %}" 
+                class="product__title{% if block.settings.enable_bg %} product__title--has-background{% endif %}{% if block.settings.hide_on_mobile %} hide-on-mobile{% endif %}{% if block.settings.show_price %} with-price{% endif %}{% if block.settings.invert_icon_color %} invert-icon-color{% endif %}" 
                 {{ block.shopify_attributes }}
                 {% if block.settings.enable_bg %}
                   style="--color: {{ block.settings.text_color }}; --bg-color: {{ block.settings.bg_color }}; --review-count-color: {{ block.settings.review_count_color }};"
@@ -1366,6 +1366,62 @@
     </div>
   {% endif %}
 
+  {% assign compatible_products_block = section.blocks | where: 'type', 'compatible_products' | first %}
+  {% assign compatible_products = product.metafields.accentuate.compatible_products | split: '|' %}
+
+  {% if compatible_products_block != blank and compatible_products != blank %}
+    <div class="page-width relative compatible-products" style="--padding-bottom-desktop: {{ compatible_products_block.settings.padding_bottom_desk }}px; --padding-bottom-mobile: {{ compatible_products_block.settings.padding_bottom_mob }}px">
+      {% comment %} {% for product_item in compatible_products %}
+        {% assign handle = product_item | split: ':' | first %}
+        {% assign compatible_product = all_products[handle] %}
+        {{ compatible_product.title }}
+      {% endfor %} {% endcomment %}
+      {%- capture indicators -%}
+        {%- if compatible_products_block.settings.carousel_on_desktop -%}
+          <div class="indicators hidden lg:flex gap-2d5">
+            <button class="button button--secondary" type="button" is="previous-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" disabled>
+              <span class="btn-fill" data-fill></span>
+              <span class="btn-text">
+                {%- render 'icon', icon: 'chevron-left', class: 'transform' -%}
+              </span>
+            </button>
+            <button class="button button--secondary" type="button" is="next-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
+              <span class="btn-fill" data-fill></span>
+              <span class="btn-text">
+                {%- render 'icon', icon: 'chevron-right', class: 'transform' -%}
+              </span>
+            </button>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- render 'section-heading', section: compatible_products_block, section_button: indicators -%}
+      <slider-element id="Slider-{{ section.id }}" class="grid slider{% if compatible_products_block.settings.carousel_on_desktop %} slider--desktop{% endif %}{% if compatible_products_block.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card">
+        <motion-list class="product-grid card-grid card-grid--4 mobile:card-grid--1 grid">
+          {% for product_item in compatible_products %}
+            {% assign handle = product_item | split: ':' | first %}
+            {% assign compatible_product = all_products[handle] %}
+            {%- render 'product-card',
+              product: compatible_product,
+              lazy_load: false,
+              image_ratio: settings.product_image_ratio,
+              image_fill: settings.product_image_fill,
+              show_secondary_image: settings.product_secondary_image,
+              show_vendor: settings.product_vendor,
+              show_rating: settings.product_rating,
+              show_color_swatches: settings.product_color_swatches,
+              show_countdown: settings.product_countdown,
+              show_quick_add: settings.product_quick_add,
+              show_quick_view: settings.product_quick_view,
+              show_save_amount: settings.product_save_amount,
+              save_type: settings.product_save_type,
+              section_id: section.id
+            -%}
+          {%- endfor -%}
+        </motion-list>
+      </slider-element>
+    </div>
+  {% endif %}
+
   {%- liquid
     assign product_variant = product.selected_or_first_available_variant
     assign days_price_valid_until = 10 | times: 86400
@@ -1945,6 +2001,144 @@
       "type": "@app"
     },
     {
+      "type": "compatible_products",
+      "name": "Compatible Products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:sections.global.settings.heading.label",
+          "default": "Featured collection"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "title-sm",
+              "label": "t:sections.global.settings.heading_size.options__1.label"
+            },
+            {
+              "value": "title-md",
+              "label": "t:sections.global.settings.heading_size.options__2.label"
+            },
+            {
+              "value": "title-lg tracking-heading",
+              "label": "t:sections.global.settings.heading_size.options__3.label"
+            },
+            {
+              "value": "title-xl tracking-heading",
+              "label": "t:sections.global.settings.heading_size.options__4.label"
+            }
+          ],
+          "default": "title-md",
+          "label": "t:sections.global.settings.heading_size.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_alignment",
+          "label": "t:sections.global.settings.heading_alignment.label",
+          "options": [
+            {
+              "value": "text-left md:items-end md:flex-row",
+              "label": "t:sections.global.settings.heading_alignment.options__1.label"
+            },
+            {
+              "value": "text-center md:items-center",
+              "label": "t:sections.global.settings.heading_alignment.options__2.label"
+            },
+            {
+              "value": "text-right md:items-end md:flex-row-reverse",
+              "label": "t:sections.global.settings.heading_alignment.options__3.label"
+            }
+          ],
+          "default": "text-left md:items-end md:flex-row"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:sections.global.settings.heading_tag.options__1.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.global.settings.heading_tag.options__2.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.global.settings.heading_tag.options__3.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.global.settings.heading_tag.options__4.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.global.settings.heading_tag.options__5.label"
+            },
+            {
+              "value": "h6",
+              "label": "t:sections.global.settings.heading_tag.options__6.label"
+            },
+            {
+              "value": "div",
+              "label": "t:sections.global.settings.heading_tag.options__7.label"
+            },
+            {
+              "value": "span",
+              "label": "t:sections.global.settings.heading_tag.options__8.label"
+            },
+            {
+              "value": "p",
+              "label": "t:sections.global.settings.heading_tag.options__9.label"
+            }
+          ],
+          "default": "h2",
+          "label": "t:sections.global.settings.heading_tag.label",
+          "info": "t:sections.global.settings.heading_tag.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "carousel_on_desktop",
+          "label": "t:sections.global.settings.carousel_on_desktop.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "swipe_on_mobile",
+          "label": "t:sections.global.settings.swipe_on_mobile.label",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Block padding"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_desk",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Bottom desktop",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom_mob",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Bottom mobile",
+          "default": 15
+        },
+      ]
+    },
+    {
       "type": "recipe_variant_picker",
       "name": "Recipe variant picker",
       "limit": 1,
@@ -2366,6 +2560,12 @@
           "type": "checkbox",
           "id": "enable_bg",
           "label": "Enable background",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "invert_icon_color",
+          "label": "Invert recipe icon colors",
           "default": false
         },
         {

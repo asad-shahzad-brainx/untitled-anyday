@@ -16,7 +16,8 @@
           "type": "title",
           "settings": {
             "hide_on_mobile": true,
-            "enable_bg": true,
+            "enable_bg": false,
+            "invert_icon_color": true,
             "bg_color": "#205b62",
             "text_color": "#ffffff",
             "review_count_color": "#ff3b1f",
@@ -106,8 +107,8 @@
         "recipe_variant_picker_WAxMD9": {
           "type": "recipe_variant_picker",
           "settings": {
-            "padding_bottom_desk": 80,
-            "padding_bottom_mob": 25,
+            "padding_bottom_desk": 0,
+            "padding_bottom_mob": 0,
             "section_bg": "#f1ede7",
             "recipe_hero_bg": "#205b62",
             "recipe_hero_bg_mobile": "#dcfae0",
@@ -137,6 +138,19 @@
             "power_level_info": "<p>Certain foods cook best in the microwave at lower power levels. </p><p></p><p>[[video-power]]</p><p></p><p>Different microwaves have different settings. See your microwave manual (or look it up online) to learn how to change your microwave’s power level.</p><p>For many microwaves: enter the cook time, press the “Power” (or “Power Level”) button, and select a number between 1-10. Other microwaves may require selecting the Power Level first, and then entering the cook time. </p><p>Microwaves list power levels in different ways. Here’s a guide to help you adjust:</p><p>PL 10 = 100% = High (default)</p><p>PL 9 = 90% = High</p><p>PL 8 = 80% = Med-High</p><p>PL 7 = 70% = Med-High</p><p>PL 6 = 60% = Medium</p><p>PL 5 = 50% = Medium</p><p>PL 4 = 40% = Med-Low</p><p>PL 3 = 30% = Med-Low</p><p>PL 2 = 20% = Low</p><p>PL 1 = 10% = Low</p><p>You will know if the power level has been successfully changed if you hear periodic changes in the microwave’s tone after it begins cooking.<br/></p>",
             "video_power_level": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Power_Level_Updated.mp4?v=1647552976"
           }
+        },
+        "compatible_products_Aqnfya": {
+          "type": "compatible_products",
+          "settings": {
+            "heading": "Compatible AnyDay Dishes for this Recipe",
+            "heading_size": "title-md",
+            "heading_alignment": "text-left md:items-end md:flex-row",
+            "heading_tag": "h2",
+            "carousel_on_desktop": true,
+            "swipe_on_mobile": true,
+            "padding_bottom_desk": 80,
+            "padding_bottom_mob": 40
+          }
         }
       },
       "block_order": [
@@ -149,7 +163,8 @@
         "description",
         "recommended_products_MPxD3a",
         "complementary",
-        "recipe_variant_picker_WAxMD9"
+        "recipe_variant_picker_WAxMD9",
+        "compatible_products_Aqnfya"
       ],
       "custom_css": [".product__title.with-price {align-items: center;}"],
       "settings": {
