@@ -102,6 +102,10 @@
   color: var(--review-count-color);
 }
 
+.recipe .product__title.invert-icon-color .recipe__info-icons-wrapper {
+  filter: invert(1);
+}
+
 .recipe .product__title .product__title-wrapper {
   display: flex;
   justify-content: space-between;
@@ -372,6 +376,20 @@
   flex-direction: column;
   gap: 32px;
   padding-bottom: var(--padding-bottom-desktop, 0);
+}
+
+.recipe .compatible-products {
+  padding-bottom: var(--padding-bottom-desktop, 0);
+}
+
+@media (max-width: 768px) {
+  .recipe .recipe__info-bottom {
+    padding-bottom: var(--padding-bottom-mobile, 0);
+  }
+
+  .recipe .compatible-products {
+    padding-bottom: var(--padding-bottom-mobile, 0);
+  }
 }
 
 .recipe .recipe__bottom-row {

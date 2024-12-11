@@ -15,11 +15,13 @@
         "products_per_page": 12,
         "columns": 4,
         "columns_mobile": "2",
-        "enable_filtering": true,
+        "pagination": "click",
+        "classify_results": true,
+        "enable_filtering": false,
         "filter_collapsed": false,
         "filter_type": "drawer",
-        "filter_color_swatches": true,
-        "enable_sorting": true,
+        "filter_color_swatches": false,
+        "enable_sorting": false,
         "show_post_tags": true,
         "show_post_category": true,
         "show_post_date": true,
@@ -66,8 +68,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "recently-viewed"
-  ]
+  "order": ["main", "recently-viewed"]
 }
