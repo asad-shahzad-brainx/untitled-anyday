@@ -1,0 +1,203 @@
+{%- assign hide_section = product.metafields.step_by_step.hide_section -%}
+{%- assign bg_color = product.metafields.step_by_step.section_background_color -%}
+{%- assign heading =  product.metafields.step_by_step.heading -%}
+{%- assign heading_color = product.metafields.step_by_step.heading_color -%}
+{%- assign images = product.metafields.step_by_step.images -%}
+{%- assign descriptions_arr = product.metafields.step_by_step.slide_description -%}
+
+{%- assign padding_top_desk = section.settings.padding_top_desk -%}
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desk -%}
+{%- assign padding_top_mob = section.settings.padding_top_mob -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
+{%- assign show_bottom_wave = section.settings.show_bottom_wave -%}
+
+{% if heading == blank %}
+  {%- assign heading = 'sections.step_by_step.heading' | t -%}
+{% endif %}
+
+{%- capture slider_settings -%}
+  {
+  "slidesToShow": 3.3,
+  "slidesToScroll": 1,
+  "dots": false,
+  "infinite": false,
+  "responsive": [
+  {
+  "breakpoint": 750,
+  "settings": {
+  "arrows": false,
+  "slidesToShow": 2.3,
+  "slidesToScroll": 1
+  }
+  }
+  ]
+  }
+{%- endcapture -%}
+
+{% if hide_section != 'true' and images.size > 1 %}
+  {{ 'step-by-step-slideshow.css' | asset_url | stylesheet_tag }}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --bg-color: {{ bg_color }};
+    }
+  </style>
+
+  {%- if show_bottom_wave -%}
+    {%- render 'waves' with 'wave-bottom-reverse' -%}
+  {%- endif -%}
+
+  <section data-section-id="{{ section.id }}"
+           data-section-type="slideshow-only-settings"
+           style=" --padding-top-desktop: {{ padding_top_desk }}px;
+                   --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+                   --padding-top-mobile: {{ padding_top_mob }}px;
+                   --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+                   --bg-color: {{ bg_color }}; --heading-color: {{ heading_color }}"
+           class="slideshow  slideshow--step-by-step" >
+
+    {% if heading != blank %}
+      <h2 class="slideshow__heading">
+        {{ heading }}
+      </h2>
+    {% endif %}
+
+    {% if images.size > 1 %}
+      <div class="slideshow__slider-wrapper">
+        <span class="slideshow__slider-green-line"></span>
+        <div data-slides-counter="{{ images.size }}" data-slider-settings='{{ slider_settings }}' class="slideshow__slider">
+          {% for slide in images %}
+            {%- assign image = slide -%}
+            {%- assign descriptions = descriptions_arr[forloop.index0] -%}
+
+            <div class="slideshow__slide">
+              <div class="slideshow__slide-content">
+
+                <div class="slideshow__slide-image-wrapper">
+                  {% render 'image-metafields', image: image, class_name: 'slideshow__slide-image', image_attr: , %}
+                </div>
+
+                {% if descriptions != blank %}
+                  <div class="slideshow__slide-description-wrapper">
+                    <div class="slideshow__slide-description">
+                      {{ descriptions }}
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </section>
+
+  <script>
+    window.addEventListener("load", function() {
+      const container = $("#shopify-section-{{ section.id }}");
+      const slider = container.find('.slideshow__slider[data-slider-settings]');
+
+      if (slider.length) {
+        const settings = JSON.parse(slider.attr('data-slider-settings'));
+        slider.not('.slick-initialized').slick(settings);
+      }
+    })
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Step by step meta",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Only from metafields"
+    },
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 35
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#d0def2"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step by step meta",
+      "category": "Slideshow"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

@@ -1,0 +1,152 @@
+{%- assign total_time = product.selected_or_first_available_variant.metafields.accentuate.total_time -%}
+{%- assign active_time = product.selected_or_first_available_variant.metafields.accentuate.active_time -%}
+{%- assign recipe_icon = product.metafields.accentuate.recipe_icon -%}
+{%- assign video_url = product.metafields.accentuate.recipes_video -%}
+
+
+{% comment %} Automatization cook times {% endcomment %}
+{%- assign free_time = product.metafields.accentuate.free_time -%}
+{%- assign total_time = product.selected_or_first_available_variant.metafields.accentuate.total_time -%}
+{%- assign variant_size = product.selected_or_first_available_variant.option1 -%}
+{%- assign global_custom_current_variant = '' -%}
+
+{% comment %} Automatization cook times v3 {% endcomment %}
+{% if ingredients == blank or preparation == blank or active_time == blank or total_time == blank %}
+  {% for custom_current_variant in product.variants %}
+    {% if custom_current_variant.option1 == variant_size %}
+      {%- assign global_custom_current_variant = custom_current_variant -%}
+
+      {% if ingredients == blank %}
+        {%- assign ingredients = custom_current_variant.metafields.accentuate.ingredients -%}
+      {% endif %}
+
+      {% if preparation == blank %}
+        {%- assign preparation = custom_current_variant.metafields.accentuate.preparation -%}
+      {% endif %}
+
+      {% if active_time == blank %}
+        {%- assign active_time = custom_current_variant.metafields.accentuate.active_time -%}
+      {% endif %}
+
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if total_time != blank %}
+  {%- assign default_total_time = true -%}
+{% endif %}
+
+ {% comment %} Check serves count {% endcomment %}
+{%- assign variant_options = product.selected_or_first_available_variant.options -%}
+{%- assign variant_wattage = variant_options[1] -%}
+{%- assign search_string = 'coefficient_' | append: variant_wattage -%}
+{%- assign wattage_coefficients  = shop.metafields.globals[search_string] | default: 1 -%}
+
+{% if custom_tags_count == base_times_size_no_blank %}
+  {% if default_total_time != true  %}
+    {%- assign total_time = 0 -%}
+  {% endif %}
+
+  {% for i in (1..5) %}
+    {%- assign basic_cook_time_str = 'basic_cook_time_' | append: i -%}
+    {%- assign custom_tag_str = '[[cook-time-' | append: i | append: ']]' -%}
+    {%- assign basic_cook_time = global_custom_current_variant.metafields.accentuate[basic_cook_time_str] -%}
+
+    {% if basic_cook_time %}
+      {%- assign result_time = basic_cook_time | times: wattage_coefficients -%}
+      {%- assign local_time_floor = result_time | floor -%}
+      {%- assign local_time_up = result_time | ceil -%}
+
+      {% if local_time_floor != local_time_up %}
+        {%- assign local_time = local_time_floor | append: ' - ' | append: local_time_up -%}
+      {% else %}
+        {%- assign local_time = local_time_floor -%}
+      {% endif %}
+
+      {% if default_total_time != true  %}
+        {%- assign custom_tag_split_arr = preparation | split: custom_tag_str -%}
+        {%- assign custom_tag_sizes = custom_tag_split_arr.size | minus: 1 -%}
+        {%- assign result_time_local_tag = result_time | times: custom_tag_sizes -%}
+
+        {%- assign total_time = total_time | plus: result_time_local_tag -%}
+      {% endif %}
+
+      {% if i == 1 %}
+        {%- assign basic_cook_time_1 = local_time -%}
+        {% elsif i == 2 %}
+        {%- assign basic_cook_time_2 = local_time -%}
+        {% elsif i == 3 %}
+        {%- assign basic_cook_time_3 = local_time -%}
+        {% elsif i == 4 %}
+        {%- assign basic_cook_time_4 = local_time -%}
+        {% elsif i == 5 %}
+        {%- assign basic_cook_time_5 = local_time -%}
+      {% endif %}
+
+      {% if default_total_time != true %}
+        {%- assign total_time_floor = total_time | floor -%}
+        {%- assign total_time_up = total_time | ceil -%}
+
+        {% if total_time_floor != total_time_up %}
+          {%- assign total_time = total_time_floor | append: '-' | append: total_time_up | append: ' mins' -%}
+        {% else %}
+          {%- assign total_time = total_time_floor | append: ' mins' -%}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
+{%- if product != blank -%}
+  <div data-recipe-wish-card class="recipe-recommended__product-card">
+    <a href="{{ product.url }}" class="recipe-recommended__product-link"></a>
+
+    {%- if product.featured_image -%}
+      <div class="recipe-image__Wrapper">
+        {% render 'image', image: product.featured_image, class_name: 'recipe-recommended__product-image' %}
+
+        {%- if video_url != blank -%}
+          <div class="recipes-video-icon">
+            {% if settings.svg_play_icon != blank or settings.image_play_icon != blank %}
+              {% unless settings.image_play_icon != blank %}
+                {% if settings.svg_play_icon != blank %}
+                  {{ settings.svg_play_icon }}
+                {% endif %}
+              {% endunless %}
+              {% if settings.image_play_icon != blank %}
+                <div class="image-play-icon">
+                  {% render 'image', image: settings.image_play_icon %}
+                </div>
+              {% endif %}
+            {% else %}
+              {% render 'icon' with 'play' %}
+            {% endif %}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="recipe-recommended__product-description">
+      {%- if product.title != blank -%}
+        <h2 class="recipe-recommended__product-title">{{ product.title }}</h2>
+      {%- endif -%}
+      {%- if recipe_text != blank -%}
+        <div class="recipe-recommended__product-text">
+          {{ recipe_text }}
+        </div>
+      {%- else -%}
+        <div class="recipe-recommended__product-total">
+          {%- if active_time != blank -%}
+            <span class="recipe-recommended__product-time">PREP TIME — {{ active_time }}</span>
+          {%- endif -%}
+
+          {%- if total_time != blank -%}
+            <span class="recipe-recommended__product-time">COOK TIME — {{ total_time }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

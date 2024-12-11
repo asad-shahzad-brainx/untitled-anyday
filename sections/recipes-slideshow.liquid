@@ -1,0 +1,241 @@
+{{ 'recipes-slideshow.css' | asset_url | stylesheet_tag }}
+
+{%- assign enable_section = section.settings.enable_section -%}
+{%- assign enable_section_meta = product.metafields.accentuate.enable_section -%}
+{%- assign bg_color = product.metafields.accentuate.section_background_color | default: section.settings.section_bg -%}
+{%- assign heading =  product.metafields.accentuate.heading | default: section.settings.title -%}
+{%- assign heading_color = product.metafields.accentuate.heading_color | default: section.settings.heading_color -%}
+{%- assign button_label = product.metafields.recipes_slider.button_label | default:  section.settings.button_label -%}
+{%- assign button_link = product.metafields.recipes_slider.button_url | default:  section.settings.button_link -%}
+
+{%- assign ingredient_tag = product.metafields.recipes_slider.tag_for_recipes_slider | handleize -%}
+{% comment %} updated tag {% endcomment %}
+{% assign ingredient_tag = product.metafields.accentuate['recipe_slider_tag'].value.tag.value | handleize %}
+{% if ingredient_tag == blank %}
+  {%- assign ingredient_tag = product.metafields.recipes_slider.tag_for_recipes_slider | handleize -%}
+{% endif %}
+
+{%- assign padding_top_desk = section.settings.padding_top_desk -%}
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desk -%}
+{%- assign padding_top_mob = section.settings.padding_top_mob -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
+{%- assign show_bottom_wave = section.settings.show_bottom_wave -%}
+
+{%- capture slider_settings -%}
+  {
+  "slides_mobile": {{- slider_count_slides_m -}},
+  "slides_desktop": {{- slider_count_slides_d -}}
+  }
+{%- endcapture -%}
+
+
+{% if enable_section and enable_section_meta == 'true' %}
+  {% if ingredient_tag != blank %}
+    <section id="recipe-rec-recipes"
+             data-section-id="{{ section.id }}"
+             data-section-type="recommended-recipes"
+             style="
+               --padding-top-desktop: {{ padding_top_desk }}px;
+               --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+               --padding-top-mobile: {{ padding_top_mob }}px;
+               --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+               --bg-color: {{ bg_color }};{%- comment -%} for waves {%- endcomment -%}
+               background-color: {{ bg_color }}";
+             class="recipe-recommended ingredient-recipe-recommended"
+             data-ingredient="{{ ingredient_tag }}" >
+
+      {%- if show_bottom_wave -%}
+        {%- render 'waves' with 'wave-bottom-reverse' -%}
+      {%- endif -%}
+
+      {%- if heading != blank -%}
+        <h2 class="recipe-recommended__heading recipe-ingredient-recommended__heading"
+            style="background-color: {{ bg_color }}; color: {{ heading_color }}">{{ heading }}</h2>
+      {%- endif -%}
+      <div class="recipe-ingredient-recommended__wrapper collection-ingredient-recipes__grid"></div>
+
+      {%- if button_label != blank -%}
+        <div class="recipes-slideshow__btn-wrapper button-wrapper">
+          <a class="button button--primary button--md icon-with-text button--custom-margin" href="{{ button_link }}" is="hover-link">
+            <span class="btn-fill" data-fill="" style="transform: translateY(var(--motion-translateY)); --motion-translateY: -76%;"></span>
+            <span class="btn-text">
+              {{ button_label }}
+              <svg class="icon icon-arrow-right icon-sm transform" viewBox="0 0 21 20" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10H18M18 10L12.1667 4.16675M18 10L12.1667 15.8334"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      {%- endif -%}
+    </section>
+  {% endif %}
+{% endif %}
+
+<script>
+  	function recipeSlider() {
+		if ($('.collection-recipes__grid').length) {
+			const $containers = $('.collection-recipes__grid');
+
+      $containers.each((index, item) => {
+        const dataSliderDisable = $(item).attr('data-slider-disabled');
+        if (dataSliderDisable !== 'true') {
+          const containerWidth = item.getBoundingClientRect().width;
+          const $slides = $(item).find('.collection-recipe__product-block');
+          const slideMargin = 20;
+          let slidesWidth = 0;
+
+          if ($slides.length > 0) {
+            const firstSlideWidth = $slides[0].getBoundingClientRect().width;
+
+            slidesWidth = (firstSlideWidth + slideMargin) * $slides.length;
+          }
+
+          $(item).not('.slick-initialized').slick({
+            variableWidth: false,
+            dots: false,
+            infinite: false,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            initialSlide: 0,
+            centerMode: false,
+            responsive: [
+              {
+                breakpoint: 1250,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                }
+              },{
+                breakpoint: 749,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1
+                }
+              }
+            ]
+          });
+        }
+      })
+		}
+		
+	}
+
+  window.addEventListener("load", function() {
+  	if ($('#recipe-rec-recipes').length) {
+      const recommendRecipesSlider = $('.recipe-ingredient-recommended__wrapper');
+      const tag = $('#recipe-rec-recipes').attr('data-ingredient');
+      
+      if(tag) {
+        $.ajax({
+          url: window.origin + '/collections/recipes/' + tag + '?view=recommend-recipes',
+          method: 'GET',
+          success: function (data) {
+            $(recommendRecipesSlider).replaceWith(data).fadeIn();
+            const recommendRecipesSliderContainer = $('#recipe-rec-recipes')
+            
+            recipeSlider();
+          }
+        });
+      }
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Slideshow recipes(tag)",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable section",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 55
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#d0def2"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow recipes(tag)",
+      "category": "Slideshow"
+    }
+  ]
+}
+{% endschema %}

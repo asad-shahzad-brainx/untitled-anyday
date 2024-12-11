@@ -169,6 +169,10 @@
     "blog_posts": {
       "view_all": "View all"
     },
+    "text_width_table": {
+      "table_current_wattage": "Cook time calculated for",
+      "text_after_wattage": "microwave"
+    },
     "featured_collection": {
       "view_all": "View all",
       "view_all_label": "View all products in the {{ collection_name }} collection"
@@ -179,8 +183,8 @@
     "map": {
       "address_error": "Error looking up that address",
       "address_no_results": "No results for that address",
-      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium Plan<\/a>.",
-      "auth_error_html": "There was a problem authenticating your Google Maps account. Create and enable the <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">JavaScript API<\/a> and <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">Geocoding API<\/a> permissions of your app."
+      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https://developers.google.com/maps/premium/usage-limits\">Premium Plan</a>.",
+      "auth_error_html": "There was a problem authenticating your Google Maps account. Create and enable the <a href=\"https://developers.google.com/maps/documentation/javascript/get-api-key\">JavaScript API</a> and <a href=\"https://developers.google.com/maps/documentation/geocoding/get-api-key\">Geocoding API</a> permissions of your app."
     },
     "slideshow": {
       "play_slideshow": "Play slideshow",
@@ -417,7 +421,7 @@
       "regular_price": "Regular price",
       "sale_price": "Sale price",
       "unit_price": "Unit price",
-      "from_text_html": "<small>From<\/small> {{ price }}"
+      "from_text_html": "<small>From</small> {{ price }}"
     },
     "product": {
       "product_variants": "Product variants",
@@ -430,7 +434,7 @@
       "pre_order": "Pre-order",
       "vendor": "Vendor",
       "include_taxes": "Tax included.",
-      "shipping_policy_html": "<a href='{{ link }}'>Shipping<\/a> calculated at checkout.",
+      "shipping_policy_html": "<a href='{{ link }}'>Shipping</a> calculated at checkout.",
       "will_not_ship_until": "Ready to ship {{ date }}",
       "will_be_in_stock_after": "Back in stock {{ date }}",
       "waiting_for_stock": "Inventory on the way",
@@ -438,7 +442,24 @@
       "xr_button_label": "View in your space, loads item in augmented reality window",
       "read_more": "View full details",
       "quick_add": "Add",
-      "quick_view": "View"
+      "quick_view": "View",
+      "junip_review_count": "reviews"
+    },
+    "recipe": {
+      "times": {
+        "prep_time_heading": "Prep Time",
+        "cook_time_heading": "Cook Time"
+      },
+      "recommended_products": {
+        "label_desktop": "What You’ll Need",
+        "label_mobile": "What You’ll Need"
+      },
+      "recipe_info": {
+        "ingredients_heading": "Ingredients",
+        "preparation_heading": "Preparation",
+        "suggestions_heading": "Serving suggestions & tips",
+        "recipe_notes_heading": "Recipe notes"
+      }
     },
     "media": {
       "open_media": "Open media {{ index }} in modal",
