@@ -1,0 +1,156 @@
+.collection-recipe * {
+  font-family: F37Jan;
+}
+
+.collection-recipe .collection-recipe__button-wrapper.mobile {
+  display: none;
+}
+
+.collection-recipe__mobile-filters {
+  position: fixed;
+  background-color: #f1ede7;
+  height: 100%;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: none;
+}
+
+.collection-recipe .collection-recipe__section-title {
+  position: relative;
+  padding-block: 20px;
+}
+
+.collection-recipe .collection-recipe__section-title-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-recipe .collection-recipe__section-title-bg-image.only-mobile {
+  display: none;
+}
+
+.collection-recipe .collection-recipe__section-title h2,
+.collection-recipe .collection-recipe__section-title .h2 {
+  margin: 0;
+  font-size: 40px;
+  line-height: 47px;
+  letter-spacing: 1.5px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.collection-recipe .recipes-page-form {
+  position: relative;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.collection-recipe .recipes-page-form svg {
+  width: 20px;
+  height: 20px;
+}
+
+.collection-recipe .search-form__input {
+  padding-left: 75px;
+  padding-right: 25px;
+  border-radius: 6px;
+  width: 390px;
+  height: 60px;
+}
+
+.collection-recipe .search-form__input::placeholder {
+  font-size: 18px;
+}
+
+.collection-recipe .recipes-page-form .ingredients-search__icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+}
+
+.collection-recipe .recipes-page-form .ingredients-search__icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.collection-recipe .recipes-page-form .search-form__clear-action {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
+
+.collection-recipe .recipes-page-form .search-form__connected-submit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+}
+
+.collection-recipe .collection-recipe__grid {
+  display: flex;
+  overflow-x: scroll;
+  gap: 32px;
+  margin-inline: auto;
+  scrollbar-width: thin;
+  scrollbar-color: gray transparent;
+}
+
+.collection-recipe .collection-recipe__block {
+  display: flex;
+}
+
+.collection-recipe .collection-recipe__block .collection-recipe__filters {
+  min-width: 290px;
+}
+
+.collection-recipe .collection-recipe__block .Recipes__Wrapper {
+  min-width: 0;
+}
+
+.collection-recipe .collection-recipe__product-block {
+  min-width: 230px;
+}
+
+.collection-recipe .collection-recipe__product-block img {
+  width: 100%;
+}
+
+@media (max-width: 990px) {
+  .collection-recipe .collection-recipe__filters {
+    display: none;
+  }
+
+  .collection-recipe .collection-recipe__button-wrapper.mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .collection-recipe .collection-recipe__section-title-bg-image {
+    display: none;
+  }
+
+  .collection-recipe .collection-recipe__section-title-bg-image.only-mobile {
+    display: block;
+  }
+
+  .collection-recipe .search-form__input {
+    padding-right: 24px;
+    padding-left: 48px;
+    width: 320px;
+  }
+}

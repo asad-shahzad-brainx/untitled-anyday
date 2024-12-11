@@ -45,7 +45,13 @@
       {%- render 'predictive-search', section_id: section.id, context: 'page' -%}
     </div>
 
-    {%- paginate search.results by section.settings.products_per_page -%}
+    {% if section.settings.classify_results %}
+      {% assign products_per_page = 1000 %}
+    {% else %}
+      {% assign products_per_page = section.settings.products_per_page %}
+    {% endif %}
+
+    {%- paginate search.results by products_per_page -%}
       {%- if search.results_count > 0 -%}
         {%- render 'facets-sticky',
           results: search,
@@ -58,7 +64,7 @@
       {%- endif -%}
 
       {%- unless enable_filtering or enable_sorting -%}
-        {%- if search.results_count > 0 -%}
+        {%- if search.results_count > 0 and section.settings.classify_results == false -%}
           <div class="collection__topbar hidden xl:flex items-center gap-4">
             <p class="text-base lg:text-lg" role="status">{{ 'general.search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}</p>
           </div>
@@ -96,17 +102,19 @@
               </div>
             {%- endif -%}
 
-            <p id="ProductCount" class="text-base lg:text-lg" role="status">
-              {%- liquid
-                if search.results_count
-                  echo 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count
-                elsif search.products_count == search.all_products_count
-                  echo 'collections.general.product_count_simple' | t: count: search.products_count
-                else
-                  echo 'collections.general.product_count' | t: product_count: search.products_count, count: search.all_products_count
-                endif
-              -%}
-            </p>
+            {% unless section.settings.classify_results %}
+              <p id="ProductCount" class="text-base lg:text-lg" role="status">
+                {%- liquid
+                  if search.results_count
+                    echo 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count
+                  elsif search.products_count == search.all_products_count
+                    echo 'collections.general.product_count_simple' | t: count: search.products_count
+                  else
+                    echo 'collections.general.product_count' | t: product_count: search.products_count, count: search.all_products_count
+                  endif
+                -%}
+              </p>
+            {% endunless %}
 
             {%- if enable_sorting -%}
               {%- liquid
@@ -182,150 +190,339 @@
           {%- endif -%}
 
           {%- if search.results_count > 0 -%}
-            <motion-list class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
-              {%- for item in search.results -%}
-                {%- liquid
-                  for block in section.blocks
-                    if block.type == 'promotion' or block.type == 'promotion_video'
-                      if forloop.parentloop.index != block.settings.position
-                        continue
+            {% unless section.settings.classify_results %}
+              <motion-list class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative">
+                {%- for item in search.results -%}
+                  {%- liquid
+                    for block in section.blocks
+                      if block.type == 'promotion' or block.type == 'promotion_video'
+                        if forloop.parentloop.index != block.settings.position
+                          continue
+                        endif
+
+                        render 'promotion-card', block: block
                       endif
+                    endfor
 
-                      render 'promotion-card', block: block
+                    assign lazy_load = false
+                    if forloop.index > 2
+                      assign lazy_load = true
                     endif
-                  endfor
+                  -%}
 
-                  assign lazy_load = false
-                  if forloop.index > 2
-                    assign lazy_load = true
-                  endif
-                -%}
+                  {%- case item.object_type -%}
+                    {%- when 'product' -%}
+                      {%- render 'product-card',
+                        product: item,
+                        lazy_load: lazy_load,
+                        image_ratio: settings.product_image_ratio,
+                        image_fill: settings.product_image_fill,
+                        show_secondary_image: settings.product_secondary_image,
+                        show_vendor: settings.product_vendor,
+                        show_rating: settings.product_rating,
+                        show_color_swatches: settings.product_color_swatches,
+                        show_countdown: settings.product_countdown,
+                        show_quick_add: settings.product_quick_add,
+                        show_quick_view: settings.product_quick_view,
+                        show_save_amount: settings.product_save_amount,
+                        save_type: settings.product_save_type,
+                        section_id: section.id
+                      -%}
 
-                {%- case item.object_type -%}
-                  {%- when 'product' -%}
-                    {%- render 'product-card',
-                      product: item,
-                      lazy_load: lazy_load,
-                      image_ratio: settings.product_image_ratio,
-                      image_fill: settings.product_image_fill,
-                      show_secondary_image: settings.product_secondary_image,
-                      show_vendor: settings.product_vendor,
-                      show_rating: settings.product_rating,
-                      show_color_swatches: settings.product_color_swatches,
-                      show_countdown: settings.product_countdown,
-                      show_quick_add: settings.product_quick_add,
-                      show_quick_view: settings.product_quick_view,
-                      show_save_amount: settings.product_save_amount,
-                      save_type: settings.product_save_type,
-                      section_id: section.id
-                    -%}
+                    {%- when 'article' -%}
+                      {%-liquid
+                        assign article = item
+                        assign featured_media = article.image
+                        assign image_ratio = settings.product_image_ratio
+                        assign image_fill = settings.product_image_fill
 
-                  {%- when 'article' -%}
-                    {%-liquid
-                      assign article = item
-                      assign featured_media = article.image
-                      assign image_ratio = settings.product_image_ratio
-                      assign image_fill = settings.product_image_fill
+                        assign split_1 = article.url | split: '/blogs/'
+                        assign split_2 = split_1[1] | split: '/'
+                        assign blog_handle = split_2[0] | strip
+                        assign blog = blogs[blog_handle]
+                      -%}
+                      <div class="card article-card product-card product-card--{{ settings.card_style }}{% if settings.card_border_thickness > 0 %} product-card--thickness{% endif %}{% unless featured_media %} no-media{% endunless %} grid leading-none relative overflow-hidden">
+                        <div class="product-card__media relative h-auto">
+                          {%- if section.settings.show_post_tags and article.tags.size > 0 -%}
+                            <div class="badges z-2 absolute grid gap-3">
+                              {%- if article.metafields.theme.tag_color.value != blank and article.metafields.theme.tag_background.value != blank -%}
+                                {%- capture badge_style -%}
+                                --badge-foreground: rgb({{ article.metafields.theme.tag_color.value.rgb }}); --badge-background: rgb({{ article.metafields.theme.tag_background.value.rgb }});
+                                {%- endcapture -%}
+                              {%- endif -%}
+                              
+                              {%- for tag in article.tags -%}
+                                <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="badge{% if badge_style %} badge--custom{% endif %} font-medium leading-none rounded-full"{% if badge_style %} style="{{ badge_style }}"{% endif %}>{{ tag }}</a>
+                              {%- endfor -%}
+                            </div>
+                          {%- endif -%}
 
-                      assign split_1 = article.url | split: '/blogs/'
-                      assign split_2 = split_1[1] | split: '/'
-                      assign blog_handle = split_2[0] | strip
-                      assign blog = blogs[blog_handle]
-                    -%}
-                    <div class="card article-card product-card product-card--{{ settings.card_style }}{% if settings.card_border_thickness > 0 %} product-card--thickness{% endif %}{% unless featured_media %} no-media{% endunless %} grid leading-none relative overflow-hidden">
-                      <div class="product-card__media relative h-auto">
-                        {%- if section.settings.show_post_tags and article.tags.size > 0 -%}
-                          <div class="badges z-2 absolute grid gap-3">
-                            {%- if article.metafields.theme.tag_color.value != blank and article.metafields.theme.tag_background.value != blank -%}
-                              {%- capture badge_style -%}
-                              --badge-foreground: rgb({{ article.metafields.theme.tag_color.value.rgb }}); --badge-background: rgb({{ article.metafields.theme.tag_background.value.rgb }});
-                              {%- endcapture -%}
-                            {%- endif -%}
-                            
-                            {%- for tag in article.tags -%}
-                              <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="badge{% if badge_style %} badge--custom{% endif %} font-medium leading-none rounded-full"{% if badge_style %} style="{{ badge_style }}"{% endif %}>{{ tag }}</a>
-                            {%- endfor -%}
+                          {%- if featured_media -%}
+                            <a class="block relative media media--{{ image_ratio }}{% unless image_fill %} media--contain{% endunless %} overflow-hidden" href="{{ article.url }}">
+                              {{- featured_media | image_url: width: featured_media.width | image_tag: loading: 'lazy', widths: '180,360,540,720,900,1080', is: 'lazy-image' -}}
+                            </a>
+                          {%- else -%}
+                            <span class="block aspect-{{ image_ratio }}"></span>
+                          {%- endif -%}
+                        </div>
+                        <div class="product-card__content flex flex-col{% if featured_media %} justify-start text-{{ settings.card_text_alignment }}{% else %} justify-center items-center absolute top-0 left-0 w-full h-full{% endif %}">
+                          {%- if section.settings.show_post_category -%}
+                            <div class="product-card__top w-full">
+                              <a class="caption reversed-link uppercase leading-none tracking-widest" href="{{ blog.url }}">
+                                {{- blog.title -}}
+                              </a>
+                            </div>
+                          {%- endif -%}
+
+                          <div class="product-card__details flex flex-col lg:flex-row items-baseline gap-2 w-full">
+                            <p class="grow">
+                              <a class="product-card__title reversed-link text-base-xl font-medium leading-tight" href="{{ article.url }}">
+                                {{- article.title | escape -}}
+                              </a>
+                            </p>
                           </div>
-                        {%- endif -%}
 
-                        {%- if featured_media -%}
-                          <a class="block relative media media--{{ image_ratio }}{% unless image_fill %} media--contain{% endunless %} overflow-hidden" href="{{ article.url }}">
-                            {{- featured_media | image_url: width: featured_media.width | image_tag: loading: 'lazy', widths: '180,360,540,720,900,1080', is: 'lazy-image' -}}
-                          </a>
-                        {%- else -%}
+                          {%- if section.settings.show_post_date or section.settings.show_post_comments or section.settings.show_post_author -%}
+                            <div class="product-card__bottom">
+                              <ul class="article-card__top flex flex-wrap gap-4">
+                                {%- if section.settings.show_post_date -%}
+                                  <li class="inline-flex gap-2 text-xs relative">
+                                    {%- render 'icon', icon: 'calendar', size: 'xs', class: 'stroke-1' -%}
+                                    {{- article.published_at | time_tag: format: 'month_day_year' -}}
+                                  </li>
+                                {%- endif -%}
+                      
+                                {%- if section.settings.show_post_comments -%}
+                                  <li class="inline-flex gap-2 text-xs relative">
+                                    {%- render 'icon', icon: 'comment', size: 'xs', class: 'stroke-1' -%}
+                                    <a class="reversed-link" href="{{ article.url }}#comments">
+                                      {{- 'blogs.comments.with_count' | t: count: article.comments_count -}}
+                                    </a>
+                                  </li>
+                                {%- endif -%}
+                      
+                                {%- if section.settings.show_post_author -%}
+                                  <li class="italic text-xs relative">
+                                    {%- capture author -%}<span class="font-medium not-italic">{{ article.author }}</span>{%- endcapture -%}
+                                    {{- 'blogs.article.written_by_html' | t: author: author -}}
+                                  </li>
+                                {%- endif -%}
+                              </ul>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+
+                    {%- when 'page' -%}
+                      <div class="card article-card product-card product-card--{{ settings.card_style }}{% if settings.card_border_thickness > 0 %} product-card--thickness{% endif %} no-media grid leading-none relative overflow-hidden">
+                        <div class="product-card__media relative h-auto">
                           <span class="block aspect-{{ image_ratio }}"></span>
-                        {%- endif -%}
-                      </div>
-                      <div class="product-card__content flex flex-col{% if featured_media %} justify-start text-{{ settings.card_text_alignment }}{% else %} justify-center items-center absolute top-0 left-0 w-full h-full{% endif %}">
-                        {%- if section.settings.show_post_category -%}
-                          <div class="product-card__top w-full">
-                            <a class="caption reversed-link uppercase leading-none tracking-widest" href="{{ blog.url }}">
-                              {{- blog.title -}}
-                            </a>
-                          </div>
-                        {%- endif -%}
-
-                        <div class="product-card__details flex flex-col lg:flex-row items-baseline gap-2 w-full">
-                          <p class="grow">
-                            <a class="product-card__title reversed-link text-base-xl font-medium leading-tight" href="{{ article.url }}">
-                              {{- article.title | escape -}}
-                            </a>
-                          </p>
                         </div>
-
-                        {%- if section.settings.show_post_date or section.settings.show_post_comments or section.settings.show_post_author -%}
-                          <div class="product-card__bottom">
-                            <ul class="article-card__top flex flex-wrap gap-4">
-                              {%- if section.settings.show_post_date -%}
-                                <li class="inline-flex gap-2 text-xs relative">
-                                  {%- render 'icon', icon: 'calendar', size: 'xs', class: 'stroke-1' -%}
-                                  {{- article.published_at | time_tag: format: 'month_day_year' -}}
-                                </li>
-                              {%- endif -%}
-                    
-                              {%- if section.settings.show_post_comments -%}
-                                <li class="inline-flex gap-2 text-xs relative">
-                                  {%- render 'icon', icon: 'comment', size: 'xs', class: 'stroke-1' -%}
-                                  <a class="reversed-link" href="{{ article.url }}#comments">
-                                    {{- 'blogs.comments.with_count' | t: count: article.comments_count -}}
-                                  </a>
-                                </li>
-                              {%- endif -%}
-                    
-                              {%- if section.settings.show_post_author -%}
-                                <li class="italic text-xs relative">
-                                  {%- capture author -%}<span class="font-medium not-italic">{{ article.author }}</span>{%- endcapture -%}
-                                  {{- 'blogs.article.written_by_html' | t: author: author -}}
-                                </li>
-                              {%- endif -%}
-                            </ul>
+                        <div class="product-card__content flex flex-col justify-center items-center absolute top-0 left-0 w-full h-full">
+                          <div class="product-card__details flex flex-col lg:flex-row items-baseline gap-2 w-full">
+                            <p class="grow">
+                              <a class="product-card__title reversed-link text-base-xl font-medium leading-tight" href="{{ item.url }}">
+                                {{- item.title | escape -}}
+                              </a>
+                            </p>
                           </div>
-                        {%- endif -%}
+                        </div>
                       </div>
-                    </div>
 
-                  {%- when 'page' -%}
-                    <div class="card article-card product-card product-card--{{ settings.card_style }}{% if settings.card_border_thickness > 0 %} product-card--thickness{% endif %} no-media grid leading-none relative overflow-hidden">
-                      <div class="product-card__media relative h-auto">
+                  {%- endcase -%}
+                {%- endfor -%}
+              </motion-list>
+            {% else %}
+              {% assign product_array = search.results | where: 'type', 'Item' %}
+              {% assign recipe_array = search.results | where: 'type', 'Recipe' %}
+              {% assign blog_array = search.results | where: 'object_type', 'article' %}
+
+              {% assign number_of_products = product_array.size %}
+              {% assign number_of_recipes = recipe_array.size %}
+              {% assign number_of_blogs = blog_array.size %}
+
+              {% if number_of_products > 0 %}
+                {%- assign selected_tab = 'Products' -%}
+              {%- elsif number_of_recipes > 0 -%}
+                {%- assign selected_tab = 'Recipes' -%}
+              {%- elsif number_of_blogs > 0 -%}
+                {%- assign selected_tab = 'Blog' -%}
+              {% else %}
+                {%- assign selected_tab = 'product' -%}
+              {% endif %}
+
+              {% assign head_arr = 'Products,Recipes,Blog' | split: ',' %}
+
+              {% capture product_cards %}
+                {% for product in product_array %}
+                  {%- render 'product-card',
+                    product: product,
+                    lazy_load: lazy_load,
+                    image_ratio: settings.product_image_ratio,
+                    image_fill: settings.product_image_fill,
+                    show_secondary_image: settings.product_secondary_image,
+                    show_vendor: settings.product_vendor,
+                    show_rating: settings.product_rating,
+                    show_color_swatches: settings.product_color_swatches,
+                    show_countdown: settings.product_countdown,
+                    show_quick_add: settings.product_quick_add,
+                    show_quick_view: settings.product_quick_view,
+                    show_save_amount: settings.product_save_amount,
+                    save_type: settings.product_save_type,
+                    section_id: section.id
+                  -%}
+                {% endfor %}
+              {% endcapture %}
+
+              {% capture recipe_cards %}
+                {% for recipe in recipe_array %} 
+                  {%- render 'product-card',
+                    product: recipe,
+                    lazy_load: lazy_load,
+                    image_ratio: settings.product_image_ratio,
+                    image_fill: settings.product_image_fill,
+                    show_rating: settings.product_rating,
+                    section_id: section.id
+                  -%}
+                {% endfor %}
+              {% endcapture %}
+
+              {% capture blog_cards %}
+                {% for blog in blog_array %}
+                  {%-liquid
+                    assign article = blog
+                    assign featured_media = article.image
+                    assign image_ratio = settings.product_image_ratio
+                    assign image_fill = settings.product_image_fill
+
+                    assign split_1 = article.url | split: '/blogs/'
+                    assign split_2 = split_1[1] | split: '/'
+                    assign blog_handle = split_2[0] | strip
+                    assign blog = blogs[blog_handle]
+                  -%}
+                  <div class="card article-card product-card product-card--{{ settings.card_style }}{% if settings.card_border_thickness > 0 %} product-card--thickness{% endif %}{% unless featured_media %} no-media{% endunless %} grid leading-none relative overflow-hidden">
+                    <div class="product-card__media relative h-auto">
+                      {%- if section.settings.show_post_tags and article.tags.size > 0 -%}
+                        <div class="badges z-2 absolute grid gap-3">
+                          {%- if article.metafields.theme.tag_color.value != blank and article.metafields.theme.tag_background.value != blank -%}
+                            {%- capture badge_style -%}
+                            --badge-foreground: rgb({{ article.metafields.theme.tag_color.value.rgb }}); --badge-background: rgb({{ article.metafields.theme.tag_background.value.rgb }});
+                            {%- endcapture -%}
+                          {%- endif -%}
+                          
+                          {%- for tag in article.tags -%}
+                            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="badge{% if badge_style %} badge--custom{% endif %} font-medium leading-none rounded-full"{% if badge_style %} style="{{ badge_style }}"{% endif %}>{{ tag }}</a>
+                          {%- endfor -%}
+                        </div>
+                      {%- endif -%}
+
+                      {%- if featured_media -%}
+                        <a class="block relative media media--{{ image_ratio }}{% unless image_fill %} media--contain{% endunless %} overflow-hidden" href="{{ article.url }}">
+                          {{- featured_media | image_url: width: featured_media.width | image_tag: loading: 'lazy', widths: '180,360,540,720,900,1080', is: 'lazy-image' -}}
+                        </a>
+                      {%- else -%}
                         <span class="block aspect-{{ image_ratio }}"></span>
-                      </div>
-                      <div class="product-card__content flex flex-col justify-center items-center absolute top-0 left-0 w-full h-full">
-                        <div class="product-card__details flex flex-col lg:flex-row items-baseline gap-2 w-full">
-                          <p class="grow">
-                            <a class="product-card__title reversed-link text-base-xl font-medium leading-tight" href="{{ item.url }}">
-                              {{- item.title | escape -}}
-                            </a>
-                          </p>
-                        </div>
-                      </div>
+                      {%- endif -%}
                     </div>
+                    <div class="product-card__content flex flex-col{% if featured_media %} justify-start text-{{ settings.card_text_alignment }}{% else %} justify-center items-center absolute top-0 left-0 w-full h-full{% endif %}">
+                      {%- if section.settings.show_post_category -%}
+                        <div class="product-card__top w-full">
+                          <a class="caption reversed-link uppercase leading-none tracking-widest" href="{{ blog.url }}">
+                            {{- blog.title -}}
+                          </a>
+                        </div>
+                      {%- endif -%}
 
-                {%- endcase -%}
-              {%- endfor -%}
-            </motion-list>
+                      <div class="product-card__details flex flex-col lg:flex-row items-baseline gap-2 w-full">
+                        <p class="grow">
+                          <a class="product-card__title reversed-link text-base-xl font-medium leading-tight" href="{{ article.url }}">
+                            {{- article.title | escape -}}
+                          </a>
+                        </p>
+                      </div>
+
+                      {%- if section.settings.show_post_date or section.settings.show_post_comments or section.settings.show_post_author -%}
+                        <div class="product-card__bottom">
+                          <ul class="article-card__top flex flex-wrap gap-4">
+                            {%- if section.settings.show_post_date -%}
+                              <li class="inline-flex gap-2 text-xs relative">
+                                {%- render 'icon', icon: 'calendar', size: 'xs', class: 'stroke-1' -%}
+                                {{- article.published_at | time_tag: format: 'month_day_year' -}}
+                              </li>
+                            {%- endif -%}
+                  
+                            {%- if section.settings.show_post_comments -%}
+                              <li class="inline-flex gap-2 text-xs relative">
+                                {%- render 'icon', icon: 'comment', size: 'xs', class: 'stroke-1' -%}
+                                <a class="reversed-link" href="{{ article.url }}#comments">
+                                  {{- 'blogs.comments.with_count' | t: count: article.comments_count -}}
+                                </a>
+                              </li>
+                            {%- endif -%}
+                  
+                            {%- if section.settings.show_post_author -%}
+                              <li class="italic text-xs relative">
+                                {%- capture author -%}<span class="font-medium not-italic">{{ article.author }}</span>{%- endcapture -%}
+                                {{- 'blogs.article.written_by_html' | t: author: author -}}
+                              </li>
+                            {%- endif -%}
+                          </ul>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endcapture %}
+
+              <div class="search-results">
+                <div class="search-results__tabs">
+                  {% for head in head_arr %}
+                    <div data-target-list="{{ head | downcase }}" class="search-results__tab {% if head == selected_tab %}active{% endif %}">
+                      {{ head }}
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="search-results__lists">
+                  {% for head in head_arr %}
+                    {% case head %}
+                      {% when 'Products' %}
+                        {% assign number_of_cards = number_of_products %}
+                        {% assign card_array = product_cards %}
+                      {% when 'Recipes' %}
+                        {% assign number_of_cards = number_of_recipes %}
+                        {% assign card_array = recipe_cards %}
+                      {% when 'Blog' %}
+                        {% assign number_of_cards = number_of_blogs %}
+                        {% assign card_array = blog_cards %}
+                    {% endcase %}
+
+                    <div id="searchList-{{ head | downcase }}" class="search-results__list-wrapper {% if head == selected_tab %}active{% endif %}">
+                      {% if number_of_cards == 0 %}
+                        <h3 class="search-results__list-header-title search-results__list-header-empty">Sorry, there are no relevant results.</h3>
+                      {% else %}
+                        <h3 class="search-results__list-header-title">{{ 'general.search.results_with_count_and_term' | t: terms: search.terms, count: number_of_cards }}</h3>
+                        <motion-list 
+                          class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative search-results__list {% if number_of_cards > 12 %}has-more{% endif %}"
+                        >
+                          {{ card_array }}
+                        </motion-list>
+                        {% if number_of_cards > 12 %}
+                          <div class="show-more">
+                            <button type="button" class="infinite-scroll button button--primary button--fixed" is="hover-button">
+                              <span class="btn-fill" data-fill></span>
+                              <span class="btn-text" data-text>{{ 'general.pagination.show_more' | t }}</span>
+                            </button>
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endunless %}
 
             {%- liquid
-              if paginate.pages > 1
+              if paginate.pages > 1 and section.settings.classify_results == false
                 render 'pagination', paginate: paginate, mode: section.settings.pagination
               endif
             -%}
@@ -335,6 +532,37 @@
     {%- endpaginate -%}
   </div>
 </div>
+
+{% if section.settings.classify_results %}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const searchTabs = document.querySelectorAll(".search-results__tab");
+      const searchLists = document.querySelectorAll(".search-results__list-wrapper");
+      const showMoreArr = document.querySelectorAll(".show-more");
+
+      searchTabs.forEach(tab => {
+        tab.addEventListener("click", function() {
+          searchTabs.forEach(tab => tab.classList.remove("active"));
+          searchLists.forEach(list => list.classList.remove("active"));
+
+          tab.classList.add("active");
+          const listId = tab.dataset.targetList;
+          const list = document.getElementById(`searchList-${listId}`);
+          list.classList.add("active");
+
+        });
+      });
+
+      showMoreArr.forEach(showMore => {
+        showMore.addEventListener("click", function() {
+          const wrapper = showMore.closest(".search-results__list-wrapper");
+          wrapper.querySelector("motion-list").classList.remove("has-more");
+          showMore.style.display = 'none';
+        });
+      });
+    });
+  </script>
+{% endif %}
 
 {% schema %}
 {
@@ -394,6 +622,13 @@
       ],
       "default": "paginated",
       "label": "t:sections.main-collection.settings.pagination.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "classify_results",
+      "label": "Break search results into types",
+      "default": false,
+      "info": "When enabled, pagination type does not change."
     },
     {
       "type": "header",

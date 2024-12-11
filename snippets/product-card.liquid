@@ -21,6 +21,16 @@
   {% render 'product-card', show_vendor: section.settings.show_vendor %}
 {%- endcomment -%}
 
+{% if product.type == 'Recipe' %}
+  {% assign show_price = false %}
+  {% assign show_quick_add = false %}
+  {% assign show_quick_view = false %}
+  {% assign show_secondary_image = false %}
+  {% assign show_color_swatches = false %}
+  {% assign show_countdown = false %}
+  {% assign show_save_amount = false %}
+{% endif %}
+
 {%- if product != blank -%}
   {%- liquid
     assign featured_media = product.featured_media
@@ -171,11 +181,13 @@
             </div>
           {%- endif -%}
         {%- else -%}
-          <div class="quick-add flex justify-center absolute w-full z-1 pointer-events-none">
-            <button type="button" class="button button--secondary button--blur" disabled="disabled">
-              {{- 'products.product.sold_out' | t -}}
-            </button>
-          </div>
+          {% unless product.type == 'Recipe' %}
+            <div class="quick-add flex justify-center absolute w-full z-1 pointer-events-none">
+              <button type="button" class="button button--secondary button--blur" disabled="disabled">
+                {{- 'products.product.sold_out' | t -}}
+              </button>
+            </div>
+          {% endunless %}
         {%- endif -%}
 
         {%- if show_countdown and product.metafields.theme.countdown.value != blank -%}
@@ -235,7 +247,9 @@
             {{- product.title | escape -}}
           </a>
         </p>
-        {%- render 'product-price', product: product, class: 'flex flex-wrap lg:flex-col lg:items-end gap-2 md:gap-1d5' -%}
+        {% if show_price %}
+          {%- render 'product-price', product: product, class: 'flex flex-wrap lg:flex-col lg:items-end gap-2 md:gap-1d5' -%}
+        {% endif %}
       </div>
 
       {%- if show_color_swatches -%}

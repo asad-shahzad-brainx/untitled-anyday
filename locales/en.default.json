@@ -100,6 +100,8 @@
       "title_results": "Search results",
       "placeholder": "Search for ...",
       "clear": "Clear",
+      "clear_search_term": "Clear search term",
+      "submit": "Submit",
       "suggestions": "Suggestions",
       "products": "Products",
       "collections": "Collections",
@@ -273,6 +275,10 @@
     },
     "subcollections": {
       "all_products": "All {{ collection }}"
+    },
+    "search": {
+      "placeholder": "What do you want to cook?",
+      "wishlist_placeholder": "Search your recipe box"
     }
   },
   "localization": {
