@@ -15,6 +15,7 @@
         "heading_size": "title-xl tracking-heading",
         "heading_alignment": "text-center justify-center",
         "heading_tag": "h1",
+        "subheading": "",
         "description": "",
         "show_tag_filter": true,
         "per_page": 9,

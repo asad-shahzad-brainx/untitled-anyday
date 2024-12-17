@@ -1,0 +1,201 @@
+{%- liquid
+  assign bg_color = section.settings.bg_color
+  assign text_color = section.settings.text_color
+  assign speed = section.settings.speed
+  assign stop_mobile = section.settings.stop_mobile
+  assign stop_desktop = section.settings.stop_desktop
+  assign off_scroll_pause = section.settings.off_scroll_pause
+  assign padding_top_desk = section.settings.padding_top_desk
+  assign padding_bottom_desk = section.settings.padding_bottom_desk
+  assign padding_top_mob = section.settings.padding_top_mob
+  assign padding_bottom_mob = section.settings.padding_bottom_mob
+  assign show_bottom_wave = section.settings.show_bottom_wave
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    --bg-color: {{ bg_color }};
+  }
+</style>
+
+
+ {% capture text_block %}
+   <ul class="HP-Ticker__body">
+     {% for block in section.blocks %}
+       {%- assign message = block.settings.message -%}
+       {%- assign logo = block.settings.logo -%}
+       {%- assign link_url = block.settings.link_url -%}
+
+       <li class="HP-Ticker__block">
+         {%- if link_url != blank -%}
+           <a href="{{ link_url }}" class="HP-Ticker__link" aria-label="{{ message | default: "link to" | append: link_url }}"></a>
+         {%- endif -%}
+         
+         {%- if logo != blank -%}
+           <div class="HP-Ticker__logo-wrapper">
+             {% render 'image', image: logo, class_name: 'HP-Ticker__logo', image_attr: , %}
+           </div>
+         {%- else -%}
+           <div class="HP-Ticker__message">{{ message }}</div>
+         {%- endif -%}
+       </li>
+     {% endfor %}
+   </ul>
+ {% endcapture %}
+
+{%- if show_bottom_wave -%}
+  {%- render 'waves' with 'wave-bottom-reverse' -%}
+{%- endif -%}
+
+
+{% if section.blocks.size > 0 %}
+  <div class="HP-Ticker"
+    style="
+      --padding-top-desktop: {{ padding_top_desk }}px;
+      --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+      --padding-top-mobile: {{ padding_top_mob }}px;
+      --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+      --bg-color: {{ bg_color }};
+      --text-color: {{ text_color }};
+      --speed: {{ speed }}s;
+">
+
+    <div class="HP-Ticker__wrapper
+      {% if stop_mobile %}stop-mobile{% endif %}
+      {% if stop_desktop %}stop-desktop{% endif %}
+      {% if off_scroll_pause %}off_scroll_pause{% endif %}">
+
+      {{ text_block }}
+
+      {{ text_block }}
+
+      {{ text_block }}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Press marquee",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#C7E8B1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "stop_desktop",
+      "label": "Disable autorotate on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "stop_mobile",
+      "label": "Disable autorotate on mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "off_scroll_pause",
+      "label": "Disable scrolling pause on mobile",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "label": "Speed",
+      "default": 40
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "message",
+          "label": "Message"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link url"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name": "Ticker"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,104 @@
+{% comment %}
+  use max 4 columns
+
+{% render 'table-creator', text_color_of_table_head_arr: arr, background_color_of_table_head_arr: arr, first_column: arr, second_column: arr, third_column: arr, fourth_column: arr, column_count: integer, class_name: string %}
+{% endcomment %}
+
+{%- liquid
+  assign default_bg = '#ffffff'
+  assign default_color = '#000000'
+-%}
+
+<table class="table {{ class_name }}">
+  {% if first_column.size > 0 %}
+    {% for column in (1..first_column.size) %}
+      <tr>
+        {%- if first_column[forloop.index0] != blank -%}
+          {% if forloop.first %}
+            <th style="
+              --bg-color: {{ background_color_of_table_head_arr[0] | default: default_bg }};
+              --text-color: {{ text_color_of_table_head_arr[0] | default: default_color }}
+              "><span>{{ first_column[forloop.index0] }}</span></th>
+          {% else %}
+            <td><span>{{ first_column[forloop.index0] }}</span></td>
+          {% endif %}
+        {%- else -%}
+          {% if forloop.first %}
+            <th style="
+                    --bg-color: {{ background_color_of_table_head_arr[0] | default: default_bg }};
+                    --text-color: {{ text_color_of_table_head_arr[0] | default: default_color }}
+                    "><span></span></th>
+          {% else %}
+            <td><span></span></td>
+          {% endif %}
+        {%- endif -%}
+
+        {%- if second_column.size > 0 -%}
+          {%- if second_column[forloop.index0] != blank -%}
+            {% if forloop.first %}
+              <th style="
+                      --bg-color: {{ background_color_of_table_head_arr[1] | default: default_bg }};
+                      --text-color: {{ text_color_of_table_head_arr[1] | default: default_color }}
+                      "><span>{{ second_column[forloop.index0] }}</span></th>
+            {% else %}
+              <td><span>{{ second_column[forloop.index0] }}</span></td>
+            {% endif %}
+          {%- else -%}
+            {% if forloop.first %}
+              <th style="
+                      --bg-color: {{ background_color_of_table_head_arr[1] | default: default_bg }};
+                      --text-color: {{ text_color_of_table_head_arr[1] | default: default_color }}
+                      "><span></span></th>
+            {% else %}
+              <td><span></span></td>
+            {% endif %}
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- if third_column.size > 0 -%}
+          {%- if third_column[forloop.index0] != blank -%}
+            {% if forloop.first %}
+              <th style="
+                      --bg-color: {{ background_color_of_table_head_arr[2] | default: default_bg }};
+                      --text-color: {{ text_color_of_table_head_arr[2] | default: default_color }}
+                      "><span>{{ third_column[forloop.index0] }}</span></th>
+            {% else %}
+              <td><span>{{ third_column[forloop.index0] }}</span></td>
+            {% endif %}
+          {%- else -%}
+            {% if forloop.first %}
+              <th style="
+                      --bg-color: {{ background_color_of_table_head_arr[2] | default: default_bg }};
+                      --text-color: {{ text_color_of_table_head_arr[2] | default: default_color }}
+                      "><span></span></th>
+            {% else %}
+              <td><span></span></td>
+            {% endif %}
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- if fourth_column.size > 0 -%}
+          {%- if fourth_column[forloop.index0] != blank -%}
+            {% if forloop.first %}
+              <th style="
+                      --bg-color: {{ background_color_of_table_head_arr[3] | default: default_bg }};
+                      --text-color: {{ text_color_of_table_head_arr[3] | default: default_color }}
+                      "><span>{{ fourth_column[forloop.index0] }}</span></th>
+            {% else %}
+              <td><span>{{ fourth_column[forloop.index0] }}</span></td>
+            {% endif %}
+          {%- else -%}
+            {% if forloop.first %}
+              <th style="
+                      --bg-color: {{ background_color_of_table_head_arr[3] | default: default_bg }};
+                      --text-color: {{ text_color_of_table_head_arr[3] | default: default_color }}
+                      "><span></span></th>
+            {% else %}
+              <td><span></span></td>
+            {% endif %}
+          {%- endif -%}
+        {%- endif -%}
+      </tr>
+    {% endfor %}
+  {% endif %}
+</table>

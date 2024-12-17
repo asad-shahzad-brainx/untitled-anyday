@@ -9,13 +9,14 @@
  */
 {
   "current": {
+    "image_play_icon": "shopify://shop_images/Play_icon_white_with-circle.png",
     "logo": "shopify://shop_images/Anyday_Logo.svg",
     "white_logo": "shopify://shop_images/Anyday_Logo_-_White.svg",
     "logo_width": 170,
     "logo_width_mobile": 130,
     "favicon": "",
     "color_text": "#000000",
-    "color_background": "#f1ede7",
+    "color_background": "#fbfbf9",
     "color_highlight": "#bed8fc",
     "color_keyboard_focus": "#0b61cd",
     "color_shadow": "#205b62",
@@ -31,7 +32,7 @@
     "color_drawer_text": "#000000",
     "color_drawer_background": "#ffffff",
     "color_drawer_button_text": "#ffffff",
-    "color_drawer_button_background": "#e05647",
+    "color_drawer_button_background": "#ff3b1f",
     "color_drawer_button_gradient": "",
     "color_success_text": "#4d7c0f",
     "color_error_text": "#be123c",
@@ -183,6 +184,11 @@
       },
       "1986737046835575827": {
         "type": "shopify://apps/az-google-font-custom-fonts/blocks/arc_fontify_block-app-embed/e720f1f7-5778-4825-85a3-3572dbcf27c4",
+        "disabled": false,
+        "settings": {}
+      },
+      "10641372206048101839": {
+        "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-global-embed/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
         "disabled": false,
         "settings": {}
       }

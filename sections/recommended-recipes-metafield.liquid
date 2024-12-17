@@ -1,0 +1,375 @@
+{{ 'recipes-slideshow.css' | asset_url | stylesheet_tag }}
+
+{%- assign section_order = product.metafields.recommended_recipes.section_order | default: 19 -%}
+
+{%- assign enable_section = section.settings.enable_section -%}
+{%- assign enable_section_meta = product.metafields.accentuate.recommended_recipes_section -%}
+{%- assign heading = product.metafields.accentuate.recommeded_recipes_heading | default: section.settings.heading -%}
+{%- assign section_bg = section.settings.section_bg -%}
+{%- assign slider_count_slides_d = section.settings.count_slides_on_d | plus: 0 -%}
+{%- assign slider_count_slides_m = section.settings.count_slides_on_m | plus: 0 -%}
+{%- assign heading_color = section.settings.heading_color -%}
+{%- assign slider_arrows_color = section.settings.slider_arrows_color -%}
+{%- assign recommended_recipes = product.metafields.accentuate.recommeded_recipes | split: '|'  -%}
+{%- assign button_label = section.settings.button_label -%}
+{%- assign button_link = section.settings.button_link -%}
+
+{%- assign padding_top_desk = section.settings.padding_top_desk -%}
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desk -%}
+{%- assign padding_top_mob = section.settings.padding_top_mob -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
+{%- assign show_bottom_wave = section.settings.show_bottom_wave -%}
+
+
+{%- capture slider_settings -%}
+  {
+  "slides_mobile": {{- slider_count_slides_m -}},
+  "slides_desktop": {{- slider_count_slides_d -}}
+  }
+{%- endcapture -%}
+
+<style>
+	#shopify-section-{{ section.id }} {
+		order: {{ section_order }};
+	}
+
+  #shopify-section-{{ section.id }} .recipe-recommended .recipe-recommended__heading {
+    padding-top: 30px;
+  }
+</style>
+
+{%- if enable_section and enable_section_meta == "true" -%}
+  <section id="recipe-rec-recipes"
+           style=" background-color: {{ section_bg }};
+           --padding-top-desktop: {{ padding_top_desk }}px;
+           --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+           --padding-top-mobile: {{ padding_top_mob }}px;
+           --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+           --bg-color: {{ section_bg }}  {%- comment -%} for waves {%- endcomment -%}
+          "
+           data-section-id="{{ section.id }}"
+           data-section-type="recommended-recipes"
+           class="recipe-recommended">
+
+    {%- if show_bottom_wave -%}
+      {%- render 'waves' with 'wave-bottom-reverse' -%}
+    {%- endif -%}
+
+    {%- if heading != blank -%}
+      <h2 class="recipe-recommended__heading recipe-recommended__heading-homepage"
+          style="background-color: {{ section_bg }}; color: {{ heading_color }}">{{ heading }}</h2>
+    {%- endif -%}
+    <div class="collection-recipes__slider collection-recipes__grid slider-arrow--{{ slider_arrows_color }}"
+         data-slider-settings='{{ slider_settings }}'
+    >
+      {% if recommended_recipes != blank %}
+        {% for selected_handle in recommended_recipes %}
+					{%- assign product = all_products[selected_handle] -%}
+					{% if product != blank %}
+						<div style="background-color: {{ section_bg }}" class="collection-recipe__product-block" >
+							{% render 'recipe-item', product: product %}
+						</div>
+					{% endif %}
+        {% endfor %}
+      {% else %}
+        {%- for block in section.blocks -%}
+          {%- assign product = all_products[block.settings.product] -%}
+					{% if product != blank %}
+						<div style="background-color: {{ section_bg }}" class="collection-recipe__product-block">
+							{% render 'recipe-item', product: product %}
+						</div>
+					{% endif %}
+        {%- endfor -%}
+      {% endif %}
+    </div>
+
+    {%- if button_label != blank and button_link != blank -%}
+      <div class="recipe-recommended-btn-block button-wrapper">
+        <a class="button button--primary button--md icon-with-text button--custom-margin" href="{{ button_link }}" is="hover-link">
+          <span class="btn-fill" data-fill="" style="transform: translateY(var(--motion-translateY)); --motion-translateY: -76%;"></span>
+          <span class="btn-text">
+            {{ button_label }}
+            <svg class="icon icon-arrow-right icon-sm transform" viewBox="0 0 21 20" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10H18M18 10L12.1667 4.16675M18 10L12.1667 15.8334"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    {%- endif -%}
+  </section>
+{%- endif -%}
+
+<script>
+  	function recipeSlider() {
+		if ($('.collection-recipes__grid').length) {
+			const $containers = $('.collection-recipes__grid');
+
+      $containers.each((index, item) => {
+        const dataSliderDisable = $(item).attr('data-slider-disabled');
+        if (dataSliderDisable !== 'true') {
+          const containerWidth = item.getBoundingClientRect().width;
+          const $slides = $(item).find('.collection-recipe__product-block');
+          const slideMargin = 20;
+          let slidesWidth = 0;
+
+          if ($slides.length > 0) {
+            const firstSlideWidth = $slides[0].getBoundingClientRect().width;
+
+            slidesWidth = (firstSlideWidth + slideMargin) * $slides.length;
+          }
+
+          $(item).not('.slick-initialized').slick({
+            variableWidth: false,
+            dots: false,
+            infinite: false,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            initialSlide: 0,
+            centerMode: false,
+            responsive: [
+              {
+                breakpoint: 1250,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                }
+              },{
+                breakpoint: 749,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1
+                }
+              }
+            ]
+          });
+          // if (containerWidth < slidesWidth ) {
+          //   if ($('body').hasClass('template-product')) {
+          //     $(item).not('.slick-initialized').slick({
+          //       variableWidth: true,
+          //       dots: false,
+          //       infinite: false,
+          //       slidesToShow: 4,
+          //       slidesToScroll: 1,
+          //       initialSlide: 0,
+          //       centerMode: false,
+          //       responsive: [
+          //         {
+          //           breakpoint: 1250,
+          //           settings: {
+          //             slidesToShow: 3,
+          //             slidesToScroll: 1,
+          //           }
+          //         },{
+          //           breakpoint: 749,
+          //           settings: {
+          //             slidesToShow: 2,
+          //             slidesToScroll: 1
+          //           }
+          //         }
+          //       ]
+          //     });
+          //   } else {
+          //     $(item).not('.slick-initialized').slick({
+          //       variableWidth: true,
+          //       dots: false,
+          //       infinite: false,
+          //       slidesToScroll: 1,
+          //       slidesToShow: 4,
+          //       centerMode: false,
+          //       initialSlide: 0,
+          //       responsive: [
+          //         {
+          //           breakpoint: 1250,
+          //           settings: {
+          //             slidesToShow: 3,
+          //             slidesToScroll: 1,
+          //           }
+          //         },
+          //         {
+          //           breakpoint: 750,
+          //           settings: {
+          //             slidesToShow: 2,
+          //             slidesToScroll: 1
+          //           }
+          //         }
+          //       ]
+          //     });
+          //   }
+          // } else if ($(item).hasClass('slick-initialized')) {
+          //   $(item).slick('unslick');
+          // }
+        }
+      })
+		}
+		
+	}
+
+  window.addEventListener("load", function() {
+  	if ($('#recipe-rec-recipes').length) {
+      const recommendRecipesSlider = $('.recipe-ingredient-recommended__wrapper');
+      const tag = $('#recipe-rec-recipes').attr('data-ingredient');
+      
+      if(tag) {
+        $.ajax({
+          url: window.origin + '/collections/recipes/' + tag + '?view=recommend-recipes',
+          method: 'GET',
+          success: function (data) {
+            $(recommendRecipesSlider).replaceWith(data).fadeIn();
+            const recommendRecipesSliderContainer = $('#recipe-rec-recipes')
+            
+            recipeSlider();
+            //new theme.RecommendedRecipes(recommendRecipesSliderContainer);
+          }
+        });
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Recommended recipes meta",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable section"
+    },
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 55
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 50
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#f1ede7"
+    },
+    {
+      "type": "select",
+      "id": "slider_arrows_color",
+      "options": [
+        { "value": "black", "label": "Black"},
+        { "value": "white", "label": "White"}
+      ],
+      "label": "Slider arrows color"
+    },
+    {
+      "type": "select",
+      "id": "count_slides_on_d",
+      "options": [
+        { "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "3",
+      "label": "Count slides on desktop"
+    },
+    {
+      "type": "select",
+      "id": "count_slides_on_m",
+      "options": [
+        { "value": "1.5",
+          "label": "1.5"
+        },
+        {
+          "value": "2.5",
+          "label": "2.5"
+        }
+      ],
+      "default": "1.5",
+      "label": "Count slides on mobile"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Recomended_recipes",
+      "name": "Recommended recipes",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Choose recipe"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recommended recipes metafield",
+      "category": "Slider"
+    }
+  ]
+}
+{% endschema %}

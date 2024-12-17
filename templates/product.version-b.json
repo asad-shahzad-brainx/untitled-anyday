@@ -76,6 +76,13 @@
             "show_gift_card_recipient": true
           }
         },
+        "text_rpiqwt": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Bundle it!</strong>",
+            "text_size": "text-base lg:text-lg"
+          }
+        },
         "rebuy_personalization_engine_rebuy_widget_Xaid9N": {
           "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
           "settings": {
@@ -149,6 +156,7 @@
         "variant_picker",
         "inventory",
         "buy_buttons",
+        "text_rpiqwt",
         "rebuy_personalization_engine_rebuy_widget_Xaid9N",
         "pickup_availability",
         "collapsible_tab_mQCENb",
@@ -345,6 +353,33 @@
     },
     "product_old_way_table_QALjCV": {
       "type": "product-old-way-table",
+      "blocks": {
+        "table_row_7VM3tw": {
+          "type": "table_row",
+          "settings": {
+            "column_0": "<p>Scroll left to right</p>",
+            "column_1": "<p>Microwave</p>",
+            "column_2": "<p>Oven*</p>",
+            "column_3": "<p>Stove*</p>",
+            "column_4": "<p>Pressure Cooker*</p>"
+          }
+        },
+        "table_row_jHVzT7": {
+          "type": "table_row",
+          "settings": {
+            "image": "shopify://shop_images/broccoli.png",
+            "column_0": "<p>Broccoli</p>",
+            "column_1": "<p>3 mins</p>",
+            "column_2": "<p>35 mins</p>",
+            "column_3": "<p>16 mins</p>",
+            "column_4": "<p>15 mins</p>"
+          }
+        }
+      },
+      "block_order": [
+        "table_row_7VM3tw",
+        "table_row_jHVzT7"
+      ],
       "settings": {
         "show_section": true,
         "padding_top_desk": 85,
@@ -468,7 +503,7 @@
         "style": "with-background",
         "heading": "FAQs",
         "heading_size": "title-lg tracking-heading",
-        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_alignment": "text-center md:items-center",
         "heading_tag": "h2",
         "subheading": "",
         "description": "<p>Please read our <a href=\"#\" title=\"FAQ's\">FAQs</a> page to find out more.</p>",

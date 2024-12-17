@@ -128,7 +128,16 @@
             -%}
           {%- endif -%}
 
-          {%- for media in product.media -%}
+          {% if is_recipe %}
+            {% assign media_limit = 1 %}
+            {%- if video_url contains 'youtube' or video_url contains 'youtu' -%}
+              {%- assign type = 'youtube' -%}
+            {%- elsif video_url contains 'vimeo' -%}
+              {%- assign type = 'vimeo' -%}
+            {%- endif -%}
+          {% endif %}
+
+          {%- for media in product.media limit: media_limit -%}
             {%- if media.id != featured_media.id -%}
               {%- render 'product-media',
                 product: product,
@@ -148,6 +157,39 @@
               -%}
             {%- endif -%}
           {%- endfor -%}
+
+          {% if is_recipe %}
+            {% if video_url != blank %}
+              <div class="video-footer-block">
+                <button type="button" class="video-play image-with-review__btn-play"
+                        data-controls="Video-{{ section.id }}"
+                        data-id="{{ video_url }}" >
+                  {% render 'video-icon' %}
+                </button>
+
+                <div class="video-details">
+                  {%- if type == 'youtube' -%}
+                    {%- if video_title != blank -%}
+                      <span id="video-duration" class="video-duration large-down-hide">
+                        {% render 'icon-spinner' %}
+                      </span>
+                      <span id="video-title" class="data-value data-value__fields"> {{ video_title }} </span>
+                    {%- else -%}
+                      <span id="video-duration" class="video-duration large-down-hide">
+                        {% comment %} {% render 'icon-spinner' %} {% endcomment %}
+                      </span>
+                      <span id="video-title" class="video-title">
+                        {% comment %} {% render 'icon-spinner' %} {% endcomment %}
+                      </span>
+                    {%- endif -%}
+
+                  {%- else -%}
+                    <span id="video-title" class="video-title"> {{ video_title }} </span>
+                  {%- endif -%}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
         </div>
       </slider-element>
 

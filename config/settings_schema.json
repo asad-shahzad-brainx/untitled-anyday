@@ -8,6 +8,16 @@
     "theme_support_url": "https:\/\/haloroar.ticksy.com"
   },
   {
+    "name": "Icons",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_play_icon",
+        "label": "Image play icon"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {

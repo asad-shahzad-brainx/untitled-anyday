@@ -1,0 +1,344 @@
+{%- assign section_order = product.metafields.old_way.section_order | default: 19 -%}
+
+{%- assign show_section = section.settings.show_section -%}
+{%- assign show_section_metafield = product.metafields.old_way.hide_section -%}
+{%- assign section_bg = section.settings.section_bg -%}
+{%- assign heading = section.settings.heading -%}
+{%- assign subheading = section.settings.subheading -%}
+{%- assign button_label = section.settings.button_label -%}
+{%- assign button_url = section.settings.button_url -%}
+{%- assign message_under_button = section.settings.message_under_button -%}
+
+{%- assign padding_top_desk = section.settings.padding_top_desk -%}
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desk -%}
+{%- assign padding_top_mob = section.settings.padding_top_mob -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
+{%- assign show_bottom_wave = section.settings.show_bottom_wave -%}
+
+{% if template.name == 'page' %}
+  {%- assign show_section_metafield = page.metafields.old_way.hide_section -%}
+{% endif %}
+
+{% if button_url contains '#' %}
+  {%- assign anchor_attr = 'data-anchor-link' -%}
+{% endif %}
+
+{% comment %} Logic variables {% endcomment %}
+{%- assign show_images_column = false -%}
+{%- assign show_column_0 = false -%}
+{%- assign show_column_1 = false -%}
+{%- assign show_column_2 = false -%}
+{%- assign show_column_3 = false -%}
+{%- assign show_column_4 = false -%}
+
+{% for block in section.blocks %}
+  {% if block.settings.image %}
+    {%- assign show_images_column = true -%}
+  {% endif %}
+
+  {% for i in (0..4) %}
+    {%- assign column_name_str = 'column_' | append: i -%}
+    {%- assign column = block.settings[column_name_str] -%}
+
+    {% if column != blank %}
+      {% if i == 0 %}
+        {%- assign show_column_0 = true -%}
+      {% elsif i == 1 %}
+        {%- assign show_column_1 = true -%}
+      {% elsif i == 2 %}
+        {%- assign show_column_2 = true -%}
+      {% elsif i == 3 %}
+        {%- assign show_column_3 = true -%}
+      {% elsif i == 4 %}
+        {%- assign show_column_4 = true -%}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<style>
+	#shopify-section-{{ section.id }} {
+		order: {{ section_order }};
+	}
+</style>
+
+{% if show_section and show_section_metafield != 'true' %}
+  <section class="old-way-table"
+           data-section-id="{{ section.id }}"
+           data-section-type="old-way-table"
+           style="
+             --padding-top-desktop: {{ padding_top_desk }}px;
+             --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+             --padding-top-mobile: {{ padding_top_mob }}px;
+             --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+             --bg-color: {{ section_bg }}
+                   ">
+
+    {%- if show_bottom_wave -%}
+      {%- render 'waves' with 'wave-bottom-reverse' -%}
+    {%- endif -%}
+
+    <div class="old-way-table__container">
+      {% if heading != blank %}
+        <h2 class="old-way-table__heading">
+          {{ heading }}
+        </h2>
+      {% endif %}
+
+      {% if subheading != blank %}
+        <p class="old-way-table__subheading">
+          {{ subheading }}
+        </p>
+      {% endif %}
+
+      <div role="table" class="old-way-table__body">
+        {% if show_images_column or show_column_0 %}
+          <div class="old-way-table__images-names-side">
+            {% if show_images_column %}
+              <div class="old-way-table__images">
+                {% for block in section.blocks %}
+                  {%- assign image = block.settings.image -%}
+                  {%- assign heading = block.settings.column_0 -%}
+
+                  {% unless forloop.last and image == blank and heading == blank %}
+                    <div class="old-way-table__image">
+                      {% render 'image', image: image, class_name: , image_attr: , %}
+                    </div>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if show_column_0 %}
+              <div role="rowgroup" class="old-way-table__names">
+                {% for block in section.blocks %}
+                  {%- assign heading = block.settings.column_0 -%}
+                  {%- assign heading = block.settings.column_0 -%}
+
+                  {% unless forloop.last and image == blank and heading == blank %}
+                    <div role="row" class="old-way-table__row-heading">
+                      <div role="cell"> {{ heading }}</div>
+                    </div>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if show_column_1 or show_column_2 or show_column_3 or show_column_4 %}
+          <div class="old-way-table__slider-side">
+            {% if show_column_1 %}
+              <div role="rowgroup" class="old-way-table__slider-side-stable-column stable-column">
+                {% for block in section.blocks %}
+                  {%- assign text = block.settings.column_1 -%}
+                  {%- assign image = block.settings.image -%}
+                  {%- assign heading = block.settings.column_0 -%}
+
+                  {% unless forloop.last and image == blank and heading == blank %}
+                    <div role="row" class="stable-column__row
+                      {% if forloop.first %}stable-column__row--first{% endif %}
+                      {% if forloop.last %}stable-column__row--last{% endif %}">
+                      <div {% unless forloop.first %} role="cell" {% endunless %} {% if forloop.first %}role="columnheader"{% endif %}>
+                        {{ text }}
+                      </div>
+                    </div>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if show_column_2 or show_column_3 or show_column_4 %}
+            <div class="old-way-table__slider-side-slider-wrapper">
+              <div class="old-way-table__slider-side-slider">
+                {% for item in (2..5) %}
+                  {%- assign column_name_str = 'column_' | append: item -%}
+
+                  {% if section.blocks[item].settings[column_name_str] != blank %}
+                    <div role="rowgroup" class="old-way-table__slide">
+                      {% for block in section.blocks %}
+                        {% if item == 4 %}
+                          {%- assign itemCounter = true -%}
+                        {% endif %}
+
+                        {%- assign text = block.settings[column_name_str] -%}
+                        {%- assign image = block.settings.image -%}
+                        {%- assign heading = block.settings.column_0 -%}
+                        {%- assign blocksSize = section.blocks.size | minus: 1 -%}
+
+                        <div role="row"
+                          class="old-way-table__slide-row
+                        {% if forloop.first %} old-way-table__slide-row--first{% endif -%}
+{% if forloop.last and image == blank and heading == blank %} old-way-table__slide-row--comment{% endif -%}
+{% if forloop.index == blocksSize and itemCounter and image != blank and heading != blank %} old-way-table__slide-row--last-radius{% endif -%}
+{% if forloop.last %} old-way-table__slide-row--last{% endif -%}">
+                          <div {% unless forloop.first %} role="cell" {% endunless %} {% if forloop.first %}role="columnheader"{% endif %}>
+                            {{ text }}
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if button_url != blank and button_label != blank %}
+      <div class="old-way-table__bottom-content">
+        <a class="anyday-btn" {{ anchor_attr }} href="{{ button_url }}">{{ button_label }}</a>
+
+        {% if message_under_button != blank  %}
+          <div class="old-way-table__message-under-button">
+            {{ message_under_button }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+
+
+
+{% schema %}
+{
+  "name": "Old Way vs. Anyday table",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show section",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 85
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#f1ede7"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button url"
+    },
+    {
+      "type": "text",
+      "id": "message_under_button",
+      "label": "Message under button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "table_row",
+      "name": "Row info",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "column_0",
+          "label": "Column 1"
+        },
+        {
+          "type": "richtext",
+          "id": "column_1",
+          "label": "Column 2"
+        },
+        {
+          "type": "richtext",
+          "id": "column_2",
+          "label": "Column 3"
+        },
+        {
+          "type": "richtext",
+          "id": "column_3",
+          "label": "Column 4"
+        },
+        {
+          "type": "richtext",
+          "id": "column_4",
+          "label": "Column 5"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Old Way vs. Anyday table",
+      "category": "Other"
+    }
+  ]
+}
+{% endschema %}

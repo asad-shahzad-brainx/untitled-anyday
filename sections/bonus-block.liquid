@@ -1,0 +1,199 @@
+{{ 'section-bonus-block.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign hide_section = [request.page_type].metafields.bonus-block.hide_section
+  assign padding_top = [request.page_type].metafields.bonus-block.padding_top_desktop | default: section.settings.padding_top_desktop | default: '0'
+  assign padding_bottom = [request.page_type].metafields.bonus-block.padding_bottom_desktop | default: section.settings.padding_bottom_desktop | default: '0'
+  assign padding_top_mob = [request.page_type].metafields.bonus-block.padding_top_mobile | default: section.settings.padding_top_mobile | default: '0'
+  assign padding_bottom_mob = [request.page_type].metafields.bonus-block.padding_bottom_mobile | default: section.settings.padding_bottom_mobile | default: '0'
+
+  assign heading = [request.page_type].metafields.bonus-block.heading | default: section.settings.heading
+  assign description = [request.page_type].metafields.bonus-block.description | default: section.settings.description
+  assign video_url = [request.page_type].metafields.bonus-block.video_url | default: section.settings.video_url
+  assign image_meta = [request.page_type].metafields.bonus-block.image
+  assign image = section.settings.image
+  assign caption_text = [request.page_type].metafields.bonus-block.caption_text | default: section.settings.caption_text
+
+  assign label_btn = [request.page_type].metafields.bonus-block.button_label | default: section.settings.label_btn
+  assign url_btn = [request.page_type].metafields.bonus-block.button_url | default: section.settings.url_btn
+
+  assign bg_color = [request.page_type].metafields.bonus-block.background_color | default: section.settings.section_bg | default: '#0D5D52'
+  assign text_color = [request.page_type].metafields.bonus-block.text_color | default: section.settings.section_text_color | default: '#000000'
+
+  assign show_bottom_wave = section.settings.show_bottom_wave
+-%}
+
+{%- if image_meta != blank -%}
+  {%- assign poster = image_meta[0].cloudinary_src | append: 'w_360' -%}
+{%- elsif image != blank  -%}
+  {%- assign poster = image | img_url: '360x' -%}
+{%- endif -%}
+
+{%- if  image != blank or image_meta != blank or description != blank or video != blank or heading != blank -%}
+  <div class="bonus-block" style="
+          --padding-top: {{ padding_top }}px;
+          --padding-bottom: {{ padding_bottom }}px;
+          --padding-top-mob: {{ padding_top_mob }}px;
+          --padding-bottom-mob: {{ padding_bottom_mob }}px;
+          --bg-color: {{ bg_color }};
+          --text-color: {{ text_color }};">
+
+    {%- if show_bottom_wave -%}
+      {%- render 'waves' with 'wave-bottom-reverse' -%}
+    {%- endif -%}
+
+
+    <div class="bonus-block__wrapper">
+      {%- if heading != blank -%}
+        <h2 class="bonus-block__heading">
+          {{ heading }}
+        </h2>
+      {%- endif -%}
+
+      <div class="bonus-block__content-wrapper">
+        {%- if video_url != blank or image != blank or image_meta != blank -%}
+          <div class="bonus-block__media-wrapper">
+            <div class="bonus-block__media-content">
+              {%- if video_url != blank -%}
+                <video class="bonus-block__video" id="videos-{{ section.id }}" loop muted controls playsinline autoplay  {%- if poster != blank -%} poster="{{ poster }}" {%- endif -%}>
+                  <source src="{{ video_url }}#t:0.001" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                {%- elsif image != blank or image_meta != blank -%}
+                {% render 'image-bg-mobile-desktop-logic', image_d: image, image_m: image, image_meta_d: image_meta[0], class_name: , image_attr: , %}
+              {%- endif -%}
+            </div>
+
+            {% if caption_text != blank %}
+              <div class="bonus-block__caption-text-wrapper">
+                {%- if caption_text != blank -%}
+                  <p class="bonus-block__caption-text">{{ caption_text }}</p>
+                {%- endif -%}
+              </div>
+            {% endif %}
+          </div>
+        {%- endif -%}
+
+        {%- if description != blank -%}
+          <div class="bonus-block__text-wrapper">
+            <div class="bonus-block__description rte">
+              {{ description }}
+            </div>
+
+            {%- if url_btn != blank and label_btn != blank -%}
+              <a class="anyday-btn" href="{{ url_btn }}"> {{ label_btn }} </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Bonus block",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 30
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "info": "Only .mp4 is required for it to work. You can upload videos [here](https://cookanyday.com/admin/settings/files) to get the url",
+      "label": "Video file .mp4"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Body text"
+    },
+    {
+      "type": "richtext",
+      "id": "caption_text",
+      "label": "Caption text"
+    },
+    {
+      "type": "text",
+      "id": "label_btn",
+      "label": "Label button"
+    },
+    {
+      "type": "url",
+      "id": "url_btn",
+      "label": "URL button"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background color",
+      "default": "#1b2245"
+    },
+    {
+      "type": "color",
+      "id": "section_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "presets":[
+    {
+      "name": "Bonus block"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,178 @@
+{%- comment -%}
+  {% include 'pdp-detail-accordions' product: obj, current_variant: variant, mobile: boolean %}
+{%- endcomment -%}
+
+{%- liquid
+  assign accordions_hide_arr = product.metafields.product_details_accordion.hide
+  assign accordions_title_arr = product.metafields.product_details_accordion.title
+  assign accordions_description_arr = product.metafields.product_details_accordion.description
+  assign portion = product.metafields.accentuate.portion
+  assign portion_text = product.metafields.accentuate.portion_text
+  assign recommendation = product.metafields.accentuate.recommendation
+  assign taste_recom_text = product.metafields.accentuate.taste_recom_text
+  assign details_title = product.metafields.accentuate.details_title
+  assign details_text_variant  = product.selected_or_first_available_variant.metafields.starter_set_template.details
+  assign details_text  = product.metafields.accentuate.details[0]
+-%}
+
+{% if product.metafields.accentuate.what_is == blank %}
+  {%- assign what_is_title = section.settings.what_is_heading -%}
+  {%- assign what_is_body  = section.settings.what_is_description -%}
+{% endif %}
+
+{% if product.metafields.accentuate.safety == blank %}
+  {%- assign safety_title = section.settings.safety_heading -%}
+  {%- assign safety_body  = section.settings.safety_description -%}
+{% endif %}
+
+{% if what_is_title != blank and what_is_body != blank %}
+  <div class="product__details-wrapper product__what-is-wrapper">
+    <div class="product__details-heading product-starter__details-heading">
+      <h2>{{ what_is_title | strip_html }}</h2>
+
+      <button class="product__details-button bundle-button" role="button" aria-label="Button for switching the drop-down">
+        {% include 'icon-chevron-down' %}
+      </button>
+    </div>
+
+    <div class="product__details-body product__bundle-body-js">
+      <div class="product__details" id="product-details-{{ product.id }}">
+        {{ what_is_body }}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if details_title != blank and
+  portion_text != blank or
+  taste_recom_text != blank or
+  details_text_variant != blank or details_text != blank or
+  selected_variant_taste_text != blank %}
+  <div class="product__details-wrapper {% unless product.has_only_default_variant and details_text_variant != blank %} product__details-wrapper--variant {% endunless %}">
+    <div class="product__details-heading product-starter__details-heading">
+      <h2>
+        {%- if details_title contains '<p>' -%}
+          {{ details_title | remove: '["<p>' | remove: '</p>"]' }}
+        {%- else -%}
+          {{ details_title }}
+        {%- endif -%}
+      </h2>
+
+      <button class="product__details-button bundle-button" role="button"
+              aria-label="Button for switching the drop-down">
+        {% include 'icon-chevron-down' %}
+      </button>
+    </div>
+
+    <div class="product__details-body product__bundle-body-js">
+      {%- if portion_text != blank or taste_recom_text != blank or selected_variant_taste_text != blank -%}
+        {%- if portion != blank or portion_text != blank or recommendation != blank or taste_recom_text != blank -%}
+          <div class="product-products__description-block">
+            {%- assign product_title_handleize = product.title | handleize -%}
+
+            {%- if portion != blank or portion_text != blank -%}
+              {%- unless product_title_handleize contains 'set' -%}
+                <div class="product-products__icons product--type">
+                  {%- if portion != blank -%}
+                    <img class="product-products__icon" src="{{ portion }}" alt="">
+                  {%- endif -%}
+
+                  {%- if portion_text != blank -%}
+                    <p class="product-products__text">{{ portion_text }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endunless -%}
+            {%- endif -%}
+
+            {%- if recommendation != blank or taste_recom_text != blank -%}
+              <div class="product-products__icons product--type">
+                {%- if recommendation != blank -%}
+                  <img class="product-products__icon" src="{{ recommendation }}" alt="">
+                {%- endif -%}
+
+                {%- if taste_recom_text != blank -%}
+                  <p class="product-products__text">{{ taste_recom_text }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- comment -%} 'render' because need vis variables from snippet {%- endcomment -%}
+      {% include 'pdp-tooltip' %}
+
+      {% if product.has_only_default_variant or details_text_variant == blank %}
+        {%- if details_text != blank -%}
+          <div class="product__details" id="product-details-{{ product.id }}">
+            {% if details_text contains 'tooltip' and details_tooltip_text != blank %}
+              {%- assign details_with_tooltip = details_text | replace: 'tooltip', details_tooltip -%}
+              {{ details_with_tooltip }}
+            {% else %}
+              {{ details_text }}
+            {% endif %}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        {%- if details_text_variant != blank -%}
+          <div class="product__details" id="product-details-{{ product.id }}">
+            {% if details_text_variant contains 'tooltip' and details_tooltip_text_variant != blank %}
+              {%- assign details_with_tooltip_variant = details_text_variant | replace: 'tooltip', details_tooltip_variant -%}
+              {{ details_with_tooltip_variant }}
+            {% else %}
+              {{ details_text_variant }}
+            {% endif %}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+{% endif %}
+
+
+{% if safety_title != blank and safety_body != blank %}
+  <div class="product__details-wrapper product__safety-wrapper">
+    <div class="product__details-heading product-starter__details-heading">
+      <h2>{{ safety_title | strip_html }}</h2>
+
+      <button class="product__details-button bundle-button" role="button"
+              aria-label="Button for switching the drop-down">
+        {% include 'icon-chevron-down' %}
+      </button>
+    </div>
+
+    <div class="product__details-body product__bundle-body-js">
+      <div class="product__details" id="procuct-details-{{ product.id }}">
+        {{ safety_body }}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if accordions_title_arr.size > 0 %}
+  {%- for title in accordions_title_arr -%}
+    {%- assign checkbox_hide = accordions_hide_arr[forloop.index0] -%}
+    {%- assign description = accordions_description_arr[forloop.index0] -%}
+
+    {%- if checkbox_hide != 'true' and checkbox_hide != true -%}
+      {%- if title != blank and description != blank -%}
+        <div class="product__details-wrapper">
+          <div class="product__details-heading">
+            <h2>{{ title | strip_html }}</h2>
+
+            <button class="product__details-button bundle-button" role="button"
+                    aria-label="Button for switching the drop-down">
+              {% include 'icon-chevron-down' %}
+            </button>
+          </div>
+
+          <div class="product__details-body product__bundle-body-js">
+            <div class="product__details" id="product-details-{{ product.id }}">
+              {{ description }}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{% endif %}
