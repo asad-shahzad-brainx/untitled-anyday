@@ -68,5 +68,8 @@
       }
     }
   },
-  "order": ["main", "recently-viewed"]
+  "order": [
+    "main",
+    "recently-viewed"
+  ]
 }

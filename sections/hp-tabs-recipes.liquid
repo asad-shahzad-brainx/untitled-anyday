@@ -1,0 +1,209 @@
+{{ 'hp-tabs-recipes.css' | asset_url | stylesheet_tag }}
+
+{% assign heading = section.settings.heading %}
+{% assign subheading = section.settings.subheading %}
+{% assign section_bg = section.settings.section_bg %}
+{% assign text_color = section.settings.text_color %}
+
+
+<style>
+	.tabs-recipes--{{ section.id }} {
+		background-color: {{ section_bg }};
+    color: {{ text_color }};
+	}
+</style>
+
+{% if heading != blank or section.blocks.size > 0 %}
+  <section class="tabs-recipes tabs-recipes--{{ section.id}}">
+    <div class="tabs-recipes__heading-container">
+      {% if heading != blank %}
+        <h2 class="tabs-recipes__heading" >{{ heading }}</h2>
+      {% endif %}
+
+      {% if subheading != blank %}
+        <div class="tabs-recipes__subheading" >{{ subheading }}</div>
+      {% endif %}
+    </div>
+
+    <div class="tabs-recipes__container">
+      <ul class="tabs-recipes__headings-container">
+        {%- for block in section.blocks -%}
+          {%- assign bg_color = block.settings.bg_color -%}
+          {%- assign bg_color_hover = block.settings.bg_color_hover -%}
+          {%- assign text_color = block.settings.text_color -%}
+          {%- assign text_color_hover = block.settings.text_color_hover -%}
+
+          <style>
+            .tabs-recipes__heading--{{ block.id }}, .tabs-recipes__body-container--{{ block.id }} {
+	            --bg-color: {{ bg_color }};
+	            --bg-color-hover: {{ bg_color_hover }};
+	            --text-color: {{ text_color }};
+	            --text-color-hover: {{ text_color_hover }};
+            }
+          </style>
+
+          {%- assign heading_block = block.settings.heading -%}
+          {%- assign heading_block_hand = block.settings.heading | handleize -%}
+
+          <li role="tab" value="{{ heading_block_hand }}" class="tabs-recipes__block-heading tabs-recipes__heading--{{ block.id }} {% if forloop.index == 1 %} active {% endif %}">
+            {{ heading_block }}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- for block in section.blocks -%}
+        {% assign text_btn = block.settings.text_btn %}
+        {% assign url_btn = block.settings.url_btn %}
+        {% assign heading_block_hand = block.settings.heading | handleize %}
+
+        <div aria-label="{{ heading_block_hand }}" class="tabs-recipes__body-container tabs-recipes__body-container--{{ block.id }} {% if forloop.index == 1 %} active {% endif %}" >
+          <div class="tabs-recipes__body product--js-slider">
+            {%- for i in (1..4) -%}
+              {%- assign recipe_item_index =  'recipe_' | append: i -%}
+              {%- assign recipe_item = block.settings[recipe_item_index] -%}
+
+              {% render 'recipe-item', product: recipe_item %}
+            {%- endfor -%}
+          </div>
+
+          {% if url_btn != blank and text_btn != blank %}
+            <a href="{{ url_btn }}" class="button button--primary btn--view-all" is="hover-link">
+              <span class="btn-fill" data-fill></span>
+              <span class="btn-text">
+                <span>
+                  {{- text_btn -}}
+                </span>
+              </span>
+            </a>
+          {% endif %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+{% endif %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("#shopify-section-{{ section.id }} .tabs-recipes__block-heading").forEach((heading) => {
+      heading.addEventListener("mouseover", toggleActiveClass);
+      heading.addEventListener("mouseout", toggleActiveClass);
+    });
+
+    function toggleActiveClass(event) {
+      const container = event.target.closest(".tabs-recipes");
+      const allBodyElements = container.querySelectorAll(".tabs-recipes__body-container");
+      const allHeadingElements = container.querySelectorAll(".tabs-recipes__block-heading");
+      const thisAttr = event.target.getAttribute("value");
+
+      allBodyElements.forEach((element) => element.classList.remove("active"));
+      allHeadingElements.forEach((element) => element.classList.remove("active"));
+
+      event.target.classList.add("active");
+      container.querySelector(`div[aria-label="${thisAttr}"]`).classList.add("active");
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Recipes tabs",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background color",
+      "default": "#F1EDE7"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading tab"
+        },
+        {
+          "type": "product",
+          "id": "recipe_1",
+          "label": "Recipe"
+        },
+        {
+        "type": "product",
+        "id": "recipe_2",
+        "label": "Recipe"
+        },
+        {
+        "type": "product",
+        "id": "recipe_3",
+        "label": "Recipe"
+        },
+        {
+        "type": "product",
+        "id":"recipe_4",
+        "label": "Recipe"
+        },
+        {
+          "type": "text",
+          "id": "text_btn",
+          "label": "Text button"
+        },
+        {
+          "type": "url",
+          "id": "url_btn",
+          "label": "Button url"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color unhover",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "bg_color_hover",
+          "label": "Background color hover",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color unhover",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "text_color_hover",
+          "label": "Text color hover",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabs recipes",
+      "category": "Home page"
+    }
+  ]
+}
+{% endschema %}

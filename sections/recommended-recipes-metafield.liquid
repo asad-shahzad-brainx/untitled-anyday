@@ -100,9 +100,9 @@
 {%- endif -%}
 
 <script>
-  	function recipeSlider() {
-		if ($('.collection-recipes__grid').length) {
-			const $containers = $('.collection-recipes__grid');
+  function recipeSlider() {
+    if ($('.collection-recipes__grid').length) {
+      const $containers = $('.collection-recipes__grid');
 
       $containers.each((index, item) => {
         const dataSliderDisable = $(item).attr('data-slider-disabled');
@@ -200,11 +200,11 @@
           // }
         }
       })
-		}
-		
+    }
 	}
 
   window.addEventListener("load", function() {
+    recipeSlider();
   	if ($('#recipe-rec-recipes').length) {
       const recommendRecipesSlider = $('.recipe-ingredient-recommended__wrapper');
       const tag = $('#recipe-rec-recipes').attr('data-ingredient');

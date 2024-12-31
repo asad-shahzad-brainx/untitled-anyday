@@ -1,0 +1,279 @@
+{{ 'images-with-descriptions.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    background: #dcfae0;
+  }
+{% endstyle %}
+
+{%- liquid
+  assign padding_top_desk = section.settings.padding_top_desk
+  assign padding_bottom_desk = section.settings.padding_bottom_desk
+  assign padding_top_mob = section.settings.padding_top_mob
+  assign padding_bottom_mob = section.settings.padding_bottom_mob
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign text_alignment = section.settings.text_alignment
+  assign hide_subheading_on_mobile = section.settings.hide_subheading_on_mobile
+  assign button_label = section.settings.button_label
+  assign button_url = section.settings.button_url
+  assign text_color = section.settings.text_color | default: '#000000'
+  assign accent_text_color = section.settings.accent_text_color | default: '#000000'
+  assign text_color_under_images = section.settings.text_color_under_images | default: '#000000'
+  assign show_top_wave = section.settings.show_top_wave
+  assign show_bottom_wave = section.settings.show_bottom_wave
+-%}
+
+
+{% if heading != blank or section.blocks.size > 0 %}
+  <section class="images-with-descriptions{% if show_top_wave or show_bottom_wave %} images-with-descriptions--waves {% endif %}" style="
+          --padding_top_desk: {{ padding_top_desk }}px;
+          --padding_bottom_desk: {{ padding_bottom_desk }}px;
+          --padding_top_mob: {{ padding_top_mob }}px;
+          --padding_bottom_mob: {{ padding_bottom_mob }}px;
+          --text_color: {{ text_color }};
+          --accent_text_color: {{ accent_text_color }};
+          --text_color_under_images: {{ text_color_under_images }};
+">
+    {%- if show_top_wave -%}
+      {%- render 'waves' with 'wave-top' -%}
+    {%- endif -%}
+
+    {%- if show_bottom_wave -%}
+      {%- render 'waves' with 'wave-bottom-reverse' -%}
+    {%- endif -%}
+
+    <div class="images-with-descriptions__heading-wrapper images-with-descriptions__heading-wrapper--{{ text_alignment }}">
+      {% if heading != blank %}
+        <h1 role="heading" aria-level="2" class="heading title-md" >{{ heading }}</h1>
+      {% endif %}
+
+      {% if subheading != blank %}
+        <div class="images-with-descriptions__subheading {% if hide_subheading_on_mobile %} images-with-descriptions__subheading--mob-hidden {% endif %}" >
+          {{ subheading }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="images-with-descriptions__container">
+      <div class="images-with-descriptions__wrapper">
+        {%- for block in section.blocks -%}
+          {% assign image = block.settings.image %}
+          {% assign video_url = block.settings.video_url %}
+          {% assign step = block.settings.step %}
+          {% assign heading = block.settings.heading %}
+          {% assign text = block.settings.text %}
+          {% assign block_counter = forloop.length %}
+
+          <div class="images-with-descriptions__content images-with-descriptions__content-grid-{{ block_counter }}" >
+            {% if video_url != blank %}
+              <div class="images-with-descriptions__content-image-block">
+                <video class="images-with-descriptions__video images-with-descriptions__content-image"
+                       id="videos" loop muted playsinline autoplay poster="{{ image | img_url: '360x' }}">
+                  <source src="{{ video_url }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            {% else %}
+              {%- if image -%}
+                <div class="images-with-descriptions__content-image-block">
+                  {% render 'image', image: image, class_name: 'images-with-descriptions__content-image', image_attr: , %}
+                </div>
+              {%- endif -%}
+            {% endif %}
+
+            {%- if step != blank or heading != blank or text != blank -%}
+              <div class="images-with-descriptions__content-wrapper{% if step == blank %} images-with-descriptions__content-wrapper--unstep{% endif %}">
+                {%- if step != blank -%}
+                  <span class="images-with-descriptions__content-step">{{ step }}</span>
+                {%- endif -%}
+
+                {% if heading != blank %}
+                  <h3 class="images-with-descriptions__content-heading">
+                    {{ heading }}
+                  </h3>
+                {% endif %}
+
+                {%- if text != blank -%}
+                  <p class="images-with-descriptions__content-text">{{ text }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {% if button_url != blank and button_label != blank %}
+      <a class="images-with-descriptions__link anyday-btn" href="{{ button_url }}">{{ button_label }}</a>
+    {% endif %}
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Images with descriptions",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 0
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "info": "Work for Heading and subheading. Only desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_subheading_on_mobile",
+      "label": "Hide subheading on mobile"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_text_color",
+      "label": "Accent text color",
+      "default": "#E05647"
+    },
+    {
+      "type": "color",
+      "id": "text_color_under_images",
+      "label": "Text color under images",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button url"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_wave",
+      "label": "Show top wave",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "info": "Only .mp4 is required for it to work. You can upload videos [here](https://cookanyday.com/admin/settings/files) to get the url",
+          "label": "Video file .mp4"
+        },
+        {
+          "type": "text",
+          "id": "step",
+          "label": "Step"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "Images with descriptions"
+  }
+]
+}
+{% endschema %}

@@ -1,0 +1,230 @@
+{%- liquid
+  assign accordions_hide_arr = product.metafields.product_details_accordion.hide
+  assign accordions_title_arr = product.metafields.product_details_accordion.title
+  assign accordions_description_arr = product.metafields.product_details_accordion.description
+  assign portion = product.metafields.accentuate.portion
+  assign portion_text = product.metafields.accentuate.portion_text
+  assign recommendation = product.metafields.accentuate.recommendation
+  assign taste_recom_text = product.metafields.accentuate.taste_recom_text
+  assign details_title = product.metafields.accentuate.details_title
+  assign details_text_variant  = product.selected_or_first_available_variant.metafields.starter_set_template.details
+  assign details_text  = product.metafields.accentuate.details[0]
+  assign details_tooltip_text = product.metafields.accentuate.tooltip_text[0]
+  assign details_tooltip_text_variant = product.selected_or_first_available_variant.metafields.starter_set_template.tooltip_text | default: product.metafields.accentuate.tooltip_text[0]
+
+
+  assign rebuy_widget_title = block.settings.rebuy_widget_title
+  assign rebuy_widget_id = block.settings.rebuy_widget_id
+-%}
+
+{% capture details_tooltip %}
+  {% render 'tooltip', content: details_tooltip_text %}
+{% endcapture %}
+
+{% capture details_tooltip_variant %}
+  {% render 'tooltip', content: details_tooltip_text_variant %}
+{% endcapture %}
+
+{% if product.metafields.accentuate.what_is == blank %}
+  {%- assign what_is_title = block.settings.what_is_heading -%}
+  {%- assign what_is_body  = block.settings.what_is_description -%}
+{% endif %}
+
+{% if product.metafields.accentuate.safety == blank %}
+  {%- assign safety_title = block.settings.safety_heading -%}
+  {%- assign safety_body  = block.settings.safety_description -%}
+{% endif %}
+
+<div class="product__dynamic-accordions" {{ block.shopify_attributes }}>
+  {% if rebuy_widget_title != blank and rebuy_widget_id != blank %}
+    <details class="product__accordion details" is="accordion-details" open>
+      <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
+        <div class="flex items-center gap-2d5">
+          <span class="text-xl font-medium leading-none">{{ rebuy_widget_title }}</span>
+        </div>
+        {%- render 'icon', icon: 'plus-alt', size: 'xs', class: 'flex-auto' -%}
+      </summary>
+      <div class="details__content rte text-lg">
+        <div data-rebuy-id="{{ rebuy_widget_id }}" data-rebuy-shopify-product-ids="{{ product.id }}"></div>
+      </div>
+    </details> 
+  {% endif %}
+
+  {% if what_is_title != blank and what_is_body != blank %}
+    <details class="product__accordion details" is="accordion-details">
+      <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
+        <div class="flex items-center gap-2d5">
+          <span class="text-xl font-medium leading-none">{{ what_is_title | strip_html }}</span>
+        </div>
+        {%- render 'icon', icon: 'plus-alt', size: 'xs', class: 'flex-auto' -%}
+      </summary>
+      <div class="details__content rte text-lg">
+        {{ what_is_body }}
+      </div>
+    </details> 
+  {% endif %}
+
+  {% if details_title != blank and
+    portion_text != blank or
+    taste_recom_text != blank or
+    details_text_variant != blank or details_text != blank or
+    selected_variant_taste_text != blank %}
+    <details class="product__accordion details {% unless product.has_only_default_variant and details_text_variant != blank %} product__accordion--variant {% endunless %}" is="accordion-details">
+      <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
+        <div class="flex items-center gap-2d5">
+          <span class="text-xl font-medium leading-none">
+            {%- if details_title contains '<p>' -%}
+              {{ details_title | remove: '["<p>' | remove: '</p>"]' }}
+            {%- else -%}
+              {{ details_title }}
+            {%- endif -%}
+          </span>
+        </div>
+        {%- render 'icon', icon: 'plus-alt', size: 'xs', class: 'flex-auto' -%}
+      </summary>
+      <div class="details__content rte text-lg">
+        {%- if portion_text != blank or taste_recom_text != blank or selected_variant_taste_text != blank -%}
+          {%- if portion != blank or portion_text != blank or recommendation != blank or taste_recom_text != blank -%}
+            <div class="product-products__description-block">
+              {%- assign product_title_handleize = product.title | handleize -%}
+
+              {%- if portion != blank or portion_text != blank -%}
+                {%- unless product_title_handleize contains 'set' -%}
+                  <div class="product-products__icons product--type">
+                    {%- if portion != blank -%}
+                      <img class="product-products__icon" src="{{ portion }}" alt="">
+                    {%- endif -%}
+
+                    {%- if portion_text != blank -%}
+                      <p class="product-products__text">{{ portion_text }}</p>
+                    {%- endif -%}
+                  </div>
+                {%- endunless -%}
+              {%- endif -%}
+
+              {%- if recommendation != blank or taste_recom_text != blank -%}
+                <div class="product-products__icons product--type">
+                  {%- if recommendation != blank -%}
+                    <img class="product-products__icon" src="{{ recommendation }}" alt="">
+                  {%- endif -%}
+
+                  {%- if taste_recom_text != blank -%}
+                    <p class="product-products__text">{{ taste_recom_text }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- comment -%} 'render' because need vis variables from snippet {%- endcomment -%}
+        {% comment %} {% render 'pdp-tooltip' %} {% endcomment %}
+
+        {% if product.has_only_default_variant or details_text_variant == blank %}
+          {%- if details_text != blank -%}
+            {% if details_text contains 'tooltip' and details_tooltip_text != blank %}
+              {%- assign details_with_tooltip = details_text | replace: 'tooltip', details_tooltip -%}
+              {{ details_with_tooltip }}
+            {% else %}
+              {{ details_text }}
+            {% endif %}
+          {%- endif -%}
+        {%- else -%}
+          {%- if details_text_variant != blank -%}
+            {% if details_text_variant contains 'tooltip' and details_tooltip_text_variant != blank %}
+              {%- assign details_with_tooltip_variant = details_text_variant | replace: 'tooltip', details_tooltip_variant -%}
+              {{ details_with_tooltip_variant }}
+            {% else %}
+              {{ details_text_variant }}
+            {% endif %}
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </details>
+  {% endif %}
+
+
+  {% if safety_title != blank and safety_body != blank %}
+    <details class="product__accordion details" is="accordion-details">
+      <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
+        <div class="flex items-center gap-2d5">
+          <span class="text-xl font-medium leading-none">
+            {{ safety_title | strip_html }}
+          </span>
+        </div>
+        {%- render 'icon', icon: 'plus-alt', size: 'xs', class: 'flex-auto' -%}
+      </summary>
+      <div class="details__content rte text-lg">
+        {{ safety_body }}
+      </div>
+    </details> 
+  {% endif %}
+
+  {% if accordions_title_arr.size > 0 %}
+    {%- for title in accordions_title_arr -%}
+      {%- assign checkbox_hide = accordions_hide_arr[forloop.index0] -%}
+      {%- assign description = accordions_description_arr[forloop.index0] -%}
+
+      {%- if checkbox_hide != 'true' and checkbox_hide != true -%}
+        {%- if title != blank and description != blank -%}
+          <details class="product__accordion details" is="accordion-details">
+            <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
+              <div class="flex items-center gap-2d5">
+                <span class="text-xl font-medium leading-none">
+                  {{ title | strip_html }}
+                </span>
+              </div>
+              {%- render 'icon', icon: 'plus-alt', size: 'xs', class: 'flex-auto' -%}
+            </summary>
+            <div class="details__content rte text-lg">
+              {{ description }}
+            </div>
+          </details>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener('click', (event) => {
+      const tooltips = document.querySelectorAll('.question-tooltip__wrapper');
+      tooltips.forEach((tooltip) => {
+        if (tooltip.open && (!tooltip.contains(event.target) || event.target.classList.contains("question-tooltip--close"))) {
+          tooltip.removeAttribute('open');
+        }
+      });
+    });
+  });
+
+  {% if rebuy_widget_title != blank and rebuy_widget_id != blank %}
+    window.addEventListener("load", () => {
+      const rebuyCheckbox = document.querySelectorAll(".product__dynamic-accordions .rebuy-checkbox-label");
+      const addTemplate = `<div class="rebuy-checkbox__inner"><div class="rebuy-checkbox__plus">+</div> <div class="rebuy-checkbox__add">ADD</div></div>`;
+      rebuyCheckbox.forEach((checkbox) => {
+        checkbox.insertAdjacentHTML('beforeend', addTemplate);
+      });
+      
+      document.addEventListener('rebuy:cart.add', (event) => { 
+        setTimeout(() => {
+          document.dispatchEvent(new CustomEvent('cart:refresh', {
+            bubbles: true, detail: { open: true }
+          }));
+        }, 1000);
+        // rebuyCheckbox.forEach((checkbox) => {
+        //   checkbox.querySelector('input[type="checkbox"]').checked = false;
+        // });
+      });
+
+      document.addEventListener('rebuy:cart.change', (event) => { 
+        setTimeout(() => {
+          document.dispatchEvent(new CustomEvent('cart:refresh', {
+            bubbles: true, detail: { open: true }
+          }));
+        }, 1000);
+      });
+    });
+
+  {% endif %}
+</script>

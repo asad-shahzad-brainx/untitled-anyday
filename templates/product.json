@@ -22,7 +22,7 @@
           }
         },
         "junip_product_reviews_ugc_junip_product_summary_4dXHn6": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-summary/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify:\/\/apps\/junip-product-reviews-ugc\/blocks\/junip-product-summary\/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "product": "{{product}}"
           }
@@ -77,7 +77,7 @@
           }
         },
         "rebuy_personalization_engine_rebuy_widget_Xaid9N": {
-          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-widget\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
           "settings": {
             "enabled": true,
             "id": "177640",
@@ -94,7 +94,7 @@
           "settings": {
             "icon": "none",
             "heading": "Details",
-            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.<\/p><p>Ex: Shipping and return policies, size guides, and other common questions.<\/p>",
             "page": "",
             "liquid": ""
           }
@@ -104,7 +104,7 @@
           "settings": {
             "icon": "none",
             "heading": "Is it microwave safe?",
-            "content": "<ul><li>Anyday dishes are made of glass, not plastic, and are fully microwave-safe (yes, even the metal on the lid!). Read more about metal in the microwave <a href=\"/blogs/news/is-metal-safe-in-microwave\" title=\"The Truth About Metal in the Microwave\">here</a>.</li><li>Microwaves are 100% safe to use. Did you know that your cellphone emits more radiation than your microwave does?</li><li>Food made from scratch in the microwave is safe to eat — in fact, the microwave preserves more nutrients than other cooking methods according to studies by Harvard and Cornell!</li><li>For more on microwave safety, check out our <a href=\"/pages/faq\" title=\"FAQ\">FAQ</a> and <a href=\"/blogs/news\" title=\"News\">Learn sections</a>!</li></ul>",
+            "content": "<ul><li>Anyday dishes are made of glass, not plastic, and are fully microwave-safe (yes, even the metal on the lid!). Read more about metal in the microwave <a href=\"\/blogs\/news\/is-metal-safe-in-microwave\" title=\"The Truth About Metal in the Microwave\">here<\/a>.<\/li><li>Microwaves are 100% safe to use. Did you know that your cellphone emits more radiation than your microwave does?<\/li><li>Food made from scratch in the microwave is safe to eat — in fact, the microwave preserves more nutrients than other cooking methods according to studies by Harvard and Cornell!<\/li><li>For more on microwave safety, check out our <a href=\"\/pages\/faq\" title=\"FAQ\">FAQ<\/a> and <a href=\"\/blogs\/news\" title=\"News\">Learn sections<\/a>!<\/li><\/ul>",
             "page": "",
             "liquid": ""
           }
@@ -189,7 +189,7 @@
           "settings": {
             "icon": "rocket",
             "heading": "Shipping Information",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#b45309",
@@ -204,7 +204,7 @@
           "settings": {
             "icon": "headphone",
             "heading": "Customer Support",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#0369a1",
@@ -219,7 +219,7 @@
           "settings": {
             "icon": "chat_bubble",
             "heading": "FAQ’s",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#be123c",
@@ -234,7 +234,7 @@
           "settings": {
             "icon": "phone",
             "heading": "Contact Us",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#4d7c0f",
@@ -253,14 +253,14 @@
       ],
       "settings": {
         "heading": "Need help?",
-        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.</p>"
+        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.<\/p>"
       }
     },
     "1733948763a41441db": {
       "type": "apps",
       "blocks": {
         "rebuy_personalization_engine_rebuy_widget_4g8Jpg": {
-          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-widget\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
           "settings": {
             "enabled": true,
             "id": "177638",
@@ -280,7 +280,7 @@
         "heading": "",
         "heading_alignment": "center",
         "heading_margin_bottom": 60,
-        "button_link": "/",
+        "button_link": "\/",
         "button_text": "",
         "button_margin_top": 60,
         "color_text": "",
@@ -302,7 +302,7 @@
       "type": "apps",
       "blocks": {
         "tolstoy_shoppable_video_ugc_carousel_block_kzQkAL": {
-          "type": "shopify://apps/tolstoy-shoppable-video-ugc/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify:\/\/apps\/tolstoy-shoppable-video-ugc\/blocks\/carousel-block\/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "wir3vcjltmtvw"
           }
@@ -316,7 +316,7 @@
         "heading": "See it in action",
         "heading_alignment": "center",
         "heading_margin_bottom": 60,
-        "button_link": "/",
+        "button_link": "\/",
         "button_text": "",
         "button_margin_top": 60,
         "color_text": "",
@@ -364,7 +364,7 @@
       "type": "apps",
       "blocks": {
         "junip_product_reviews_ugc_junip_product_review_tLTRQ6": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify:\/\/apps\/junip-product-reviews-ugc\/blocks\/junip-product-review\/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "product": "{{product}}"
           }
@@ -378,7 +378,7 @@
         "heading": "What Customers Are Saying",
         "heading_alignment": "center",
         "heading_margin_bottom": 60,
-        "button_link": "/",
+        "button_link": "\/",
         "button_text": "",
         "button_margin_top": 60,
         "color_text": "",
@@ -403,7 +403,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -412,7 +412,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -421,7 +421,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -430,7 +430,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -439,7 +439,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -448,7 +448,7 @@
           "type": "contact",
           "settings": {
             "heading": "Didn’t find your answer?",
-            "text": "<p>Don't hestitate to contact us</p>",
+            "text": "<p>Don't hestitate to contact us<\/p>",
             "show_phone": false,
             "avatar_height": 60,
             "highlighted_text": "none",
@@ -471,7 +471,7 @@
         "heading_alignment": "text-left md:items-end md:flex-row",
         "heading_tag": "h2",
         "subheading": "",
-        "description": "<p>Please read our <a href=\"#\" title=\"FAQ's\">FAQs</a> page to find out more.</p>",
+        "description": "<p>Please read our <a href=\"#\" title=\"FAQ's\">FAQs<\/a> page to find out more.<\/p>",
         "button_label": "",
         "button_link": "",
         "highlighted_text": "none",

@@ -4429,8 +4429,8 @@ class SliderElement extends HTMLElement {
       behavior: immediate
         ? "instant"
         : theme.config.motionReduced
-        ? "auto"
-        : "smooth",
+          ? "auto"
+          : "smooth",
     });
   }
 
@@ -4514,8 +4514,8 @@ class SliderDots extends HTMLElement {
         behavior: immediate
           ? "instant"
           : theme.config.motionReduced
-          ? "auto"
-          : "smooth",
+            ? "auto"
+            : "smooth",
       });
     }
   }
@@ -6513,8 +6513,8 @@ class SpinningText extends HTMLElement {
         ? "calc((var(--character-width) / sin(var(--inner-angle))) * -1ch)"
         : `calc(
         (${OPTIONS.SPACING} / ${Math.sin(
-            360 / this.children.length / (180 / Math.PI)
-          )})
+          360 / this.children.length / (180 / Math.PI)
+        )})
         * -1ch
       )`
     );
@@ -6726,18 +6726,21 @@ class SlideshowWords extends HTMLElement {
 
     fromWords.forEach((element) => element.reset());
 
-    setTimeout(() => {
-      this.items.forEach((item) => {
-        item.setAttribute(
-          "aria-current",
-          parseInt(item.dataset.index) === parseInt(this.selectedIndex)
-            ? "true"
-            : "false"
-        );
-      });
+    setTimeout(
+      () => {
+        this.items.forEach((item) => {
+          item.setAttribute(
+            "aria-current",
+            parseInt(item.dataset.index) === parseInt(this.selectedIndex)
+              ? "true"
+              : "false"
+          );
+        });
 
-      toWords.forEach((element) => element.refresh());
-    }, 500 + 30 * fromWords.length);
+        toWords.forEach((element) => element.refresh());
+      },
+      500 + 30 * fromWords.length
+    );
   }
 }
 customElements.define("slideshow-words", SlideshowWords);

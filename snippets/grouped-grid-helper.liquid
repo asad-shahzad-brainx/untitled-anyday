@@ -1,0 +1,66 @@
+
+
+{%- liquid
+  assign product_card_split_by_size = product.metafields.product_card.split_cards_by_size
+  assign options_for_splitting = "size,set"
+  assign product_has_options_we_need = false
+-%}
+
+{%- for product_option in product.options_with_values -%}
+ {%- assign product_option_handle = product_option.name | handleize -%}
+
+ {%- if options_for_splitting contains product_option_handle -%}
+   {%- assign product_has_options_we_need = true -%}
+   {% break %}
+ {%- endif -%}
+{%- endfor -%}
+
+{%- if product_card_split_by_size == true or product_card_split_by_size == 'true' and product_has_options_we_need -%}
+  {%- for product_option in product.options_with_values -%}
+    {%- assign product_option_handle = product_option.name | handleize -%}
+
+    {%- if options_for_splitting contains product_option_handle -%}
+      {%- for value in product_option.values -%}
+        {%- render 'product-card',
+          product: product,
+          lazy_load: lazy_load,
+          image_ratio: settings.product_image_ratio,
+          image_fill: settings.product_image_fill,
+          show_secondary_image: settings.product_secondary_image,
+          show_vendor: settings.product_vendor,
+          show_rating: settings.product_rating,
+          show_color_swatches: settings.product_color_swatches,
+          show_countdown: settings.product_countdown,
+          show_quick_add: settings.product_quick_add,
+          show_quick_view: settings.product_quick_view,
+          show_save_amount: settings.product_save_amount,
+          save_type: settings.product_save_type,
+          section_id: section.id,
+          split_card: true,
+          size_name: value,
+          show_lifestyle_image: true,
+          show_shop_now: true
+        -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- render 'product-card',
+    product: product,
+    lazy_load: lazy_load,
+    image_ratio: settings.product_image_ratio,
+    image_fill: settings.product_image_fill,
+    show_secondary_image: settings.product_secondary_image,
+    show_vendor: settings.product_vendor,
+    show_rating: settings.product_rating,
+    show_color_swatches: settings.product_color_swatches,
+    show_countdown: settings.product_countdown,
+    show_quick_add: settings.product_quick_add,
+    show_quick_view: settings.product_quick_view,
+    show_save_amount: settings.product_save_amount,
+    save_type: settings.product_save_type,
+    section_id: section.id,
+    show_lifestyle_image: true,
+    show_shop_now: true
+  -%}
+{%- endif -%}

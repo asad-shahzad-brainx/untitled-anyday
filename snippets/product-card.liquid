@@ -29,14 +29,6 @@
   {% assign show_color_swatches = false %}
   {% assign show_countdown = false %}
   {% assign show_save_amount = false %}
-{% else %}
-  {% assign show_price = true %}
-  {% assign show_quick_add = true %}
-  {% assign show_quick_view = true %}
-  {% assign show_secondary_image = true %}
-  {% assign show_color_swatches = true %}
-  {% assign show_countdown = true %}
-  {% assign show_save_amount = true %}
 {% endif %}
 
 {%- if product != blank -%}
@@ -116,11 +108,23 @@
           {%- unless featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}
             {%- if show_secondary_image and product.media.size > 1 -%}
               <template>
-                {%- for media in product.media limit: 2 -%}
-                  <div class="media media--height{% unless image_fill %} media--contain{% endunless %} w-full h-full overflow-hidden">
-                    {{- media | image_url: width: media.width | image_tag: loading: 'lazy', widths: '180,360,540,720,900,1080', is: 'lazy-image' -}}
-                  </div>
-                {%- endfor -%}
+                {% assign product_alternative_image = product.metafields.accentuate.product_alternative_image[0][0] %}
+                {% if show_lifestyle_image and product_alternative_image != blank %}
+                  {%- for media in product.media limit: 1 -%}
+                    <div class="media media--height{% unless image_fill %} media--contain{% endunless %} w-full h-full overflow-hidden">
+                      {{- media | image_url: width: media.width | image_tag: loading: 'lazy', widths: '180,360,540,720,900,1080', is: 'lazy-image' -}}
+                    </div>
+                    <div class="media media--height{% unless image_fill %} media--contain{% endunless %} w-full h-full overflow-hidden">
+                      {% render 'image-metafields', image: product_alternative_image %}
+                    </div>
+                  {%- endfor -%}
+                {% else %}
+                  {%- for media in product.media limit: 2 -%}
+                    <div class="media media--height{% unless image_fill %} media--contain{% endunless %} w-full h-full overflow-hidden">
+                      {{- media | image_url: width: media.width | image_tag: loading: 'lazy', widths: '180,360,540,720,900,1080', is: 'lazy-image' -}}
+                    </div>
+                  {%- endfor -%}
+                {% endif %}
               </template>
               <secondary-media class="product-card__carousel block absolute top-0 left-0 w-full h-full hidden md:block"></secondary-media>
             {%- endif -%}
@@ -210,7 +214,7 @@
                   {%- render 'icon', icon: 'countdown-compact', size: 'sm', class: 'flex-auto hidden md:block' -%}
                   <countdown-timer
                     class="flex gap-3"
-       s             data-year="{{ product.metafields.theme.countdown.value | date: "%Y" }}"
+                    data-year="{{ product.metafields.theme.countdown.value | date: "%Y" }}"
                     data-month="{{ product.metafields.theme.countdown.value | date: "%m" }}"
                     data-day="{{ product.metafields.theme.countdown.value | date: "%d" }}"
                     data-hour="{{ product.metafields.theme.countdown.value | date: "%H" }}"
@@ -252,12 +256,10 @@
       <div class="product-card__details flex flex-col lg:flex-row items-baseline gap-2 w-full">
         <p class="grow">
           <a class="product-card__title reversed-link text-base-xl font-medium leading-tight" href="{{ product_url }}">
-            {{- product.title | escape -}}
+            {{- product.title | escape -}}{% if split_card %} - {{ size_name }}{% endif %}
           </a>
         </p>
-        {% if show_price %}
-          {%- render 'product-price', product: product, class: 'flex flex-wrap lg:flex-col lg:items-end gap-2 md:gap-1d5' -%}
-        {% endif %}
+        {%- render 'product-price', product: product, class: 'flex flex-wrap lg:flex-col lg:items-end gap-2 md:gap-1d5' -%}
       </div>
 
       {%- if show_color_swatches -%}
@@ -292,6 +294,17 @@
             <div class="product-card__bottom flex items-center gap-2">
               <ul class="swatches swatches--{{ settings.rounded_swatch }}{% if settings.product_color_swatch_type == 'variant' %} swatches--variant{% endif %} swatches--{{ product.id }} inline-flex items-start gap-2">
                 {%- for variant in product.variants -%}
+                  {% if split_card %}
+                    {% capture variant_option %}
+                      {% for option in variant.options %}
+                        {{ option }}{%- unless forloop.last -%}/{%- endunless -%}
+                      {% endfor %}
+                    {% endcapture %}
+                    {% if variant_option contains size_name %}
+                      {% continue %}
+                    {% endif %}
+                  {% endif %}
+                  
                   {%- assign value = variant.options[option_index] %}
                   {%- unless values contains value -%}
                     {%- liquid
@@ -332,6 +345,9 @@
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}    
+      {% if show_shop_now %}
+        <a href="{{ product.url }}" class="button button--secondary product-card__bottom-btn">Shop Now</a>
+      {% endif %}
       <deliverr  data-component="Badge" data-productId="{{product.id}}"></deliverr>
     </div>
     

@@ -1,0 +1,461 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "heading_size": "title-lg tracking-heading",
+        "heading_tag": "h1",
+        "text_size": "text-base",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "images_with_description_DLWChe": {
+      "type": "images-with-description",
+      "blocks": {
+        "600394a1-eeed-4d45-a9eb-870dd83750bf": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Home_page_Step_1.jpg",
+            "video_url": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Step_1_Prep_V2.mov?v=1652372358",
+            "step": "1",
+            "heading": "PREP",
+            "text": "Add fresh ingredients to the Anyday. Put on the lid."
+          }
+        },
+        "8799b1e0-3520-4f00-8794-c9f14f734b1e": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Home_page_Step_1.jpg",
+            "video_url": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Step_2_Cook_V2.mov?v=1652372596",
+            "step": "2",
+            "heading": "COOK",
+            "text": "Microwave! Step away and soak up some delicious free time."
+          }
+        },
+        "39e7eca7-4fac-4d73-a59e-421cb2d7a13e": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Home_page_Step_1.jpg",
+            "video_url": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Step_3_Serve_V2.mov?v=1652372646",
+            "step": "3",
+            "heading": "SERVE",
+            "text": "Bring the Anyday straight from microwave to table."
+          }
+        },
+        "0a3bdbad-e0ad-4c07-a830-ba2de8253767": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Home_page_Step_1.jpg",
+            "video_url": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Step_4_Store_V2.mov?v=1652372692",
+            "step": "4",
+            "heading": "STORE",
+            "text": "Push down the knob to stack. Reheat leftovers in the same dish."
+          }
+        }
+      },
+      "block_order": [
+        "600394a1-eeed-4d45-a9eb-870dd83750bf",
+        "8799b1e0-3520-4f00-8794-c9f14f734b1e",
+        "39e7eca7-4fac-4d73-a59e-421cb2d7a13e",
+        "0a3bdbad-e0ad-4c07-a830-ba2de8253767"
+      ],
+      "settings": {
+        "padding_top_desk": 50,
+        "padding_bottom_desk": 0,
+        "padding_top_mob": 25,
+        "padding_bottom_mob": 0,
+        "heading": "<p>How to use Anyday microwave cookware</p>",
+        "subheading": "<p>Turn raw ingredients into delicious, nutritious meals in record time with your kitchen’s most powerful tool</p>",
+        "text_alignment": "center",
+        "hide_subheading_on_mobile": false,
+        "text_color": "#000000",
+        "accent_text_color": "#ff3c1f",
+        "text_color_under_images": "#000000",
+        "button_label": "",
+        "button_url": "",
+        "show_top_wave": false,
+        "show_bottom_wave": false
+      }
+    },
+    "wave_divider_ftBzH6": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#BED8FC",
+        "background_color": "#dcfae0",
+        "flip_vertical": true,
+        "flip_horizontal": false
+      }
+    },
+    "multimedia_cards_with_slider_TpTHyb": {
+      "type": "multimedia-cards-with-slider",
+      "blocks": {
+        "dcd366b8-9739-42c1-a95c-7a984137e9de": {
+          "type": "image_block",
+          "settings": {
+            "block_url": "",
+            "image": "shopify://shop_images/ezgif.com-gif-maker_9.gif",
+            "video_url": "",
+            "bg_color": "#205b62",
+            "text_color": "#ffffff",
+            "heading": "Vegetables",
+            "footer": "Steam vegetables like bok choy, broccoli, beets, sweet potatoes (and more) to tender perfection in the push of a button.",
+            "top_text": "Steamed veggies",
+            "bottom_text": "in 2 minutes",
+            "text_color_on_image": "#ffffff"
+          }
+        },
+        "cb8f71d6-e5bc-49bb-9e4a-1efd9b0f35e4": {
+          "type": "image_block",
+          "settings": {
+            "block_url": "",
+            "image": "shopify://shop_images/ezgif.com-gif-maker_13.gif",
+            "video_url": "",
+            "bg_color": "#c1a2f2",
+            "text_color": "#ffffff",
+            "heading": "Proteins",
+            "footer": "Prepare proteins like chicken, fish, shellfish,  pork (including crispy, no-mess bacon!), and so much more with ease.",
+            "top_text": "Bacon",
+            "bottom_text": "in 3 minutes",
+            "text_color_on_image": "#ffffff"
+          }
+        },
+        "311aa9e9-2ea3-4891-b328-42f50209f626": {
+          "type": "image_block",
+          "settings": {
+            "block_url": "",
+            "image": "shopify://shop_images/ezgif.com-gif-maker_17.gif",
+            "video_url": "",
+            "bg_color": "#36448d",
+            "text_color": "#ffffff",
+            "heading": "Grains",
+            "footer": "Take the guesswork out of cooking grains like rice, polenta, quinoa, and more by using our hands-off method.",
+            "top_text": "Rice",
+            "bottom_text": "in 22 minutes",
+            "text_color_on_image": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "dcd366b8-9739-42c1-a95c-7a984137e9de",
+        "cb8f71d6-e5bc-49bb-9e4a-1efd9b0f35e4",
+        "311aa9e9-2ea3-4891-b328-42f50209f626"
+      ],
+      "custom_css": [
+        "h3.multimedia-card__content-heading {color: white; font-size: 1.75rem !important;}"
+      ],
+      "settings": {
+        "heading": "It's as easy as it looks.",
+        "subheading": "Believe it or not, you can cook incredible food from scratch in your microwave — especially vegetables, proteins, and grains.",
+        "section_bg": "#bed8fc",
+        "text_color": "#000000",
+        "padding_top_desktop": 75,
+        "padding_top_mobile": 60,
+        "padding_bottom_desktop": 65,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "wave_divider_9txWrJ": {
+      "type": "wave-divider",
+      "custom_css": [],
+      "settings": {
+        "wave_color": "#BED8FC",
+        "background_color": "#fbfbf9",
+        "flip_vertical": false,
+        "flip_horizontal": false
+      }
+    },
+    "timeline_kM7ekP": {
+      "type": "timeline",
+      "blocks": {
+        "content_LQzk8T": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Anyday_Photos_Recipes_Creamymashedpotatoes_1024_1_cb2f399a-d8d8-477c-afbf-ae6f4c05f7cc.webp",
+            "subheading": "",
+            "heading": "Creamy Mashed Potatoes",
+            "heading_tag": "h2",
+            "text": "<p>You’ll never make mashed potatoes  the “old way” again after you try this microwave method, which takes less than 10 minutes. There’s no need to boil a pot of water. Plus, you can steam, mash, serve, store, and reheat the potatoes all in the same dish.</p><p><em>\"Thank you for this. You just saved me SO much time.\"</em></p><p><em>— IG follower</em></p>",
+            "button_label": "View Recipe",
+            "button_link": "shopify://products/microwave-creamy-mashed-potatoes-anyday",
+            "highlighted_text": "text",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "content_mhDcEa": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Anyday_Photos_Recipes_DaveChang_sChawanmushi_1024.webp",
+            "subheading": "",
+            "heading": "David Chang's Chawanmushi",
+            "heading_tag": "h2",
+            "text": "<p>This silky Japanese steamed egg custard is one of our most popular recipes for good reason. Enjoy this everyday comfort food hot, cold, over rice, with vegetables, or by itself.</p><p><em>\"This is the kind of texture and deliciousness I would get at the best restaurant, done at home and insanely easy.\"</em></p><p><em>— Chef David Chang</em></p>",
+            "button_label": "View Recipe",
+            "button_link": "shopify://products/dave-changs-chawanmushi",
+            "highlighted_text": "text",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "content_t6e9dg": {
+          "type": "content",
+          "settings": {
+            "image": "shopify://shop_images/Anyday_Photos_Recipes_Chickenandrice_1024_2.webp",
+            "subheading": "",
+            "heading": "Microwave Chicken and Rice",
+            "heading_tag": "h2",
+            "text": "<p>This one dish meal is simple, fast, and truly foolproof. Feel free to use* various leftovers you have in your fridge!</p><p><em>\"I was nervous about whether this would work, but it turned out to be delicious, with the chicken cooked through to the bone and the rice tender and fluffy.\"</em></p><p><em>— Nicole Lee, Engadget</em></p>",
+            "button_label": "View Recipe",
+            "button_link": "shopify://products/chicken-and-rice",
+            "highlighted_text": "text",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "content_LQzk8T",
+        "content_mhDcEa",
+        "content_t6e9dg"
+      ],
+      "custom_css": [
+        "h2,.subtext-md {color: black;}",
+        ".timeline__item-content {padding-inline-end: 0px; padding-block: 0px; padding: 24px 30px;}",
+        ".timeline__item > .flex {align-items: center;}",
+        ".timeline__item > .flex {background-color: #f0ede7; gap: 0px;}",
+        ".timeline__item-content .heading {padding-block-end: 10px;}",
+        ".highlighted-text {font-style: italic; font-weight: bold;}",
+        ".text-opacity {color: rgb(0 0 0 / 60%);}",
+        ".timeline__item:after {opacity: 0;}",
+        "@media (min-width: 768px) {.timeline-dots {display: none; }}"
+      ],
+      "settings": {
+        "image_ratio": "square",
+        "image_ratio_mobile": "square",
+        "heading": "Start with Magic Recipes 🪄",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "<p>Try these foolproof recipes that you'll turn to again and again.</p>",
+        "highlighted_text": "text",
+        "highlighted_scribble": "circle",
+        "color_text": "#205b62",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "#205b62",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 48,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "wave_divider_KxjtRh": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#fbfbf9",
+        "background_color": "#f1ede7",
+        "flip_vertical": false,
+        "flip_horizontal": false
+      }
+    },
+    "featured_collection_CHfUaV": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".product-card {background-color: white;}",
+        ".product-card__content {padding: 24px;}",
+        ".subtext-md {justify-self: center;}",
+        ".title-wrapper {text-wrap: balance !important;}",
+        "@media (min-width: 768px) {h2.heading.title-md {max-width: 66%; justify-self: center; }}"
+      ],
+      "settings": {
+        "collection": "",
+        "products": [
+          "how-to-cook-microwave-broccoli-anyday",
+          "how-to-cook-microwave-white-rice-anyday",
+          "how-to-cook-microwave-chicken-breast-anyday",
+          "how-to-cook-microwave-green-beans-anyday"
+        ],
+        "product_limit": 4,
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Make your life easy — use whatever ingredients you have at home!",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "<p>Have frozen salmon fillets in your freezer? A bag of Brussels sprouts you don’t know what to do with? Make it all in the Anyday.</p>",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#f1ede7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 36,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "wave_divider_N4txRE": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#f1ede7",
+        "background_color": "#fbec60",
+        "flip_vertical": false,
+        "flip_horizontal": true
+      }
+    },
+    "hp_tabs_recipes_6jU3XF": {
+      "type": "hp-tabs-recipes",
+      "blocks": {
+        "266ad59e-3b14-4fe7-8aef-170305ffa7f2": {
+          "type": "tab",
+          "settings": {
+            "heading": "Vegetables",
+            "recipe_1": "garlicky-greens",
+            "recipe_2": "marble-potato-salad",
+            "recipe_3": "sweet-potatoes-with-miso-tahini-butter",
+            "recipe_4": "warm-broccoli-salad-anyday",
+            "text_btn": "See all vegetable recipes",
+            "url_btn": "https://cookanyday.com/collections/recipes/category-vegetables",
+            "bg_color": "#dcfae0",
+            "bg_color_hover": "#205b62",
+            "text_color": "#000000",
+            "text_color_hover": "#ffffff"
+          }
+        },
+        "39e125c6-ec80-4035-afdd-9c85747c33ce": {
+          "type": "tab",
+          "settings": {
+            "heading": "Proteins",
+            "recipe_1": "olive-oil-poached-salmon",
+            "recipe_2": "how-to-cook-microwave-poached-eggs-anyday",
+            "recipe_3": "dave-changs-salmon-rice",
+            "recipe_4": "how-to-microwave-bacon-anyday",
+            "text_btn": "See all protein recipes",
+            "url_btn": "https://cookanyday.com/collections/recipes/category-meat",
+            "bg_color": "#c1a2f2",
+            "bg_color_hover": "#ee0c93",
+            "text_color": "#000000",
+            "text_color_hover": "#ffffff"
+          }
+        },
+        "2181b93f-de91-4138-8ea2-066706dd3a13": {
+          "type": "tab",
+          "settings": {
+            "heading": "Grains",
+            "recipe_1": "how-to-cook-microwave-white-rice-anyday",
+            "recipe_2": "creamy-polenta",
+            "recipe_3": "marcela-hazans-tomato-butter-pasta",
+            "recipe_4": "how-to-cook-instant-ramen-in-the-microwave-anyday",
+            "text_btn": "See all grain recipes",
+            "url_btn": "https://cookanyday.com/collections/recipes/category-rice-grains",
+            "bg_color": "#bed8fc",
+            "bg_color_hover": "#36448d",
+            "text_color": "#000000",
+            "text_color_hover": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "266ad59e-3b14-4fe7-8aef-170305ffa7f2",
+        "39e125c6-ec80-4035-afdd-9c85747c33ce",
+        "2181b93f-de91-4138-8ea2-066706dd3a13"
+      ],
+      "settings": {
+        "heading": "The possibilities are endless.",
+        "subheading": "<p>Explore <em>everything</em> you can make with your Anyday dishes. </p><p>What do you want to make in the microwave today?</p>",
+        "section_bg": "#fced60",
+        "text_color": "#000000"
+      }
+    },
+    "wave_divider_tiLYQT": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#fbec60",
+        "background_color": "#dcfae0",
+        "flip_vertical": false,
+        "flip_horizontal": false
+      }
+    },
+    "blog_posts_mDwnHn": {
+      "type": "blog-posts",
+      "settings": {
+        "blog": "news",
+        "post_limit": 4,
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "show_view_all": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "landscape",
+        "show_tags": true,
+        "show_date": false,
+        "show_comments": false,
+        "show_author": false,
+        "show_excerpt": true,
+        "heading": "Read all about it",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#000000",
+        "color_background": "#dcfae0",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "images_with_description_DLWChe",
+    "wave_divider_ftBzH6",
+    "multimedia_cards_with_slider_TpTHyb",
+    "wave_divider_9txWrJ",
+    "timeline_kM7ekP",
+    "wave_divider_KxjtRh",
+    "featured_collection_CHfUaV",
+    "wave_divider_N4txRE",
+    "hp_tabs_recipes_6jU3XF",
+    "wave_divider_tiLYQT",
+    "blog_posts_mDwnHn"
+  ]
+}

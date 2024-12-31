@@ -368,6 +368,13 @@
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --section-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --section-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+
   @media screen and (min-width: 1024px) {
     #shopify-section-{{ section.id }} {
       {%- assign media_ratio = section.settings.media_size | divided_by: 50.0 -%}
@@ -1367,60 +1374,62 @@
   {% endif %}
 
   {% assign compatible_products_block = section.blocks | where: 'type', 'compatible_products' | first %}
-  {% assign compatible_products = product.metafields.accentuate.compatible_products | split: '|' %}
+  {% assign compatible_products = product.selected_variant.metafields.accentuate.compatible_products | split: '|' %}
 
-  {% if compatible_products_block != blank and compatible_products != blank %}
-    <div class="page-width relative compatible-products" style="--padding-bottom-desktop: {{ compatible_products_block.settings.padding_bottom_desk }}px; --padding-bottom-mobile: {{ compatible_products_block.settings.padding_bottom_mob }}px">
-      {% comment %} {% for product_item in compatible_products %}
-        {% assign handle = product_item | split: ':' | first %}
-        {% assign compatible_product = all_products[handle] %}
-        {{ compatible_product.title }}
-      {% endfor %} {% endcomment %}
-      {%- capture indicators -%}
-        {%- if compatible_products_block.settings.carousel_on_desktop -%}
-          <div class="indicators hidden lg:flex gap-2d5">
-            <button class="button button--secondary" type="button" is="previous-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" disabled>
-              <span class="btn-fill" data-fill></span>
-              <span class="btn-text">
-                {%- render 'icon', icon: 'chevron-left', class: 'transform' -%}
-              </span>
-            </button>
-            <button class="button button--secondary" type="button" is="next-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
-              <span class="btn-fill" data-fill></span>
-              <span class="btn-text">
-                {%- render 'icon', icon: 'chevron-right', class: 'transform' -%}
-              </span>
-            </button>
-          </div>
-        {%- endif -%}
-      {%- endcapture -%}
-      {%- render 'section-heading', section: compatible_products_block, section_button: indicators -%}
-      <slider-element id="Slider-{{ section.id }}" class="grid slider{% if compatible_products_block.settings.carousel_on_desktop %} slider--desktop{% endif %}{% if compatible_products_block.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card">
-        <motion-list class="product-grid card-grid card-grid--4 mobile:card-grid--1 grid">
-          {% for product_item in compatible_products %}
-            {% assign handle = product_item | split: ':' | first %}
-            {% assign compatible_product = all_products[handle] %}
-            {%- render 'product-card',
-              product: compatible_product,
-              lazy_load: false,
-              image_ratio: settings.product_image_ratio,
-              image_fill: settings.product_image_fill,
-              show_secondary_image: settings.product_secondary_image,
-              show_vendor: settings.product_vendor,
-              show_rating: settings.product_rating,
-              show_color_swatches: settings.product_color_swatches,
-              show_countdown: settings.product_countdown,
-              show_quick_add: settings.product_quick_add,
-              show_quick_view: settings.product_quick_view,
-              show_save_amount: settings.product_save_amount,
-              save_type: settings.product_save_type,
-              section_id: section.id
-            -%}
-          {%- endfor -%}
-        </motion-list>
-      </slider-element>
-    </div>
-  {% endif %}
+  <div class="compatible-products__wrapper">
+    {% if compatible_products_block != blank and compatible_products != blank %}
+      <div class="page-width relative compatible-products" style="--padding-bottom-desktop: {{ compatible_products_block.settings.padding_bottom_desk }}px; --padding-bottom-mobile: {{ compatible_products_block.settings.padding_bottom_mob }}px">
+        {% comment %} {% for product_item in compatible_products %}
+          {% assign handle = product_item | split: ':' | first %}
+          {% assign compatible_product = all_products[handle] %}
+          {{ compatible_product.title }}
+        {% endfor %} {% endcomment %}
+        {%- capture indicators -%}
+          {%- if compatible_products_block.settings.carousel_on_desktop -%}
+            <div class="indicators hidden lg:flex gap-2d5">
+              <button class="button button--secondary" type="button" is="previous-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" disabled>
+                <span class="btn-fill" data-fill></span>
+                <span class="btn-text">
+                  {%- render 'icon', icon: 'chevron-left', class: 'transform' -%}
+                </span>
+              </button>
+              <button class="button button--secondary" type="button" is="next-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
+                <span class="btn-fill" data-fill></span>
+                <span class="btn-text">
+                  {%- render 'icon', icon: 'chevron-right', class: 'transform' -%}
+                </span>
+              </button>
+            </div>
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- render 'section-heading', section: compatible_products_block, section_button: indicators -%}
+        <slider-element id="Slider-{{ section.id }}" class="grid slider{% if compatible_products_block.settings.carousel_on_desktop %} slider--desktop{% endif %}{% if compatible_products_block.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card">
+          <motion-list class="product-grid card-grid card-grid--4 mobile:card-grid--1 grid">
+            {% for product_item in compatible_products %}
+              {% assign handle = product_item | split: ':' | first %}
+              {% assign compatible_product = all_products[handle] %}
+              {%- render 'product-card',
+                product: compatible_product,
+                lazy_load: false,
+                image_ratio: settings.product_image_ratio,
+                image_fill: settings.product_image_fill,
+                show_secondary_image: settings.product_secondary_image,
+                show_vendor: settings.product_vendor,
+                show_rating: settings.product_rating,
+                show_color_swatches: settings.product_color_swatches,
+                show_countdown: settings.product_countdown,
+                show_quick_add: settings.product_quick_add,
+                show_quick_view: settings.product_quick_view,
+                show_save_amount: settings.product_save_amount,
+                save_type: settings.product_save_type,
+                section_id: section.id
+              -%}
+            {%- endfor -%}
+          </motion-list>
+        </slider-element>
+      </div>
+    {% endif %}
+  </div>
 
   {%- liquid
     assign product_variant = product.selected_or_first_available_variant
@@ -1663,7 +1672,8 @@
       recipeTable: '.text-with-table--js .text-with-table__table-wrapper--js',
       recipeTime: '.recipe__time-hero',
       recommendedProductTitle: '.recipe__info-options-product',
-      deliver: '.product-form__deliverr-wrapper'
+      deliver: '.product-form__deliverr-wrapper',
+      compatibleProducts: '.compatible-products__wrapper'
     }
 
     const selectorsValues = Object.values(selectors);
@@ -1976,6 +1986,26 @@
       "unit": "px",
       "label": "t:sections.global.settings.padding_bottom.label",
       "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.global.settings.padding_top.label",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.global.settings.padding_bottom.label",
+      "default": 64
     },
     {
       "type": "checkbox",

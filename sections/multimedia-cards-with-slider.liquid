@@ -1,0 +1,254 @@
+{{ 'multimedia-cards-with-slider.css' | asset_url | stylesheet_tag }}
+
+{% assign heading = section.settings.heading %}
+{% assign subheading = section.settings.subheading %}
+{% assign section_bg = section.settings.section_bg %}
+{% assign text_color = section.settings.text_color %}
+{%- assign padding_top_desk = section.settings.padding_top_desktop -%}
+{%- assign padding_top_mob = section.settings.padding_top_mobile -%}
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desktop -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mobile -%}
+
+<style>
+	.multimedia-cards-with-slider {
+		--section_bg: {{ section_bg }};
+		--text_color: {{ text_color }};
+    --slides: {{ section.blocks.size }};
+	}
+</style>
+
+{% if heading != blank or section.blocks.size > 0 %}
+  <section class="multimedia-cards-with-slider MCWS"
+           data-section-id="{{ section.id }}"
+           data-section-type="multimedia-cards-with-slider"
+					 style="
+						 --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+						 --padding-top-desktop: {{ padding_top_desk }}px;
+						 --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+						 --padding-top-mobile: {{ padding_top_mob }}px;
+						 "
+  >
+    <div class="MCWS__heading-container">
+      {% if heading != blank %}
+        <h2 class="heading title-md" >{{ heading }}</h2>
+      {% endif %}
+
+      {% if subheading != blank %}
+        <p class="subtext-md" >{{ subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="MCWS__container">
+      <div class="MCWS__wrapper">
+        {%- for block in section.blocks -%}
+          {%- render 'multimedia-card', block: block, block_counter: forloop.index -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="MCWS__wrapper MCWS__wrapper--slider">
+        {%- for block in section.blocks -%}
+          {%- render 'multimedia-card', block: block, block_counter: forloop.index -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function setDotsPosition() {
+      if ($(window).innerWidth() < 750) {
+        const slider = document.querySelector("#shopify-section-{{ section.id }} .MCWS__wrapper--slider");
+        const sliderHeaderHeight = slider.querySelector(".multimedia-card__content-heading").offsetHeight;
+        const imageHeight = slider.querySelector(".multimedia-card__content-image-block").offsetHeight;
+        const sliderDots = slider.querySelector(".custom--slick--dots");
+        const res = sliderHeaderHeight + imageHeight + 10;
+        sliderDots.style.top = res + "px";
+      }
+    }
+
+    window.addEventListener('resize', debounce(setDotsPosition, 100));
+
+    function debounce(func, wait) {
+      let timeout;
+      return function () {
+        const context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+      };
+    }
+
+    function initSlider(container) {
+      const slider = container.querySelector(".MCWS__wrapper--slider");
+      console.log('asda sd as', slider, slider.classList);
+      if (slider && !slider.classList.contains('slick-initialized')) {
+        $(slider).slick({
+          dots: true,
+          customPaging: function (slider, i) {
+            return '<button type="button" class="anyday-slider-dots"></button>';
+          },
+          dotsClass: "custom--slick--dots",
+          infinite: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          adaptiveHeight: true,
+          fade: false,
+          cssEase: "linear",
+          centerMode: false,
+        });
+        setDotsPosition();
+      }
+    }
+
+    const sliders = document.querySelectorAll('.multimedia-cards-with-slider');
+    sliders.forEach(slider => initSlider(slider));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Multimedia with slider",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background color",
+      "default": "#d0def2"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Padding settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top desktop",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom desktop",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 35
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "url",
+          "id": "block_url",
+          "label": "Block url"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "info": "Only .mp4 is required for it to work. You can upload videos [here](https://cookanyday.com/admin/settings/files) to get the url",
+          "label": "Video file .mp4"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "footer",
+          "label": "Footer"
+        },
+        {
+          "type": "header",
+          "content": "Text on image"
+        },
+        {
+          "type": "text",
+          "id": "top_text",
+          "label": "Top text"
+        },
+        {
+          "type": "text",
+          "id": "bottom_text",
+          "label": "Bottom text"
+        },
+        {
+          "type": "color",
+          "id": "text_color_on_image",
+          "label": "Text color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multimedia with slider",
+      "category": "Home page"
+    }
+  ]
+}
+{% endschema %}

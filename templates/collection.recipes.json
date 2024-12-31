@@ -1,0 +1,367 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "recipe_collection_Q7MENj": {
+      "type": "recipe-collection",
+      "blocks": {
+        "collection_block_egQJN9": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "new-square-dish"
+          }
+        },
+        "collection_block_bUa88q": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "new-recipes"
+          }
+        },
+        "collection_block_z4AiKP": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "anyday-basics"
+          }
+        },
+        "collection_block_BqK79R": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "paris-inspired-recipes"
+          }
+        },
+        "collection_block_xq3MJL": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "best-summer-side-dishes"
+          }
+        },
+        "collection_block_erpCqm": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "we-think-youll-love"
+          }
+        },
+        "collection_block_AhGcNn": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "under-15-minutes-recipes-1"
+          }
+        },
+        "collection_block_3RQUMh": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "our-best-fall-recipes"
+          }
+        },
+        "collection_block_3VyzWd": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "easiest-baked-recipes"
+          }
+        },
+        "collection_block_tYKGad": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "most-popular-this-week"
+          }
+        },
+        "collection_block_prn3LF": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "cheap-and-easy-dinners"
+          }
+        },
+        "collection_block_JpFjKQ": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "from-the-test-kitchen-news-letter"
+          }
+        },
+        "collection_block_UHGRrq": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "favorite-side-dishes"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_egQJN9",
+        "collection_block_bUa88q",
+        "collection_block_z4AiKP",
+        "collection_block_BqK79R",
+        "collection_block_xq3MJL",
+        "collection_block_erpCqm",
+        "collection_block_AhGcNn",
+        "collection_block_3RQUMh",
+        "collection_block_3VyzWd",
+        "collection_block_tYKGad",
+        "collection_block_prn3LF",
+        "collection_block_JpFjKQ",
+        "collection_block_UHGRrq"
+      ],
+      "settings": {
+        "enable_section_title": true,
+        "section_title_heading": "Recipes",
+        "title_text_color": "#ffffff",
+        "title_bg_color": "#205b62",
+        "title_bg_image_desk": "shopify:\/\/shop_images\/Anyday_Graphics_Recipes-Banner.png",
+        "title_bg_image_mob": "shopify:\/\/shop_images\/Anyday_Graphics_Recipes-Banner-Mobile.png",
+        "filter_heading": "Filter by:",
+        "show_view_all_btn": true,
+        "view_all_btn_text": "All Recipes",
+        "section_bg": "#f1ede7",
+        "mobile_filters_bg": "#36448d",
+        "recipe_group_order": "New Recipes,Spring Recipes,Under 15 Minute Meals,5 Ingredients or Less,Anyday Basics,Getting Started with Anyday,Pasta & Noodles,",
+        "category_tags_order": "Anyday Basics,David Chang,Breakfast & Brunch,Desserts,Fish & Seafood,Meat,One Dish Meals,Rice & Grains,Side Dishes,Snacks & Bites,Soups,Vegetables,Baby Food",
+        "categories_order": "Dietary Preferences-color36448D,Product-colorFF3C1F,Category-color205B62,Other-invisible",
+        "text_color": "#ffffff",
+        "heading_max_width": "",
+        "heading_max_width_mobile": "",
+        "alignment": "middle_left",
+        "text_alignment": "left",
+        "show_banner_section": false,
+        "bg_image_banner": "shopify:\/\/shop_images\/desktop_ingredientsbanner.png",
+        "bg_image_banner_mobile": "shopify:\/\/shop_images\/mobile_ingredientsbanner.png",
+        "banner_text": "<p>Looking to cook basic ingredients like vegetables, rice, or chicken? Check out our <a href=\"\/collections\/ingredients-guides\" title=\"Ingredients\">one-ingredient recipes here!<\/a><\/p>",
+        "banner_text_color": "#ffffff",
+        "banner_section_order": 3,
+        "bg_quick_view": "#f1ede7"
+      }
+    },
+    "main-collection-banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "spacing": {
+          "type": "spacing",
+          "settings": {
+            "height": 48,
+            "height_mobile": 0
+          }
+        },
+        "breadcrumb": {
+          "type": "breadcrumb",
+          "settings": {
+            "show_collections_link": true
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_size": "title-xl"
+          }
+        }
+      },
+      "block_order": [
+        "spacing",
+        "breadcrumb",
+        "title"
+      ],
+      "disabled": true,
+      "settings": {
+        "transparent_header": true,
+        "show_image": true,
+        "image_height": "500px",
+        "content_position": "md:items-end md:justify-start",
+        "text_alignment": "left",
+        "image_height_mobile": "auto",
+        "content_position_mobile": "items-end justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_overlay": "#000000",
+        "overlay_opacity": 40,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": true,
+        "enable_parallax": true,
+        "parallax_direction": "vertical"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "subcollections": {
+          "type": "subcollections",
+          "settings": {
+            "menu": "",
+            "per_row": 5,
+            "show_count": true
+          }
+        },
+        "promotion": {
+          "type": "promotion",
+          "settings": {
+            "position": 8,
+            "column_size": "1",
+            "heading": "Example heading",
+            "content": "<p>Share information about your brand with your customers.<\/p>",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_secondary_style": true,
+            "content_position": "md:items-center",
+            "text_alignment": "center",
+            "content_position_mobile": "items-center",
+            "text_alignment_mobile": "center",
+            "color_text": "#ffffff",
+            "color_button_text": "#4d5940",
+            "color_button_background": "#ffffff",
+            "color_button_gradient": "",
+            "color_overlay": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "subcollections",
+        "promotion"
+      ],
+      "disabled": true,
+      "settings": {
+        "products_per_page": 11,
+        "columns": 4,
+        "columns_mobile": "2",
+        "pagination": "paginated",
+        "enable_filtering": true,
+        "filter_collapsed": false,
+        "filter_type": "drawer",
+        "filter_color_swatches": true,
+        "enable_sorting": true,
+        "padding_top": 40,
+        "padding_bottom": 100,
+        "divider": false,
+        "full_width": false,
+        "rounded": true
+      }
+    },
+    "images-with-text-overlay": {
+      "type": "images-with-text-overlay",
+      "blocks": {
+        "spacing": {
+          "type": "spacing",
+          "settings": {
+            "height": 80,
+            "height_mobile": 20
+          }
+        },
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Tagline",
+            "subheading_size": "subtitle-md",
+            "secondary_color": true
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Example heading",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Give customers details about the banner image(s) or content on the template.<\/p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "spacing",
+        "subheading",
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "transparent_header": false,
+        "image_height": "650px",
+        "content_width": "small",
+        "content_position": "md:items-center md:justify-start",
+        "text_alignment": "left",
+        "image_1": "shopify:\/\/shop_images\/Anyday_Photos_Basics_SteelCutOats_1.webp",
+        "image_2": "shopify:\/\/shop_images\/Anyday_Photos_Recipes_ZuppaToscanaSoup_1040.webp",
+        "image_3": "shopify:\/\/shop_images\/Anyday_Photos_Recipes_PumpkinSoup_1040.webp",
+        "image_4": "shopify:\/\/shop_images\/Anyday_Photos_Recipes_FarrowithTomatoesandParmesan_1024.webp",
+        "image_5": "shopify:\/\/shop_images\/Anyday_Photos_Recipes_VietnameseStyleFish_1024.webp",
+        "image_height_mobile": "500px",
+        "content_position_mobile": "items-center justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_background": "#171717",
+        "gradient_background": "",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": true,
+        "enable_parallax": true
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Recently Viewed",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 80,
+        "divider": false,
+        "full_width": false,
+        "rounded": true
+      }
+    }
+  },
+  "order": [
+    "recipe_collection_Q7MENj",
+    "main-collection-banner",
+    "main-collection",
+    "images-with-text-overlay",
+    "recently-viewed"
+  ]
+}

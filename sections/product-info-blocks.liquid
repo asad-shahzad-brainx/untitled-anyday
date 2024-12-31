@@ -1,0 +1,280 @@
+{{ 'product-info-blocks.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign hide_section = [request.page_type].metafields.product-info-blocks.hide_section | default: false
+  assign padding_top_desk = section.settings.padding_top_desk
+  assign padding_bottom_desk = section.settings.padding_bottom_desk
+  assign padding_top_mob = section.settings.padding_top_mob
+  assign padding_bottom_mob = section.settings.padding_bottom_mob
+  assign bg_color = [request.page_type].metafields.product-info-blocks.background_color | default: section.settings.bg_color | default: '#FFFFFF'
+  assign color = [request.page_type].metafields.product-info-blocks.text_color | default: section.settings.color | default: '#000000'
+  assign heading = [request.page_type].metafields.product-info-blocks.heading | default: section.settings.heading
+  assign subheading = [request.page_type].metafields.product-info-blocks.subheading | default: section.settings.subheading
+  assign show_top_wave = [request.page_type].metafields.product-info-blocks.show_top_wave | default: section.settings.show_top_wave
+  assign show_bottom_wave = [request.page_type].metafields.product-info-blocks.show_bottom_wave | default: section.settings.show_bottom_wave
+  assign images_meta = [request.page_type].metafields.product-info-blocks.images
+-%}
+
+{%- if hide_section != true and hide_section != 'true' -%}
+  {% if section.blocks.size > 0 or heading != blank %}
+    <section class="info-blocks" style="
+            --padding-top-desktop: {{ padding_top_desk }}px;
+            --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+            --padding-top-mobile: {{ padding_top_mob }}px;
+            --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+            --bg-color: {{ bg_color }};
+            --text-color: {{ color }};">
+      {%- if show_top_wave -%}
+        {%- render 'waves' with 'wave-top' -%}
+      {%- endif -%}
+
+      {%- if show_bottom_wave -%}
+        {%- render 'waves' with 'wave-bottom-reverse' -%}
+      {%- endif -%}
+
+      <div class="info-blocks__wrapper">
+        {%- if heading != blank -%}
+          <div role="heading" aria-level="2" class="info-blocks__heading">{{ heading }}</div>
+        {%- endif -%}
+
+        {%- if subheading != blank -%}
+          <p class="info-blocks__subheading">{{ subheading }}</p>
+        {%- endif -%}
+
+        {%- if images_meta.size > 0 -%}
+          <div class="info-blocks__content-wrapper">
+            {%- for image_meta in images_meta -%}
+              {%- liquid
+                assign heading = [request.page_type].metafields.product-info-blocks.headings_for_blocks[forloop.index0]
+                assign description = [request.page_type].metafields.product-info-blocks.description_for_blocks[forloop.index0]
+              -%}
+
+              {%- if image_meta != blank or description != blank -%}
+                <div class="info-blocks__item"  card-info-block>
+                  {%- if image_meta != blank -%}
+                    <div class="info-blocks__item-wrapper">
+                      {% render 'image-metafields', image: image_meta, class_name: "info-blocks__item-image" , image_attr: 'card-info-block-opener', decorate_img: false %}
+
+                      {%- if heading != blank or description != blank -%}
+                        <div class="info-blocks__item-info-wrapper" card-info-block-opener>
+                          {%- if heading != blank -%}
+                            <h3 class="info-blocks__item-heading">
+                              {{ heading }}
+                            </h3>
+                          {%- endif -%}
+
+                          {%- if description != blank -%}
+                            <div class="info-blocks__item-icon-wrapper">
+                              {% render "icon" with "plus" %}
+                            </div>
+                          {%- endif -%}
+                        </div>
+
+                        {%- if description != blank -%}
+                          <div aria-expanded="false" class="info-blocks__item-description-wrapper" card-info-block-content card-info-block-opener>
+                            <div class="info-blocks__item-description">
+                              {{ description }}
+                            </div>
+                          </div>
+                        {%- endif -%}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- elsif section.blocks.size > 0 -%}
+          <div class="info-blocks__content-wrapper">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign image = block.settings.image
+                assign heading = block.settings.heading
+                assign description = block.settings.description
+              -%}
+
+              {%- if image != blank -%}
+                <div class="info-blocks__item" card-info-block>
+                  <div class="info-blocks__item-wrapper">
+                    {% render 'image', image: image, class_name: "info-blocks__item-image", image_attr: 'card-info-block-opener' %}
+
+                    {%- if heading != blank or description != blank -%}
+                      <div class="info-blocks__item-info-wrapper" card-info-block-opener>
+                        {%- if heading != blank -%}
+                          <h3 class="info-blocks__item-heading" card-info-block-opener>
+                            {{ heading }}
+                          </h3>
+                        {%- endif -%}
+
+                        {%- if description != blank -%}
+                          <div class="info-blocks__item-icon-wrapper">
+                            {% render "icon" with "plus" %}
+                          </div>
+                        {%- endif -%}
+                      </div>
+
+                      {%- if description != blank -%}
+                        <div aria-expanded="false" class="info-blocks__item-description-wrapper" card-info-block-content card-info-block-opener>
+                          <div class="info-blocks__item-description">
+                            {{ description }}
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </section>
+  {% endif %}
+{%- endif -%}
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("#shopify-section-{{ section.id }} [card-info-block-opener]").forEach(function(opener) {
+      opener.addEventListener("click", function(evt) {
+        const parent = evt.target.closest("[card-info-block]");
+        const content = parent ? parent.querySelector("[card-info-block-content]") : null;
+        const icon = parent ? parent.querySelector(".info-blocks__item-icon-wrapper") : null;
+
+        if (content && icon) {
+          if (content.getAttribute("aria-expanded") === "true") {
+            content.setAttribute("aria-expanded", "false");
+            icon.setAttribute("rotate", "false");
+          } else {
+            content.setAttribute("aria-expanded", "true");
+            icon.setAttribute("rotate", "true");
+          }
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product info blocks",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Section content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Some heading</p>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#D0DEF2"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_wave",
+      "label": "Show top wave",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color",
+          "default": "#fafbf8"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name": "Product info blocks"
+    }
+  ]
+}
+{% endschema %}

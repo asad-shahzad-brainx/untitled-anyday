@@ -29,7 +29,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p><em><strong>Add a tagline</strong></em></p>",
+            "text": "<p><em><strong>Add a tagline<\/strong><\/em><\/p>",
             "text_size": "subtext-lg",
             "text_max_size": 32,
             "text_font": "body",
@@ -86,7 +86,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Our <em>Journey</em>",
+            "heading": "Our <em>Journey<\/em>",
             "heading_size": "title-md",
             "heading_tag": "h2",
             "highlighted_text": "scribble",
@@ -96,7 +96,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<br\/><br\/>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "text_size": "subtext-md",
             "text_max_size": 32,
             "text_font": "body",
@@ -152,7 +152,7 @@
           "settings": {
             "image": "",
             "heading": "Example heading",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<br\/><br\/>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "color_text": "#ffffff",
             "color_background": "#000000"
           }
@@ -162,7 +162,7 @@
           "settings": {
             "image": "",
             "heading": "Example heading",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<br\/><br\/>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "color_text": "#ffffff",
             "color_background": "#000000"
           }
@@ -172,7 +172,7 @@
           "settings": {
             "image": "",
             "heading": "Example heading",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<br\/><br\/>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "color_text": "#ffffff",
             "color_background": "#000000"
           }
@@ -190,12 +190,12 @@
         "image_ratio_mobile": "portrait",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "heading": "Talk about your <em>brand</em>",
+        "heading": "Talk about your <em>brand<\/em>",
         "heading_size": "title-md",
         "heading_alignment": "text-left justify-start",
         "heading_tag": "h2",
         "subheading": "Add a tagline",
-        "description": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+        "description": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
         "highlighted_text": "scribble",
         "highlighted_scribble": "circle",
         "color_text": "",
@@ -219,7 +219,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<strong>Free shipping and returns</strong>",
+            "text": "<strong>Free shipping and returns<\/strong>",
             "text_size": 160,
             "text_font": "body",
             "stencil_text": true
@@ -251,7 +251,7 @@
           "type": "testimonial",
           "settings": {
             "icon": "quote",
-            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
             "author": "Author's name",
             "image_ratio": "rounded"
           }
@@ -295,7 +295,7 @@
             "subheading": "2015",
             "heading": "Image with text",
             "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "button_label": "",
             "button_link": "",
             "highlighted_text": "none",
@@ -309,7 +309,7 @@
             "subheading": "2017",
             "heading": "Image with text",
             "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "button_label": "",
             "button_link": "",
             "highlighted_text": "none",
@@ -323,7 +323,7 @@
             "subheading": "2018",
             "heading": "Image with text",
             "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "button_label": "",
             "button_link": "",
             "highlighted_text": "none",
@@ -337,7 +337,7 @@
             "subheading": "2019",
             "heading": "Image with text",
             "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "button_label": "",
             "button_link": "",
             "highlighted_text": "none",
@@ -351,7 +351,7 @@
             "subheading": "2021",
             "heading": "Image with text",
             "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "button_label": "",
             "button_link": "",
             "highlighted_text": "none",
@@ -365,7 +365,7 @@
             "subheading": "2022",
             "heading": "Image with text",
             "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "button_label": "",
             "button_link": "",
             "highlighted_text": "none",
@@ -379,7 +379,7 @@
             "subheading": "2023",
             "heading": "Image with text",
             "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
             "button_label": "",
             "button_link": "",
             "highlighted_text": "none",
@@ -428,7 +428,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Our Partners</p>",
+            "text": "<p>Our Partners<\/p>",
             "text_size": "subtext-md",
             "text_max_size": 32,
             "text_font": "body",
@@ -440,7 +440,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Elite audio from Top <em>Brands</em>",
+            "heading": "Elite audio from Top <em>Brands<\/em>",
             "heading_size": "title-md",
             "heading_tag": "h2",
             "highlighted_text": "scribble",

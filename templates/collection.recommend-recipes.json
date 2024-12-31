@@ -15,5 +15,7 @@
       "settings": {}
     }
   },
-  "order": ["recommend-recipes"]
+  "order": [
+    "recommend-recipes"
+  ]
 }

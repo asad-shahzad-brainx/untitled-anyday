@@ -1,3 +1,5 @@
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+
 <style>
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
@@ -93,6 +95,10 @@
             {%- when '@app' -%}
               {%- render block -%}
 
+            {%- when 'dynamic_accordions' -%}
+              {% render 'dynamic-accordions', block: block %}
+            {%- when 'product_icons' -%}
+              {% render 'product-icons', block: block %}
             {%- when 'breadcrumb' -%}
               {%- render 'product-breadcrumb', block: block -%}
 
@@ -117,7 +123,11 @@
 
             {%- when 'description' -%}
               <div class="product__text rte {{ block.settings.text_size }}" {{ block.shopify_attributes }}>
-                {{- product.description -}}
+                {% if block.settings.description_source == 'metafield' and product.metafields.accentuate.description != blank %}
+                  {{ product.metafields.accentuate.description }}
+                {% else %}
+                  {{- product.description -}}
+                {% endif %}
               </div>
             
             {%- when 'title' -%}
@@ -847,6 +857,138 @@
       "type": "@app"
     },
     {
+      "type": "dynamic_accordions",
+      "name": "Dynamic accordions",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "rebuy_widget_title",
+          "label": "Rebuy Widget Title"
+        },
+        {
+          "type": "text",
+          "id": "rebuy_widget_id",
+          "label": "Rebuy Widget ID"
+        },
+        {
+          "type": "header",
+          "content": "What is an Anyday Dish?"
+        },
+        {
+          "type": "text",
+          "id": "what_is_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "what_is_description",
+          "label": "Description"
+        },
+        {
+          "type": "header",
+          "content": "Safety"
+        },
+        {
+          "type": "text",
+          "id": "safety_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "safety_description",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "type": "product_icons",
+      "name": "Product icons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_1",
+          "label": "Icon 1"
+        },
+        {
+          "type": "textarea",
+          "id": "text_1",
+          "label": "Text 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2",
+          "label": "Icon 2"
+        },
+        {
+          "type": "textarea",
+          "id": "text_2",
+          "label": "Text 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3",
+          "label": "Icon 3"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "Text 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_4",
+          "label": "Icon 4"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_5",
+          "label": "Icon 5"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Text 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_6",
+          "label": "Icon 6"
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Text 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_7",
+          "label": "Icon 7"
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text 7"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_8",
+          "label": "Icon 8"
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text 8"
+        }
+      ]
+    },
+    {
       "type": "breadcrumb",
       "name": "t:sections.main-product.blocks.breadcrumb.name",
       "limit": 1,
@@ -1216,6 +1358,22 @@
       "name": "t:sections.main-product.blocks.description.name",
       "limit": 1,
       "settings": [
+        {
+          "type": "select",
+          "id": "description_source",
+          "label": "Description source",
+          "options": [
+            {
+              "label": "Metafield",
+              "value": "metafield"
+            },
+            {
+              "label": "Default",
+              "value": "default"
+            }
+          ],
+          "default": "default"
+        },
         {
           "type": "select",
           "id": "text_size",

@@ -1,3 +1,5 @@
+{{ 'product-old-way-table.css' | asset_url | stylesheet_tag }}
+
 {%- assign section_order = product.metafields.old_way.section_order | default: 19 -%}
 
 {%- assign show_section = section.settings.show_section -%}
@@ -14,6 +16,7 @@
 {%- assign padding_top_mob = section.settings.padding_top_mob -%}
 {%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
 {%- assign show_bottom_wave = section.settings.show_bottom_wave -%}
+{%- assign show_top_wave = section.settings.show_top_wave -%}
 
 {% if template.name == 'page' %}
   {%- assign show_section_metafield = page.metafields.old_way.hide_section -%}
@@ -73,6 +76,10 @@
              --padding-bottom-mobile: {{ padding_bottom_mob }}px;
              --bg-color: {{ section_bg }}
                    ">
+
+    {%- if show_top_wave -%}
+      {%- render 'waves' with 'wave-top' -%}
+    {%- endif -%}
 
     {%- if show_bottom_wave -%}
       {%- render 'waves' with 'wave-bottom-reverse' -%}
@@ -202,7 +209,46 @@
   </section>
 {% endif %}
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector("#shopify-section-{{ section.id }}");
+    const slider = container.querySelector(".old-way-table__slider-side-slider");
 
+    if (slider && !slider.classList.contains("slick-initialized")) {
+      $(slider).slick({
+        dots: false,
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: false,
+        adaptiveHeight: false,
+        fade: false,
+        cssEase: "linear",
+        centerMode: false,
+        variableWidth: true,
+        responsive: [
+          {
+            breakpoint: 1100,
+            settings: {
+              centerMode: false,
+              dots: false,
+              slidesToShow: 2.5,
+              slidesToScroll: 1,
+            },
+          },
+          {
+            breakpoint: 900,
+            settings: { slidesToShow: 2, slidesToScroll: 1 },
+          },
+          {
+            breakpoint: 550,
+            settings: { slidesToShow: 1.5, slidesToScroll: 1 },
+          },
+        ],
+      });
+    }
+  });
+</script>
 
 {% schema %}
 {
@@ -288,6 +334,12 @@
       "type": "text",
       "id": "message_under_button",
       "label": "Message under button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_wave",
+      "label": "Show top wave",
+      "default": false
     },
     {
       "type": "checkbox",

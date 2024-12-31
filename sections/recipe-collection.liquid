@@ -1,0 +1,998 @@
+{% comment %} if {{ f_title }} == "category" changed on "Recipe Type" only title  {% endcomment %}
+{{ 'recipe-collection.css' | asset_url | stylesheet_tag }}
+{{ 'search.css' | asset_url | stylesheet_tag }}
+
+{%- assign section_bg = section.settings.section_bg -%}
+{%- assign filter_heading = section.settings.filter_heading -%}
+{%- assign show_view_all_btn = section.settings.show_view_all_btn -%}
+{%- assign view_all_btn_text = section.settings.view_all_btn_text | default: 'View all' -%}
+{%- assign mobile_filters_bg = section.settings.mobile_filters_bg -%}
+{%- assign text_color = section.settings.text_color -%}
+{%- assign heading_max_width = section.settings.heading_max_width -%}
+{%- assign heading_max_width_mobile = section.settings.heading_max_width_mobile -%}
+{%- assign category_tags_order = section.settings.category_tags_order | strip | split: ',' -%}
+{%- assign categories_order = section.settings.categories_order | strip | split: ',' -%}
+{%- assign recipe_group_order = section.settings.recipe_group_order | strip | split: ',' -%}
+{%- assign show_banner_section = section.settings.show_banner_section -%}
+{%- assign bg_image_banner = section.settings.bg_image_banner -%}
+{%- assign bg_image_banner_mobile = section.settings.bg_image_banner_mobile -%}
+{%- assign banner_text = section.settings.banner_text -%}
+{%- assign banner_text_color = section.settings.banner_text_color -%}
+{%- assign banner_section_order = section.settings.banner_section_order | default: 3 -%}
+{%- assign enable_section_title = section.settings.enable_section_title -%}
+{%- assign section_title_heading = section.settings.section_title_heading -%}
+{%- assign title_text_color = section.settings.title_text_color -%}
+{%- assign title_bg_color = section.settings.title_bg_color -%}
+{%- assign title_bg_image_desk = section.settings.title_bg_image_desk -%}
+{%- assign title_bg_image_mob = section.settings.title_bg_image_mob -%}
+
+{%- assign button_blocks_arr = section.blocks | where: "type", "button" -%}
+{%- assign bg_quick_view = section.settings.bg_quick_view -%}
+{%- assign get_filter_name_arr = request.path | remove_first: collection.url | remove_first: '/' | split: '+' | first | split: '-'  -%}
+{%- assign filter_name = '' -%}
+
+{% for item in get_filter_name_arr %}
+  {% if item == 'category' or item == 'other' %}
+    {% continue %}
+  {% endif %}
+
+  {%- assign substring = item | camelcase -%}
+  {%- assign filter_name = filter_name | append: ' ' | append: substring  -%}
+{% endfor %}
+
+
+{%- case section.settings.alignment -%}
+{%- when 'top_left' -%}
+{%- assign text_alignment = 'top--left' -%}
+{%- when 'middle_left' -%}
+{%- assign text_alignment = 'middle--left' -%}
+{%- when 'bottom_left' -%}
+{%- assign text_alignment = 'bottom--left' -%}
+{%- when 'top_middle' -%}
+{%- assign text_alignment = 'top--middle' -%}
+{%- when 'middle' -%}
+{%- assign text_alignment = 'middle' -%}
+{%- when 'bottom_middle' -%}
+{%- assign text_alignment = 'bottom--middle' -%}
+{%- when 'top_right' -%}
+{%- assign text_alignment = 'top--right' -%}
+{%- when 'middle_right' -%}
+{%- assign text_alignment = 'middle--right' -%}
+{%- when 'bottom_right' -%}
+{%- assign text_alignment = 'bottom--right' -%}
+{%- endcase -%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .collection-recipe {
+    background-color: {{ section_bg }};
+  }
+{% endstyle %}
+
+<div class="collection-recipe__mobile-filters" style="background-color: {{ mobile_filters_bgs }}">
+  <div class="collection-recipe__mobile-header">
+    <div class="collection-recipe__mobile-block">
+      <span class="collection-recipe__mobile-close">{% render 'icon-close' %}</span>
+      {%- if filter_heading != blank -%}
+        <h2 class="collection-recipe__mobile-heading">{{ filter_heading | remove: ':' }}</h2>
+      {%- endif -%}
+    </div>
+    <div class="collection-recipe__mobile">
+      {%- if show_view_all_btn -%}
+        <div class="collection-recipe__filter-values">
+          <div class="collection-recipe__item">
+            <label class="input-wrap">{{ view_all_btn_text }}
+              <input type="checkbox" name="all"
+                     class="all-recipes"
+                     data-tag=""
+										 {% comment %}autocomplete="off"{% endcomment %}
+							>
+            </label>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- assign filter_tags = '' -%}
+
+      {%- for filter_tag in collection.all_tags -%}
+        {%- if filter_tag contains ':' -%}
+          {%- assign filter_tags = filter_tags | append: filter_tag | append: ',' -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- assign filter_tags = filter_tags | split: ',' -%}
+      {%- assign filter_titles = '' -%}
+
+      {%- for f_tag in filter_tags -%}
+        {%- assign f_tag_split = f_tag | split: ':' -%}
+        {%- assign filter_titles = filter_titles | append: f_tag_split[0] | append: ',' -%}
+      {% endfor %}
+
+      {% assign filter_titles = filter_titles | split: ',' | uniq %}
+
+      <div class="collection-recipe__filters-wrapper">
+        {%- for f_title in filter_titles -%}
+          {%- assign check_tag = f_title | handleize -%}
+          {%- assign order = 100 -%}
+          {%- assign display = 'block' -%}
+
+          {% for category in categories_order %}
+            {%- assign categories_handleize = category | handleize -%}
+            {% if categories_handleize contains check_tag %}
+              {%- assign order = forloop.index -%}
+
+              {% comment %}  categories_order_size = categories_order.size | minus: 1 - first visible category {% endcomment %}
+              {%- assign categories_order_size = categories_order.size | minus: 1 -%}
+              {%- assign class_active = '' -%}
+              {%- assign slide_down_block = false -%}
+
+              {% if categories_order_size == order %}
+                {%- assign class_active = 'active' -%}
+                {%- assign slide_down_block = true -%}
+              {% endif %}
+
+              {%- assign margin = '' -%}
+              {% if categories_order.size == order %}
+                {%- assign margin = 'margin-bottom: 0;' -%}
+              {% endif %}
+
+              {% if categories_handleize contains 'invisible' %}
+                {%- assign display = 'none' -%}
+              {% endif %}
+
+              {% if categories_handleize contains 'color' %}
+                {%- assign bg_color = categories_handleize | split: 'color' | last -%}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {% unless f_title == 'Other' %}
+            <div class="accordion" style="order: {{ order }}">
+              <details is="accordion-details" class="details collection-recipe__filters-list" style="order: {{ order }}" {% if class_active == 'active' %}open{% endif %}>
+                <summary class="collection-recipe__list-heading details__summary flex items-center justify-between gap-2 cursor-pointer" style="{% if display == 'none' %}display: none;{% endif %} background-color: #{{ bg_color }};">
+                  <div>
+                    {% if f_title == "Category" %}
+                      Recipe Type
+                    {% else %}
+                      {{ f_title }}
+                    {% endif %} 
+                  </div>
+                  {%- render 'icon', icon: 'plus-alt', size: 'xs', class: 'flex-auto' -%}
+                </summary>
+                <div class="collection-recipe__filter-values" style="{{ margin }}"
+                >
+                  {%- for tag in filter_tags -%}
+                    {%- if tag contains f_title -%}
+                      {%- assign final_tag = tag | lstrip | split: ':' -%}
+
+                      <div class="collection-recipe__item">
+                        <label class="input-wrap">{{ final_tag.last }}
+                          {% comment %} <input type="radio" name="mobileFilter" {% endcomment %}
+                              <input type="checkbox" name="d-{{ f_title }}"
+                                class="recipe-tag" {% if current_tags contains tag %} checked="checked" {% endif %}
+                                data-tag="{{ final_tag | handleize }}">
+                        </label>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </details>
+            </div>
+          {% else %}
+            <div class="collection-recipe__filters-list" style="order: {{ order }}">
+              <button type="button" role="button" class="collection-recipe__list-heading {{ class_active }}"
+                      style="display: {{ display }}; background-color: #{{ bg_color }};">
+                {% if f_title == "Category" %}
+                  Recipe Type
+                {% else %}
+                  {{ f_title }}
+                {% endif %}
+              </button>
+              <div class="collection-recipe__filter-values"
+                  style=" {% unless slide_down_block or display == 'none' %} display: none; {% endunless %} {{ margin }}">
+                {%- for tag in filter_tags -%}
+                  {%- if tag contains f_title -%}
+                    {%- assign final_tag = tag | lstrip | split: ':' -%}
+                    {%- assign check_tag = final_tag.last | handleize -%}
+                    {%- assign order = 100 -%}
+
+                    {% for category_tag in category_tags_order %}
+                      {%- assign category_tag_handleize = category_tag | handleize -%}
+                      {% if check_tag == category_tag_handleize %}
+                        {%- assign order = forloop.index -%}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    <div class="collection-recipe__item" style="order: {{ order }}">
+                      <label class="input-wrap">{{ final_tag.last }}
+                        <input type="checkbox" name="d-{{ f_title }}"
+                              class="recipe-tag" {% if current_tags contains tag %} checked="checked" {% endif %}
+                              data-tag="{{ final_tag | handleize }}">
+                      </label>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          {% endunless %}
+        {%- endfor -%}
+      </div>
+    </div>
+    {% comment %} style="background-color: {{ mobile_filters_bg }}" {% endcomment %}
+    <div class="collection-recipe__mobile-footer" >
+      <button type="button" class="button button--primary ApplyFilters__Mobile">Apply</button>
+      <button type="button" class="button button--secondary ResetFilters">Reset
+      </button>
+    </div>
+  </div>
+</div>
+<section class="collection-recipe" data-collection-url="{{ collection.url }}" data-section-id="{{ section.id }}"
+         data-section-type="collection-template">
+  <header class="collection-header">
+
+    {%- if enable_section_title and section_title_heading != blank -%}
+      <div class="collection-recipe__section-title" style="background-color: {{ title_bg_color }};">
+        {% if title_bg_image_desk != blank and title_bg_image_mob != blank %}
+          {% render 'image', image: title_bg_image_desk, class_name: "collection-recipe__section-title-bg-image only-desktop" %}
+          {% render 'image', image: title_bg_image_mob, class_name: "collection-recipe__section-title-bg-image only-mobile" %}
+          {% elsif title_bg_image_desk != blank %}
+          {% render 'image', image: title_bg_image_mob, class_name: "collection-recipe__section-title-bg-image" %}
+        {% endif %}
+
+        <h2 class="collection-recipe__section-title-content" data-title="{{ section_title_heading }}" style="color: {{ title_text_color }}">
+          {% if filter_name != blank %}
+            {{ filter_name }}
+          {% else %}
+            {{ section_title_heading }}
+          {% endif %}
+        </h2>
+
+        <div class="collection search__container">
+          {% render 'predictive-search', section_id: section.id, context: 'page' %}
+        </div>
+        {% comment %} <form action="{{ routes.search_url }}" method="get" role="search" class="search-form recipes-page-form">
+          <div class="input-group input-group--nowrap">
+            <div class="input-group__field input-group__field--connected search-form__input-wrapper">
+              <span class="ingredients-search__icon">{% render 'icon-search' %}</span>
+              <input
+                type="search"
+                name="q"
+                value="{{ search.terms | escape }}"
+                placeholder="{{ 'collections.search.placeholder' | t }}"
+                role="combobox"
+                aria-autocomplete="list"
+                aria-owns="predictive-search-results"
+                aria-expanded="false"
+                aria-label="{{ 'general.search.placeholder' | t }}"
+                aria-haspopup="listbox"
+                class="search-form__input"
+                data-recipes-page-predictive-search-input
+              />
+              <input type="hidden" name="type" value="product,article" aria-hidden="true"/>
+              <input type="hidden" name="sort_by" value="price-descending" aria-hidden="true"/>
+              <input type="hidden" name="options[prefix]" value="last" aria-hidden="true"/>
+
+              {% comment %} <button type="reset" class="search-form__clear-action"
+                      aria-label="{{ 'general.search.clear_search_term' | t }}"
+                      data-recipes-page-predictive-search-clear>
+                {% render 'icon-close' %}
+              </button> {% endcomment %}
+
+              <div class="predictive-search-wrapper" data-predictive-search-mount="default"></div>
+            </div>
+
+            <button type="submit" class="search-form__connected-submit"
+                    aria-label="{{ 'general.search.submit' | t }}" data-recipes-page-predictive-search-submit>
+              {% render 'icon-search' %}
+            </button>
+          </div>
+        </form> {% endcomment %}
+      </div>
+
+    {%- endif -%}
+  </header>
+
+  {% if button_blocks_arr.size > 0 %}
+    <div class="collection-recipe__anchors" 
+         style="
+           --bg-color: {{ bg_quick_view }};
+         {% if filter_name != blank %}
+           display: none;
+         {% endif %}
+           ">
+      <div class="collection-recipe__anchors-container">
+        {%- for block in button_blocks_arr -%}
+          {%- assign anchor_for_slider = block.settings.anchor_for_slider -%}
+          {%- assign label = block.settings.label -%}
+          {%- assign bg_color = block.settings.bg_color -%}
+          {%- assign bg_color_hover = block.settings.bg_color_hover -%}
+          {%- assign text_color = block.settings.text_color -%}
+          {%- assign text_color_hover = block.settings.text_color_hover -%}
+
+          {% if anchor_for_slider != blank and label != blank %}
+            <button style="--bg-color: {{ bg_color }}; --bg-color-hover: {{ bg_color_hover }}; --text-color: {{ text_color }}; --text-color-hover: {{ text_color_hover }};" data-link="{{- anchor_for_slider -}}" type="button" class="collection-recipe__anchors-item">{{ label }}</button>
+          {% endif %}
+        {%- endfor -%}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="collection-recipe__button-wrapper mobile button-wrapper">
+    <button class="button button--primary button--md icon-with-text button--custom-margin" is="hover-button">
+      <span class="btn-fill" data-fill="" style="transform: translateY(var(--motion-translateY)); --motion-translateY: -76%;"></span>
+      <span class="btn-text">
+        {{ filter_heading | remove: ':' }}
+        <svg style="display: none;" class="icon icon-arrow-right icon-sm transform" viewBox="0 0 21 20" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 10H18M18 10L12.1667 4.16675M18 10L12.1667 15.8334"></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+
+  <div class="collection-recipe__block page-width" style="background-color: {{ section_bg }}">
+    <div class="collection-recipe__filters">
+      {%- if filter_heading != blank -%}
+        <h2 class="collection-recipe__filters-heading">{{ filter_heading }}</h2>
+      {%- endif -%}
+
+      {%- if show_view_all_btn -%}
+        <div class="collection-recipe__item">
+          <label class="input-wrap">{{ view_all_btn_text }}
+            <input type="checkbox" name="all"
+                  class="all-recipes"
+                  data-tag=""
+                  {% comment %}autocomplete="off"{% endcomment %}
+            >
+          </label>
+        </div>
+      {%- endif -%}
+
+
+      {%- assign filter_tags = '' -%}
+
+      {%- for filter_tag in collection.all_tags -%}
+        {%- if filter_tag contains ':' -%}
+          {%- assign filter_tags = filter_tags | append: filter_tag | append: ',' -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- assign filter_tags = filter_tags | split: ',' -%}
+      {%- assign filter_titles = '' -%}
+
+      {%- for f_tag in filter_tags -%}
+        {%- assign f_tag_split = f_tag | split: ':' -%}
+        {%- assign filter_titles = filter_titles | append: f_tag_split[0] | append: ',' -%}
+      {% endfor %}
+
+      {% assign filter_titles = filter_titles | split: ',' | uniq %}
+
+      <div class="collection-recipe__filters-wrapper">
+
+        {%- for f_title in filter_titles -%}
+          {%- assign check_tag = f_title | handleize -%}
+          {%- assign order = 100 -%}
+          {%- assign display = 'block' -%}
+
+          {% for category in categories_order %}
+            {%- assign categories_handleize = category | handleize -%}
+            {% if categories_handleize contains check_tag %}
+              {%- assign order = forloop.index -%}
+
+              {% comment %}  categories_order_size = categories_order.size | minus: 1 - first visible category {% endcomment %}
+              {%- assign categories_order_size = categories_order.size | minus: 1 -%}
+              {%- assign class_active = '' -%}
+              {%- assign slide_down_block = false -%}
+
+              {% if categories_order_size == order %}
+                {%- assign class_active = 'active' -%}
+                {%- assign slide_down_block = true -%}
+              {% endif %}
+
+              {%- assign margin = '' -%}
+              {% if categories_order.size == order %}
+                {%- assign margin = 'margin-bottom: 0;' -%}
+              {% endif %}
+
+              {% if categories_handleize contains 'invisible' %}
+                {%- assign display = 'none' -%}
+              {% endif %}
+
+              {% if categories_handleize contains 'color' %}
+                {%- assign bg_color = categories_handleize | split: 'color' | last -%}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {% unless f_title == 'Other' %}
+            <div class="accordion" style="order: {{ order }}">
+              <details is="accordion-details" class="details collection-recipe__filters-list" {% if class_active == 'active' %}open{% endif %}>
+                <summary class="collection-recipe__list-heading details__summary flex items-center justify-between gap-2 cursor-pointer" style="{% if display == 'none' %}display: none;{% endif %} background-color: #{{ bg_color }};">
+                  <div>
+                    {% if f_title == "Category" %}
+                      Recipe Type
+                    {% else %}
+                      {{ f_title }}
+                    {% endif %}
+                  </div>
+                  {%- render 'icon', icon: 'plus-alt', size: 'xs', class: 'flex-auto' -%}
+                </summary>
+                <div class="collection-recipe__filter-values"
+                    style="{{ margin }}">
+                  {%- for tag in filter_tags -%}
+                    {%- if tag contains f_title -%}
+                      {%- assign final_tag = tag | lstrip | split: ':' -%}
+                      {%- assign check_tag = final_tag.last | handleize -%}
+                      {%- assign order = 100 -%}
+
+                      {% for category_tag in category_tags_order %}
+                        {%- assign category_tag_handleize = category_tag | handleize -%}
+                        {% if check_tag == category_tag_handleize %}
+                          {%- assign order = forloop.index -%}
+                        {% endif %}
+                      {% endfor %}
+
+
+                      <div class="collection-recipe__item" style="order: {{ order }}">
+                        <label class="input-wrap">{{ final_tag.last }}
+                          <input type="checkbox" name="d-{{ f_title }}"
+                                class="recipe-tag" {% if current_tags contains tag %} checked="checked" {% endif %}
+                                data-tag="{{ final_tag | handleize }}">
+                        </label>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </details>
+            </div>
+          {% else %}
+            <div class="collection-recipe__filters-list" style="order: {{ order }}">
+              <button type="button" role="button" class="collection-recipe__list-heading {{ class_active }}"
+                      style="display: {{ display }}; background-color: #{{ bg_color }};">
+                {% if f_title == "Category" %}
+                  Recipe Type
+                {% else %}
+                  {{ f_title }}
+                {% endif %}
+              </button>
+              <div class="collection-recipe__filter-values"
+                  style=" {% unless slide_down_block or display == 'none' %} display: none; {% endunless %} {{ margin }}">
+                {%- for tag in filter_tags -%}
+                  {%- if tag contains f_title -%}
+                    {%- assign final_tag = tag | lstrip | split: ':' -%}
+                    {%- assign check_tag = final_tag.last | handleize -%}
+                    {%- assign order = 100 -%}
+
+                    {% for category_tag in category_tags_order %}
+                      {%- assign category_tag_handleize = category_tag | handleize -%}
+                      {% if check_tag == category_tag_handleize %}
+                        {%- assign order = forloop.index -%}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    <div class="collection-recipe__item" style="order: {{ order }}">
+                      <label class="input-wrap">{{ final_tag.last }}
+                        <input type="checkbox" name="d-{{ f_title }}"
+                              class="recipe-tag" {% if current_tags contains tag %} checked="checked" {% endif %}
+                              data-tag="{{ final_tag | handleize }}">
+                      </label>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          {% endunless %}
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="Recipes__Wrapper">
+            <span class="filters__loader" data-loader>
+                    {% render 'icon-spinner' %}
+            </span>
+      <div class="ajax-parent">
+        {% if current_tags %}
+          <div class="collection-recipe__Results RecipeResults ajax-content">
+            <div class="RecipeResults__Wrapper">
+              <h2
+                class="collection-recipe__title">{{ collection.products_count }} {{ collection.products_count | pluralize: 'Recipe', 'Recipes' }}
+                Found</h2>
+              <div class="RecipeResults__Grid">
+                {% paginate collection.products by 9999 %}
+                  {% for product in collection.products %}
+                    {%- assign product_type_handle = product.type | handleize -%}
+
+                    <div class="RecipeResults__GridItem" style="order:{% if product_type_handle != 'recipe' %} {{ forloop.index }} {% else %} 999 {% endif %}">
+                      {% render 'recipe-item', product: product %}
+                    </div>
+                  {% endfor %}
+                {% endpaginate %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="collection-recipe__wrapper ajax-content">
+            {%- if show_banner_section -%}
+              {%- render 'collection-recipes-banner', bg_image: bg_image_banner, bg_image_mobile: bg_image_banner_mobile, text: banner_text, text_color: banner_text_color, order: banner_section_order -%}
+            {%- endif -%}
+
+						{% if section.blocks.size > 1 %}
+							{% for block in section.blocks %}
+								{%- assign block_collection = block.settings.collection -%}
+
+								<div id="{{ block_collection.title }}"
+										 class="collection-recipe__content">
+									<h2 class="collection-recipe__title">{{ block_collection.title }}</h2>
+									<div class="collection-recipe__grid collection-recipes__grid" data-slider-disabled="true">
+										{%- for product in block_collection.products -%}
+
+											<div class="collection-recipe__product-block">
+												{% render 'recipe-item', product: product %}
+											</div>
+
+										{%- endfor -%}
+									</div>
+								</div>
+							{% endfor %}
+						{% endif %}
+
+            {%- comment -%}All recipes block for Ajax{%- endcomment -%}
+            <div class="collection-recipe__Results RecipeResults AllRecipeResults ajax-content" style="display: none">
+              <div class="RecipeResults__Wrapper">
+                <h2
+                  class="collection-recipe__title">{{ collection.products_count }} {{ collection.products_count | pluralize: 'Recipe', 'Recipes' }}
+                  Found</h2>
+
+                <div class="RecipeResults__Grid">
+                  {% paginate collection.products by 9999 %}
+                    {% for product in collection.products %}
+                      <div class="RecipeResults__GridItem">
+                        {% render 'recipe-item', product: product %}
+                      </div>
+                    {% endfor %}
+                  {% endpaginate %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const containerArr = document.querySelectorAll("#shopify-section-{{ section.id }} .collection-recipe__filters-wrapper");
+  //   containerArr.forEach(container => {
+  //     container.addEventListener("toggle", (event) => {
+  //       const clickedAccordion = event.target;
+  //       if (!(clickedAccordion instanceof AccordionDetails)) return;
+  
+  //       container.querySelectorAll('details[is="accordion-details"]').forEach((accordion) => {
+  //         if (accordion !== clickedAccordion && accordion.open) {
+  //           accordion.close();
+  //         }
+  //       });
+  //     });
+  //   });
+
+  //   const wrapper = document.querySelector(".collection-recipe");
+  //   const selectors = ['.collection-recipe__filters', '.collection-recipe__mobile-filters'];
+  //   const loader = document.querySelector(".filters__loader");
+  //   const baseUrl = document.querySelector("[data-collection-url]").dataset.collectionUrl;
+  //   if (!baseUrl) return;
+
+  //   const filterArr = document.querySelectorAll(".collection-recipe input[type='checkbox']");
+
+  //   filterArr.forEach(filter => {
+  //     filter.addEventListener("click", () => {
+  //       filterArr.forEach(otherFilter => {
+  //       if (otherFilter !== filter) {
+  //           otherFilter.checked = false;
+  //         }
+  //       });
+
+  //       const tag = filter.dataset.tag || "";
+  
+  //       wrapper.classList.add("loading");
+  //       let targetUrl = baseUrl;
+  //       if (filter.checked) {
+  //         targetUrl = `${baseUrl}/${tag}`;
+  //       }
+  //       history.replaceState(null, null, targetUrl);
+  
+  //       fetch(targetUrl)
+  //         .then(response => response.text())
+  //         .then(data => {
+  //           const parser = new DOMParser();
+  //           const doc = parser.parseFromString(data, "text/html");
+  //           const content = doc.querySelector(".ajax-content");
+
+  //           const container = document.querySelector(".ajax-parent") || document.querySelector(".ajax-content");
+
+  //           container.replaceWith(content);
+
+  //           selectors.forEach(selector => {
+  //             const source = doc.querySelector(selector);
+  //             const destination = document.querySelector(selector);
+              
+  //             if (source && destination) {
+  //               // destination.replaceWith(source);
+  //             }
+  //           });
+  //           wrapper.classList.remove("loading");
+  //         });
+  //     });
+  //   });
+
+  //   const modalCloseBtn = document.querySelector(".collection-recipe__mobile-close");
+  //   const modal = document.querySelector(".collection-recipe__mobile-filters");
+  //   const modalBtn = document.querySelector(".collection-recipe .collection-recipe__button-wrapper.mobile");
+  //   modalBtn.addEventListener("click", () => {
+  //     modal.classList.add("active");
+  //   });
+  //   modalCloseBtn.addEventListener("click", () => {
+  //     modal.classList.remove("active");
+  //   });
+  // });
+  document.addEventListener("DOMContentLoaded", () => {
+    const containerArr = document.querySelectorAll("#shopify-section-{{ section.id }} .collection-recipe__filters-wrapper");
+    containerArr.forEach(container => {
+      container.addEventListener("toggle", (event) => {
+        const clickedAccordion = event.target;
+        if (!(clickedAccordion instanceof AccordionDetails)) return;
+  
+        container.querySelectorAll('details[is="accordion-details"]').forEach((accordion) => {
+          if (accordion !== clickedAccordion && accordion.open) {
+            accordion.close();
+          }
+        });
+      });
+    });
+
+    const heading = document.querySelector(".collection-recipe__section-title-content");
+    const wrapper = document.querySelector(".collection-recipe");
+    const loader = document.querySelector(".filters__loader");
+    const baseUrl = document.querySelector("[data-collection-url]").dataset.collectionUrl;
+    if (!baseUrl) return;
+
+    const filterArr = document.querySelectorAll("input[type='checkbox']");
+
+    const applyFilters = (tag = "") => {
+      wrapper.classList.add("loading");
+      const targetUrl = `${baseUrl}/${tag}`;
+      history.replaceState(null, null, targetUrl);
+
+      fetch(targetUrl)
+        .then(response => response.text())
+        .then(data => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data, "text/html");
+          const content = doc.querySelector(".ajax-content");
+
+          const container = document.querySelector(".ajax-parent") || document.querySelector(".ajax-content");
+          container.replaceWith(content);
+
+          const newHeading = doc.querySelector(".collection-recipe__section-title-content").textContent;
+          heading.textContent = newHeading
+
+          wrapper.classList.remove("loading");
+        });
+    };
+
+    // Desktop Filter Logic
+    filterArr.forEach(filter => {
+      filter.addEventListener("click", () => {
+        filterArr.forEach(otherFilter => {
+          if (otherFilter !== filter) {
+            otherFilter.checked = false;
+          }
+        });
+
+        const isMobileFilter = filter.closest(".collection-recipe__mobile-filters") !== null;
+        if (isMobileFilter) return;
+
+        const tag = filter.dataset.tag || "";
+        applyFilters(tag);
+      });
+    });
+
+    // Mobile Filter Logic
+    const modal = document.querySelector(".collection-recipe__mobile-filters");
+    const modalBtn = document.querySelector(".collection-recipe .collection-recipe__button-wrapper.mobile button");
+    const modalCloseBtn = document.querySelector(".collection-recipe__mobile-close");
+    const applyBtn = modal.querySelector(".ApplyFilters__Mobile");
+    const resetBtn = modal.querySelector(".ResetFilters");
+
+    modalBtn.addEventListener("click", () => {
+      modal.classList.add("active");
+    });
+
+    modalCloseBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    resetBtn.addEventListener("click", () => {
+      filterArr.forEach(filter => {
+        filter.checked = false;
+      });
+      modal.classList.remove("active");
+      applyFilters();
+    })
+
+    applyBtn.addEventListener("click", () => {
+      const selectedFilter = modal.querySelector("input[type='checkbox']:checked");
+      const tag = selectedFilter ? selectedFilter.dataset.tag : "";
+      
+      // Perform additional actions specific to mobile
+      modal.classList.remove("active");
+
+      if (tag) {
+        applyFilters(tag);
+      }
+    });
+  });
+
+</script>
+
+<script>
+  //empty this container to remove unnecessary content from the page
+  (()=> {
+    document.querySelector(".RecipeResults.AllRecipeResults.ajax-content .RecipeResults__Grid")?.replaceChildren();
+  })()
+</script>
+
+{% schema %}
+{
+  "name": "Recipe Collection",
+  "max_blocks": 15,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section title"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_section_title",
+      "label": "Enable section title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "section_title_heading",
+      "label": "Heading",
+      "default": "Recipes"
+    },
+    {
+      "type": "color",
+      "id": "title_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "title_bg_color",
+      "label": "Background color",
+      "default": "#0D5D52"
+    },
+    {
+      "type": "image_picker",
+      "id": "title_bg_image_desk",
+      "label": "Background image desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "title_bg_image_mob",
+      "label": "Background image mobile"
+    },
+    {
+      "type": "text",
+      "id": "filter_heading",
+      "label": "Filter title",
+      "default": "Filter By:"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all_btn",
+      "label": "Show view all button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_btn_text",
+      "label": "View all button text",
+      "default": "View all recipes"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#f1ede7"
+    },
+    {
+      "type": "color",
+      "id": "mobile_filters_bg",
+      "label": "Mobile filters background",
+      "default": "#481a36"
+    },
+    {
+      "type": "header",
+      "content": "Recipe group order"
+    },
+    {
+      "type": "textarea",
+      "id": "recipe_group_order",
+      "label": "Recipe group order",
+      "info": "Fill the order of the  group separated by commas. Example: Date Night,Fast and Easy,Kid Favorites"
+    },
+    {
+      "type": "header",
+      "content": "Filter category order"
+    },
+    {
+      "type": "textarea",
+      "id": "category_tags_order",
+      "label": "Category tags order",
+      "info": "Fill the order of the tags separated by commas. Example: Breakfast & Brunch,Desserts,Meat"
+    },
+    {
+      "type": "header",
+      "content": "Categories order"
+    },
+    {
+      "type": "textarea",
+      "id": "categories_order",
+      "label": "Categories order",
+      "info": "Fill the order of the categories separated by commas. If the title should be invisible add: -invisible.  Example: Product,Category,Dietary Preferences,Other-invisible"
+    },
+    {
+      "type": "header",
+      "content": "Hero section"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "heading_max_width",
+      "label": "Content Max Width (Desktop)"
+    },
+    {
+      "type": "text",
+      "id": "heading_max_width_mobile",
+      "label": "Content Max Width (Mobile)"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Content alignment",
+      "default": "middle",
+      "options": [
+        {
+          "value": "top_left",
+          "label": "Top left"
+        },
+        {
+          "value": "middle_left",
+          "label": "Middle left"
+        },
+        {
+          "value": "bottom_left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "top_middle",
+          "label": "Top middle"
+        },
+        {
+          "value": "middle",
+          "label": "Middle"
+        },
+        {
+          "value": "bottom_middle",
+          "label": "Bottom middle"
+        },
+        {
+          "value": "top_right",
+          "label": "Top right"
+        },
+        {
+          "value": "middle_right",
+          "label": "Middle right"
+        },
+        {
+          "value": "bottom_right",
+          "label": "Bottom right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Banner section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_banner_section",
+      "label": "Show section",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_banner",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_banner_mobile",
+      "label": "Mobile image"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_text",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "banner_text_color",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "number",
+      "id": "banner_section_order",
+      "label": "Section order"
+    },
+    {
+      "type": "header",
+      "content": "Quick jump section"
+    },
+    {
+      "type": "color",
+      "id": "bg_quick_view",
+      "label": "Background color",
+      "default": "#F1EDE7"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_block",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+	],
+  "presets": [
+    {
+      "name": "Recipe Collection"
+    }
+  ]
+}
+{% endschema %}

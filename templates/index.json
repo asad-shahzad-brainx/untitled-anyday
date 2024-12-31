@@ -142,6 +142,7 @@
         "color_button_gradient": "",
         "padding_top": 72,
         "padding_bottom": 72,
+        "add_bg_shapes": true,
         "divider": false,
         "full_width": false,
         "rounded": false
@@ -284,6 +285,7 @@
         "color_button_gradient": "",
         "padding_top": 72,
         "padding_bottom": 72,
+        "add_bg_shapes": false,
         "divider": false,
         "full_width": true,
         "rounded": false
@@ -488,6 +490,7 @@
         "color_button_gradient": "",
         "padding_top": 100,
         "padding_bottom": 100,
+        "add_bg_shapes": false,
         "divider": false,
         "full_width": true,
         "rounded": false
@@ -717,7 +720,7 @@
         "h2 {color: #000;}"
       ],
       "settings": {
-        "collection": "new-recipes",
+        "collection": "recipes",
         "products": [],
         "product_limit": 6,
         "columns": 4,

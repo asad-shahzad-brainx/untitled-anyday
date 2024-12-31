@@ -63,6 +63,8 @@
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
   {%- endif -%}
 
+  <script async src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop={{ shop.permanent_domain }}"></script>
+
   {%- render 'js-variables' -%}
   
   {% comment %}  {% endcomment %}
@@ -82,9 +84,48 @@
       font-style: normal;
       font-display: swap;
     }  
+    
     body * {
-      font-family: "F37Jan"
+      font-family: "F37Jan";
     }
+
+    .rebuy-cart__flyout [data-rebuy-component='checkout-area'] {
+      padding-bottom: 8px;
+    }
+
+    {% if template.name == 'product' %}
+      .Svg--wave-bottom,
+      .Svg--wave-bottom-reverse {
+        position: absolute;
+        z-index: 2;
+        color: var(--bg-color, var(--section_bg_bottom));
+        overflow-x: visible;
+        left: 0;
+        top: auto;
+        bottom: -68px;
+      }
+
+      .Svg--wave-top {
+        position: absolute;
+        z-index: 2;
+        color: var(--bg-color, var(--section_bg_top));
+        overflow-x: visible;
+        left: 0;
+        bottom: auto;
+        top: -58px;
+      }
+      @media (max-width: 749px) {
+        .Svg--wave-top {
+          height: 50px;
+          top: -38px;
+        }
+        .Svg--wave-bottom,
+        .Svg--wave-bottom-reverse {
+          height: 50px;
+          bottom: -49px;
+        }
+      }
+    {% endif %}
   {% endstyle %}
 </head>
 

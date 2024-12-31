@@ -18,7 +18,7 @@
           "type": "logo_social",
           "disabled": true,
           "settings": {
-            "logo": "shopify://shop_images/Anyday_Logo_-_White.svg",
+            "logo": "shopify:\/\/shop_images\/Anyday_Logo_-_White.svg",
             "logo_height": 45,
             "show_social": true,
             "enable_follow_on_shop": false
@@ -62,7 +62,7 @@
       "settings": {
         "enable_newsletter": true,
         "newsletter_heading": "Ready to level up your cooking game?",
-        "newsletter_text": "<p>Be the first to know about new recipes, microwave tips, promos, and more!</p>",
+        "newsletter_text": "<p>Be the first to know about new recipes, microwave tips, promos, and more!<\/p>",
         "show_social": true,
         "enable_follow_on_shop": false,
         "color_text": "#ffffff",

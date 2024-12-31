@@ -1,0 +1,226 @@
+.info-blocks {
+  position: relative;
+  padding: var(--padding-top-desktop) 0 var(--padding-bottom-desktop);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+@media (max-width: 750px) {
+  .info-blocks {
+    padding-top: var(--padding-top-mobile);
+    padding-bottom: var(--padding-bottom-mobile);
+  }
+}
+
+.info-blocks .info-blocks__wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 35px;
+}
+
+@media (max-width: 750px) {
+  .info-blocks .info-blocks__wrapper {
+    padding: 0 47px;
+  }
+}
+
+.info-blocks .info-blocks__content-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 57px;
+  column-gap: 9%;
+}
+
+@media (max-width: 750px) {
+  .info-blocks .info-blocks__content-wrapper {
+    row-gap: 32px;
+  }
+}
+
+.info-blocks .info-blocks__heading * {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  line-height: normal;
+  text-transform: none;
+  box-shadow: none;
+  text-align: center;
+  margin-bottom: 57px;
+  color: var(--text-color);
+}
+
+@media (max-width: 750px) {
+  .info-blocks .info-blocks__heading * {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+.info-blocks
+  .info-blocks__wrapper:has(.info-blocks__subheading)
+  .info-blocks__heading
+  * {
+  margin-bottom: 25px;
+}
+
+@media (max-width: 750px) {
+  .info-blocks
+    .info-blocks__wrapper:has(.info-blocks__subheading)
+    .info-blocks__heading
+    * {
+    margin-bottom: 5px;
+  }
+}
+
+.info-blocks .info-blocks__subheading {
+  position: relative;
+  max-width: 80%;
+  padding: 0 20px 25px;
+  margin: 0 auto;
+  z-index: 1;
+  text-align: center;
+  color: inherit;
+  font-size: 22px;
+}
+
+@media (max-width: 750px) {
+  .info-blocks .info-blocks__subheading {
+    position: relative;
+    max-width: 100%;
+    padding: 0 0 25px 0;
+    font-size: 1em;
+  }
+}
+
+.info-blocks .info-blocks__item {
+  max-width: 335px;
+  width: 33%;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--bg-color);
+}
+
+@media (max-width: 750px) {
+  .info-blocks .info-blocks__item {
+    width: 100%;
+  }
+}
+
+.info-blocks
+  .info-blocks__item:has(.info-blocks__item-description-wrapper)
+  [card-info-block-opener] {
+  cursor: pointer;
+}
+
+.info-blocks .info-blocks__item-wrapper {
+  position: relative;
+  padding-top: 100%;
+}
+
+.info-blocks .info-blocks__item-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.info-blocks .info-blocks__item-info-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 24px 14px 22px;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #215957;
+}
+
+@media (max-width: 750px) {
+  .info-blocks .info-blocks__item-info-wrapper {
+    padding: 6px 17px 6px 22px;
+  }
+}
+
+.info-blocks .info-blocks__item-info-wrapper h3 {
+  margin-bottom: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@media (max-width: 750px) {
+  .info-blocks .info-blocks__item-info-wrapper h3 {
+    font-size: 1em;
+    font-weight: 400;
+  }
+}
+
+.info-blocks .info-blocks__item-info-wrapper .info-blocks__item-icon-wrapper {
+  display: flex;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.info-blocks
+  .info-blocks__item-info-wrapper
+  .info-blocks__item-icon-wrapper[rotate="true"] {
+  transform: rotate(45deg);
+  color: #ffffff;
+}
+
+.info-blocks .info-blocks__item-heading {
+  overflow: hidden;
+  max-height: 100px;
+  max-width: calc(100% - 50px);
+}
+
+.info-blocks .info-blocks__item-description-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 25px 65px 25px 18px;
+  background-color: #1b2245;
+  color: #ffffff;
+  transition: 0.5s;
+}
+
+.info-blocks .info-blocks__item-description-wrapper * {
+  color: inherit;
+}
+
+.info-blocks .info-blocks__item-description-wrapper a {
+  text-decoration: underline;
+}
+
+.info-blocks .info-blocks__item-description-wrapper a:hover {
+  color: #ff3c1f;
+}
+
+.info-blocks .info-blocks__item-description-wrapper[aria-expanded="false"] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.info-blocks .info-blocks__item-description-wrapper[aria-expanded="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.info-blocks .info-blocks__item-description {
+  overflow: scroll;
+  max-height: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.info-blocks .info-blocks__item-description::-webkit-scrollbar {
+  display: none;
+}

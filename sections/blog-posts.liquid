@@ -12,46 +12,10 @@
 {%- else -%}
   {{ 'blog.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
-
 {%- assign blog = section.settings.blog -%}
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
-    {%- capture view_all -%}
-      {%- if section.settings.show_view_all and blog != blank and section.settings.post_limit < blog.articles_count -%}
-        <a class="button button--secondary icon-with-text" href="{{ blog.url }}" is="hover-link">
-          <span class="btn-fill" data-fill></span>
-          <span class="btn-text">
-            {%- liquid
-              render 'icon', icon: 'newspaper'
-              echo 'sections.blog_posts.view_all' | t
-            -%}
-          </span>
-        </a>
-      {%- endif -%}
-    {%- endcapture -%}
-    {%- capture indicators -%}
-      {%- if blog != blank and section.settings.carousel_on_desktop -%}
-        <div class="indicators hidden lg:flex gap-2d5">
-          <button class="button button--secondary" type="button" is="previous-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" disabled>
-            <span class="btn-fill" data-fill></span>
-            <span class="btn-text">
-              {%- render 'icon', icon: 'chevron-left', class: 'transform' -%}
-            </span>
-          </button>
-          <button class="button button--secondary" type="button" is="next-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
-            <span class="btn-fill" data-fill></span>
-            <span class="btn-text">
-              {%- render 'icon', icon: 'chevron-right', class: 'transform' -%}
-            </span>
-          </button>
-        </div>
-        <p class="lg:hidden">{{ view_all }}</p>
-      {%- else -%}
-        <p>{{ view_all }}</p>
-      {%- endif -%}
-    {%- endcapture -%}
     {%- render 'section-heading', section: section, section_button: indicators -%}
-
     {%- if blog != blank -%}
       <slider-element id="Slider-{{ section.id }}" class="grid slider{% if section.settings.carousel_on_desktop %} slider--desktop{% endif %}{% if section.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card">
         <motion-list class="blog-grid card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid">
@@ -69,7 +33,6 @@
             -%}
           {%- endfor -%}
         </motion-list>
-
         {%- if section.settings.heading == blank and section.settings.subheading == blank and section.settings.description == blank -%}
           {%- if section.settings.carousel_on_desktop -%}
             <div class="indicators hidden lg:flex gap-2d5 items-center absolute top-0 left-0 w-full h-full pointer-events-none opacity-0 page-width">
@@ -79,7 +42,7 @@
                   {%- render 'icon', icon: 'chevron-left', class: 'stroke-2 transform' -%}
                 </span>
               </button>
-              <button class="button button--primary pointer-events-auto" type="button" is="next-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
+              <button class="button button--primary pointer-events-auto" type="button" is="next-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}" disabled>
                 <span class="btn-fill" data-fill></span>
                 <span class="btn-text">
                   {%- render 'icon', icon: 'chevron-right', class: 'stroke-2 transform' -%}
@@ -89,16 +52,29 @@
           {%- endif -%}
         {%- endif -%}
       </slider-element>
-
-      {%- if section.settings.carousel_on_desktop -%}
-        <p class="hidden lg:block">{{ view_all }}</p>
-      {%- endif -%}{%- else -%}
-      <div class="rte">
-        {{- 'onboarding.no_content' | t -}}
-      </div>
     {%- endif -%}
+
+    <div class="view-all"> 
+      <a href="{{ blog.url }}" class="button button--primary icon-with-text" is="hover-link">
+        <span class="btn-fill" data-fill></span>
+        <span class="btn-text">
+          {%- liquid
+            render 'icon', icon: 'newspaper'
+            echo 'sections.blog_posts.view_all' | t
+          -%}
+        </span>
+      </a>
+    </div>
+
   </div>
 </div>
+
+<style>
+  .view-all {
+    justify-self: center;
+    margin-top: 32px;
+}
+</style>
 
 {% schema %}
 {

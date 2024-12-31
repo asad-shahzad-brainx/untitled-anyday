@@ -1,0 +1,38 @@
+{%- comment -%}
+{%- render 'collection-recipes-banner', bg_image: , bg_image_mobile: , text: , text_color:  , order: -%}
+{%- endcomment -%}
+
+<section class="collection-banner" {% if order != blank %}style="order: {{ order }}" {% endif %}>
+  {%- if bg_image != blank -%}
+    <div class="collection-banner__image lazyload {% if bg_image_mobile != blank %}collection-banner__image--desktop{% endif %}"
+         data-bgset="{% render 'bgset', image: bg_image, %}"
+         data-sizes="auto"
+         data-parent-fit="cover"
+         style="background-image: url('{{ bg_image.src }}');">
+      <noscript>
+        <div class="image-banner"
+             style="background-image: url('{{ bg_image.src }}');"></div>
+      </noscript>
+    </div>
+
+    {%- if bg_image_mobile != blank -%}
+      {%- assign img = bg_image_mobile.cloudinary_src -%}
+      <div class="collection-banner__image lazyload collection-banner__image--mobile"
+           data-bgset="{% render 'bgset', image: bg_image_mobile, %}"
+           data-sizes="auto"
+           data-parent-fit="cover"
+           style="background-image: url('{{ bg_image_mobile.src }}');">
+        <noscript>
+          <div class="image-banner image-banner-mobile"
+               style="background-image: url('{{ bg_image_mobile.src }}');"></div>
+        </noscript>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if text != blank -%}
+    <div class="collection-banner__text" style="color: {{ text_color }};">{{ text }}</div>
+  {%- endif -%}
+</section>
+
+

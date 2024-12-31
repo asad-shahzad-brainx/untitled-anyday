@@ -22,7 +22,7 @@
           }
         },
         "junip_product_reviews_ugc_junip_product_summary_4dXHn6": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-summary/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify:\/\/apps\/junip-product-reviews-ugc\/blocks\/junip-product-summary\/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "product": "{{product}}"
           }
@@ -33,8 +33,35 @@
             "show_taxes_notice": true
           }
         },
+        "description_VCrBGW": {
+          "type": "description",
+          "settings": {
+            "description_source": "metafield",
+            "text_size": "text-base"
+          }
+        },
+        "product_icons_Gw3kKi": {
+          "type": "product_icons",
+          "settings": {
+            "icon_1": "shopify:\/\/shop_images\/00-Microwave-safe_icon_04_1_6841994e-644d-4b17-ac56-f100972e51d3.png",
+            "text_1": "Microwave-safe",
+            "icon_2": "shopify:\/\/shop_images\/00-Dishwasher-safe_icon_03_2.png",
+            "text_2": "Dishwasher-safe",
+            "icon_3": "shopify:\/\/shop_images\/00-Oven-safe_icon_8_1_749b6bc3-52db-4f62-b9a4-88ae937c1ecc.png",
+            "text_3": "Oven-safe (up to\n500°F bowl, 400°F lid)",
+            "icon_4": "shopify:\/\/shop_images\/Frame_38.png",
+            "text_4": "Airtight, leakproof, stackable",
+            "icon_5": "shopify:\/\/shop_images\/00-Freezer-safe_icon_03_1_d1afc5d8-1abe-4afa-ae8a-f926b63e465a.png",
+            "text_5": "Freezer-safe",
+            "icon_6": "shopify:\/\/shop_images\/Glass-recycle_icon_01_1_8182da76-73e4-4d2f-adc9-22467d04e363.png",
+            "text_6": "Nontoxic and plastic-free",
+            "text_7": "",
+            "text_8": ""
+          }
+        },
         "liquid_LdDHBR": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
             "liquid": "{{ product.metafields.accentuate.description }} <br>\n{{ product.metafields.accentuate.set_includes }}"
           }
@@ -76,15 +103,23 @@
             "show_gift_card_recipient": true
           }
         },
+        "tolstoy_shoppable_video_ugc_stories_block_989j67": {
+          "type": "shopify:\/\/apps\/tolstoy-shoppable-video-ugc\/blocks\/stories-block\/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "20uscdk0tiw9d"
+          }
+        },
         "text_rpiqwt": {
           "type": "text",
+          "disabled": true,
           "settings": {
-            "text": "<strong>Bundle it!</strong>",
+            "text": "<strong>Bundle it!<\/strong>",
             "text_size": "text-base lg:text-lg"
           }
         },
         "rebuy_personalization_engine_rebuy_widget_Xaid9N": {
-          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-widget\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "disabled": true,
           "settings": {
             "enabled": true,
             "id": "177640",
@@ -96,22 +131,35 @@
           "type": "pickup_availability",
           "settings": {}
         },
+        "dynamic_accordions_6rKJHW": {
+          "type": "dynamic_accordions",
+          "settings": {
+            "rebuy_widget_title": "Bundle It!",
+            "rebuy_widget_id": "191261",
+            "what_is_heading": "",
+            "what_is_description": "",
+            "safety_heading": "Is the microwave safe?",
+            "safety_description": "<ul><li>Anyday dishes are made of glass, not plastic, and are fully microwave-safe (yes, even the metal on the lid!). Read more about metal in the microwave <a href=\"\/blogs\/news\/is-metal-safe-in-microwave\" title=\"The Truth About Metal in the Microwave\">here<\/a>.<\/li><li>Microwaves are 100% safe to use. Did you know that your cellphone emits more radiation than your microwave does?<\/li><li>Food made from scratch in the microwave is safe to eat — in fact, the microwave preserves more nutrients than other cooking methods according to studies by Harvard and Cornell!<\/li><li>For more on microwave safety, check out our <a href=\"\/pages\/faq\" title=\"FAQ\">FAQ<\/a> and <a href=\"\/blogs\/news\" title=\"News\">Learn sections<\/a>!<\/li><\/ul>"
+          }
+        },
         "collapsible_tab_mQCENb": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "heading": "Details",
-            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.<\/p><p>Ex: Shipping and return policies, size guides, and other common questions.<\/p>",
             "page": "",
             "liquid": ""
           }
         },
         "collapsible_tab_gUFGXk": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "heading": "Is it microwave safe?",
-            "content": "<ul><li>Anyday dishes are made of glass, not plastic, and are fully microwave-safe (yes, even the metal on the lid!). Read more about metal in the microwave <a href=\"/blogs/news/is-metal-safe-in-microwave\" title=\"The Truth About Metal in the Microwave\">here</a>.</li><li>Microwaves are 100% safe to use. Did you know that your cellphone emits more radiation than your microwave does?</li><li>Food made from scratch in the microwave is safe to eat — in fact, the microwave preserves more nutrients than other cooking methods according to studies by Harvard and Cornell!</li><li>For more on microwave safety, check out our <a href=\"/pages/faq\" title=\"FAQ\">FAQ</a> and <a href=\"/blogs/news\" title=\"News\">Learn sections</a>!</li></ul>",
+            "content": "<ul><li>Anyday dishes are made of glass, not plastic, and are fully microwave-safe (yes, even the metal on the lid!). Read more about metal in the microwave <a href=\"\/blogs\/news\/is-metal-safe-in-microwave\" title=\"The Truth About Metal in the Microwave\">here<\/a>.<\/li><li>Microwaves are 100% safe to use. Did you know that your cellphone emits more radiation than your microwave does?<\/li><li>Food made from scratch in the microwave is safe to eat — in fact, the microwave preserves more nutrients than other cooking methods according to studies by Harvard and Cornell!<\/li><li>For more on microwave safety, check out our <a href=\"\/pages\/faq\" title=\"FAQ\">FAQ<\/a> and <a href=\"\/blogs\/news\" title=\"News\">Learn sections<\/a>!<\/li><\/ul>",
             "page": "",
             "liquid": ""
           }
@@ -151,14 +199,18 @@
         "title",
         "junip_product_reviews_ugc_junip_product_summary_4dXHn6",
         "price_rC7wyf",
+        "description_VCrBGW",
+        "product_icons_Gw3kKi",
         "liquid_LdDHBR",
         "countdown",
         "variant_picker",
         "inventory",
         "buy_buttons",
+        "tolstoy_shoppable_video_ugc_stories_block_989j67",
         "text_rpiqwt",
         "rebuy_personalization_engine_rebuy_widget_Xaid9N",
         "pickup_availability",
+        "dynamic_accordions_6rKJHW",
         "collapsible_tab_mQCENb",
         "collapsible_tab_gUFGXk",
         "liquid_Vbg7C9",
@@ -189,6 +241,387 @@
         "rounded": false
       }
     },
+    "hp_ticker_RQBiVq": {
+      "type": "hp-ticker",
+      "blocks": {
+        "ab732296-59c8-4e8f-b05e-1ddce6c1b207": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_126.png",
+            "link_url": "#"
+          }
+        },
+        "9e860ba8-c20b-4665-b3c0-111a4ce5fc3d": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_123.png",
+            "link_url": "#"
+          }
+        },
+        "a1b78ca1-6b38-44fb-a3de-c3a4dd2b518d": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_124_fcfc48ed-ff17-4707-b2ec-18fca1949606.png",
+            "link_url": "#"
+          }
+        },
+        "0564fd27-6a73-46bc-9dbf-57406ee58eeb": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_125_fafaf367-4775-4cbc-9979-bed16a465e05.png",
+            "link_url": "#"
+          }
+        },
+        "5eac7b22-157f-40d2-a7a2-cd54e6923419": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/2560px-Fast_Company_logo.svg_5528b940-1518-44b9-89fd-b2d932b5ed39.png",
+            "link_url": ""
+          }
+        },
+        "a7a3434f-52c1-4053-bac1-59e2c075cb34": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_123.png",
+            "link_url": ""
+          }
+        },
+        "ed9a1b89-676b-4b47-af57-9a65bcbbd6ef": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_124_fcfc48ed-ff17-4707-b2ec-18fca1949606.png",
+            "link_url": ""
+          }
+        },
+        "2a58621c-8229-4e8e-9e31-70c31ad56619": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_125_fafaf367-4775-4cbc-9979-bed16a465e05.png",
+            "link_url": ""
+          }
+        },
+        "1adf2959-773a-479b-a617-746ed2f3b6bc": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/2560px-Fast_Company_logo.svg_5528b940-1518-44b9-89fd-b2d932b5ed39.png",
+            "link_url": ""
+          }
+        },
+        "3f955128-2b22-479a-b684-eab48c4619a6": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_123.png",
+            "link_url": ""
+          }
+        },
+        "f6fb3d89-c1d8-496e-8d01-ad7147be7b18": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_124_fcfc48ed-ff17-4707-b2ec-18fca1949606.png",
+            "link_url": ""
+          }
+        },
+        "f88d9355-acab-45a0-94be-287f4fe1287c": {
+          "type": "block",
+          "settings": {
+            "message": "",
+            "logo": "shopify:\/\/shop_images\/image_125_fafaf367-4775-4cbc-9979-bed16a465e05.png",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "ab732296-59c8-4e8f-b05e-1ddce6c1b207",
+        "9e860ba8-c20b-4665-b3c0-111a4ce5fc3d",
+        "a1b78ca1-6b38-44fb-a3de-c3a4dd2b518d",
+        "0564fd27-6a73-46bc-9dbf-57406ee58eeb",
+        "5eac7b22-157f-40d2-a7a2-cd54e6923419",
+        "a7a3434f-52c1-4053-bac1-59e2c075cb34",
+        "ed9a1b89-676b-4b47-af57-9a65bcbbd6ef",
+        "2a58621c-8229-4e8e-9e31-70c31ad56619",
+        "1adf2959-773a-479b-a617-746ed2f3b6bc",
+        "3f955128-2b22-479a-b684-eab48c4619a6",
+        "f6fb3d89-c1d8-496e-8d01-ad7147be7b18",
+        "f88d9355-acab-45a0-94be-287f4fe1287c"
+      ],
+      "settings": {
+        "padding_top_desk": 45,
+        "padding_bottom_desk": 45,
+        "padding_top_mob": 35,
+        "padding_bottom_mob": 35,
+        "bg_color": "#bed8fc",
+        "text_color": "#000000",
+        "stop_desktop": false,
+        "stop_mobile": false,
+        "off_scroll_pause": true,
+        "speed": 100,
+        "show_bottom_wave": false
+      }
+    },
+    "images_grid_VF8F3N": {
+      "type": "images-grid",
+      "settings": {
+        "padding_top_desk": 35,
+        "padding_bottom_desk": 35,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 40,
+        "heading": "<p>Some heading<\/p>",
+        "subheading": "",
+        "bg_color": "#ffffff",
+        "color": "#000000",
+        "button_label": "",
+        "button_url": "",
+        "show_top_wave": false,
+        "show_bottom_wave": true
+      }
+    },
+    "1733950529594f72a0": {
+      "type": "apps",
+      "blocks": {
+        "tolstoy_shoppable_video_ugc_carousel_block_kzQkAL": {
+          "type": "shopify:\/\/apps\/tolstoy-shoppable-video-ugc\/blocks\/carousel-block\/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "wir3vcjltmtvw"
+          }
+        }
+      },
+      "block_order": [
+        "tolstoy_shoppable_video_ugc_carousel_block_kzQkAL"
+      ],
+      "settings": {
+        "enable_reviews_integration": false,
+        "heading": "See it in action",
+        "heading_alignment": "center",
+        "heading_margin_bottom": 60,
+        "button_link": "\/",
+        "button_text": "",
+        "button_margin_top": 60,
+        "color_text": "",
+        "color_background": "#f1ede7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 100,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "product_info_blocks_wkeejW": {
+      "type": "product-info-blocks",
+      "blocks": {
+        "e9aed611-9c6b-46e3-90bf-33419ba7b1d4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Deliverable-1_new-color_compressed.gif",
+            "heading": "Made for moist, even cooking",
+            "description": "<p>Anyday's silicone-rimmed lid locks in moisture, so your food comes out tender and perfectly cooked (no rubbery texture or cold spots here!)<\/p>",
+            "background_color": "#fafbf8"
+          }
+        },
+        "4f21b135-fa32-4161-81b4-4af6146da267": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Deliverable-4_new-color_compressed.gif",
+            "heading": "Non-toxic and plastic-free",
+            "description": "<p>Anyday's glass dish is toxin-free and won't leach chemicals into food, unlike plastic containers which release micro-plastics when heated.<\/p>",
+            "background_color": "#fafbf8"
+          }
+        },
+        "6a9abf32-dfc0-4cd4-8589-3c43f9265b41": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Deliverable-2_part-1_new-color_compressed.gif",
+            "heading": "Safe microwave cooking technology",
+            "description": "<p>The specially designed knob vents excess steam and prevents pressure build-up, ensuring no explosions and keeping splatters contained.<\/p>",
+            "background_color": "#fafbf8"
+          }
+        },
+        "0bdbfd9d-62a6-4397-b353-68d5d2929e2b": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Deliverable-3_new-color_compressed.gif",
+            "heading": "Microwave-safe metal rim",
+            "description": "<p>The stainless steel rim on our lid creates a secure, tight seal — and yes, it’s safe to put in the microwave because of its curved shape!<\/p>",
+            "background_color": "#0d5d52"
+          }
+        },
+        "200f4d88-e301-4185-babf-f77bab2c1e03": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Deliverable-2_part-2_new-color_compressed.gif",
+            "heading": "Stackable food storage",
+            "description": "<p>Push the knob down for an airtight seal to keep food fresher, longer. Its smart lid design allows easy stacking in the fridge.<\/p>",
+            "background_color": "#e05647"
+          }
+        }
+      },
+      "block_order": [
+        "e9aed611-9c6b-46e3-90bf-33419ba7b1d4",
+        "4f21b135-fa32-4161-81b4-4af6146da267",
+        "6a9abf32-dfc0-4cd4-8589-3c43f9265b41",
+        "0bdbfd9d-62a6-4397-b353-68d5d2929e2b",
+        "200f4d88-e301-4185-babf-f77bab2c1e03"
+      ],
+      "settings": {
+        "padding_top_desk": 60,
+        "padding_bottom_desk": 50,
+        "padding_top_mob": 70,
+        "padding_bottom_mob": 40,
+        "heading": "<p>Anyday up close<\/p>",
+        "subheading": "",
+        "bg_color": "#f1ede7",
+        "color": "#000000",
+        "show_top_wave": false,
+        "show_bottom_wave": true
+      }
+    },
+    "product_old_way_table_QALjCV": {
+      "type": "product-old-way-table",
+      "blocks": {
+        "691c51ab-044f-4aa4-aebb-ec770f19d4bf": {
+          "type": "table_row",
+          "settings": {
+            "column_0": "<p>Scroll left to right<\/p>",
+            "column_1": "<p>Microwave<\/p>",
+            "column_2": "<p>Oven*<\/p>",
+            "column_3": "<p>Stove*<\/p>",
+            "column_4": "<p>Pressure Cooker*<\/p>"
+          }
+        },
+        "6e1ef867-10c0-41a5-ad3e-d2426e32efbb": {
+          "type": "table_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/broccoli.png",
+            "column_0": "<p>Broccoli<\/p>",
+            "column_1": "<p>3 mins<\/p>",
+            "column_2": "<p>35 mins<\/p>",
+            "column_3": "<p>16 mins<\/p>",
+            "column_4": "<p>15 mins<\/p>"
+          }
+        },
+        "8399c581-b818-48c7-a20b-6baf745b88bb": {
+          "type": "table_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/shrimp.png",
+            "column_0": "<p>Frozen Shrimp<\/p>",
+            "column_1": "<p>3 mins<\/p>",
+            "column_2": "<p>15 mins<\/p>",
+            "column_3": "<p>5 mins<\/p>",
+            "column_4": "<p>16 mins<\/p>"
+          }
+        },
+        "57fbbc0a-db00-413f-aa58-46d6cc01f15d": {
+          "type": "table_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/oatmeal.png",
+            "column_0": "<p>Oatmeal<\/p>",
+            "column_1": "<p>2 mins<\/p>",
+            "column_2": "<p>40 mins<\/p>",
+            "column_3": "<p>10 mins<\/p>",
+            "column_4": "<p>20 mins<\/p>"
+          }
+        },
+        "29e966f2-3608-493f-a8a1-64e12cadf556": {
+          "type": "table_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/chicken_breast.png",
+            "column_0": "<p>Chicken Breast<\/p>",
+            "column_1": "<p>7 mins<\/p>",
+            "column_2": "<p>45 mins<\/p>",
+            "column_3": "<p>17 mins<\/p>",
+            "column_4": "<p>30 mins<\/p>"
+          }
+        },
+        "5a2112dc-6e93-4032-8e89-44568f3943ea": {
+          "type": "table_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/rice_f3162dec-d69d-4fee-b91c-555d227f96e9.png",
+            "column_0": "<p>Rice<\/p>",
+            "column_1": "<p>22 mins<\/p>",
+            "column_2": "<p>45 mins<\/p>",
+            "column_3": "<p>40 mins<\/p>",
+            "column_4": "<p>25 mins<\/p>"
+          }
+        },
+        "dd6338d7-4671-446c-8be4-0f6f7eaceae4": {
+          "type": "table_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/salmon.png",
+            "column_0": "<p>Salmon<\/p>",
+            "column_1": "<p>3 mins<\/p>",
+            "column_2": "<p>35 mins<\/p>",
+            "column_3": "<p>12 mins<\/p>",
+            "column_4": "<p>17 mins<\/p>"
+          }
+        },
+        "a0e29887-b089-40f9-bfdb-63fe6d6e16e8": {
+          "type": "table_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/potato.png",
+            "column_0": "<p>Potato<\/p>",
+            "column_1": "<p>5 mins<\/p>",
+            "column_2": "<p>1 hr 15 mins<\/p>",
+            "column_3": "<p>35 mins<\/p>",
+            "column_4": "<p>30 mins<\/p>"
+          }
+        },
+        "55da48d1-26bd-459e-b3b3-633ddb8a63df": {
+          "type": "table_row",
+          "settings": {
+            "column_0": "",
+            "column_1": "",
+            "column_2": "<p>*includes preheat time<\/p>",
+            "column_3": "<p>*includes boiling or pan heat time<\/p>",
+            "column_4": "<p>*includes pressurizing time<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "691c51ab-044f-4aa4-aebb-ec770f19d4bf",
+        "6e1ef867-10c0-41a5-ad3e-d2426e32efbb",
+        "8399c581-b818-48c7-a20b-6baf745b88bb",
+        "57fbbc0a-db00-413f-aa58-46d6cc01f15d",
+        "29e966f2-3608-493f-a8a1-64e12cadf556",
+        "5a2112dc-6e93-4032-8e89-44568f3943ea",
+        "dd6338d7-4671-446c-8be4-0f6f7eaceae4",
+        "a0e29887-b089-40f9-bfdb-63fe6d6e16e8",
+        "55da48d1-26bd-459e-b3b3-633ddb8a63df"
+      ],
+      "settings": {
+        "show_section": true,
+        "padding_top_desk": 85,
+        "padding_bottom_desk": 80,
+        "padding_top_mob": 50,
+        "padding_bottom_mob": 20,
+        "section_bg": "#f1ede7",
+        "heading": "Old Way vs. Anyday",
+        "subheading": "The microwave is simply faster, start to finish.",
+        "button_label": "",
+        "button_url": "",
+        "message_under_button": "",
+        "show_top_wave": true,
+        "show_bottom_wave": true
+      }
+    },
     "help-drawer": {
       "type": "help-drawer",
       "blocks": {
@@ -197,7 +630,7 @@
           "settings": {
             "icon": "rocket",
             "heading": "Shipping Information",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#b45309",
@@ -212,7 +645,7 @@
           "settings": {
             "icon": "headphone",
             "heading": "Customer Support",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#0369a1",
@@ -227,7 +660,7 @@
           "settings": {
             "icon": "chat_bubble",
             "heading": "FAQ’s",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#be123c",
@@ -242,7 +675,7 @@
           "settings": {
             "icon": "phone",
             "heading": "Contact Us",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#4d7c0f",
@@ -261,14 +694,33 @@
       ],
       "settings": {
         "heading": "Need help?",
-        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.</p>"
+        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.<\/p>"
+      }
+    },
+    "recommended_recipes_metafield_Hwx6LJ": {
+      "type": "recommended-recipes-metafield",
+      "settings": {
+        "enable_section": true,
+        "padding_top_desk": 55,
+        "padding_bottom_desk": 70,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 50,
+        "section_bg": "#c1a2f2",
+        "slider_arrows_color": "black",
+        "count_slides_on_d": "3",
+        "count_slides_on_m": "1.5",
+        "heading": "",
+        "heading_color": "#000000",
+        "button_label": "",
+        "button_link": "",
+        "show_bottom_wave": true
       }
     },
     "1733948763a41441db": {
       "type": "apps",
       "blocks": {
         "rebuy_personalization_engine_rebuy_widget_4g8Jpg": {
-          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-widget\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
           "settings": {
             "enabled": true,
             "id": "177638",
@@ -280,6 +732,7 @@
       "block_order": [
         "rebuy_personalization_engine_rebuy_widget_4g8Jpg"
       ],
+      "disabled": true,
       "custom_css": [
         ".rebuy-widget-content {background: transparent;}"
       ],
@@ -288,7 +741,7 @@
         "heading": "",
         "heading_alignment": "center",
         "heading_margin_bottom": 60,
-        "button_link": "/",
+        "button_link": "\/",
         "button_text": "",
         "button_margin_top": 60,
         "color_text": "",
@@ -306,129 +759,131 @@
         "rounded": false
       }
     },
-    "1733950529594f72a0": {
-      "type": "apps",
+    "product_comparison_table_nqrnLE": {
+      "type": "product-comparison-table",
       "blocks": {
-        "tolstoy_shoppable_video_ugc_carousel_block_kzQkAL": {
-          "type": "shopify://apps/tolstoy-shoppable-video-ugc/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+        "06e8cd8c-c387-4f79-997e-3000898d8dda": {
+          "type": "block",
           "settings": {
-            "publishId": "wir3vcjltmtvw"
-          }
-        }
-      },
-      "block_order": [
-        "tolstoy_shoppable_video_ugc_carousel_block_kzQkAL"
-      ],
-      "settings": {
-        "enable_reviews_integration": false,
-        "heading": "See it in action",
-        "heading_alignment": "center",
-        "heading_margin_bottom": 60,
-        "button_link": "/",
-        "button_text": "",
-        "button_margin_top": 60,
-        "color_text": "",
-        "color_background": "#f1ede7",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 36,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
-      }
-    },
-    "wave_divider_mbymMb": {
-      "type": "wave-divider",
-      "settings": {
-        "wave_color": "#fbfbf9",
-        "background_color": "#f1ede7",
-        "flip_vertical": true,
-        "flip_horizontal": true
-      }
-    },
-    "product_old_way_table_QALjCV": {
-      "type": "product-old-way-table",
-      "blocks": {
-        "table_row_7VM3tw": {
-          "type": "table_row",
-          "settings": {
-            "column_0": "<p>Scroll left to right</p>",
-            "column_1": "<p>Microwave</p>",
-            "column_2": "<p>Oven*</p>",
-            "column_3": "<p>Stove*</p>",
-            "column_4": "<p>Pressure Cooker*</p>"
+            "product": "the-small-dish-2-pack",
+            "row_bg_color": "#bed8fc",
+            "row_text_color": "#000000",
+            "image_row_1": "shopify:\/\/shop_images\/14cm_D.png",
+            "text_row_1": "",
+            "image_row_2": "shopify:\/\/shop_images\/Group_339_1.png",
+            "text_row_2": "0.5 qt\/2 cups",
+            "image_row_3": "shopify:\/\/shop_images\/feed_1_person.png",
+            "text_row_3": "1 person",
+            "text_row_4": "reheating leftovers, snacks, desserts",
+            "text_row_5": "for two dishes"
           }
         },
-        "table_row_jHVzT7": {
-          "type": "table_row",
+        "afaad2e7-f33d-4466-84d5-e3521e62cd03": {
+          "type": "block",
           "settings": {
-            "image": "shopify://shop_images/broccoli.png",
-            "column_0": "<p>Broccoli</p>",
-            "column_1": "<p>3 mins</p>",
-            "column_2": "<p>35 mins</p>",
-            "column_3": "<p>16 mins</p>",
-            "column_4": "<p>15 mins</p>"
+            "product": "the-medium-deep-dish",
+            "row_bg_color": "#dcfae0",
+            "row_text_color": "#000000",
+            "image_row_1": "shopify:\/\/shop_images\/Dimensions-_-illustrations-16cm.png",
+            "text_row_1": "",
+            "image_row_2": "shopify:\/\/shop_images\/Group_339.png",
+            "text_row_2": "1 qt\/4 cups",
+            "image_row_3": "shopify:\/\/shop_images\/image_97.png",
+            "text_row_3": "1-2 people",
+            "text_row_4": "vegetables, sides, dips",
+            "text_row_5": ""
+          }
+        },
+        "9de3706b-5bdd-448b-b675-2790468e7fdc": {
+          "type": "block",
+          "settings": {
+            "product": "the-medium-shallow-dish",
+            "row_bg_color": "#c1a2f2",
+            "row_text_color": "#000000",
+            "image_row_1": "shopify:\/\/shop_images\/Dimensions-_-illustrations-18cm.png",
+            "text_row_1": "",
+            "image_row_2": "shopify:\/\/shop_images\/Group_339.png",
+            "text_row_2": "1 qt\/4 cups",
+            "image_row_3": "shopify:\/\/shop_images\/image_97.png",
+            "text_row_3": "1-2 people",
+            "text_row_4": "eggs, desserts, vegetables",
+            "text_row_5": ""
+          }
+        },
+        "869f9ddb-9f3a-40d9-b2fb-57749410f9c6": {
+          "type": "block",
+          "settings": {
+            "product": "the-large-deep-dish",
+            "row_bg_color": "#fced60",
+            "row_text_color": "#000000",
+            "image_row_1": "shopify:\/\/shop_images\/Dimensions-_-illustrations-20cm.png",
+            "text_row_1": "",
+            "image_row_2": "shopify:\/\/shop_images\/Group_349.png",
+            "text_row_2": "2 qt\/8 cups",
+            "image_row_3": "shopify:\/\/shop_images\/Group_343.png",
+            "text_row_3": "3-4 people",
+            "text_row_4": "rice & grains, one-dish meals, soups",
+            "text_row_5": ""
+          }
+        },
+        "45830b11-757e-4c92-b279-288cf91ea0fe": {
+          "type": "block",
+          "settings": {
+            "product": "the-large-shallow-dish",
+            "row_bg_color": "#bed8fc",
+            "row_text_color": "#000000",
+            "image_row_1": "shopify:\/\/shop_images\/Dimensions-_-illustrations-22cm.png",
+            "text_row_1": "",
+            "image_row_2": "shopify:\/\/shop_images\/Group_358.png",
+            "text_row_2": "1.75 qt\/7 cups",
+            "image_row_3": "shopify:\/\/shop_images\/Group_343.png",
+            "text_row_3": "3-4 people",
+            "text_row_4": "meat, fish & seafood, vegetables",
+            "text_row_5": ""
+          }
+        },
+        "41f2d859-711d-4817-adba-d16690c20597": {
+          "type": "block",
+          "settings": {
+            "product": "the-extra-large-dish",
+            "row_bg_color": "#ee0c93",
+            "row_text_color": "#000000",
+            "image_row_1": "shopify:\/\/shop_images\/XL_dish_dimensions_8875a34e-f026-4ae5-80b5-4d2aaa039adc.png",
+            "text_row_1": "",
+            "image_row_2": "shopify:\/\/shop_images\/12_cups_4e9596de-5e31-412d-a2ad-0ba9f1053d92.png",
+            "text_row_2": "3 qt\/12 cups",
+            "image_row_3": "shopify:\/\/shop_images\/man_and_woman_v2_copy_2_94b1e086-0ead-4f4e-bd52-d998b9bf6738.png",
+            "text_row_3": "5-6 people",
+            "text_row_4": "one-dish meals, vegetables, rice & grains, meat",
+            "text_row_5": ""
           }
         }
       },
       "block_order": [
-        "table_row_7VM3tw",
-        "table_row_jHVzT7"
+        "06e8cd8c-c387-4f79-997e-3000898d8dda",
+        "afaad2e7-f33d-4466-84d5-e3521e62cd03",
+        "9de3706b-5bdd-448b-b675-2790468e7fdc",
+        "869f9ddb-9f3a-40d9-b2fb-57749410f9c6",
+        "45830b11-757e-4c92-b279-288cf91ea0fe",
+        "41f2d859-711d-4817-adba-d16690c20597"
       ],
       "settings": {
-        "show_section": true,
-        "padding_top_desk": 85,
-        "padding_bottom_desk": 80,
-        "padding_top_mob": 10,
-        "padding_bottom_mob": 20,
-        "section_bg": "#f1ede7",
-        "heading": "Old Way vs. Anyday",
-        "subheading": "The microwave is simply faster, start to finish.",
-        "button_label": "",
-        "button_url": "",
-        "message_under_button": "",
+        "enable_section": true,
+        "padding_top_desk": 75,
+        "padding_bottom_desk": 75,
+        "padding_top_mob": 65,
+        "padding_bottom_mob": 0,
+        "heading": "Meet the family",
+        "bg_color": "#f1ede7",
+        "text_color": "#000000",
+        "row_label_1": "",
+        "row_label_2": "Dimensions",
+        "row_label_3": "Volume",
+        "row_label_4": "Feeds",
+        "row_label_5": "Great for",
+        "row_label_6": "Price",
+        "row_label_7": "",
         "show_bottom_wave": false
-      }
-    },
-    "17264183809666574a": {
-      "type": "apps",
-      "blocks": {
-        "junip_product_reviews_ugc_junip_product_review_tLTRQ6": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "junip_product_reviews_ugc_junip_product_review_tLTRQ6"
-      ],
-      "settings": {
-        "enable_reviews_integration": true,
-        "heading": "What Customers Are Saying",
-        "heading_alignment": "center",
-        "heading_margin_bottom": 60,
-        "button_link": "/",
-        "button_text": "",
-        "button_margin_top": 60,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
       }
     },
     "faq": {
@@ -437,8 +892,8 @@
         "question-1": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "Is the metal on the lid safe to use in the microwave?",
+            "text": "<p>Yes, you can put our metal in the microwave! We’ve designed the stainless steel in our lids to be 100% microwave-safe due to its smooth, curved shape.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -446,8 +901,8 @@
         "question-2": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "Why should I cook food in the microwave?",
+            "text": "<p>When it comes to convenience, the microwave is king!<\/p><p>With the right equipment and settings, microwaving food doesn't mean sacrificing taste! It can be an efficient alternative to water-based cooking methods like steaming, poaching, quick braising, boiling, or stewing.<\/p><p>Microwaving is also a great complement to other methods, reducing cooking time before finishing a dish in the oven or on the stove. Anyday's recipes typically require only one dish, making cleanup easier.<\/p><p>Did you know? Microwave cooking is better for you! It preserves more nutrients compared to boiling or baking, as food loses nutrients when cooked for longer periods and at higher temperatures.<\/p><p>It's more energy-efficient, transferring more heat to food in less time than a stove or full-size oven.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -455,8 +910,8 @@
         "question-3": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "What’s so special about the Anyday?",
+            "text": "<p>The steam-trapping lid ensures your food is evenly cooked and stays tender and moist. It prevents splatters, and the knob releases excess steam when lifted which reduces pressure. The lid's flexible silicone rim can also push up if pressure in the dish gets too high, a safety feature we built in!<\/p><p>Anyday’s bowl is made out of frosted borosilicate glass, so it's extra durable and thermal-shock resistant to handle large temperature fluctuations without cracking. The glass is frosted, so it looks beautiful on your table, too!<\/p><p>Both the lid and the dish are dishwasher, oven, freezer, and refrigerator-safe.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -464,8 +919,8 @@
         "question-4": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "Is my Anyday dish fridge, freezer, and dishwasher-safe, too?",
+            "text": "<p>Yes, yes, and yes!<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -473,17 +928,27 @@
         "question-5": {
           "type": "question",
           "settings": {
-            "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "title": "What’s the difference between Anyday and a Pyrex with a plastic lid?",
+            "text": "<p>Good question!<\/p><p>Our glass lid is thick, sturdy, and tight-fitting, which helps trap steam (which is essential when you're cooking in the microwave) <em>and<\/em> traps heat so your food cooks more evenly. By contrast, a plastic lid will warp quickly, which is not sturdy or long-lasting enough for cooking.<\/p><p>Second, our lid also has vents in the knob that allow just the right amount of steam to escape so that pressure doesn't build up. There's a safety feature in our lid that makes sure it never blows off dangerously. Plastic lids will seal too tightly and can explode off, so you'll have a lot of microwave splatters to clean up!<\/p><p>Third, and most importantly,<strong> plastic in the microwave is a no-go for us<\/strong> — according to Harvard, it's the one thing about microwaves that actually isn't safe (read more about the <a href=\"https:\/\/cookanyday.com\/blogs\/news\/never-microwave-food-in-plastic-anyday?_pos=2&_sid=e0c41154d&_ss=r\">dangers of plastic in the microwave in our blog post<\/a>.)<\/p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-6": {
+          "type": "question",
+          "settings": {
+            "title": "What is your warranty policy?",
+            "text": "<p>We want you to love and use your Anyday every day, and we’ll make it right if that’s not the case. We offer a 2-year limited warranty.<\/p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
         },
         "contact": {
           "type": "contact",
+          "disabled": true,
           "settings": {
             "heading": "Didn’t find your answer?",
-            "text": "<p>Don't hestitate to contact us</p>",
+            "text": "<p>Don't hestitate to contact us<\/p>",
             "show_phone": false,
             "avatar_height": 60,
             "highlighted_text": "none",
@@ -497,6 +962,7 @@
         "question-3",
         "question-4",
         "question-5",
+        "question-6",
         "contact"
       ],
       "settings": {
@@ -506,7 +972,7 @@
         "heading_alignment": "text-center md:items-center",
         "heading_tag": "h2",
         "subheading": "",
-        "description": "<p>Please read our <a href=\"#\" title=\"FAQ's\">FAQs</a> page to find out more.</p>",
+        "description": "",
         "button_label": "",
         "button_link": "",
         "highlighted_text": "none",
@@ -523,6 +989,52 @@
         "padding_bottom": 84,
         "divider": false,
         "narrow": false,
+        "rounded": false
+      }
+    },
+    "wave_divider_mbymMb": {
+      "type": "wave-divider",
+      "disabled": true,
+      "settings": {
+        "wave_color": "#fbfbf9",
+        "background_color": "#f1ede7",
+        "flip_vertical": true,
+        "flip_horizontal": true
+      }
+    },
+    "17264183809666574a": {
+      "type": "apps",
+      "blocks": {
+        "junip_product_reviews_ugc_junip_product_review_tLTRQ6": {
+          "type": "shopify:\/\/apps\/junip-product-reviews-ugc\/blocks\/junip-product-review\/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "junip_product_reviews_ugc_junip_product_review_tLTRQ6"
+      ],
+      "settings": {
+        "enable_reviews_integration": true,
+        "heading": "What Customers Are Saying",
+        "heading_alignment": "center",
+        "heading_margin_bottom": 60,
+        "button_link": "\/",
+        "button_text": "",
+        "button_margin_top": 60,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
         "rounded": false
       }
     },
@@ -592,13 +1104,18 @@
   },
   "order": [
     "main-product",
-    "help-drawer",
-    "1733948763a41441db",
+    "hp_ticker_RQBiVq",
+    "images_grid_VF8F3N",
     "1733950529594f72a0",
-    "wave_divider_mbymMb",
+    "product_info_blocks_wkeejW",
     "product_old_way_table_QALjCV",
-    "17264183809666574a",
+    "help-drawer",
+    "recommended_recipes_metafield_Hwx6LJ",
+    "1733948763a41441db",
+    "product_comparison_table_nqrnLE",
     "faq",
+    "wave_divider_mbymMb",
+    "17264183809666574a",
     "product-recommendations",
     "recently-viewed"
   ]

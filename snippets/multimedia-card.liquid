@@ -1,0 +1,62 @@
+{% comment %}
+  //for multimedia-cards-with-slider.liquid
+  {%- render 'multimedia-card' block: block, block_counter: -%}
+{% endcomment %}
+
+
+{% assign image = block.settings.image %}
+{% assign video_url = block.settings.video_url %}
+{% assign heading = block.settings.heading %}
+{% assign footer_text = block.settings.footer %}
+{% assign text_on_image_top = block.settings.top_text %}
+{% assign text_on_image_bottom = block.settings.bottom_text %}
+{% assign text_color_on_image = block.settings.text_color_on_image %}
+{% assign text_color = block.settings.text_color %}
+{% assign bg_color = block.settings.bg_color %}
+{% assign block_url = block.settings.block_url | default: "#" %}
+
+
+<{% if block_url != blank and block_url != '#' %}a href="{{ block_url }}"{% else %}div{% endif %}
+   class="multimedia-card__container multimedia-card__container--{{ block_counter }}" >
+  <style>
+		.multimedia-card__container--{{ block_counter }} {
+			background-color: {{ bg_color}};
+			color: {{ text_color }} ;
+		}
+
+		.multimedia-card__container--{{ block_counter }}:hover {
+			color: {{ text_color }}!important;
+		}
+
+		.multimedia-card__text-on-image {
+			color: {{ text_color_on_image }};
+		}
+  </style>
+
+  {% if heading != blank %}
+    <h3 class="multimedia-card__content-heading">
+      {{ heading }}
+    </h3>
+  {% endif %}
+
+  {%- if video_url != blank or image != blank -%}
+    <div class="multimedia-card__content-image-block">
+      <p class="multimedia-card__text-on-image multimedia-card__text-on-image--top">{{ text_on_image_top }}</p>
+
+      <p class="multimedia-card__text-on-image multimedia-card__text-on-image--bottom">{{ text_on_image_bottom }}</p>
+
+      {%- if video_url != blank -%}
+        <video class="multimedia-card__video" id="videos-{{ section.id }}-{{ block_counter }}" loop muted playsinline autoplay poster="{{ image | img_url: '360x' }}">
+          <source src="{{ video_url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {%- else -%}
+          {% render 'image', image: image, class_name: 'multimedia-card__content-image', image_attr: , %}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if footer_text != blank -%}
+    <p class="multimedia-card__bottom-text">{{ footer_text }}</p>
+  {%- endif -%}
+</{%- if block_url != blank and block_url != '#' -%} a {%- else -%} div {%- endif -%}>

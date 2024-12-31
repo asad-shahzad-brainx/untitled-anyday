@@ -22,7 +22,7 @@
         "breadcrumb": {
           "type": "breadcrumb",
           "settings": {
-            "show_collections_link": true
+            "show_collections_link": false
           }
         },
         "title": {
@@ -69,6 +69,86 @@
         "parallax_direction": "vertical"
       }
     },
+    "grouped_grid_K9wELC": {
+      "type": "grouped-grid",
+      "blocks": {
+        "65bacced-a7cc-4794-83c1-6d5b83a0ccd6": {
+          "type": "anchor",
+          "settings": {
+            "text": "Bestsellers",
+            "url": "https://cookanyday.com/collections/bestsellers",
+            "bg_color": "#dcfae0",
+            "text_color": "#000000"
+          }
+        },
+        "block_c3nbpi": {
+          "type": "anchor",
+          "settings": {
+            "text": "Square Dish",
+            "url": "https://cookanyday.com/collections/introducing-the-square-dish",
+            "bg_color": "#dcfae0",
+            "text_color": "#000000"
+          }
+        },
+        "55f33eaf-2318-4689-bab1-d1dade22066f": {
+          "type": "anchor",
+          "settings": {
+            "text": "Sets",
+            "url": "https://cookanyday.com/collections/cookware/#sets",
+            "bg_color": "#dcfae0",
+            "text_color": "#000000"
+          }
+        },
+        "6a520ff8-9d92-4b29-b6e0-21549a71354d": {
+          "type": "anchor",
+          "settings": {
+            "text": "Individual Dishes",
+            "url": "https://cookanyday.com/collections/cookware/#dishes",
+            "bg_color": "#dcfae0",
+            "text_color": "#000000"
+          }
+        },
+        "97c5ef11-ccfd-4f87-bda1-6b74e90475e7": {
+          "type": "anchor",
+          "settings": {
+            "text": "Freezer Trays",
+            "url": "https://cookanyday.com/collections/accessories/#Freezer Trays",
+            "bg_color": "#dcfae0",
+            "text_color": "#000000"
+          }
+        },
+        "49f99f56-39de-42b6-9302-1bf07310a91c": {
+          "type": "anchor",
+          "settings": {
+            "text": "Accessories",
+            "url": "https://cookanyday.com/collections/accessories/#accessories",
+            "bg_color": "#dcfae0",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "65bacced-a7cc-4794-83c1-6d5b83a0ccd6",
+        "block_c3nbpi",
+        "55f33eaf-2318-4689-bab1-d1dade22066f",
+        "6a520ff8-9d92-4b29-b6e0-21549a71354d",
+        "97c5ef11-ccfd-4f87-bda1-6b74e90475e7",
+        "49f99f56-39de-42b6-9302-1bf07310a91c"
+      ],
+      "settings": {
+        "show_description": false,
+        "section_bg": "#f1ede7",
+        "products_per_page": 16,
+        "columns": 3,
+        "columns_mobile": "2",
+        "block_bg_color": "#fbfbf9",
+        "padding_top": 36,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
     "main-collection": {
       "type": "main-collection",
       "blocks": {
@@ -84,6 +164,7 @@
       "block_order": [
         "subcollections"
       ],
+      "disabled": true,
       "settings": {
         "products_per_page": 32,
         "columns": 4,
@@ -101,37 +182,79 @@
         "rounded": false
       }
     },
+    "wave_divider_wGLEgi": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#fbfbf9",
+        "background_color": "#dcfae0",
+        "flip_vertical": false,
+        "flip_horizontal": false
+      }
+    },
     "testimonials_Kr9Tcy": {
       "type": "testimonials",
       "blocks": {
         "testimonial_4wLw4K": {
           "type": "testimonial",
           "settings": {
-            "icon": "quote",
-            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
-            "author": "Author's name",
+            "icon": "5-stars",
+            "text": "<p>\"Honestly magical. Looks like a beautiful serving dish, cooks like a five-star chef — all in the microwave.\"</p>",
+            "author": "Samuel B.",
             "image_ratio": "rounded",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
         },
-        "testimonial_f7kFjb": {
+        "testimonial_8iAtXN": {
           "type": "testimonial",
           "settings": {
-            "icon": "quote",
-            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
-            "author": "Author's name",
+            "icon": "5-stars",
+            "text": "<p>\"Chug the kool-aid, this is the real deal kitchen tool I never knew I needed.\"</p>",
+            "author": "Paul S.",
             "image_ratio": "rounded",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
         },
-        "testimonial_PGtjGn": {
+        "testimonial_3x4kJU": {
           "type": "testimonial",
           "settings": {
-            "icon": "quote",
-            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
-            "author": "Author's name",
+            "icon": "5-stars",
+            "text": "<p>\"Not to be dramatic, but these dishes solved all of my cooking, storing, and cleaning problems.\"</p>",
+            "author": "Kayleen R.",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_WCkbLR": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "text": "<p>\"6 minutes and boom! Delicious, vibrant, tasty veggies!\"</p>",
+            "author": "Stephanie G.",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_6zbk9w": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "text": "<p>\"TOTAL GAME CHANGER. My mind is blown.\"</p>",
+            "author": "Hui L. R.",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_NTxzKh": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "text": "<p>\"Within a day, I was obsessed. Imagine executing wonderfully cooked steamed dishes using your stovetop...  but in the microwave, with half the time; that’s the Anyday dish.\"</p>",
+            "author": "Richard T.",
             "image_ratio": "rounded",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
@@ -140,8 +263,16 @@
       },
       "block_order": [
         "testimonial_4wLw4K",
-        "testimonial_f7kFjb",
-        "testimonial_PGtjGn"
+        "testimonial_8iAtXN",
+        "testimonial_3x4kJU",
+        "testimonial_WCkbLR",
+        "testimonial_6zbk9w",
+        "testimonial_NTxzKh"
+      ],
+      "custom_css": [
+        ".testimonial.with-5-stars blockquote:before {color: #fcb602; font-size: 20px; letter-spacing: 6px;}",
+        ".rte :where(blockquote):not(:where([class~=\"not-rte\"] *)) {padding-block-start: 48px; font-weight: 400;}",
+        "cite {font-style: normal; font-weight: bold;}"
       ],
       "settings": {
         "heading": "Testimonials",
@@ -203,7 +334,9 @@
   },
   "order": [
     "main-collection-banner",
+    "grouped_grid_K9wELC",
     "main-collection",
+    "wave_divider_wGLEgi",
     "testimonials_Kr9Tcy",
     "recently-viewed"
   ]
