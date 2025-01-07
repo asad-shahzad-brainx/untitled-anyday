@@ -12,17 +12,11 @@
     "main-product": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_size": "text-base"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
             "title_size": "product-title-md",
+            "title_size_mobile": "product-title-md",
             "show_price": true,
             "show_rating": true
           }
@@ -30,6 +24,7 @@
         "description": {
           "type": "description",
           "settings": {
+            "description_source": "default",
             "text_size": "text-base"
           }
         },
@@ -39,6 +34,7 @@
             "show_variant_labels": true,
             "picker_type": "button",
             "enable_color_swatches": true,
+            "color_swatch_type": "color",
             "size_chart": ""
           }
         },
@@ -58,36 +54,37 @@
             "show_gift_card_recipient": true
           }
         },
-        "share": {
-          "type": "share",
+        "collapsible_tab_J7dU7W": {
+          "type": "collapsible_tab",
           "settings": {
-            "share_label": "Share",
-            "show_help_desk": true,
-            "help_label": "Need help?",
-            "help_type": "drawer",
-            "help_page": ""
+            "icon": "none",
+            "heading": "Terms",
+            "content": "<ul><li>No service fees or expiration dates apply.</li><li>All gift cards should be treated like cash. They cannot be replaced if lost or stolen. Gift cards cannot be redeemed or exchanged for cash except as required by law.</li><li>Gift cards are non-refundable.</li><li>Gift cards may only be purchased and redeemed by U.S. residents.</li><li>Only gift card-specific discounts may be applied to gift cards. Other discounts not valid.</li></ul>",
+            "page": "",
+            "liquid": ""
           }
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "description",
         "variant_picker",
         "inventory",
         "buy_buttons",
-        "share"
+        "collapsible_tab_J7dU7W"
       ],
       "settings": {
         "enable_sticky_info": true,
         "media_size": 60,
         "gallery_layout": "thumbnail",
         "thumbnail_position": "beside",
+        "image_ratio": "adapt_first",
         "image_zoom": "lightbox",
         "hide_variants": false,
         "enable_video_autoplay": true,
         "enable_video_looping": true,
         "mobile_layout": "full_width",
+        "image_ratio_mobile": "adapt_first",
         "mobile_thumbnail": false,
         "padding_top": 24,
         "padding_bottom": 84,
@@ -104,7 +101,7 @@
           "settings": {
             "icon": "rocket",
             "heading": "Shipping Information",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#b45309",
@@ -119,7 +116,7 @@
           "settings": {
             "icon": "headphone",
             "heading": "Customer Support",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#0369a1",
@@ -134,7 +131,7 @@
           "settings": {
             "icon": "chat_bubble",
             "heading": "FAQ’s",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#be123c",
@@ -149,7 +146,7 @@
           "settings": {
             "icon": "phone",
             "heading": "Contact Us",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
             "color_text": "#4d7c0f",
@@ -168,7 +165,7 @@
       ],
       "settings": {
         "heading": "Need help?",
-        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.<\/p>"
+        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.</p>"
       }
     },
     "product-recommendations": {
@@ -203,32 +200,43 @@
         "rounded": true
       }
     },
-    "recently-viewed": {
-      "type": "recently-viewed",
+    "173608829434f461c6": {
+      "type": "apps",
+      "blocks": {
+        "rebuy_personalization_engine_rebuy_widget_4g8Jpg": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "177638",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        }
+      },
+      "block_order": [
+        "rebuy_personalization_engine_rebuy_widget_4g8Jpg"
+      ],
+      "custom_css": [
+        ".rebuy-widget-content {background: transparent;}"
+      ],
       "settings": {
-        "product_limit": 6,
-        "columns": 4,
-        "carousel_on_desktop": true,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "heading": "Recently Viewed",
-        "heading_size": "title-md",
-        "heading_alignment": "text-left md:items-end md:flex-row",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
+        "enable_reviews_integration": true,
+        "heading": "",
+        "heading_alignment": "center",
+        "heading_margin_bottom": 60,
+        "button_link": "/",
+        "button_text": "",
+        "button_margin_top": 60,
         "color_text": "",
-        "color_background": "",
+        "color_background": "#fbfbf9",
         "gradient_background": "",
         "color_highlight": "",
         "gradient_highlight": "",
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
+        "padding_top": 20,
+        "padding_bottom": 40,
         "divider": false,
         "full_width": false,
         "rounded": false
@@ -239,6 +247,6 @@
     "main-product",
     "help-drawer",
     "product-recommendations",
-    "recently-viewed"
+    "173608829434f461c6"
   ]
 }

@@ -76,6 +76,10 @@
           first_3d_model: first_3d_model,
           product_form_id: product_form_id
         -%}
+
+        {% assign show_save_amount = settings.product_save_amount %}
+        {% assign save_type = settings.product_save_type %}
+        {%- render 'product-badges', product: product, show_save_amount: show_save_amount, save_type: save_type, class: 'z-2 absolute grid gap-3' -%}
       {%- endif -%}
 
       <animate-element class="product__info block{% if section.settings.enable_sticky_info %} sticky{% endif %} w-full" data-animate="fade-up" data-immediate>
@@ -529,8 +533,8 @@
             >
               <span class="btn-fill" data-fill></span>
               <span class="btn-text">
-                {%- render 'icon', icon: 'cart', size: 'sm', class: 'md:hidden' -%}
-                <span class="hidden md:block" data-sold-out="{{ 'products.product.sold_out' | t | escape }}">
+                <!-- Removed the cart icon -->
+                <span data-sold-out="{{ 'products.product.sold_out' | t | escape }}">
                   {%- liquid
                     if product.selected_or_first_available_variant.available == false or quantity_rule_soldout
                       echo 'products.product.sold_out' | t
@@ -547,6 +551,7 @@
           <div class="product-form__error-message alert alert--error text-sm font-medium leading-tight" role="alert" hidden></div>
         </div>
       </sticky-buy-button>
+
     {%- endif -%}
   </div>
 

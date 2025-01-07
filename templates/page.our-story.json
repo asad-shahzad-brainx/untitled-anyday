@@ -1,0 +1,313 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "heading_size": "title-lg tracking-heading",
+        "heading_tag": "h1",
+        "text_size": "text-base",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "image_with_text_overlay_GgMqcX": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "transparent_header": false,
+        "image": "shopify://shop_images/Our_story_header.jpg",
+        "image_height": "500px",
+        "content_width": "small",
+        "content_position": "md:items-end md:justify-start",
+        "text_alignment": "left",
+        "image_height_mobile": "adapt",
+        "content_position_mobile": "items-end justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": true,
+        "parallax_direction": "vertical"
+      }
+    },
+    "rich_text_mA6Gyk": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_YihtBB": {
+          "type": "heading",
+          "settings": {
+            "heading": "Anyday exists to free your time for the moments that matter.",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_7bJyRJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Time to cook crave-worthy meals in your kitchen and enjoy them at the table. To cuddle on the couch between dinner and dessert. To ask about someone’s day and actually listen to the answer. We're tapping into your kitchen’s most powerful tool to make more of these moments happen.<br/><br/>Like many great kitchen inventions (see: the chocolate chip cookie, the potato chip, the microwave itself), Anyday started as an accident. We were hungry, we wanted roast chicken, but we had a million things to do before dinnertime. To save time, we tried microwaving the chicken before finishing it in the oven. When it came out perfectly juicy, no oven needed, we realized we’d stumbled upon the unexpected magic of the microwave.<br/><br/>As someone who feels like she’s winning life when making meals that are both very high on the delicious scale and very low on the effort scale, I was thrilled to discover that even some of the best chefs in the world have championed cooking fresh food from scratch in the microwave.<br/><br/>But in some ways, that’s not a surprise — who doesn’t want brilliantly green veg in 2 minutes start to finish, or succulent medium-rare salmon in 3 minutes, or creamy no-stir polenta in 20 minutes?<br/><br/>We create products that unleash this microwave magic: turning raw ingredients into delicious and nutritious home-cooked meals — in record time. Anyday makes it easier to enjoy the flavors and recipes you love. No tradeoffs, any meal and any day of the week.<br/><br/>It’s about time you put your microwave to work. Because at the end of the day, we all need more free time to feed and connect with the people we care about.<br/><br/>- Steph Chen, Founder<br/></p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "spacing_YTEYLD": {
+          "type": "spacing",
+          "settings": {
+            "height": 40,
+            "height_mobile": 28
+          }
+        },
+        "image_gAtjHt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/founder.jpg",
+            "image_width": "custom",
+            "image_max_width": 500,
+            "image_max_width_mobile": 360
+          }
+        }
+      },
+      "block_order": [
+        "heading_YihtBB",
+        "text_7bJyRJ",
+        "spacing_YTEYLD",
+        "image_gAtjHt"
+      ],
+      "custom_css": [
+        ".rich-text {max-width: 710px; place-self: center; display: flex; flex-direction: column; align-items: center;}",
+        ".split-words {justify-content: center;}"
+      ],
+      "settings": {
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient_background": "linear-gradient(180deg, rgba(251, 251, 249, 1) 78%, rgba(220, 250, 224, 1) 78%)",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "wave_divider_8b4AX3": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#205b62",
+        "background_color": "#dcfae0",
+        "flip_vertical": true,
+        "flip_horizontal": false
+      }
+    },
+    "multicolumn_ajbYbV": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_7x8fac": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Delightfully_delicious.png",
+            "image_ratio": "square",
+            "heading": "Delightfully delicious",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Juicy meats, tender veggies, fluffy grains — Anyday makes it all possible.</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_c4JeEw": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Fast_5e0030c6-18fd-4c98-a7eb-0d48d5d21411.png",
+            "image_ratio": "square",
+            "heading": "Fast!",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Turn raw ingredients into home-cooked meals in record time.</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_tattk8": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Good_for_you_copy_58f85f7b-897b-40c4-8c00-34176eaf7926.png",
+            "image_ratio": "square",
+            "heading": "Good for you",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Microwaving food preserves more nutrients than conventional methods.</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_ECbLYj": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/Easy_clean_up_copy.png",
+            "image_ratio": "square",
+            "heading": "Easy cleanup",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Heat-resistant glass bowls go straight from microwave to table to dishwasher.</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_7x8fac",
+        "column_c4JeEw",
+        "column_tattk8",
+        "column_ECbLYj"
+      ],
+      "settings": {
+        "columns": 4,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "heading": "Meet Anyday",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "bottom_button_label": "",
+        "bottom_button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#ffffff",
+        "color_background": "#205b62",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "add_bg_shapes": false,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "wave_divider_zPnLyy": {
+      "type": "wave-divider",
+      "settings": {
+        "wave_color": "#205b62",
+        "background_color": "#c1a2f2",
+        "flip_vertical": false,
+        "flip_horizontal": false
+      }
+    },
+    "featured_collection_TqkMhE": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "products": [
+          "the-medium-deep-dish",
+          "the-large-deep-dish",
+          "the-medium-shallow-dish",
+          "the-everyday-set"
+        ],
+        "product_limit": 4,
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "heading": "Get cooking",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#c1a2f2",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "image_with_text_overlay_GgMqcX",
+    "rich_text_mA6Gyk",
+    "wave_divider_8b4AX3",
+    "multicolumn_ajbYbV",
+    "wave_divider_zPnLyy",
+    "featured_collection_TqkMhE"
+  ]
+}

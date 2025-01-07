@@ -1,0 +1,401 @@
+{%- assign section_order = product.metafields.product_info.section_order | default: 19 -%}
+{%- assign section_bg = product.metafields.accentuate.background_section | default: section.settings.section_bg -%}
+{%- assign metafield_titles = product.metafields.accentuate.title -%}
+{%- assign show_section = section.settings.show_section -%}
+{%- assign hide_section = product.metafields.accentuate.hide_section -%}
+{%- assign padding_top_desk = section.settings.padding_top_desk -%}
+{%- assign padding_bottom_desk = section.settings.padding_bottom_desk -%}
+{%- assign padding_top_mob = section.settings.padding_top_mob -%}
+{%- assign padding_bottom_mob = section.settings.padding_bottom_mob -%}
+{%- assign show_bottom_wave = section.settings.show_bottom_wave -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    order: {{ section_order }};
+    --bg-color: {{ section_bg }};
+  }
+
+  /*================ Product Info ================*/
+
+.product-info {
+  padding: var(--padding-top-desktop, 20px) 20px var(--padding-bottom-desktop, 20px);
+  display: flex;
+  justify-content: center;
+  height: 600px;
+  background-color: var(--bg-color);
+}
+
+@media (max-width: 768px) {
+  .product-info {
+    padding: var(--padding-top-mobile, 25px) 0 var(--padding-bottom-mobile, 25px);
+    height: auto;
+  }
+}
+
+.product-info__wrapper {
+  display: flex;
+  max-width: 1080px;
+}
+
+@media (max-width: 768px) {
+  .product-info__wrapper {
+    display: none;
+  }
+}
+
+.product-info__container {
+  width: 50%;
+  padding: 0 40px 0 0;
+}
+
+@media (max-width: 1024px) {
+  .product-info__container {
+    width: 45%;
+  }
+}
+
+.product-info__list li {
+  color: #979797;
+  font-family: var(--primary-font);
+  font-size: var(--font-size-subheader-1);
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 45px;
+  cursor: pointer;
+}
+
+.product-info__list .product--active {
+  color: #000000;
+}
+
+.product-info__text {
+  font-family: var(--primary-font);
+  font-size: var(--font-size-body-text);
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 0;
+  display: none;
+}
+
+.product-info__image {
+  position: relative;
+  max-width: 500px;
+  max-height: 500px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: none;
+  z-index: 2;
+}
+
+.product-info__content {
+  padding: 60px 35px 75px 55px;
+}
+
+@media (max-width: 1024px) {
+  .product-info__content {
+    padding: 60px 20px 75px 20px;
+  }
+}
+
+.product-info__wrapper-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .product-info__wrapper-mobile {
+    display: block;
+  }
+}
+
+.product-info__list-mobile-item {
+  display: flex;
+  justify-content: space-between;
+  line-height: normal;
+  padding: 20px 0;
+}
+
+.product-info__list-mobile-item svg {
+  height: 18px;
+  transition: 0.4s;
+  margin: 0;
+}
+
+.product-info__list--open {
+  transform: rotate(180deg);
+}
+
+.product-info__list-mobile {
+  padding: 0 25px;
+}
+
+.product-info__list-mobile li {
+  border-bottom: 1px solid #c4c4c4;
+  margin: 0 -25px 0 -25px;
+  padding: 0 25px 5px 25px;
+}
+
+.product-info__list-mobile li.Active svg {
+  transform: rotate(180deg);
+}
+
+.product-info__list-mobile .active {
+  display: block;
+}
+
+.product-info__container-mobile img {
+  min-width: 100vw;
+  height: 62vw;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 0;
+}
+
+.product-info__list-mobile-item-title {
+  color: #161515;
+  font-family: var(--primary-font);
+  font-size: var(--font-size-subheader-2-mobile);
+  font-weight: 400;
+}
+
+.product-info__list-mobile-item-text {
+  opacity: 0.8;
+  color: #000000;
+  font-family: var(--primary-font);
+  font-size: var(--font-size-body-text-mobile);
+  font-weight: 400;
+  line-height: normal;
+  padding: 0 10px 0 0;
+  margin: 0 0 20px;
+}
+
+.product-info__mobile-img-wrapper {
+  width: 100%;
+}
+
+.product-info__mobile-img-wrapper .product-info__image-mobile {
+  width: inherit;
+  max-height: 70vw;
+  object-fit: cover;
+}
+
+.product-info__img-box,
+.product-info__text-box {
+  display: none;
+}
+
+.product-info__content-mobile {
+  width: 100%;
+}
+
+</style>
+
+{%- if show_bottom_wave -%}
+  {%- render 'waves' with 'wave-bottom-reverse' -%}
+{%- endif -%}
+
+{% if show_section and hide_section != 'true' %}
+  <section class="product-info" style="
+          --padding-top-desktop: {{ padding_top_desk }}px;
+          --padding-bottom-desktop: {{ padding_bottom_desk }}px;
+          --padding-top-mobile: {{ padding_top_mob }}px;
+          --padding-bottom-mobile: {{ padding_bottom_mob }}px;
+          --bg-color: {{ section_bg }}">
+    <div class="product-info__wrapper">
+      <div class="product-info__container product-info__content">
+        <ul class="product-info__list">
+          {%- for text in metafield_titles -%}
+            {%- if text != blank -%}
+              <li class="{% if forloop.first %}product--active{% endif %}" 
+                  data-link-id="{{ text | handleize }}">{{ text }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        {%- for title in metafield_titles -%}
+          {%- assign textarea = product.metafields.accentuate.text[forloop.index0] -%}
+          {%- if textarea != blank -%}
+            <p data-text-id="{{ title | handleize }}" 
+               class="product-info__text {% if forloop.first %}active{% endif %}">{{ textarea }}</p>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="product-info__container">
+        {%- for text in metafield_titles -%}
+          {%- assign image = product.metafields.accentuate.image[forloop.index0] -%}
+          {%- assign video_mp4 = product.metafields.accentuate.video[forloop.index0] -%}
+          {%- assign data_img_id = text | handleize -%}
+
+          {%- if image != blank and video_mp4 == blank -%}
+            {% render 'image-metafields', image: image[0], class_name: 'product-info__image', image_attr: 'data-img-id="' | append: data_img_id | append: '"' %}
+          {%- endif -%}
+
+          {%- if video_mp4 != blank -%}
+            <video class="product-info__image media-video {% if forloop.first %}active{% endif %}" 
+                   data-img-id="{{ data_img_id }}" loop muted playsinline 
+                   {% if forloop.first %}autoplay{% endif %}>
+              <source src="{{ video_mp4 }}" type="video/mp4">
+            </video>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- Mobile and Tablet Content -->
+    <div class="product-info__content-mobile tablet">
+      <ul class="product-info__list-mobile">
+        {%- for text in metafield_titles -%}
+          {%- assign image = product.metafields.accentuate.image[forloop.index0] -%}
+          {%- assign textarea = product.metafields.accentuate.text[forloop.index0] -%}
+          {%- assign video_mp4 = product.metafields.accentuate.video[forloop.index0] -%}
+          {%- assign data_link = text | handleize -%}
+
+          {%- if text != blank -%}
+            <li data-link-id="{{ text | handleize }}" class="{% if forloop.first %}Active{% endif %}">
+              <div class="product-info__mobile-img-wrapper">
+                {%- if image != blank -%}
+                  {% render 'image-metafields', image: image[0], class_name: 'product-info__image-mobile' %}
+                {%- endif -%}
+                {%- if video_mp4 != blank -%}
+                  <video class="product-info__image-mobile media-video" 
+                         loop muted playsinline {% if forloop.first %}autoplay{% endif %}>
+                    <source src="{{ video_mp4 }}" type="video/mp4">
+                  </video>
+                {%- endif -%}
+              </div>
+              <p class="product-info__list-mobile-item-text">{{ textarea }}</p>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{% endif %}
+
+
+<script>
+  document.querySelectorAll('.product-info__list li').forEach((listItem) => {
+    listItem.addEventListener('mouseenter', function () {
+      const linkId = this.getAttribute('data-link-id');
+      const wrapper = document.querySelector('.product-info__wrapper');
+
+      wrapper.querySelectorAll('.product-info__image').forEach((img) => img.style.display = 'none');
+      wrapper.querySelectorAll('.product-info__text').forEach((text) => text.style.display = 'none');
+
+      const image = wrapper.querySelector(`.product-info__image[data-img-id="${linkId}"]`);
+      if (image) image.style.display = 'block';
+
+      const text = wrapper.querySelector(`.product-info__text[data-text-id="${linkId}"]`);
+      if (text) text.style.display = 'block';
+
+      wrapper.querySelectorAll('.product-info__list li').forEach((li) => li.classList.remove('product--active'));
+      this.classList.add('product--active');
+    });
+  });
+</script>
+
+
+
+
+{% schema %}
+{
+  "name": "Info",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show section",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom desktop",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top mobile",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom mobile",
+      "default": 25
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#f1ede7"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_wave",
+      "label": "Show bottom wave",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info_block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "textarea",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "video_mp4",
+          "info": "Only .mp4 is required for it to work. You can upload videos [here](https://cookanyday.com/admin/settings/files) to get the url",
+          "label": "Video file url .mp4"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -24,7 +24,7 @@
         "liquid_cVJNB9": {
           "type": "liquid",
           "settings": {
-            "liquid": "<div class=\"product__junip-summary\"  {% if show_bubble and promo_bubble_label != blank %} style=\"--double-padding: 7px;\" {% endif %}>\n                  {% if product.metafields.junip.rating_count > 0 %}\n                    {% render 'junip-product-summary', product: product %}\n\n                    <a href=\"#shopify-block-AamxsaUQxak80dmJhV__junip_product_reviews_ugc_junip_product_review_tLTRQ6\"\n                       class=\"product__junip-summary-count\">{{ product.metafields.junip.rating_count }} {{ 'products.product.junip_review_count' | t }}\n                    </a>\n                  {% endif %}\n                </div>\n\n<style>\n.product__junip-summary {\n    display: flex;\n    gap: 8px;\n}\n\na.product__junip-summary-count {\ncolor: #205b62;\n}\n\n</style>"
+            "liquid": "<div class=\"product__junip-summary\"  {% if show_bubble and promo_bubble_label != blank %} style=\"--double-padding: 7px;\" {% endif %}>\n                  {% if product.metafields.junip.rating_count > 0 %}\n                    {% render 'junip-product-summary', product: product %}\n\n                    <a href=\"#shopify-block-AbnZ5Q0lZRytMaGtGZ__junip_product_reviews_ugc_junip_product_review_tLTRQ6\"\n                       class=\"product__junip-summary-count\">{{ product.metafields.junip.rating_count }} {{ 'products.product.junip_review_count' | t }}\n                    </a>\n                  {% endif %}\n                </div>\n\n<style>\n.product__junip-summary {\n    display: flex;\n    gap: 8px;\n}\n\na.product__junip-summary-count {\ncolor: #205b62;\n}\n\n</style>"
           }
         },
         "price_rC7wyf": {
@@ -139,7 +139,7 @@
         "enable_sticky_info": false,
         "media_size": 50,
         "gallery_layout": "columns",
-        "thumbnail_position": "beside",
+        "thumbnail_position": "below",
         "image_ratio": "adapt_first",
         "image_zoom": "lightbox",
         "hide_variants": true,
@@ -148,8 +148,8 @@
         "mobile_layout": "full_width",
         "image_ratio_mobile": "adapt_first",
         "mobile_thumbnail": true,
-        "padding_top": 48,
-        "padding_bottom": 48,
+        "padding_top": 40,
+        "padding_bottom": 40,
         "divider": false,
         "full_width": false,
         "rounded": false
@@ -216,60 +216,7 @@
     },
     "product-info": {
       "type": "product-info",
-      "blocks": {
-        "info_block_iAbQKA": {
-          "type": "info_block",
-          "settings": {
-            "text": "Secure glass lid",
-            "image": "shopify://shop_images/Screenshot_2021-03-09_at_9.09.16_PM.png",
-            "textarea": "You’ll never find yourself cleaning up sauce explosions in your microwave again.",
-            "video_mp4": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Anyday_Product_Short_Videos_Secure_lid_v2_approved_compressed_2mb.mp4?v=1615352886"
-          }
-        },
-        "info_block_TjkYGR": {
-          "type": "info_block",
-          "settings": {
-            "text": "Cook with steam",
-            "image": "shopify://shop_images/Screenshot_2021-03-09_at_9.10.20_PM.png",
-            "textarea": "The special silicone design keeps steam and moisture in during cooking (essential for the microwave) and releases excess air through the knob vent. The result? Perfectly juicy proteins and tender-crisp vegetables.",
-            "video_mp4": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Cook_with_Steam_V2.mp4?v=1620697153"
-          }
-        },
-        "info_block_iphyCM": {
-          "type": "info_block",
-          "settings": {
-            "text": "Frosted glass bowl",
-            "image": "shopify://shop_images/Screenshot_2021-03-09_at_9.11.10_PM.png",
-            "textarea": "With an elegant frosted glass finish, your dish also doubles as a dinner party-worthy centerpiece. Serve it straight from microwave to table — see if your guests can guess how you cooked it!",
-            "video_mp4": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Anyday_Product_Short_Videos_Frosted_Glass_Finish_approved_compressed.mp4?v=1615266356"
-          }
-        },
-        "info_block_cxbGKh": {
-          "type": "info_block",
-          "settings": {
-            "text": "Airtight seal",
-            "image": "shopify://shop_images/Screenshot_2021-03-09_at_9.12.21_PM.png",
-            "textarea": "Putting the lid over warm food with the knob pushed down creates a safe, low-level vacuum as the dish cools, which keeps your food fresher for longer.",
-            "video_mp4": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Anyday_Product_Short_Videos_Airtight_Seal_Option_2_approved_Compressed__2mb.mp4?v=1615352886"
-          }
-        },
-        "info_block_4NgHtR": {
-          "type": "info_block",
-          "settings": {
-            "text": "Stackable",
-            "image": "shopify://shop_images/Screenshot_2021-03-09_at_9.13.03_PM.png",
-            "textarea": "The flat, space-saving design also makes the Anyday perfect for stacking in the fridge — if you can resist eating everything in one sitting!",
-            "video_mp4": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Anyday_Product_Short_Videos_Stackability_approved_compressed.mp4?v=1615266354"
-          }
-        }
-      },
-      "block_order": [
-        "info_block_iAbQKA",
-        "info_block_TjkYGR",
-        "info_block_iphyCM",
-        "info_block_cxbGKh",
-        "info_block_4NgHtR"
-      ],
+      "disabled": true,
       "settings": {
         "show_section": false,
         "padding_top_desk": 20,
@@ -278,6 +225,66 @@
         "padding_bottom_mob": 25,
         "section_bg": "#f1ede7",
         "show_bottom_wave": false
+      }
+    },
+    "image_with_text_Rr8Mrq": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_cfWtCm": {
+          "type": "heading",
+          "settings": {
+            "heading": "Anyhand Mitts for <em>Any Dish</em>",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "half_text",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_NGniRq": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Keeps hands comfy</h4><p>Anyhand Mitts are thick enough to protect your hands from a hot Anyday dish, but flexible enough to grab the knob and take off the lid with ease.</p><h4>Good grip</h4><p>Silicone dots give you a no-slip grip on your dish and offer extra heat protection.</p><h4>Dual use</h4><p>Use your Anyhand Mitts as trivets when you serve your from-scratch food fresh out of the microwave!</p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cfWtCm",
+        "text_NGniRq"
+      ],
+      "custom_css": [
+        ".image-with-text.with-background .rich-text {padding: 7.5%;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Anyday-Q3-700px.gif",
+        "image_height": "adapt",
+        "image_width": "medium",
+        "layout": "image_first",
+        "text_alignment": "left",
+        "image_height_mobile": "auto",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_background": "#205b62",
+        "gradient_background": "",
+        "color_background_2": "#16474d",
+        "gradient_background_2": "",
+        "color_highlight": "#ff3b1f",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
       }
     },
     "1733948763a41441db": {
@@ -427,6 +434,7 @@
     "main-product",
     "help-drawer",
     "product-info",
+    "image_with_text_Rr8Mrq",
     "1733948763a41441db",
     "17264183809666574a",
     "product-recommendations",

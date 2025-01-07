@@ -910,6 +910,12 @@
       },
       {
         "type": "checkbox",
+        "id": "show_promo_badge",
+        "label": "Show promo badge",
+        "default": true
+      },
+      {
+        "type": "checkbox",
         "id": "product_save_amount",
         "label": "t:settings_schema.products.settings.show_save_amount.label",
         "default": true

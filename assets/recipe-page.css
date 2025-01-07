@@ -79,6 +79,9 @@
   justify-content: space-between;
   gap: 32px;
   margin-bottom: 24px;
+
+  flex-direction: column;
+  gap: 12px;
 }
 
 .recipe .product__title .recipe__info-reviews-wrapper {
@@ -90,12 +93,13 @@
 .recipe .recipe__info-icons-wrapper {
   display: flex;
   min-width: max-content;
+  gap: 8px;
 }
 
 .recipe .recipe__info-icons-wrapper img {
   position: relative;
   top: 5px;
-  margin: 0 7px;
+  margin: 0;
   width: 35px;
   height: 35px;
   min-height: unset;
@@ -174,7 +178,7 @@
 
 .recipe .recipe__info-product__btn-wrapper {
   margin-top: 24px;
-  text-align: left;
+  text-align: center;
 }
 
 .recipe .recipe__info-recomended-product .product__bundle-block {
@@ -752,9 +756,7 @@
   visibility: hidden;
   opacity: 0;
   background: #363636;
-  transition:
-    opacity 0.3s ease-in-out,
-    visibility 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 @media (max-width: 768px) {
@@ -966,6 +968,29 @@
   color: #fff;
 }
 
+.recipe .video-footer-block.large-up-hide {
+  display: none;
+}
+
+.recipe .video-footer-block .video-details--alt {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.recipe .video-footer-block .video-details--alt img {
+  top: unset;
+  max-height: 36px;
+  max-width: 36px;
+}
+
+@media (max-width: 990px) {
+  .recipe .video-footer-block.large-up-hide {
+    display: flex;
+  }
+}
+
 .recipe .video-section-wrapper {
   display: none;
   position: fixed;
@@ -1020,4 +1045,16 @@
 a.product__junip-summary-count {
   text-decoration: underline;
   color: var(--color-base-button-gradient);
+}
+
+#shopify-section-template--23681083113840__main-product .page-width {
+  width: -webkit-fill-available;
+}
+
+a.recipe__info-print svg {
+  width: 65%;
+}
+
+a.recipe__info-print {
+  text-align: -webkit-center;
 }

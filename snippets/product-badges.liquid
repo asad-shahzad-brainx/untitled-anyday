@@ -1,3 +1,13 @@
+{% if template.name == 'collection' %}
+  {% assign promo_bubble_label = product.metafields.promo_bubble.promo_bubble_label | first | strip %}
+  {% assign promo_bubble_color = product.metafields.promo_bubble.promo_bubble_text_color | default: '#ffffff' %}
+  {% assign promo_bubble_bg = product.metafields.promo_bubble.promo_bubble_background_color | default: product.metafields.theme.label_color.value %}
+{% else %}
+  {% assign promo_bubble_label = product.selected_or_first_available_variant.metafields.promo_bubble.promo_bubble_label | strip %}
+  {% assign promo_bubble_color = product.selected_or_first_available_variant.metafields.promo_bubble.promo_bubble_text_color | default: product.metafields.theme.label_color.value %}
+  {% assign promo_bubble_bg = product.selected_or_first_available_variant.metafields.promo_bubble.promo_bubble_background_color | default: '#ffffff' %}
+{% endif %}
+
 {%- liquid
   if product.compare_at_price > product.price and show_save_amount
     if save_type == 'label'
@@ -35,4 +45,10 @@
       -%}
     </span>
   {%- endif -%}
+
+  {% if settings.show_promo_badge and promo_bubble_label != blank %}
+    <span class="badge badge--onsale flex items-center gap-1d5 font-medium leading-none rounded-full" style="--badge-background: {{ promo_bubble_bg }}; --badge-foreground: {{ promo_bubble_color }};">
+      {{ promo_bubble_label }}
+    </span>
+  {% endif %}
 </div>

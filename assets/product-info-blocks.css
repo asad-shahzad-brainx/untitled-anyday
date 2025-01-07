@@ -18,6 +18,13 @@
   padding: 0 35px;
 }
 
+.info-blocks__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+}
+
 @media (max-width: 750px) {
   .info-blocks .info-blocks__wrapper {
     padding: 0 47px;

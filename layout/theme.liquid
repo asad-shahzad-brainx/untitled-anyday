@@ -50,6 +50,8 @@
   -%}
 
   <link rel="stylesheet" href="{{ 'apps.css' | asset_url }}" media="print" fetchpriority="low" onload="this.media='all'">
+  <link rel="stylesheet" media="print" href="{{ 'print.css' | asset_url }}" />
+
 
   {{ content_for_header }}
 
@@ -129,7 +131,7 @@
   {% endstyle %}
 </head>
 
-<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}{% if request.design_mode %} shopify-design-mode{% endif %}" data-rounded-button="{{ settings.rounded_button }}" data-rounded-input="{{ settings.rounded_input }}" data-rounded-block="{{ settings.rounded_block }}" data-button_hover="{{ settings.buttons_hover }}"{% if settings.enable_lazy_image %} data-lazy-image{% endif %} data-title-animation data-page-rendering>
+<body class="{% if template.name == 'product' %}{% if product.type == 'Recipe' %}product-recipe{% else %}product-standard{% endif %}{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}{% if request.design_mode %} shopify-design-mode{% endif %}" data-rounded-button="{{ settings.rounded_button }}" data-rounded-input="{{ settings.rounded_input }}" data-rounded-block="{{ settings.rounded_block }}" data-button_hover="{{ settings.buttons_hover }}"{% if settings.enable_lazy_image %} data-lazy-image{% endif %} data-title-animation data-page-rendering>
   <a class="sr-only skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   {%- liquid

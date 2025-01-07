@@ -323,10 +323,12 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".button {font-weight: 700; padding: 14px 22px; font-family: \"F37Jan\";}",
+      "a.button.button--primary {padding: 14px 42px;}",
+      ".button {font-weight: 700; font-family: \"F37Jan\";}",
       ".badge {border-radius: 6px; padding: 6px 12px;}",
       "a.product-card__title {font-weight: bold;}",
-      "svg.icon.icon-arrow-right.icon-sm.transform,svg.icon.icon-newspaper.icon-md {display: none;}"
+      "svg.icon.icon-arrow-right.icon-sm.transform,svg.icon.icon-newspaper.icon-md {display: none;}",
+      "@media (max-width: 767px) {a[href=\"https://cookanyday.com/collections/cookware/#sets\"] ,a[href=\"https://cookanyday.com/collections/accessories/#Freezer%20Trays\"] {color: #ff3b1f; font-weight: bold; text-decoration: underline; } a[href=\"https://cookanyday.com/pages/which-anyday-is-right-for-me\"] {font-size: var(--text-2xl)!important; }}"
     ]
   }
 }

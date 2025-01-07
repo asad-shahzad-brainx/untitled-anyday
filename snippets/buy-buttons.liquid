@@ -53,7 +53,7 @@
           <label for="Quantity2-{{ section_id }}" class="label sr-only">{{ 'products.quantity.label' | t }}</label>
           <quantity-selector class="quantity-selector inline-flex flex-auto">
             <button type="button" name="minus" class="quantity-button" aria-label="{{ 'products.quantity.decrease' | t: product: product.title | escape }}">
-              {%- render 'icon', icon: 'chevron-left', size: 'sm', class: 'stroke-2 transform' -%}
+              {%- render 'icon', icon: 'subtract', size: 'sm', class: 'stroke-2 transform' -%}
             </button>
             <input
               id="Quantity2-{{ section_id }}"
@@ -68,7 +68,7 @@
               is="quantity-input"
             />
             <button type="button" name="plus" class="quantity-button" aria-label="{{ 'products.quantity.increase' | t: product: product.title | escape }}">
-              {%- render 'icon', icon: 'chevron-right', size: 'sm', class: 'stroke-2 transform' -%}
+              {%- render 'icon', icon: 'add', size: 'sm', class: 'stroke-2 transform' -%}
             </button>
           </quantity-selector>
         {%- endif -%}

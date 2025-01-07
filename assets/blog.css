@@ -3,7 +3,10 @@
 }
 
 .blog-filter .select {
-  width: calc(var(--width) + var(--input-padding-inline) + var(--input-padding-inline) + var(--input-padding-inline));
+  width: calc(
+    var(--width) + var(--input-padding-inline) + var(--input-padding-inline) +
+      var(--input-padding-inline)
+  );
 }
 
 /*! blog-posts */
@@ -49,7 +52,7 @@
 }
 
 .article-card__top li:after {
-  content: '';
+  content: "";
   position: absolute;
   inset-inline-end: 0;
   width: 1px;
@@ -95,7 +98,7 @@
 /*! collage layout */
 
 .blog-collage .article-card:nth-child(1) .article-card__media:after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-color: #000000;
@@ -103,14 +106,18 @@
   pointer-events: none;
 }
 
-.blog-collage .article-card:nth-child(1):not(.without-image) .article-card__content {
+.blog-collage
+  .article-card:nth-child(1):not(.without-image)
+  .article-card__content {
   position: absolute;
   inset: var(--card-grid-gap);
   inset-block-start: unset;
   color: #ffffff;
 }
 
-.blog-collage .article-card:nth-child(1):not(.without-image) .article-card__title {
+.blog-collage
+  .article-card:nth-child(1):not(.without-image)
+  .article-card__title {
   color: inherit;
 }
 
@@ -157,7 +164,7 @@
     grid-row: span 3;
   }
 
-  .blog-collage .article-card:nth-child(1) .article-card__content>.grid {
+  .blog-collage .article-card:nth-child(1) .article-card__content > .grid {
     gap: var(--sp-7d5);
   }
 
@@ -165,7 +172,7 @@
     line-height: 1;
   }
 
-  .blog-collage .article-card:nth-child(1) .article-card__top+p {
+  .blog-collage .article-card:nth-child(1) .article-card__top + p {
     max-width: 75%;
   }
 
@@ -188,13 +195,19 @@
     flex-direction: row;
   }
 
-  .blog-collage .article-card:is(:nth-child(2), :nth-child(3)) .article-card__media,
+  .blog-collage
+    .article-card:is(:nth-child(2), :nth-child(3))
+    .article-card__media,
   .blog-collage.with-only4 .article-card:nth-child(4) .article-card__media {
     flex: 0 0 40%;
   }
 
-  .blog-collage .article-card:is(:nth-child(1), :nth-child(2), :nth-child(3)) :is(.article-card__media, .article-card__link, .article-card__image),
-  .blog-collage.with-only4 .article-card:nth-child(4) :is(.article-card__media, .article-card__link, .article-card__image) {
+  .blog-collage
+    .article-card:is(:nth-child(1), :nth-child(2), :nth-child(3))
+    :is(.article-card__media, .article-card__link, .article-card__image),
+  .blog-collage.with-only4
+    .article-card:nth-child(4)
+    :is(.article-card__media, .article-card__link, .article-card__image) {
     height: 100%;
   }
 
@@ -206,10 +219,10 @@
 
   .blog-collage .article-card:nth-child(3):before,
   .blog-collage.with-only4 .article-card:nth-child(4):before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
-    inset-block-start: calc(var(--card-grid-gap)/2 * -1);
+    inset-block-start: calc(var(--card-grid-gap) / 2 * -1);
     border-block-start: 1px solid rgb(var(--color-border));
   }
 }
@@ -220,7 +233,9 @@
     gap: var(--sp-10);
   }
 
-  .blog-collage .article-card:is(:nth-child(2), :nth-child(3)) .article-card__media,
+  .blog-collage
+    .article-card:is(:nth-child(2), :nth-child(3))
+    .article-card__media,
   .blog-collage.with-only4 .article-card:nth-child(4) .article-card__media {
     flex: 0 0 45%;
   }
@@ -234,7 +249,7 @@
   .slider .blog-collage.with-only4 {
     --card-grid-per-row: 3;
   }
-  
+
   .slider .blog-collage.with-only4 .article-card:nth-child(1) {
     grid-column: span 3;
   }
@@ -254,15 +269,21 @@
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
-
-  .blog-collage .article-card:is(:nth-child(2), :nth-child(3)) ,
+  .blog-collage .article-card:is(:nth-child(2), :nth-child(3)),
   .blog-collage.with-only4 .article-card:nth-child(4) {
     display: grid;
     gap: var(--sp-6);
   }
 
-  .blog-collage .article-card:is(:nth-child(2), :nth-child(3)) .article-card__image,
+  .blog-collage
+    .article-card:is(:nth-child(2), :nth-child(3))
+    .article-card__image,
   .blog-collage.with-only4 .article-card:nth-child(4) .article-card__image {
     aspect-ratio: 16 / 9;
   }
+}
+
+.blog-collage .article-card:nth-child(1) .article-card__media:after {
+  background: linear-gradient(180deg, transparent 33%, black 95%) !important;
+  opacity: 0.7 !important;
 }

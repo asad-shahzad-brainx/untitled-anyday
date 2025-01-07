@@ -561,80 +561,6 @@
 </section>
 
 <script>
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const containerArr = document.querySelectorAll("#shopify-section-{{ section.id }} .collection-recipe__filters-wrapper");
-  //   containerArr.forEach(container => {
-  //     container.addEventListener("toggle", (event) => {
-  //       const clickedAccordion = event.target;
-  //       if (!(clickedAccordion instanceof AccordionDetails)) return;
-  
-  //       container.querySelectorAll('details[is="accordion-details"]').forEach((accordion) => {
-  //         if (accordion !== clickedAccordion && accordion.open) {
-  //           accordion.close();
-  //         }
-  //       });
-  //     });
-  //   });
-
-  //   const wrapper = document.querySelector(".collection-recipe");
-  //   const selectors = ['.collection-recipe__filters', '.collection-recipe__mobile-filters'];
-  //   const loader = document.querySelector(".filters__loader");
-  //   const baseUrl = document.querySelector("[data-collection-url]").dataset.collectionUrl;
-  //   if (!baseUrl) return;
-
-  //   const filterArr = document.querySelectorAll(".collection-recipe input[type='checkbox']");
-
-  //   filterArr.forEach(filter => {
-  //     filter.addEventListener("click", () => {
-  //       filterArr.forEach(otherFilter => {
-  //       if (otherFilter !== filter) {
-  //           otherFilter.checked = false;
-  //         }
-  //       });
-
-  //       const tag = filter.dataset.tag || "";
-  
-  //       wrapper.classList.add("loading");
-  //       let targetUrl = baseUrl;
-  //       if (filter.checked) {
-  //         targetUrl = `${baseUrl}/${tag}`;
-  //       }
-  //       history.replaceState(null, null, targetUrl);
-  
-  //       fetch(targetUrl)
-  //         .then(response => response.text())
-  //         .then(data => {
-  //           const parser = new DOMParser();
-  //           const doc = parser.parseFromString(data, "text/html");
-  //           const content = doc.querySelector(".ajax-content");
-
-  //           const container = document.querySelector(".ajax-parent") || document.querySelector(".ajax-content");
-
-  //           container.replaceWith(content);
-
-  //           selectors.forEach(selector => {
-  //             const source = doc.querySelector(selector);
-  //             const destination = document.querySelector(selector);
-              
-  //             if (source && destination) {
-  //               // destination.replaceWith(source);
-  //             }
-  //           });
-  //           wrapper.classList.remove("loading");
-  //         });
-  //     });
-  //   });
-
-  //   const modalCloseBtn = document.querySelector(".collection-recipe__mobile-close");
-  //   const modal = document.querySelector(".collection-recipe__mobile-filters");
-  //   const modalBtn = document.querySelector(".collection-recipe .collection-recipe__button-wrapper.mobile");
-  //   modalBtn.addEventListener("click", () => {
-  //     modal.classList.add("active");
-  //   });
-  //   modalCloseBtn.addEventListener("click", () => {
-  //     modal.classList.remove("active");
-  //   });
-  // });
   document.addEventListener("DOMContentLoaded", () => {
     const containerArr = document.querySelectorAll("#shopify-section-{{ section.id }} .collection-recipe__filters-wrapper");
     containerArr.forEach(container => {
@@ -658,7 +584,7 @@
 
     const filterArr = document.querySelectorAll("input[type='checkbox']");
 
-    const applyFilters = (tag = "") => {
+    const applyFilters = (tag = "", filter) => {
       wrapper.classList.add("loading");
       const targetUrl = `${baseUrl}/${tag}`;
       history.replaceState(null, null, targetUrl);
@@ -673,8 +599,13 @@
           const container = document.querySelector(".ajax-parent") || document.querySelector(".ajax-content");
           container.replaceWith(content);
 
-          const newHeading = doc.querySelector(".collection-recipe__section-title-content").textContent;
-          heading.textContent = newHeading
+          if (tag && filter) {
+            const newHeading = filter.parentNode.textContent.trim();
+            heading.textContent = newHeading;
+          } else {
+            const newHeading = doc.querySelector(".collection-recipe__section-title-content").textContent.trim();
+            heading.textContent = newHeading
+          }
 
           wrapper.classList.remove("loading");
         });
@@ -693,7 +624,11 @@
         if (isMobileFilter) return;
 
         const tag = filter.dataset.tag || "";
-        applyFilters(tag);
+        if (filter.checked) {
+          applyFilters(tag, filter);
+        } else {
+          applyFilters();
+        }
       });
     });
 
@@ -728,7 +663,7 @@
       modal.classList.remove("active");
 
       if (tag) {
-        applyFilters(tag);
+        applyFilters(tag, selectedFilter);
       }
     });
   });

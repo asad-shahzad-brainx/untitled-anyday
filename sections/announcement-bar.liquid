@@ -1,8 +1,12 @@
 {%- style -%}
-  :root {--topbar-height: 38px;}
-  
+  :root {
+    --topbar-height: 38px;
+  }
+
   @media screen and (min-width: 1536px) {
-    :root {--topbar-height: 38px;}
+    :root {
+      --topbar-height: 38px;
+    }
   }
 
   #shopify-section-{{ section.id }} {
@@ -12,14 +16,14 @@
     --color-highlight: {{ section.settings.color_highlight.rgb }};
   }
 
-@media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     .announcement__slides.flickity {
-        max-width: 600px;
-        min-width: 28rem;
+      max-width: 600px;
+      min-width: 28rem;
     }
-}
-  
+  }
 {%- endstyle -%}
+
 
 {%- liquid
   assign announcement_block_count = section.blocks.size
@@ -30,6 +34,21 @@
     assign enable_country_selector = true
   endif
 -%}
+
+<div id="announcement-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+  <div class="modal-content relative bg-white p-6 rounded shadow-lg w-11/12 max-w-md">
+    <button class="button button--secondary button--close modal-close" type="button" aria-label="Close" onclick="this.closest('.modal').classList.add('hidden')">
+      <span class="btn-fill" data-fill=""></span>
+      <span class="btn-text">
+        <svg class="icon icon-close icon-sm" viewBox="0 0 20 20" stroke="#000" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 15L15 5M5 5L15 15"></path>
+        </svg>
+      </span>
+    </button>
+    <div id="modal-richtext-content"></div>
+  </div>
+</div>
+
 
 <div class="topbar topbar--{{ section.settings.announcement_position }}{% if section.settings.invert_icons_selectors %} topbar--inverted{% endif %}{% unless section.settings.show_social or enable_language_selector or enable_country_selector %} topbar--only{% endunless %} page-width{% if section.settings.full_width %} page-width--full{% endif %} section{% if section.settings.rounded %} section--rounded{% endif %} relative grid py-0 h-full w-full items-center">
   {%- if section.settings.show_social -%}
@@ -48,71 +67,84 @@
           endif
         -%}
         {%- for block in section.blocks -%}
-          <div class="announcement__slide flex h-full"{% unless forloop.first %} aria-hidden="true"{% endunless %} {{ block.shopify_attributes }}>
-            {%- if block.settings.link != blank -%}
-              <a class="announcement__content flex items-center gap-2" href="{{ block.settings.link }}">
-            {%- else -%}
-              <div class="announcement__content flex items-center gap-2">
-            {%- endif -%}
-              {%- if block.settings.icon != 'none' -%}
-                <span class="announcement-icon{% if block.settings.hide_icon_mobile %} hidden md:block{% endif %}">
-                  {%- render 'icon-announcement', icon: block.settings.icon, size: 'xs', class: 'stroke-1' -%}
-                </span>
-              {%- endif -%}
+  <div 
+    class="announcement__slide flex h-full" 
+    {% unless forloop.first %} aria-hidden="true" {% endunless %} 
+    {{ block.shopify_attributes }} 
+    data-richtext="{% if block.settings.richtext != blank %}{{ block.settings.richtext | escape }}{% endif %}">
+    
+    {%- if block.settings.link != blank or block.settings.richtext != blank -%}
+      <a 
+        class="announcement__content flex items-center gap-2 {% if block.settings.richtext != blank %}underline{% endif %}" 
+        href="javascript:void(0);" 
+        data-toggle-modal>
+    {%- else -%}
+      <div class="announcement__content flex items-center gap-2">
+    {%- endif -%}
 
-              {%- if block.settings.text_mobile != blank -%}
-                <p class="announcement-text leading-tight md:hidden">
-                  {%- render 'highlighted-text', content: block.settings.text_mobile, style: block.settings.highlighted_text, scribble: block.settings.highlighted_scribble, gradient: withGradient -%}
-                </p>
-                <p class="announcement-text leading-tight hidden md:block">
-                  {%- render 'highlighted-text', content: block.settings.text, style: block.settings.highlighted_text, scribble: block.settings.highlighted_scribble, gradient: withGradient -%}
-                </p>
-              {%- else -%}
-                <p class="announcement-text leading-tight">
-                  {%- render 'highlighted-text', content: block.settings.text, style: block.settings.highlighted_text, scribble: block.settings.highlighted_scribble, gradient: withGradient -%}
-                </p>
-              {%- endif -%}
-
-            {%- if block.settings.link != blank -%}
-              </a>
-            {%- else -%}
-              </div>
-            {%- endif -%}
-          </div>
-        {%- endfor -%}
-      </announcement-bar>
-      {%- if section.settings.show_navigation and announcement_block_count > 1 -%}
-        <button type="button" is="previous-button" class="fader left relative flex items-center justify-start h-full" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}">
-          <svg class="icon icon-arrow-left icon-xs transform" viewBox="0 0 15 14" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.33333 2.91675L2.25 7.00004M2.25 7.00004L6.33333 11.0834M2.25 7.00004H12.75"></path>
-          </svg>
-        </button>
-        <button type="button" is="next-button" class="fader right relative flex items-center justify-end h-full" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
-          <svg class="icon icon-arrow-right icon-xs transform" viewBox="0 0 15 14" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.00004H12.75M12.75 7.00004L8.66667 2.91675M12.75 7.00004L8.66667 11.0834"></path>
-          </svg>
-        </button>
-        {%- if section.settings.autoplay -%}
-          <button
-            type="button"
-            class="slideshow-control flex items-center justify-center rounded-full sr-only"
-            is="control-button"
-            aria-controls="Slider-{{ section.id }}"
-            aria-live="polite"
-          >
-            <span class="slideshow-control__pause">
-              {%- render 'icon', icon: 'pause' -%}
-              <span class="sr-only">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
-            </span>
-            <span class="slideshow-control__play">
-              {%- render 'icon', icon: 'play' -%}
-              <span class="sr-only">{{ 'sections.slideshow.play_slideshow' | t }}</span>
-            </span>
-          </button>
-        {%- endif -%}
+      {%- if block.settings.icon != 'none' -%}
+        <span class="announcement-icon{% if block.settings.hide_icon_mobile %} hidden md:block{% endif %}">
+          {%- render 'icon-announcement', icon: block.settings.icon, size: 'xs', class: 'stroke-1' -%}
+        </span>
       {%- endif -%}
-    </div>
-  {%- endif -%}
+
+      {%- if block.settings.text_mobile != blank -%}
+        <p class="announcement-text leading-tight md:hidden">
+          {%- render 'highlighted-text', content: block.settings.text_mobile, style: block.settings.highlighted_text, scribble: block.settings.highlighted_scribble, gradient: withGradient -%}
+        </p>
+        <p class="announcement-text leading-tight hidden md:block">
+          {%- render 'highlighted-text', content: block.settings.text, style: block.settings.highlighted_text, scribble: block.settings.highlighted_scribble, gradient: withGradient -%}
+        </p>
+      {%- else -%}
+        <p class="announcement-text leading-tight">
+          {%- render 'highlighted-text', content: block.settings.text, style: block.settings.highlighted_text, scribble: block.settings.highlighted_scribble, gradient: withGradient -%}
+        </p>
+      {%- endif -%}
+
+    {%- if block.settings.link != blank or block.settings.richtext != blank -%}
+      </a>
+    {%- else -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endfor -%}
+
+</announcement-bar>
+
+
+    {%- if section.settings.show_navigation and announcement_block_count > 1 -%}
+      <button type="button" is="previous-button" class="fader left relative flex items-center justify-start h-full" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}">
+        <svg class="icon icon-arrow-left icon-xs transform" viewBox="0 0 15 14" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.33333 2.91675L2.25 7.00004M2.25 7.00004L6.33333 11.0834M2.25 7.00004H12.75"></path>
+        </svg>
+      </button>
+      <button type="button" is="next-button" class="fader right relative flex items-center justify-end h-full" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
+        <svg class="icon icon-arrow-right icon-xs transform" viewBox="0 0 15 14" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.00004H12.75M12.75 7.00004L8.66667 2.91675M12.75 7.00004L8.66667 11.0834"></path>
+        </svg>
+      </button>
+      {%- if section.settings.autoplay -%}
+        <button
+          type="button"
+          class="slideshow-control flex items-center justify-center rounded-full sr-only"
+          is="control-button"
+          aria-controls="Slider-{{ section.id }}"
+          aria-live="polite"
+        >
+          <span class="slideshow-control__pause">
+            {%- render 'icon', icon: 'pause' -%}
+            <span class="sr-only">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+          </span>
+          <span class="slideshow-control__play">
+            {%- render 'icon', icon: 'play' -%}
+            <span class="sr-only">{{ 'sections.slideshow.play_slideshow' | t }}</span>
+          </span>
+        </button>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
 
   {%- if enable_language_selector or enable_country_selector -%}
     <div class="localization hidden lg:flex items-center h-full">
@@ -181,6 +213,8 @@
     </div>
   {%- endif -%}
 </div>
+
+
 
 {% schema %}
 {
@@ -565,6 +599,11 @@
           "label": "t:sections.global.settings.link.label"
         },
         {
+          "type": "richtext",
+          "id": "richtext",
+          "label": "Rich Text Content for Modal"
+        },
+        {
           "type": "header",
           "content": "t:sections.global.settings.header__mobile.content"
         },
@@ -660,4 +699,128 @@
 }
 {% endschema %}
 
-                
+              
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.flex {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal.modal-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  line-height: 1.7em;
+  text-align: center;
+  font-size: 1.1em;
+  text-wrap: balance;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transform: translateY(-20px);
+}
+
+.modal.flex .modal-content {
+  transform: translateY(0px);
+}
+
+.modal.modal-fade-out .modal-content {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.modal-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  background-color: #ffffff8f;
+  height: 38px;
+  width: 38px;
+  margin-inline-start: auto;
+}
+
+div#announcement-modal {
+  padding: 20px;
+}
+
+
+</style>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('announcement-modal');
+  const modalContent = document.getElementById('modal-richtext-content');
+
+  if (!modal || !modalContent) return;
+
+  const showModal = (content) => {
+    modalContent.innerHTML = content;
+    modal.classList.add('flex');
+    modal.classList.remove('modal-fade-out');
+    modalContent.style.opacity = '1';
+  };
+
+  const hideModal = () => {
+    modal.classList.add('modal-fade-out');
+    modalContent.style.opacity = '0';
+    modal.addEventListener(
+      'transitionend',
+      () => {
+        modalContent.innerHTML = '';
+        modal.classList.remove('flex', 'modal-fade-out');
+        modalContent.style.opacity = '1';
+      },
+      { once: true }
+    );
+  };
+
+  
+  document.body.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-toggle-modal]');
+    if (trigger) {
+      const richtext = trigger.closest('.announcement__slide')?.dataset.richtext;
+      if (richtext) {
+        showModal(richtext);
+      }
+    }
+  });
+
+  
+  modal.querySelector('.button--close').addEventListener('click', hideModal);
+
+  
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      hideModal();
+    }
+  });
+});
+
+</script>

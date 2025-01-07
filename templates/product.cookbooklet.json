@@ -24,7 +24,7 @@
         "liquid_cVJNB9": {
           "type": "liquid",
           "settings": {
-            "liquid": "<div class=\"product__junip-summary\"  {% if show_bubble and promo_bubble_label != blank %} style=\"--double-padding: 7px;\" {% endif %}>\n                  {% if product.metafields.junip.rating_count > 0 %}\n                    {% render 'junip-product-summary', product: product %}\n\n                    <a href=\"#shopify-block-AamxsaUQxak80dmJhV__junip_product_reviews_ugc_junip_product_review_tLTRQ6\"\n                       class=\"product__junip-summary-count\">{{ product.metafields.junip.rating_count }} {{ 'products.product.junip_review_count' | t }}\n                    </a>\n                  {% endif %}\n                </div>\n\n<style>\n.product__junip-summary {\n    display: flex;\n    gap: 8px;\n}\n\na.product__junip-summary-count {\ncolor: #205b62;\n}\n\n</style>"
+            "liquid": "<div class=\"product__junip-summary\"  {% if show_bubble and promo_bubble_label != blank %} style=\"--double-padding: 7px;\" {% endif %}>\n                  {% if product.metafields.junip.rating_count > 0 %}\n                    {% render 'junip-product-summary', product: product %}\n\n                    <a href=\"shopify-block-AT1NuczRPVUlkSUFtT__junip_product_reviews_ugc_junip_product_review_tLTRQ6\"\n                       class=\"product__junip-summary-count\">{{ product.metafields.junip.rating_count }} {{ 'products.product.junip_review_count' | t }}\n                    </a>\n                  {% endif %}\n                </div>\n\n<style>\n.product__junip-summary {\n    display: flex;\n    gap: 8px;\n}\n\na.product__junip-summary-count {\ncolor: #205b62;\n}\n\n</style>"
           }
         },
         "price_rC7wyf": {
@@ -212,6 +212,121 @@
       "settings": {
         "heading": "Need help?",
         "description": "<p>If you have any questions, feel free to reach out to us! Our team is available to assist you and will respond within one business day.</p>"
+      }
+    },
+    "multicolumn_JiVDyU": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_nDi7E3": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/French-Toast-Pudding_1024.jpg",
+            "image_ratio": "wide",
+            "heading": "Hot Breakfast",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Start the morning right with dishes like french toast pudding, shakshuka, and crispy bacon.</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_reYHee": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/One-pot-Chicken-Orzo-and-Feta_1024.jpg",
+            "image_ratio": "wide",
+            "heading": "One-Dish Meals",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Recipes for full meals in minutes — using just one Anyday dish.</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_ex9MnA": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Peppermint-Fudge_1024.jpg",
+            "image_ratio": "wide",
+            "heading": "Decadent Desserts",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Gooey peanut butter chocolate lava cake and homemade fudge are just a few recipes you can find in this book — and make in the microwave.</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_TYVHcW": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Easy-Chili-Crisp_1024.webp",
+            "image_ratio": "wide",
+            "heading": "Pantry Staples",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Make your own chili crisp to use on everything, or cook up some candied nuts to have on hand for guests.</p>",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_nDi7E3",
+        "column_reYHee",
+        "column_ex9MnA",
+        "column_TYVHcW"
+      ],
+      "custom_css": [
+        ".multicolumn-card {background-color: #fbfbf9;}",
+        ".multicolumn-card__info {padding: 32px !important; gap: 12px; text-wrap: balance;}",
+        ".grid.gap-4.lg\\:gap-6.w-full {gap: 0;}"
+      ],
+      "settings": {
+        "columns": 2,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "heading": "Discover Delicious Recipes",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "bottom_button_label": "",
+        "bottom_button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "squiggle-underline",
+        "color_text": "",
+        "color_background": "#f1ede7",
+        "gradient_background": "",
+        "color_highlight": "#ff3b1f",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "add_bg_shapes": false,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
       }
     },
     "product-info": {
@@ -426,6 +541,7 @@
   "order": [
     "main-product",
     "help-drawer",
+    "multicolumn_JiVDyU",
     "product-info",
     "1733948763a41441db",
     "17264183809666574a",

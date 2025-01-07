@@ -68,9 +68,9 @@
         "next_previous_posts": {
           "type": "next_previous_posts",
           "settings": {
-            "show_date": true,
+            "show_date": false,
             "show_comments": false,
-            "show_author": true
+            "show_author": false
           }
         },
         "comments": {
@@ -96,7 +96,7 @@
     "blog-posts": {
       "type": "blog-posts",
       "settings": {
-        "blog": "",
+        "blog": "news",
         "post_limit": 3,
         "columns": 3,
         "carousel_on_desktop": false,
@@ -105,13 +105,13 @@
         "swipe_on_mobile": false,
         "image_ratio": "landscape",
         "show_tags": true,
-        "show_date": true,
-        "show_comments": true,
+        "show_date": false,
+        "show_comments": false,
         "show_author": false,
         "show_excerpt": true,
-        "heading": "Latest Stories",
+        "heading": "The Latest From Anyday",
         "heading_size": "title-md",
-        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_alignment": "text-center md:items-center",
         "heading_tag": "h2",
         "subheading": "",
         "description": "",

@@ -18,7 +18,6 @@
 }
 
 .product-table__heading {
-  font-size: 40px;
   font-weight: 700;
   text-align: center;
   position: relative;
@@ -27,7 +26,6 @@
 
 @media (max-width: 750px) {
   .product-table__heading {
-    font-size: 30px;
     margin-bottom: 30px;
   }
 }

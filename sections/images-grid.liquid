@@ -17,6 +17,14 @@
   assign images_meta = [request.page_type].metafields.images-grid.images
 -%}
 
+{%- liquid
+  assign collection_handle = collection.handle | default: blank
+-%}
+
+{%- if collection_handle == "accessories" -%}
+  {% assign enable_section = false %}
+{%- endif -%}
+
 {%- if template.name != 'product' -%}
   {%- assign enable_section = true -%}
 {%- endif -%}
@@ -50,7 +58,7 @@
 
       <div class="images-grid__wrapper">
         {%- if heading != blank -%}
-          <div role="heading" aria-level="2" class="images-grid__heading">{{ heading }}</div>
+          <div role="heading" aria-level="2" class="heading title-md images-grid__heading">{{ heading }}</div>
         {%- endif -%}
 
         {%- if subheading != blank -%}
