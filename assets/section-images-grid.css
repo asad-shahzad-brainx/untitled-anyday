@@ -22,12 +22,7 @@
 
 .images-grid .images-grid__heading * {
   font-family: F37Jan;
-  font-size: 40px;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  line-height: normal;
-  text-transform: none;
-  box-shadow: none;
   text-align: center;
   margin-bottom: 67px;
   color: var(--text-color);
@@ -35,7 +30,6 @@
 
 @media (max-width: 768px) {
   .images-grid .images-grid__heading * {
-    font-size: 24px;
     margin-bottom: 24px;
   }
 }

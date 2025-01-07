@@ -446,6 +446,7 @@
               first_3d_model: first_3d_model,
               product_form_id: product_form_id,
               is_recipe: true,
+              recipe_icon: recipe_icon,
               video_url: video_url,
               video_title: video_title
             -%}
@@ -636,9 +637,9 @@
               <div id="recipe-time-block">
                 {% if slides_counter > 1 %}
                   <div class="recipe__info-recomended-product">
-                    <h2 class="recipe__info-recomended-product-label">{{ "products.recipe.recommended_products.label_desktop" | t }}</h2>
+                    <h2 class="recipe__info-recomended-product-label">Recommended Products</h2>
 
-                    <h2 style="display: none;" class="recipe__info-recomended-product-label recipe__info-recomended-product-label--mobile">{{ "products.recipe.recommended_products.label_mobile" | t }}</h2>
+                    <h2 style="display: none;" class="recipe__info-recomended-product-label recipe__info-recomended-product-label--mobile">Recommended Products</h2>
 
                     <div id="product_form_recipe-template" class="product_form_recipe_inner">
                       <div class="recipe__info-product-list" data-slider-settings='{{ slider_settings }}'>

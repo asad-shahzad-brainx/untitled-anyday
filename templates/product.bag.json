@@ -1,0 +1,771 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_size": "product-title-md",
+            "title_size_mobile": "product-title-md",
+            "show_price": true,
+            "show_rating": false
+          }
+        },
+        "liquid_cVJNB9": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"product__junip-summary\"  {% if show_bubble and promo_bubble_label != blank %} style=\"--double-padding: 7px;\" {% endif %}>\n                  {% if product.metafields.junip.rating_count > 0 %}\n                    {% render 'junip-product-summary', product: product %}\n\n                    <a href=\"#shopify-block-ARVI2NDFzbm5kZGlyR__junip_product_reviews_ugc_junip_product_review_tLTRQ6\"\n                       class=\"product__junip-summary-count\">{{ product.metafields.junip.rating_count }} {{ 'products.product.junip_review_count' | t }}\n                    </a>\n                  {% endif %}\n                </div>\n\n<style>\n.product__junip-summary {\n    display: flex;\n    gap: 8px;\n}\n\na.product__junip-summary-count {\ncolor: #205b62;\n}\n\n</style>"
+          }
+        },
+        "price_rC7wyf": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": true
+          }
+        },
+        "description_VCrBGW": {
+          "type": "description",
+          "settings": {
+            "description_source": "metafield",
+            "text_size": "text-base"
+          }
+        },
+        "product_icons_Gw3kKi": {
+          "type": "product_icons",
+          "settings": {
+            "icon_1": "shopify://shop_images/00-Microwave-safe_icon_04_1_6841994e-644d-4b17-ac56-f100972e51d3.png",
+            "text_1": "Microwave-safe",
+            "icon_2": "shopify://shop_images/00-Dishwasher-safe_icon_03_2.png",
+            "text_2": "Dishwasher-safe",
+            "icon_3": "shopify://shop_images/00-Oven-safe_icon_8_1_749b6bc3-52db-4f62-b9a4-88ae937c1ecc.png",
+            "text_3": "Oven-safe (up to\n500°F bowl, 400°F lid)",
+            "icon_4": "shopify://shop_images/Frame_38.png",
+            "text_4": "Airtight, leakproof, stackable",
+            "icon_5": "shopify://shop_images/00-Freezer-safe_icon_03_1_d1afc5d8-1abe-4afa-ae8a-f926b63e465a.png",
+            "text_5": "Freezer-safe",
+            "icon_6": "shopify://shop_images/Glass-recycle_icon_01_1_8182da76-73e4-4d2f-adc9-22467d04e363.png",
+            "text_6": "Nontoxic and plastic-free",
+            "text_7": "",
+            "text_8": ""
+          }
+        },
+        "liquid_LdDHBR": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "{{ product.metafields.accentuate.description }} <br>\n{{ product.metafields.accentuate.set_includes }}"
+          }
+        },
+        "countdown": {
+          "type": "countdown",
+          "settings": {
+            "heading": "Hurry up!",
+            "subheading": "Sale end in:",
+            "color_text": "#e11d48",
+            "color_background": "#fff1f2",
+            "gradient_background": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "enable_color_swatches": true,
+            "color_swatch_type": "color",
+            "size_chart": ""
+          }
+        },
+        "inventory": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "inventory_threshold": 15,
+            "show_inventory_transfer": true,
+            "color_scheme": "accent-1"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "tolstoy_shoppable_video_ugc_stories_block_989j67": {
+          "type": "shopify://apps/tolstoy-shoppable-video-ugc/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "20uscdk0tiw9d"
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "dynamic_accordions_6rKJHW": {
+          "type": "dynamic_accordions",
+          "settings": {
+            "rebuy_widget_title": "Bundle It!",
+            "rebuy_widget_id": "191261",
+            "what_is_heading": "",
+            "what_is_description": "",
+            "safety_heading": "Is the microwave safe?",
+            "safety_description": "<ul><li>Anyday dishes are made of glass, not plastic, and are fully microwave-safe (yes, even the metal on the lid!). Read more about metal in the microwave <a href=\"/blogs/news/is-metal-safe-in-microwave\" title=\"The Truth About Metal in the Microwave\">here</a>.</li><li>Microwaves are 100% safe to use. Did you know that your cellphone emits more radiation than your microwave does?</li><li>Food made from scratch in the microwave is safe to eat — in fact, the microwave preserves more nutrients than other cooking methods according to studies by Harvard and Cornell!</li><li>For more on microwave safety, check out our <a href=\"/pages/faq\" title=\"FAQ\">FAQ</a> and <a href=\"/blogs/news\" title=\"News\">Learn sections</a>!</li></ul>"
+          }
+        },
+        "help_desk_7Y9t9d": {
+          "type": "help_desk",
+          "settings": {
+            "help_label": "Need help?",
+            "help_type": "drawer",
+            "help_page": ""
+          }
+        },
+        "sticky_buy_button": {
+          "type": "sticky_buy_button",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "liquid_cVJNB9",
+        "price_rC7wyf",
+        "description_VCrBGW",
+        "product_icons_Gw3kKi",
+        "liquid_LdDHBR",
+        "countdown",
+        "variant_picker",
+        "inventory",
+        "buy_buttons",
+        "tolstoy_shoppable_video_ugc_stories_block_989j67",
+        "pickup_availability",
+        "dynamic_accordions_6rKJHW",
+        "help_desk_7Y9t9d",
+        "sticky_buy_button"
+      ],
+      "custom_css": [
+        "form#ProductFormInstallment-template--23727826829680__main-product {margin: 12px 0px 4px;}",
+        "#more-payment-options-link {display: none;}",
+        ".rte,.product__text {margin-top: 12px;}",
+        ".product__title.with-price {align-items: center;}",
+        ".grid-cols-2 > :first-child {grid-column: span 2 !important; width: 100% !important;}",
+        ".product__info {display: flex; flex-direction: column;}",
+        "@media (max-width: 767px) {.variant-picker {order: -1; margin-bottom: 28px; margin-top: auto; }}"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "media_size": 50,
+        "gallery_layout": "columns",
+        "thumbnail_position": "beside",
+        "image_ratio": "adapt_first",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "mobile_layout": "full_width",
+        "image_ratio_mobile": "adapt_first",
+        "mobile_thumbnail": true,
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "help-drawer": {
+      "type": "help-drawer",
+      "blocks": {
+        "content-1": {
+          "type": "content",
+          "settings": {
+            "icon": "rocket",
+            "heading": "Shipping Information",
+            "text": "<p>Have questions about shipping? Check out our detailed <a href=\"https://cookanyday.com/pages/faq#ordering-returns\"><span style=\"text-decoration:underline\">shipping policy</span></a> or <a href=\"https://cookanyday.com/pages/contact-us\"><span style=\"text-decoration:underline\">contact us</span></a> directly for assistance with delivery times, costs, or tracking.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#000000",
+            "color_background": "#e9f2ff",
+            "gradient_background": "",
+            "color_highlight": "#bed8fc",
+            "gradient_highlight": ""
+          }
+        },
+        "content-2": {
+          "type": "content",
+          "settings": {
+            "icon": "headphone",
+            "heading": "Customer Support",
+            "text": "<p>Our dedicated support team is here to help. Whether you need assistance with an order, product inquiries, or troubleshooting, don’t hesitate to reach out through our <a href=\"https://cookanyday.com/pages/contact-us\"><span style=\"text-decoration:underline\">contact page</span></a>.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#000000",
+            "color_background": "#ddfae1",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
+          }
+        },
+        "content-3": {
+          "type": "content",
+          "settings": {
+            "icon": "chat_bubble",
+            "heading": "FAQ’s",
+            "text": "<p>Looking for quick answers? Visit our <a href=\"https://cookanyday.com/pages/faq#products\"><span style=\"text-decoration:underline\">FAQ</span></a> section to find detailed responses to the most commonly asked questions.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#000000",
+            "color_background": "#f0e9ff",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
+          }
+        }
+      },
+      "block_order": [
+        "content-1",
+        "content-2",
+        "content-3"
+      ],
+      "settings": {
+        "heading": "Need help?",
+        "description": "<p>If you have any questions, feel free to reach out to us! Our team is available to assist you and will respond within one business day.</p>"
+      }
+    },
+    "recommended_recipes_metafield_VdyJL3": {
+      "type": "recommended-recipes-metafield",
+      "settings": {
+        "enable_section": false,
+        "padding_top_desk": 55,
+        "padding_bottom_desk": 70,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 50,
+        "section_bg": "#f1ede7",
+        "slider_arrows_color": "black",
+        "count_slides_on_d": "3",
+        "count_slides_on_m": "1.5",
+        "heading": "",
+        "heading_color": "#000000",
+        "button_label": "",
+        "button_link": "",
+        "show_bottom_wave": false
+      }
+    },
+    "multicolumn_6qRdiK": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_rMYMDN": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/picnic.png",
+            "image_ratio": "adapt",
+            "heading": "To a picnic",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_6HxjVH": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/offices.png",
+            "image_ratio": "adapt",
+            "heading": "To the office",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_yBcLpc": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/to_a_potluck.png",
+            "image_ratio": "adapt",
+            "heading": "To a potluck",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_erPUmj": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/on_vacation.png",
+            "image_ratio": "adapt",
+            "heading": "On vacation",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_PrWiJf": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/anywhere.png",
+            "image_ratio": "adapt",
+            "heading": "Anywhere!",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_rMYMDN",
+        "column_6HxjVH",
+        "column_yBcLpc",
+        "column_erPUmj",
+        "column_PrWiJf"
+      ],
+      "custom_css": [
+        "@media (min-width: 1025px) {.multicolumn.card-grid {gap: 10%; }}",
+        ".title-wrapper {margin-bottom: 40px;}"
+      ],
+      "settings": {
+        "columns": 5,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "heading": "Really: bring it anywhere!",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "bottom_button_label": "",
+        "bottom_button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#f1ede7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "add_bg_shapes": false,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "image_with_text_jJR6Mk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_hfjfKa": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Anyday Can Go <em>Anywhere</em> You Do",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "half_text",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_RYzHBc": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Dual use</h4><p>Fold the Anywhere Bag flat and use it as a trivet when you cook or heat up your food!</p><h4>Easy storage</h4><p>Origami-inspired design helps the Anywhere Bag lay flat to store wherever you keep your kitchen towels or oven mitts.</p><h4>Easy transport</h4><p>The Anywhere Bag keeps your Anyday dish upright while you carry it.</p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hfjfKa",
+        "text_RYzHBc"
+      ],
+      "custom_css": [
+        ".image-with-text.with-background .rich-text {padding: 7.5%;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ezgif.com-gif-maker_4.gif",
+        "image_height": "adapt",
+        "image_width": "medium",
+        "layout": "image_first",
+        "text_alignment": "left",
+        "image_height_mobile": "auto",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_background": "#205b62",
+        "gradient_background": "",
+        "color_background_2": "#16474d",
+        "gradient_background_2": "",
+        "color_highlight": "#ff3b1f",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "multicolumn_hyQ7i7": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_wcGJVT": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Anywhere-bag-Illustration-for-PDP-1.png",
+            "image_ratio": "adapt",
+            "heading": "",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_HdpiAx": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Anywhere-bag-Illustration-for-PDP-2.png",
+            "image_ratio": "adapt",
+            "heading": "",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_nQpzgz": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Anywhere-bag-Illustration-for-PDP-3.png",
+            "image_ratio": "adapt",
+            "heading": "",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_zkVb9H": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Anywhere-bag-Illustration-for-PDP-4.png",
+            "image_ratio": "adapt",
+            "heading": "",
+            "heading_size": "text-lg-2xl",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_wcGJVT",
+        "column_HdpiAx",
+        "column_nQpzgz",
+        "column_zkVb9H"
+      ],
+      "custom_css": [
+        ".multicolumn.card-grid {gap: 0px;}",
+        ".title-wrapper {margin-bottom: 0px;}"
+      ],
+      "settings": {
+        "columns": 4,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "heading": "How it works",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "bottom_button_label": "",
+        "bottom_button_link": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "#ddfae1",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "add_bg_shapes": false,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "featured_collection_XTQ6FT": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".quick-view__button,.product-card__top,.price,.quick-add.flex.justify-center.absolute.w-full.z-1.pointer-events-none {display: none;}",
+        ".product-card__content {padding: 24px;}",
+        "h2 {color: #000;}"
+      ],
+      "settings": {
+        "collection": "",
+        "products": [
+          "marble-potato-salad",
+          "banana-bread",
+          "warm-kale-and-cauliflower-salad-with-raisins",
+          "microwave-cheesecake",
+          "beet-and-carrot-salad-with-feta"
+        ],
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "show_view_all": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Recipes to take on the go",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#205b62",
+        "color_background": "#c1a2f2",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "#ffffff",
+        "color_button_background": "#ff3b1f",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "1733948763a41441db": {
+      "type": "apps",
+      "blocks": {
+        "rebuy_personalization_engine_rebuy_widget_4g8Jpg": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "177638",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        }
+      },
+      "block_order": [
+        "rebuy_personalization_engine_rebuy_widget_4g8Jpg"
+      ],
+      "custom_css": [
+        ".rebuy-widget-content {background: transparent;}"
+      ],
+      "settings": {
+        "enable_reviews_integration": true,
+        "heading": "",
+        "heading_alignment": "center",
+        "heading_margin_bottom": 60,
+        "button_link": "/",
+        "button_text": "",
+        "button_margin_top": 60,
+        "color_text": "",
+        "color_background": "#fbfbf9",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "17264183809666574a": {
+      "type": "apps",
+      "blocks": {
+        "junip_product_reviews_ugc_junip_product_review_tLTRQ6": {
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "junip_product_reviews_ugc_junip_product_review_tLTRQ6"
+      ],
+      "settings": {
+        "enable_reviews_integration": true,
+        "heading": "What Customers Are Saying",
+        "heading_alignment": "center",
+        "heading_margin_bottom": 60,
+        "button_link": "/",
+        "button_text": "",
+        "button_margin_top": 60,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 24,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "You may also like",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": true
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Recently Viewed",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "main-product",
+    "help-drawer",
+    "recommended_recipes_metafield_VdyJL3",
+    "multicolumn_6qRdiK",
+    "image_with_text_jJR6Mk",
+    "multicolumn_hyQ7i7",
+    "featured_collection_XTQ6FT",
+    "1733948763a41441db",
+    "17264183809666574a",
+    "product-recommendations",
+    "recently-viewed"
+  ]
+}

@@ -29,24 +29,10 @@
           }
         },
         "junip_product_reviews_ugc_junip_product_summary_4dXHn6": {
-          "type": "shopify:\/\/apps\/junip-product-reviews-ugc\/blocks\/junip-product-summary\/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-summary/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "disabled": true,
           "settings": {
             "product": "{{product}}"
-          }
-        },
-        "liquid_MrFW3b": {
-          "type": "liquid",
-          "disabled": true,
-          "settings": {
-            "liquid": "{% if product.selected_or_first_available_variant.metafields.custom.recipe_cook_time.value != blank %}\n  <p id=\"CookTime-{{ section.id }}\">Cook time is {{ product.selected_or_first_available_variant.metafields.custom.recipe_cook_time.value }}<\/p>\n{% else %}\n  <p id=\"CookTime-{{ section.id }}\" style=\"display: none;\"><\/p>\n{% endif %}\n\n<script>\n  var variantsCookTime = {{ product.variants | map: 'id' | json }};\n  var variantsCookTimeData = {\n    {% for variant in product.variants %}\n      '{{ variant.id }}': '{{ variant.metafields.custom.recipe_cook_time.value }}'{% unless forloop.last %},{% endunless %}\n    {% endfor %}\n  };\n<\/script>"
-          }
-        },
-        "liquid_nTPtnh": {
-          "type": "liquid",
-          "disabled": true,
-          "settings": {
-            "liquid": "<h3>Ingredients<\/h3>\n{% assign ingredient_list = product.selected_or_first_available_variant.metafields.custom.recipe_ingredient_list %}\n\n{% if ingredient_list != blank %}\n  <div class=\"recipe-ingredients\">\n    {{ ingredient_list | metafield_tag  }}\n  <\/div>\n{% endif %}"
           }
         },
         "recipe_times_q76ipC": {
@@ -92,7 +78,7 @@
           "type": "recommended-products",
           "settings": {
             "btn_label": "Try Anyday",
-            "btn_url": "shopify:\/\/products\/the-everyday-set"
+            "btn_url": "shopify://products/the-everyday-set"
           }
         },
         "complementary": {
@@ -120,7 +106,7 @@
             "heading_bg_color": "#205b62",
             "heading_text_color": "#ffffff",
             "btn_label": "Try Anyday",
-            "btn_url": "shopify:\/\/products\/the-everyday-set",
+            "btn_url": "shopify://products/the-everyday-set",
             "handle_1": "The medium shallow dish",
             "handle_2": "",
             "handle_3": "",
@@ -130,13 +116,13 @@
             "handle_7": "",
             "error_message": "Please select a product",
             "recipe_info_options_heading": "Select your serving size and microwave wattage in the dropdown. The recipe will change accordingly.",
-            "serves_title": "<p>Choose<\/p>\n<p>‏‏‎ ‎Serving Size<\/p>",
-            "wattage_title": "<p>Choose<\/p>\n<p>‏‏‎ ‎Wattage<\/p>",
-            "recommended_title": "<p>Recommended <\/p><p>Dish<\/p><p> <\/p>",
-            "wattage_info": "<p>Select your microwave wattage in the dropdown. The cook times in this recipe will automatically change accordingly.<\/p><p><\/p><p>[[video-wattage]]<\/p><p><\/p><p>To find your microwave’s wattage, look at the front panel, the side of the door, in the back, in the user manual, or Google the model number. If both an input and output wattage are listed, use the output.<\/p><p>Wattage translates to how powerful the microwave is. The higher the wattage, the faster your food will cook. The lower the wattage, the longer the cook time. <\/p><p>When in doubt, start with less time — you can always add more.<\/p>",
-            "video_wattage": "https:\/\/cdn.shopify.com\/s\/files\/1\/0258\/9324\/0922\/files\/Wattage_Reel_Updated.mp4?v=1647552807",
-            "power_level_info": "<p>Certain foods cook best in the microwave at lower power levels. <\/p><p><\/p><p>[[video-power]]<\/p><p><\/p><p>Different microwaves have different settings. See your microwave manual (or look it up online) to learn how to change your microwave’s power level.<\/p><p>For many microwaves: enter the cook time, press the “Power” (or “Power Level”) button, and select a number between 1-10. Other microwaves may require selecting the Power Level first, and then entering the cook time. <\/p><p>Microwaves list power levels in different ways. Here’s a guide to help you adjust:<\/p><p>PL 10 = 100% = High (default)<\/p><p>PL 9 = 90% = High<\/p><p>PL 8 = 80% = Med-High<\/p><p>PL 7 = 70% = Med-High<\/p><p>PL 6 = 60% = Medium<\/p><p>PL 5 = 50% = Medium<\/p><p>PL 4 = 40% = Med-Low<\/p><p>PL 3 = 30% = Med-Low<\/p><p>PL 2 = 20% = Low<\/p><p>PL 1 = 10% = Low<\/p><p>You will know if the power level has been successfully changed if you hear periodic changes in the microwave’s tone after it begins cooking.<br\/><\/p>",
-            "video_power_level": "https:\/\/cdn.shopify.com\/s\/files\/1\/0258\/9324\/0922\/files\/Power_Level_Updated.mp4?v=1647552976"
+            "serves_title": "<p>Choose</p>\n<p>‏‏‎ ‎Serving Size</p>",
+            "wattage_title": "<p>Choose</p>\n<p>‏‏‎ ‎Wattage</p>",
+            "recommended_title": "<p>Recommended </p><p>Dish</p><p> </p>",
+            "wattage_info": "<p>Select your microwave wattage in the dropdown. The cook times in this recipe will automatically change accordingly.</p><p></p><p>[[video-wattage]]</p><p></p><p>To find your microwave’s wattage, look at the front panel, the side of the door, in the back, in the user manual, or Google the model number. If both an input and output wattage are listed, use the output.</p><p>Wattage translates to how powerful the microwave is. The higher the wattage, the faster your food will cook. The lower the wattage, the longer the cook time. </p><p>When in doubt, start with less time — you can always add more.</p>",
+            "video_wattage": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Wattage_Reel_Updated.mp4?v=1647552807",
+            "power_level_info": "<p>Certain foods cook best in the microwave at lower power levels. </p><p></p><p>[[video-power]]</p><p></p><p>Different microwaves have different settings. See your microwave manual (or look it up online) to learn how to change your microwave’s power level.</p><p>For many microwaves: enter the cook time, press the “Power” (or “Power Level”) button, and select a number between 1-10. Other microwaves may require selecting the Power Level first, and then entering the cook time. </p><p>Microwaves list power levels in different ways. Here’s a guide to help you adjust:</p><p>PL 10 = 100% = High (default)</p><p>PL 9 = 90% = High</p><p>PL 8 = 80% = Med-High</p><p>PL 7 = 70% = Med-High</p><p>PL 6 = 60% = Medium</p><p>PL 5 = 50% = Medium</p><p>PL 4 = 40% = Med-Low</p><p>PL 3 = 30% = Med-Low</p><p>PL 2 = 20% = Low</p><p>PL 1 = 10% = Low</p><p>You will know if the power level has been successfully changed if you hear periodic changes in the microwave’s tone after it begins cooking.<br/></p>",
+            "video_power_level": "https://cdn.shopify.com/s/files/1/0258/9324/0922/files/Power_Level_Updated.mp4?v=1647552976"
           }
         },
         "compatible_products_Aqnfya": {
@@ -156,8 +142,6 @@
       "block_order": [
         "title",
         "junip_product_reviews_ugc_junip_product_summary_4dXHn6",
-        "liquid_MrFW3b",
-        "liquid_nTPtnh",
         "recipe_times_q76ipC",
         "share",
         "description",
@@ -184,6 +168,8 @@
         "mobile_thumbnail": true,
         "padding_top": 40,
         "padding_bottom": 80,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 64,
         "divider": false,
         "full_width": false,
         "rounded": false
@@ -196,7 +182,7 @@
         "padding_bottom_desk": 70,
         "padding_top_mob": 40,
         "padding_bottom_mob": 40,
-        "heading": "<p>Some heading<\/p>",
+        "heading": "<p>Some heading</p>",
         "subheading": "",
         "bg_color": "#d0def2",
         "color": "#000000",
@@ -262,7 +248,7 @@
         "bg_color": "#dcfae0",
         "text_under_table": "",
         "button_label": "Shop Anyday",
-        "button_url": "shopify:\/\/collections\/frontpage",
+        "button_url": "shopify://collections/frontpage",
         "show_bottom_wave": true
       }
     },
@@ -316,25 +302,6 @@
         "show_bottom_wave": true
       }
     },
-    "recommended_recipes_metafield_zbjcCK": {
-      "type": "recommended-recipes-metafield",
-      "settings": {
-        "enable_section": true,
-        "padding_top_desk": 80,
-        "padding_bottom_desk": 80,
-        "padding_top_mob": 50,
-        "padding_bottom_mob": 50,
-        "section_bg": "#c1a2f2",
-        "slider_arrows_color": "white",
-        "count_slides_on_d": "3",
-        "count_slides_on_m": "1.5",
-        "heading": "Our Favorite Recipes",
-        "heading_color": "#000000",
-        "button_label": "See more recipes",
-        "button_link": "https:\/\/cookanyday.com\/collections\/anyday-kitchen\/category-anyday-basics",
-        "show_bottom_wave": true
-      }
-    },
     "help-drawer": {
       "type": "help-drawer",
       "blocks": {
@@ -343,13 +310,13 @@
           "settings": {
             "icon": "rocket",
             "heading": "Shipping Information",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Have questions about shipping? Check out our detailed <a href=\"https://cookanyday.com/pages/faq#ordering-returns\"><span style=\"text-decoration:underline\">shipping policy</span></a> or <a href=\"https://cookanyday.com/pages/contact-us\"><span style=\"text-decoration:underline\">contact us</span></a> directly for assistance with delivery times, costs, or tracking.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
-            "color_text": "#b45309",
-            "color_background": "#fffbeb",
+            "color_text": "#000000",
+            "color_background": "#e9f2ff",
             "gradient_background": "",
-            "color_highlight": "#ffddbf",
+            "color_highlight": "#bed8fc",
             "gradient_highlight": ""
           }
         },
@@ -358,11 +325,11 @@
           "settings": {
             "icon": "headphone",
             "heading": "Customer Support",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Our dedicated support team is here to help. Whether you need assistance with an order, product inquiries, or troubleshooting, don’t hesitate to reach out through our <a href=\"https://cookanyday.com/pages/contact-us\"><span style=\"text-decoration:underline\">contact page</span></a>.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
-            "color_text": "#0369a1",
-            "color_background": "#f0f9ff",
+            "color_text": "#000000",
+            "color_background": "#ddfae1",
             "gradient_background": "",
             "color_highlight": "#ffddbf",
             "gradient_highlight": ""
@@ -373,26 +340,11 @@
           "settings": {
             "icon": "chat_bubble",
             "heading": "FAQ’s",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Looking for quick answers? Visit our <a href=\"https://cookanyday.com/pages/faq#products\"><span style=\"text-decoration:underline\">FAQ</span></a> section to find detailed responses to the most commonly asked questions.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle",
-            "color_text": "#be123c",
-            "color_background": "#fff1f2",
-            "gradient_background": "",
-            "color_highlight": "#ffddbf",
-            "gradient_highlight": ""
-          }
-        },
-        "content-4": {
-          "type": "content",
-          "settings": {
-            "icon": "phone",
-            "heading": "Contact Us",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle",
-            "color_text": "#4d7c0f",
-            "color_background": "#f7fee7",
+            "color_text": "#000000",
+            "color_background": "#f0e9ff",
             "gradient_background": "",
             "color_highlight": "#ffddbf",
             "gradient_highlight": ""
@@ -402,19 +354,18 @@
       "block_order": [
         "content-1",
         "content-2",
-        "content-3",
-        "content-4"
+        "content-3"
       ],
       "settings": {
         "heading": "Need help?",
-        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.<\/p>"
+        "description": "<p>If you have any questions, feel free to reach out to us! Our team is available to assist you and will respond within one business day.</p>"
       }
     },
     "17264183809666574a": {
       "type": "apps",
       "blocks": {
         "junip_product_reviews_ugc_junip_product_review_tLTRQ6": {
-          "type": "shopify:\/\/apps\/junip-product-reviews-ugc\/blocks\/junip-product-review\/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "product": "{{product}}"
           }
@@ -428,7 +379,7 @@
         "heading": "What Customers Are Saying",
         "heading_alignment": "center",
         "heading_margin_bottom": 60,
-        "button_link": "\/",
+        "button_link": "/",
         "button_text": "",
         "button_margin_top": 60,
         "color_text": "",
@@ -446,6 +397,25 @@
         "rounded": false
       }
     },
+    "recommended_recipes_metafield_zbjcCK": {
+      "type": "recommended-recipes-metafield",
+      "settings": {
+        "enable_section": true,
+        "padding_top_desk": 80,
+        "padding_bottom_desk": 80,
+        "padding_top_mob": 50,
+        "padding_bottom_mob": 50,
+        "section_bg": "#c1a2f2",
+        "slider_arrows_color": "white",
+        "count_slides_on_d": "3",
+        "count_slides_on_m": "1.5",
+        "heading": "Our Favorite Recipes",
+        "heading_color": "#000000",
+        "button_label": "See more recipes",
+        "button_link": "https://cookanyday.com/collections/anyday-kitchen/category-anyday-basics",
+        "show_bottom_wave": false
+      }
+    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -453,7 +423,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -462,7 +432,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -471,7 +441,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -480,7 +450,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -489,7 +459,7 @@
           "type": "question",
           "settings": {
             "title": "Frequently asked question",
-            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -498,7 +468,7 @@
           "type": "contact",
           "settings": {
             "heading": "Didn’t find your answer?",
-            "text": "<p>Don't hestitate to contact us<\/p>",
+            "text": "<p>Don't hestitate to contact us</p>",
             "show_phone": false,
             "avatar_height": 60,
             "highlighted_text": "none",
@@ -522,7 +492,7 @@
         "heading_alignment": "text-left md:items-end md:flex-row",
         "heading_tag": "h2",
         "subheading": "",
-        "description": "<p>Please read our <a href=\"#\" title=\"FAQ's\">FAQs<\/a> page to find out more.<\/p>",
+        "description": "<p>Please read our <a href=\"#\" title=\"FAQ's\">FAQs</a> page to find out more.</p>",
         "button_label": "",
         "button_link": "",
         "highlighted_text": "none",
@@ -615,9 +585,9 @@
     "step_by_step_slideshow_zH9rfM",
     "text_with_table_frn7a6",
     "recipes_slideshow_pMLgbF",
-    "recommended_recipes_metafield_zbjcCK",
     "help-drawer",
     "17264183809666574a",
+    "recommended_recipes_metafield_zbjcCK",
     "faq",
     "product-recommendations",
     "recently-viewed"

@@ -19,6 +19,13 @@
           </a>
         </li>
       {%- endif -%}
+
+      <li>
+          <a href="javascript:(print());" class="social-sharing__link block recipe__info-print" is="magnet-link" aria-label="print" aria-describedby="a11y-external-message">
+            {%- render 'icon-brand', icon: 'print', size: 'sm' -%}
+            <span class="sr-only">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
+          </a>
+        </li>
     
       {%- if settings.share_pinterest -%}
         <li>

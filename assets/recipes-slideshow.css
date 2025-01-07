@@ -8,7 +8,6 @@
 
 .recipe-recommended .recipe-recommended__heading {
   text-align: center;
-  font-size: 40px;
   font-weight: 700;
   padding: 20px 20px 15px;
   margin-bottom: 18px;
@@ -239,7 +238,7 @@
 }
 
 @media (max-width: 749px) {
-  .recipe-recommended .recipes-slideshow__btn-wrapper {
+  .recipe-recommended.version-b .recipes-slideshow__btn-wrapper {
     display: none;
   }
 }

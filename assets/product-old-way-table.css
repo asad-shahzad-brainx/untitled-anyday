@@ -35,15 +35,12 @@
 .old-way-table .old-way-table__heading {
 	z-index: 1;
 	text-align: center;
-	font-size: 40px;
 	padding: 0 20px 17px;
 	margin: 0 auto;
-	font-weight: 700;
 }
 
 @media (max-width: 750px) {
 	.old-way-table .old-way-table__heading {
-		font-size: 22px;
 		padding: 0 0 10px 0;
 	}
 }

@@ -408,6 +408,14 @@
   .collection-recipe .RecipeResults__GridItem {
     width: 50%;
     padding-inline: 4px;
+    margin-bottom: 32px;
+  }
+
+  .collection-recipe .collection-recipe__grid {
+    gap: 8px;
+  }
+  .collection-recipe .collection-recipe__product-block {
+    min-width: 45%;
   }
 }
 

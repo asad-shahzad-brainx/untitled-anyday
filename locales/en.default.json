@@ -457,8 +457,8 @@
         "cook_time_heading": "Cook Time"
       },
       "recommended_products": {
-        "label_desktop": "What You’ll Need",
-        "label_mobile": "What You’ll Need"
+        "label_desktop": "Recommended Product",
+        "label_mobile": "Recommended Product"
       },
       "recipe_info": {
         "ingredients_heading": "Ingredients",
